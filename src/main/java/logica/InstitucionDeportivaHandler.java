@@ -32,5 +32,14 @@ public class InstitucionDeportivaHandler {
 		return aretornar;
 	}
 	
+	/*
+	public ArrayList<String> obtenerInstitucionDeportiva() {
+		ArrayList<String> listaInstituciones = new ArrayList<>();	
+		for(InstitucionDeportiva i: institucionesDeportivas) {
+			listaInstituciones.add(new String(i.getNombre()));
+		}
+		return listaInstituciones;
+	 }
+	*/
 	
 }

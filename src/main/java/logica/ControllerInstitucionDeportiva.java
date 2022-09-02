@@ -1,5 +1,6 @@
 package logica;
 
+import excepciones.InstitucionDeportivaRepetidaException;
 import interfaces.IControllerInstitucionDeportiva;
 
 public class ControllerInstitucionDeportiva implements IControllerInstitucionDeportiva {
@@ -23,7 +24,7 @@ public class ControllerInstitucionDeportiva implements IControllerInstitucionDep
 	}
 
 	@Override
-	public void altaInstitucion(String nombre, String descripcion, String url) {
+	public void altaInstitucion(String nombre, String descripcion, String url) throws InstitucionDeportivaRepetidaException {
 		InstitucionDeportiva institucion = new InstitucionDeportiva();
 		
 		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();
