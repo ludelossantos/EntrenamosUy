@@ -213,6 +213,7 @@ public class AltaUsuario extends JInternalFrame {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		btnAceptar.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				altaUsuarioAceptarActionPerformed(arg0);
 			}
@@ -223,6 +224,7 @@ public class AltaUsuario extends JInternalFrame {
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		btnCancelar.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				altaUsuarioCancelarActionPerformed(e);
 			}
