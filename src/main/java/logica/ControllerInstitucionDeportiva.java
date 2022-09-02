@@ -1,5 +1,6 @@
 package logica;
 
+import datatypes.DtInstitucionDeportiva;
 import excepciones.InstitucionDeportivaRepetidaException;
 import interfaces.IControllerInstitucionDeportiva;
 
@@ -13,21 +14,16 @@ public class ControllerInstitucionDeportiva implements IControllerInstitucionDep
 	
 	
 	// METODOS
- 
-	@Override
-	public Boolean existeInstitucion(String nombre) {
-		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();
-		if (idh.buscarInstitucionDeportiva(nombre).equals(null))
-			return false;
-		else
-			return true;
-	}
 
 	@Override
-	public void altaInstitucion(String nombre, String descripcion, String url) throws InstitucionDeportivaRepetidaException {
-		InstitucionDeportiva institucion = new InstitucionDeportiva();
-		
+	public void altaInstitucion(DtInstitucionDeportiva instDepor) throws InstitucionDeportivaRepetidaException {
 		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();
+		
+		InstitucionDeportiva institucion = idh.buscarInstitucionDeportiva(instDepor.getNombre());
+		if(institucion != null)
+			throw new InstitucionDeportivaRepetidaException("Ya existe registrada una Institución Deportiva con el nombre: " + instDepor.getNombre());
+		
+		institucion = new InstitucionDeportiva(instDepor.getNombre(), instDepor.getDescripcion(), instDepor.getUrl());
 		idh.agregarInstitucionDeportiva(institucion);
 	}
 
