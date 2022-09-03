@@ -1,5 +1,7 @@
 package logica;
 
+import java.util.ArrayList;
+
 import interfaces.IControllerInstitucionDeportiva;
 
 public class ControllerInstitucionDeportiva implements IControllerInstitucionDeportiva {
@@ -29,5 +31,18 @@ public class ControllerInstitucionDeportiva implements IControllerInstitucionDep
 		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();
 		idh.agregarInstitucionDeportiva(institucion);
 	}
-
+	
+	@Override
+	public String[] listarInstituciones() {
+		ArrayList<String> instituciones;
+		InstitucionDeportivaHandler instHand = InstitucionDeportivaHandler.getInstancia();
+		instituciones = instHand.obtenerInstituciones();
+		String[] instiList = new String[instituciones.size()];
+		int i=0;
+		for(String n:instituciones) {
+			instiList[i]=n;
+			i++;
+		}
+		return instiList;
+	}
 }

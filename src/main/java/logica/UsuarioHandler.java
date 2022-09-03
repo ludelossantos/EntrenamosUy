@@ -1,11 +1,15 @@
 package logica;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import javafx.util.Pair;  
 
 public class UsuarioHandler {
 	private static UsuarioHandler instancia = null;
 	private List<Usuario> usuarios = new ArrayList<>();
+	private Pair<String,String> nuevo;
 
 	private UsuarioHandler() {
 		super();
@@ -47,4 +51,14 @@ public class UsuarioHandler {
 		return userList;
 	}
 	
+	public Map<Usuario,Pair<String,String>> obtenerNombreApellidoSocios(){
+		Map<Usuario,Pair<String,String>> sociosList = new HashMap<Usuario,Pair<String,String>>();
+		for(Usuario u: usuarios) {
+			if(u instanceof Socio) {
+				nuevo = new Pair<>(u.getNombre(), u.getApellido());
+				sociosList.put(u, nuevo);
+			}
+		}			
+		return sociosList;
+	}
 }

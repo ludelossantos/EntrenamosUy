@@ -13,11 +13,18 @@ import javax.swing.JMenuItem;
 
 import interfaces.Factory;
 import interfaces.IControllerAltaUsuario;
+import interfaces.IControllerRegistroClase;
+
+import javax.swing.JInternalFrame;
+import javax.swing.JButton;
+import java.awt.BorderLayout;
+import javax.swing.JComboBox;
 
 public class Principal {
 
 	private JFrame frame;
 	private AltaUsuario altaUsuarioInternalFrame;
+	private RegistroClase registroClaseInternalFrame;
 
 	/**
      * Launch the application.
@@ -42,17 +49,25 @@ public class Principal {
 
 		Factory fabrica = Factory.getInstance();
 		IControllerAltaUsuario aUController = fabrica.getIControllerAltaUsuario();
+		IControllerRegistroClase rCController = fabrica.getIControllerRegistroClase();
 
 		Dimension desktopSize = frame.getSize();
 		Dimension jInternalFrameSize;
-
-		altaUsuarioInternalFrame = new AltaUsuario(aUController);
-		jInternalFrameSize = altaUsuarioInternalFrame.getSize();
-		altaUsuarioInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-		    (desktopSize.height- jInternalFrameSize.height)/2);
-		altaUsuarioInternalFrame.setVisible(false);
-		frame.getContentPane().add(altaUsuarioInternalFrame);
-
+		
+				altaUsuarioInternalFrame = new AltaUsuario(aUController);
+				jInternalFrameSize = altaUsuarioInternalFrame.getSize();
+				altaUsuarioInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+				    (desktopSize.height- jInternalFrameSize.height)/2);
+				altaUsuarioInternalFrame.setVisible(false);
+				frame.getContentPane().add(altaUsuarioInternalFrame);
+				
+				registroClaseInternalFrame = new RegistroClase(rCController);
+				jInternalFrameSize = registroClaseInternalFrame.getSize();
+				registroClaseInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+				    (desktopSize.height- jInternalFrameSize.height)/2);
+				registroClaseInternalFrame.setVisible(false);
+				frame.getContentPane().add(registroClaseInternalFrame);	
+				
 	}
     /**
      * Initialize the contents of the frame.
@@ -87,7 +102,7 @@ public class Principal {
 		mntmUsuarioModificar.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnUsuario.add(mntmUsuarioModificar);
 
-		JMenu mnInstitucion = new JMenu("Institución");
+		JMenu mnInstitucion = new JMenu("InstituciÃ³n");
 		mnInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		menuBar.add(mnInstitucion);
 
@@ -129,6 +144,11 @@ public class Principal {
 
 		JMenuItem mntmClaseRegistro = new JMenuItem("Registro");
 		mntmClaseRegistro.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		mntmClaseRegistro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				registroClaseInternalFrame.setVisible(true);
+			}
+		});
 		mnClase.add(mntmClaseRegistro);
 
 		JMenuItem mntmClaseConsulta = new JMenuItem("Consulta");
@@ -141,5 +161,4 @@ public class Principal {
 
 		frame.setLocationRelativeTo(null);
 	}
-
 }

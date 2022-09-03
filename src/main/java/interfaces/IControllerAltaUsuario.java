@@ -9,4 +9,5 @@ public interface IControllerAltaUsuario {
 	public void altaUsuario(DtUsuario usuario) throws NicknameRepetidoException, EmailRepetidoException;
 	public String[] listarInstituciones(); //sacar esto de acá poner en instituciones
 	public InstitucionDeportiva buscarInstitucion(String insti); //sacar esto de acá poner en instituciones
+	public String[] listarSocios();
 }
