@@ -25,7 +25,6 @@ public class ControllerInstitucionDeportiva implements IControllerInstitucionDep
 	@Override
 	public void altaInstitucion(String nombre, String descripcion, String url) {
 		InstitucionDeportiva institucion = new InstitucionDeportiva();
-		
 		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();
 		idh.agregarInstitucionDeportiva(institucion);
 	}

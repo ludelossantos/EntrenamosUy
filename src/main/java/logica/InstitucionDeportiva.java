@@ -1,10 +1,15 @@
 package logica;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import datatypes.DtActividadDeportiva;
 
 public class InstitucionDeportiva {
 	private String nombre;
 	private String descripcion;
 	private String url;
+	private List<ActividadDeportiva> actividades = new ArrayList<>();
 	
 	//CONSTRUCTORES
 	
@@ -43,5 +48,22 @@ public class InstitucionDeportiva {
 
 
 	//METODOS
+	
+	public ArrayList<DtActividadDeportiva> obtenerActividades(){
+		ArrayList<DtActividadDeportiva> lista = new ArrayList<>();
+		for(ActividadDeportiva a : actividades) {
+			lista.add(a.getDtActividadDeportiva());
+		}
+		return lista;
+	}
+	
+	public ActividadDeportiva buscarActividad(String nombre) {
+		ActividadDeportiva actividad = null;
+		for(ActividadDeportiva a : actividades) {
+			if(a.getNombre().equals(nombre))
+				actividad = a;
+		}
+		return actividad;
+	}
 	
 }

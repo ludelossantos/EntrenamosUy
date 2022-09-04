@@ -1,5 +1,6 @@
 package logica;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Profesor extends Usuario {
@@ -7,6 +8,7 @@ public class Profesor extends Usuario {
 	private String biografia;
 	private String sitioWeb;
 	private InstitucionDeportiva institucion;
+	private ArrayList<Clase> clasesQueDicta;
 	
 	public Profesor() {
 		super();
@@ -58,7 +60,9 @@ public class Profesor extends Usuario {
 
 	public void setInstitucion(InstitucionDeportiva institucion) {
 		this.institucion = institucion;
-		
 	}
 	
+	public void agregarClase(Clase clase) {
+		this.clasesQueDicta.add(clase);
+	}
 }
