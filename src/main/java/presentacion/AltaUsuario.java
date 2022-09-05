@@ -180,10 +180,10 @@ public class AltaUsuario extends JInternalFrame {
 		scrollPane_1.setViewportView(textAreaBiografia);
 		textAreaBiografia.setEnabled(false);
 		
-		JLabel lblInstituci贸n = new JLabel("Instituci贸n");
-		lblInstituci贸n.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblInstituci贸n.setBounds(12, 12, 94, 25);
-		panel.add(lblInstituci贸n);
+		JLabel lblInstitucion = new JLabel("Instituci髇");
+		lblInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblInstitucion.setBounds(12, 12, 94, 25);
+		panel.add(lblInstitucion);
 		
 		comboBoxInstitucion = new JComboBox<String>();
 		comboBoxInstitucion.setBounds(93, 12, 687, 25);
