@@ -47,4 +47,12 @@ public class UsuarioHandler {
 		return userList;
 	}
 	
+	public ArrayList<Usuario> getUsuarios(){
+		ArrayList<Usuario> listUsuario = new ArrayList<>(); 
+		for (Usuario user : usuarios) {
+			listUsuario.add(user);
+		}
+		return listUsuario;	
+	}
+	
 }

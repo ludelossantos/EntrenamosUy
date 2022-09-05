@@ -2,6 +2,7 @@ package datatypes;
 
 import java.util.Date;
 
+import logica.Clase;
 import logica.InstitucionDeportiva;
 
 public class DtProfesor extends DtUsuario {
@@ -9,6 +10,7 @@ public class DtProfesor extends DtUsuario {
 	private String biografia;
 	private String sitioWeb;
 	InstitucionDeportiva institucion;
+	Clase clase;
 	
 	public DtProfesor() {
 		super();
@@ -28,6 +30,15 @@ public class DtProfesor extends DtUsuario {
 		this.sitioWeb = sitioWeb;
 		this.institucion = institucion;
 	}
+	
+	public DtProfesor(String nickname, String nombre, String apellido, String email, Date fechaNac, String descripcion, String biografia, String sitioWeb, InstitucionDeportiva institucion, Clase clase) {
+		super(nickname, nombre, apellido, email, fechaNac);
+		this.descripcion = descripcion;
+		this.biografia = biografia;
+		this.sitioWeb = sitioWeb;
+		this.institucion = institucion;
+		this.clase = clase;
+	}
 
 	public String getDescripcion() {
 		return descripcion;
@@ -43,6 +54,11 @@ public class DtProfesor extends DtUsuario {
 	public InstitucionDeportiva getInstitucion() {
 		return institucion;
 	}
+
+	public Clase getClase() {
+		return clase;
+	}
+	
 	
 	
 }

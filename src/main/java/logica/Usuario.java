@@ -2,6 +2,8 @@ package logica;
 
 import java.util.Date;
 
+import datatypes.DtUsuario;
+
 public abstract class Usuario {
 	private String nickname;
     private String nombre;
@@ -12,6 +14,8 @@ public abstract class Usuario {
 	public Usuario() {
 		super();
 	}
+	
+	public abstract DtUsuario getDtUsuario();
 
 	public Usuario(String nickname, String nombre, String apellido, String email, Date fechaNac) {
 		super();

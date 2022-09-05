@@ -18,6 +18,7 @@ public class Principal {
 
 	private JFrame frame;
 	private AltaUsuario altaUsuarioInternalFrame;
+	private ConsultaUsuario consultaUsuarioInternalFrame;
 
 	/**
      * Launch the application.
@@ -80,6 +81,11 @@ public class Principal {
 		mnUsuario.add(mntmUsuarioAlta);
 
 		JMenuItem mntmUsuarioConsulta = new JMenuItem("Consulta");
+		mntmUsuarioConsulta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				consultaUsuarioInternalFrame.setVisible(true);
+			}
+		});
 		mntmUsuarioConsulta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnUsuario.add(mntmUsuarioConsulta);
 
@@ -87,7 +93,7 @@ public class Principal {
 		mntmUsuarioModificar.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnUsuario.add(mntmUsuarioModificar);
 
-		JMenu mnInstitucion = new JMenu("Institución");
+		JMenu mnInstitucion = new JMenu("Instituciï¿½n");
 		mnInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		menuBar.add(mnInstitucion);
 

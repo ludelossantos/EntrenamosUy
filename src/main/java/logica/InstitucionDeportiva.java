@@ -1,7 +1,7 @@
 package logica;
 
 
-public class InstitucionDeportiva {
+public class  InstitucionDeportiva{
 	private String nombre;
 	private String descripcion;
 	private String url;
