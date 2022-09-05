@@ -13,11 +13,13 @@ import javax.swing.JMenuItem;
 
 import interfaces.Factory;
 import interfaces.IControllerAltaUsuario;
+import interfaces.IControllerInstitucionDeportiva;
 
 public class Principal {
 
 	private JFrame frame;
 	private AltaUsuario altaUsuarioInternalFrame;
+	private AltaInstitucionDeportiva altaInstitucionDeportivaInternalFrame;
 
 	/**
      * Launch the application.
@@ -42,7 +44,8 @@ public class Principal {
 
 		Factory fabrica = Factory.getInstance();
 		IControllerAltaUsuario aUController = fabrica.getIControllerAltaUsuario();
-
+		IControllerInstitucionDeportiva aIDController = fabrica.getIControllerInstitucionDeportiva();
+		
 		Dimension desktopSize = frame.getSize();
 		Dimension jInternalFrameSize;
 
@@ -52,7 +55,14 @@ public class Principal {
 		    (desktopSize.height- jInternalFrameSize.height)/2);
 		altaUsuarioInternalFrame.setVisible(false);
 		frame.getContentPane().add(altaUsuarioInternalFrame);
-
+		
+		altaInstitucionDeportivaInternalFrame = new AltaInstitucionDeportiva(aIDController);
+		jInternalFrameSize = altaInstitucionDeportivaInternalFrame.getSize();
+		altaInstitucionDeportivaInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width) / 2, 
+				(desktopSize.height - jInternalFrameSize.height) / 2);
+		altaInstitucionDeportivaInternalFrame.setVisible(false);
+		frame.getContentPane().add(altaInstitucionDeportivaInternalFrame);
+		
 	}
     /**
      * Initialize the contents of the frame.
@@ -87,12 +97,17 @@ public class Principal {
 		mntmUsuarioModificar.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnUsuario.add(mntmUsuarioModificar);
 
-		JMenu mnInstitucion = new JMenu("Institución");
+		JMenu mnInstitucion = new JMenu("Institucion");
 		mnInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		menuBar.add(mnInstitucion);
 
 		JMenuItem mnInstitucionAlta = new JMenuItem("Alta");
 		mnInstitucionAlta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		mnInstitucionAlta.addActionListener(new ActionListener ( ) {
+			public void actionPerformed(ActionEvent e) {
+				altaInstitucionDeportivaInternalFrame.setVisible(true);
+			}
+		});
 		mnInstitucion.add(mnInstitucionAlta);
 
 		JMenuItem mntmInstitucionModificar = new JMenuItem("Modificar");

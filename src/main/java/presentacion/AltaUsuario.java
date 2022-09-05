@@ -131,7 +131,7 @@ public class AltaUsuario extends JInternalFrame {
 		getContentPane().add(panel);
 		panel.setLayout(null);
 
-		JLabel lblDescripcion = new JLabel("Descripción:");
+		JLabel lblDescripcion = new JLabel("Descripciï¿½n:");
 		lblDescripcion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblDescripcion.setBackground(new Color(240, 240, 240));
 		lblDescripcion.setBounds(12, 10, 117, 25);
@@ -149,7 +149,7 @@ public class AltaUsuario extends JInternalFrame {
 		panel.add(textFieldSitioWeb);
 		textFieldSitioWeb.setColumns(10);
 
-		JLabel lblBiografia = new JLabel("Biografía:");
+		JLabel lblBiografia = new JLabel("Biografï¿½a:");
 		lblBiografia.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblBiografia.setBackground(new Color(240, 240, 240));
 		lblBiografia.setBounds(388, 10, 130, 25);
@@ -222,7 +222,7 @@ public class AltaUsuario extends JInternalFrame {
 		}
 		try {
 			this.aUController.altaUsuario(dt);
-			JOptionPane.showMessageDialog(this, "El usuario se ha creado con éxito", "Alta usuario", JOptionPane.INFORMATION_MESSAGE);	
+			JOptionPane.showMessageDialog(this, "El usuario se ha creado con ï¿½xito", "Alta usuario", JOptionPane.INFORMATION_MESSAGE);	
 		} catch(NicknameRepetidoException rn) {
 			JOptionPane.showMessageDialog(this, rn.getMessage(), "Alta usuario", JOptionPane.ERROR_MESSAGE);
 		} catch(EmailRepetidoException re) {
