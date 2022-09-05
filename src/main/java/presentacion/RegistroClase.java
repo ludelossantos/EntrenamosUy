@@ -18,8 +18,10 @@ import com.toedter.calendar.JDateChooser;
 import interfaces.IControllerAltaUsuario;
 import interfaces.IControllerInstitucionDeportiva;
 import interfaces.IControllerRegistroClase;
+import logica.InstitucionDeportiva;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
 public class RegistroClase extends JInternalFrame {
@@ -32,6 +34,7 @@ public class RegistroClase extends JInternalFrame {
 	private JComboBox<String> comboBoxInstitucion;
 	private JComboBox<String> comboBoxActDepor;
 	private JComboBox<String> comboBoxSocio;
+	private JList<String> listSetClases;
 	private JTextArea textAreaClase;
 	private JDateChooser dateChooserFechaReg;
 	
@@ -90,7 +93,7 @@ public class RegistroClase extends JInternalFrame {
 		comboBoxActDepor.setBounds(170, 53, 308, 21);
 		panel_clases.add(comboBoxActDepor);
 		
-		JList listSetClases = new JList();
+		listSetClases = new JList<String>();
 		listSetClases.setBounds(22, 94, 456, 316);
 		panel_clases.add(listSetClases);
 		
@@ -134,9 +137,19 @@ public class RegistroClase extends JInternalFrame {
 		DefaultComboBoxModel<String> modelinsti = new DefaultComboBoxModel<String>(iDController.listarInstituciones());
 		comboBoxInstitucion.setModel(modelinsti);
 		DefaultComboBoxModel<String> modelsocios = new DefaultComboBoxModel<String>(aUController.listarSocios());
-		comboBoxCISocio.setModel(modelsocios);
+		comboBoxSocio.setModel(modelsocios);
+	}
+		
+	public void inicializarBoxActividades(String institucion) { 
+		DefaultComboBoxModel<String> modelactividades = new DefaultComboBoxModel<String>(rCController.listarActividadesDeportivas(institucion));
+		comboBoxActDepor.setModel(modelactividades);		
 	}
 	
+	public void inicializarListClases(String actividad) {
+		DefaultListModel<String> modelclases = new DefaultListModel<String>(rCController.listarClasesActividad(String actividad));
+		listSetClases.setModel(modelclases);		
+	}
+		
 	protected void registroClaseCancelarActionPerformed(ActionEvent arg0) {
 		limpiarFormulario();
 		setVisible(false);
