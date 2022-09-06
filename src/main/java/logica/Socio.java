@@ -3,9 +3,13 @@ package logica;
 import java.util.ArrayList;
 import java.util.Date;
 
+import datatypes.DtActividadDeportiva;
+import datatypes.DtClase;
+import datatypes.DtSocio;
+
 public class Socio extends Usuario {
 	
-	private ArrayList<Clase> clasesRegistradas; 
+	private ArrayList<Registro> clasesRegistradas;
 	
 	public Socio() {
 		super();
@@ -15,16 +19,19 @@ public class Socio extends Usuario {
 		super(nickname, nombre, apellido, email, fechaNac);
 	}
 	
-	public ArrayList<Clase> obtenerClases(){
-		ArrayList<Clase> lista = new ArrayList<>();
-		for(Clase c: clasesRegistradas) {
-			lista.add(c);
+	public void agregarRegistro(Registro registro) {
+		clasesRegistradas.add(registro);
+	}
+	
+	public ArrayList<DtClase> obtenerClases(){
+		ArrayList<DtClase> lista = new ArrayList<>();
+		for(Registro c: clasesRegistradas) {
+			lista.add(c.getClase().getDtClase());
 		}
 		return lista;
 	}
 	
-	public void agregarClase(Clase clase) {
-		this.clasesRegistradas.add(clase);
+	public DtSocio getDtSocio() {
+		return new DtSocio(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac());
 	}
-	
 }

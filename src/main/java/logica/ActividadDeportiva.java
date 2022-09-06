@@ -6,6 +6,7 @@ import java.util.Date;
 import java.sql.Time;
 
 import datatypes.DtActividadDeportiva;
+import datatypes.DtClase;
 
 public class ActividadDeportiva {
 	private String nombre;
@@ -83,5 +84,21 @@ public class ActividadDeportiva {
 				clase = c;
 		}
 		return clase;
+	}
+	
+	public ArrayList<DtClase> obtenerClases(){
+		ArrayList<DtClase> listado = new ArrayList<>();
+		for(Clase c: clases) {
+			listado.add(c.getDtClase());
+		}
+		return listado;
+	}
+	
+	public ArrayList<Clase> obtenerClasesObjeto(){
+		ArrayList<Clase> listado = new ArrayList<>();
+		for(Clase c: clases) {
+			listado.add(c);
+		}
+		return listado;
 	}
 }

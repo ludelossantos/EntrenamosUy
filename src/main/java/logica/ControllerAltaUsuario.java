@@ -2,6 +2,7 @@ package logica;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Pair;
 
 import datatypes.DtProfesor;
 import datatypes.DtSocio;
@@ -33,22 +34,6 @@ public class ControllerAltaUsuario implements IControllerAltaUsuario {
 			usuario = new Socio(nuevo.getNickname(), nuevo.getNombre(), nuevo.getApellido(), nuevo.getEmail(), nuevo.getFechaNac());
 		usuarios.agregarUsuario(usuario);
 	} 
-	
-	@Override
-	public String[] listarSocios() {
-		Map<Usuario, javafx.util.Pair<String, String>> socios;
-		UsuarioHandler usuHand = UsuarioHandler.getInstancia();
-		socios = usuHand.obtenerNombreApellidoSocios();
-		String[] lista = new String[socios.size()];
-		int i=0;
-		for (Map.Entry<Usuario, javafx.util.Pair<String, String>> entry : socios.entrySet()) {
-			javafx.util.Pair<String, String> nA = entry.getValue();
-			lista[i] = nA.getKey() + " " + nA.getValue();
-			i++;
-		}
-		return lista;
-	}
-	
 	
 	
 	@Override //CARGA PARA PROBAR...

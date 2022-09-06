@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import datatypes.DtSocio;
 import javafx.util.Pair;  
 
 public class UsuarioHandler {
@@ -51,14 +53,13 @@ public class UsuarioHandler {
 		return userList;
 	}
 	
-	public Map<Usuario,Pair<String,String>> obtenerNombreApellidoSocios(){
-		Map<Usuario,Pair<String,String>> sociosList = new HashMap<Usuario,Pair<String,String>>();
+	public ArrayList<DtSocio> obtenerSocios(){
+		ArrayList<DtSocio> listado = new ArrayList<>();
 		for(Usuario u: usuarios) {
 			if(u instanceof Socio) {
-				nuevo = new Pair<>(u.getNombre(), u.getApellido());
-				sociosList.put(u, nuevo);
+				listado.add(u.getDtSocio());
 			}
 		}			
-		return sociosList;
-	}
+		return listado;
+	}		
 }

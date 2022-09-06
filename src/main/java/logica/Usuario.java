@@ -2,6 +2,8 @@ package logica;
 
 import java.util.Date;
 
+import datatypes.DtSocio;
+
 public abstract class Usuario {
 	private String nickname;
     private String nombre;
@@ -61,6 +63,8 @@ public abstract class Usuario {
 	public void setFechaNac(Date fechaNac) {
 		this.fechaNac = fechaNac;
 	}
+
+	protected abstract DtSocio getDtSocio();
     
        
 }

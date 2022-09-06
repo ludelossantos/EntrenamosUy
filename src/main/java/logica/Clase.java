@@ -1,7 +1,11 @@
 package logica;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
+
+import datatypes.DtActividadDeportiva;
+import datatypes.DtClase;
 
 public class Clase {
 	private String nombre;
@@ -9,6 +13,7 @@ public class Clase {
 	private Time horaInicio;
 	private String url;
 	private Date fechaReg;
+	private ArrayList<Registro> sociosRegistrados;
 	
 	public Clase() {
 		super();
@@ -61,5 +66,13 @@ public class Clase {
 
 	public void setFechaReg(Date fechaReg) {
 		this.fechaReg = fechaReg;
+	}
+	
+	public DtClase getDtClase() {
+		return new DtClase(nombre, fecha, horaInicio, url, fechaReg);
+	}
+
+	public void agregarRegistro(Registro registro) {
+		sociosRegistrados.add(registro);
 	}
 }

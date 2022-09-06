@@ -4,10 +4,13 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+import java.util.Map;
+import java.util.Pair;
 
 import javax.swing.JTextArea;
 import javax.swing.JComboBox;
@@ -15,10 +18,15 @@ import javax.swing.JFrame;
 
 import com.toedter.calendar.JDateChooser;
 
+import datatypes.DtClase;
+import datatypes.DtSocio;
+import excepciones.RegistroClaseRepetidoException;
 import interfaces.IControllerAltaUsuario;
 import interfaces.IControllerInstitucionDeportiva;
 import interfaces.IControllerRegistroClase;
 import logica.InstitucionDeportiva;
+import logica.Socio;
+import logica.Usuario;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -87,10 +95,22 @@ public class RegistroClase extends JInternalFrame {
 
 		comboBoxInstitucion = new JComboBox<String>();
 		comboBoxInstitucion.setBounds(105, 17, 373, 21);
+		comboBoxInstitucion.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cargaActividadesInstitucion(e);	
+			}
+		});
 		panel_clases.add(comboBoxInstitucion);
 		
 		comboBoxActDepor = new JComboBox<String>();
 		comboBoxActDepor.setBounds(170, 53, 308, 21);
+		comboBoxActDepor.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cargarClasesActividad(e);				
+			}		
+		});
 		panel_clases.add(comboBoxActDepor);
 		
 		listSetClases = new JList<String>();
@@ -134,22 +154,25 @@ public class RegistroClase extends JInternalFrame {
 	}
 	
 	public void inicializarBoxes() {
-		DefaultComboBoxModel<String> modelinsti = new DefaultComboBoxModel<String>(iDController.listarInstituciones());
+		DefaultComboBoxModel<String> modelinsti = new DefaultComboBoxModel<String>(rCController.listarInstituciones());
 		comboBoxInstitucion.setModel(modelinsti);
-		DefaultComboBoxModel<String> modelsocios = new DefaultComboBoxModel<String>(aUController.listarSocios());
+		DefaultComboBoxModel<String> modelsocios = new DefaultComboBoxModel<String>(rCController.listarSocios());
 		comboBoxSocio.setModel(modelsocios);
 	}
-		
-	public void inicializarBoxActividades(String institucion) { 
+	
+	private void cargaActividadesInstitucion(ActionEvent e) {
+		String institucion = this.comboBoxInstitucion.getSelectedItem().toString();
 		DefaultComboBoxModel<String> modelactividades = new DefaultComboBoxModel<String>(rCController.listarActividadesDeportivas(institucion));
-		comboBoxActDepor.setModel(modelactividades);		
+		comboBoxActDepor.setModel(modelactividades);			
 	}
 	
-	public void inicializarListClases(String actividad) {
-		DefaultListModel<String> modelclases = new DefaultListModel<String>(rCController.listarClasesActividad(String actividad));
+	private void cargarClasesActividad(ActionEvent e) {
+		String institucion = this.comboBoxInstitucion.getSelectedItem().toString();
+		String actividad = this.comboBoxActDepor.getSelectedItem().toString();
+		DefaultComboBoxModel<String> modelclases = new DefaultComboBoxModel<String>(rCController.listarClasesActividad(institucion, actividad));
 		listSetClases.setModel(modelclases);		
-	}
-		
+	}	
+	
 	protected void registroClaseCancelarActionPerformed(ActionEvent arg0) {
 		limpiarFormulario();
 		setVisible(false);
@@ -157,13 +180,25 @@ public class RegistroClase extends JInternalFrame {
 	
 	protected void registroClaseAceptarActionPerformed(ActionEvent arg0) {
 		if(checkFormulario()) {
-			
+			String institucion = this.comboBoxInstitucion.getSelectedItem().toString();
+			String actividad = this.comboBoxActDepor.getSelectedItem().toString();
+			String datClase = this.listSetClases.getSelectedValue().toString();
+			String nombApe = this.comboBoxSocio.getSelectedItem().toString();
+			java.util.Date fechaReg = this.dateChooserFechaReg.getDate();
+									
+			try{
+				this.rCController.registroClase(institucion, actividad, datClase, nombApe, fechaReg);
+				JOptionPane.showMessageDialog(this, "Registro a clase exitoso", "Registro a dictado de Clase", JOptionPane.INFORMATION_MESSAGE);
+				limpiarFormulario();
+		           setVisible(false);
+			}catch(RegistroClaseRepetidoException rr){
+				JOptionPane.showMessageDialog(this, rr.getMessage(), "Registro a dictado de Clase", JOptionPane.ERROR_MESSAGE);	
+			}	
 		}
-		limpiarFormulario();
 	}
 	
 	private boolean checkFormulario() {
-		return false;
+		return true;//completar 
 	}
 	
 	private void limpiarFormulario() {
