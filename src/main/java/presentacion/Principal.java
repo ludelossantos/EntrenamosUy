@@ -13,6 +13,7 @@ import javax.swing.JMenuItem;
 
 import interfaces.Factory;
 import interfaces.IControllerAltaUsuario;
+import interfaces.IControllerConsultaUsuario;
 
 public class Principal {
 
@@ -43,6 +44,7 @@ public class Principal {
 
 		Factory fabrica = Factory.getInstance();
 		IControllerAltaUsuario aUController = fabrica.getIControllerAltaUsuario();
+		IControllerConsultaUsuario cUController = fabrica.getIControllerConsultaUsuario(); 
 
 		Dimension desktopSize = frame.getSize();
 		Dimension jInternalFrameSize;
@@ -53,6 +55,13 @@ public class Principal {
 		    (desktopSize.height- jInternalFrameSize.height)/2);
 		altaUsuarioInternalFrame.setVisible(false);
 		frame.getContentPane().add(altaUsuarioInternalFrame);
+		
+		consultaUsuarioInternalFrame = new ConsultaUsuario(cUController);
+		jInternalFrameSize = consultaUsuarioInternalFrame.getSize();
+		consultaUsuarioInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+		    (desktopSize.height- jInternalFrameSize.height)/2);
+		consultaUsuarioInternalFrame.setVisible(false);
+		frame.getContentPane().add(consultaUsuarioInternalFrame);
 
 	}
     /**
@@ -83,6 +92,7 @@ public class Principal {
 		JMenuItem mntmUsuarioConsulta = new JMenuItem("Consulta");
 		mntmUsuarioConsulta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				consultaUsuarioInternalFrame.iniciarlizarComboBoxes();
 				consultaUsuarioInternalFrame.setVisible(true);
 			}
 		});

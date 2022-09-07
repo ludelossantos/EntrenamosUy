@@ -1,5 +1,6 @@
 package logica;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import datatypes.DtProfesor;
@@ -10,7 +11,7 @@ public class Profesor extends Usuario {
 	private String biografia;
 	private String sitioWeb;
 	private InstitucionDeportiva institucion;
-	private Clase clase;
+	private ArrayList<Clase> clasesQueDicta;
 	
 	public Profesor() {
 		super();
@@ -31,13 +32,13 @@ public class Profesor extends Usuario {
 		this.institucion = institucion;
 	}
 
-	public Profesor(String nickname, String nombre, String apellido, String email, Date fechaNac, String descripcion, String biografia, String sitioWeb, InstitucionDeportiva institucion, Clase clase) {
+	public Profesor(String nickname, String nombre, String apellido, String email, Date fechaNac, String descripcion, String biografia, String sitioWeb, InstitucionDeportiva institucion, ArrayList<Clase> clasesQueDicta) {
 		super(nickname, nombre, apellido, email, fechaNac);
 		this.descripcion = descripcion;
 		this.biografia = biografia;
 		this.sitioWeb = sitioWeb;
 		this.institucion = institucion;
-		this.clase = clase;
+		this.clasesQueDicta = clasesQueDicta;
 	}
 
 	public String getDescripcion() {
@@ -74,17 +75,16 @@ public class Profesor extends Usuario {
 		
 	}
 
-	public Clase getClase() {
-		return clase;
+	public ArrayList<Clase> getClasesQueDicta() {
+		return clasesQueDicta;
 	}
 
-	public void setClase(Clase clase) {
-		this.clase = clase;
+	public void setClasesQueDicta(ArrayList<Clase> clasesQueDicta) {
+		this.clasesQueDicta = clasesQueDicta;
 	}
 
 	public DtUsuario getDtUsuario() {
-		// TODO Auto-generated method stub
-		return new DtProfesor(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac(), this.descripcion, this.biografia, this.sitioWeb, this.institucion, this.clase);
+		return new DtProfesor(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac(), this.descripcion, this.biografia, this.sitioWeb, this.institucion, this.clasesQueDicta);
 	}
 	
 }

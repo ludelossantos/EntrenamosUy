@@ -3,6 +3,8 @@ package logica;
 import java.sql.Time;
 import java.util.Date;
 
+import datatypes.DtClase;
+
 public class Clase {
 	private String nombre;
 	private Date fecha;
@@ -61,5 +63,9 @@ public class Clase {
 
 	public void setFechaReg(Date fechaReg) {
 		this.fechaReg = fechaReg;
+	}
+	
+	public DtClase getDtClase() {
+		return new DtClase(nombre, fecha, horaInicio, url, fechaReg);
 	}
 }

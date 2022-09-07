@@ -1,13 +1,16 @@
 package logica;
 
+import java.util.ArrayList;
 import java.util.Date;
 
+import datatypes.DtClase;
 import datatypes.DtSocio;
 import datatypes.DtUsuario;
 
 public class Socio extends Usuario {
-	private Clase clase;
-
+	
+	private ArrayList<Registro> clasesRegistradas;
+	
 	public Socio() {
 		super();
 	}
@@ -16,21 +19,23 @@ public class Socio extends Usuario {
 		super(nickname, nombre, apellido, email, fechaNac);
 	}
 	
-	public Socio(String nickname, String nombre, String apellido, String email, Date fechaNac, Clase clase) {
-		super(nickname, nombre, apellido, email, fechaNac);
-		this.clase = clase;
+	public void agregarRegistro(Registro registro) {
+		clasesRegistradas.add(registro);
 	}
-
-	public Clase getClase() {
-		return clase;
+	
+	public ArrayList<DtClase> obtenerClases(){
+		ArrayList<DtClase> lista = new ArrayList<>();
+		for(Registro c: clasesRegistradas) {
+			lista.add(c.getClase().getDtClase());
+		}
+		return lista;
 	}
-
-	public void setClase(Clase clase) {
-		this.clase = clase;
+	
+	public DtSocio getDtSocio() {
+		return new DtSocio(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac());
 	}
 
 	public DtUsuario getDtUsuario() {
-		// TODO Auto-generated method stub
 		return new DtSocio(this.getNickname(),this.getNombre(),this.getApellido(),this.getEmail(),this.getFechaNac());
 	}
 	
