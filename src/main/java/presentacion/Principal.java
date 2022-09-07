@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Font;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -16,6 +18,12 @@ import interfaces.IControllerAltaUsuario;
 import interfaces.IControllerInstitucionDeportiva;
 
 public class Principal {
+	
+	private static EntityManagerFactory emf;
+	private static EntityManager em;
+	
+	
+	
 
 	private JFrame frame;
 	private AltaUsuario altaUsuarioInternalFrame;
