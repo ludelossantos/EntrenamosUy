@@ -52,17 +52,20 @@ public class AltaInstitucionDeportiva extends JInternalFrame {
 		getContentPane().add(lblNombre);
 		
 		txtNombre = new JTextField();
+		txtNombre.setToolTipText("Ingrese Nombre de la Institución");
 		txtNombre.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		txtNombre.setBounds(155, 118, 213, 28);
-		getContentPane().add(txtNombre);
 		txtNombre.setColumns(10);
+		getContentPane().add(txtNombre);
 		
 		JLabel lblDescripcion = new JLabel("Descripcion:");
 		lblDescripcion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblDescripcion.setBounds(49, 172, 98, 31);
 		getContentPane().add(lblDescripcion);
 		
-		JTextArea txtADescripcion = new JTextArea();
+		/*JTextArea*/ txtADescripcion = new JTextArea();
+		txtADescripcion.setToolTipText("Ingrese Descripcion");
+		txtADescripcion.setLineWrap(true);
 		txtADescripcion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		txtADescripcion.setBounds(155, 172, 213, 70);
 		getContentPane().add(txtADescripcion);
@@ -73,6 +76,7 @@ public class AltaInstitucionDeportiva extends JInternalFrame {
 		getContentPane().add(lblUrl);
 		
 		txtUrl = new JTextField();
+		txtUrl.setToolTipText("Ingrese URL (www...)");
 		txtUrl.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		txtUrl.setColumns(10);
 		txtUrl.setBounds(155, 268, 213, 28);
@@ -82,7 +86,7 @@ public class AltaInstitucionDeportiva extends JInternalFrame {
 		btnCancelar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//altaInstitucionDeportivaCancelarActionPerformed();
+				altaInstitucionDeportivaCancelar();
 				cleanForm();
 			}
 		});
@@ -91,6 +95,12 @@ public class AltaInstitucionDeportiva extends JInternalFrame {
 		getContentPane().add(btnCancelar);
 		
 		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				altaInstitucionDeportivaAceptar();
+				cleanForm();
+			}
+		});
 		btnAceptar.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		btnAceptar.setBounds(243, 343, 115, 37);
 		getContentPane().add(btnAceptar);
@@ -98,7 +108,7 @@ public class AltaInstitucionDeportiva extends JInternalFrame {
 	}
 	
 	
-	protected void altaInstitucionDeportivaAceptarActionPerformed() {
+	protected void altaInstitucionDeportivaAceptar() {
 		String nombre = this.txtNombre.getText();
 		String descripcion = this.txtADescripcion.getText();
 		String url = this.txtUrl.getText();
@@ -114,7 +124,7 @@ public class AltaInstitucionDeportiva extends JInternalFrame {
 		}
 	}
 	
-	protected void altaInstitucionDeportivaCancelarActionPerformed() {
+	protected void altaInstitucionDeportivaCancelar() {
 		cleanForm();
 		setVisible(false);
 	}
