@@ -4,34 +4,48 @@ import java.awt.Font;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-
+import javax.swing.JFrame;
 
 import interfaces.IControllerConsultaUsuario;
 
 import javax.swing.JTextField;
 
+import datatypes.DtProfesor;
+//import datatypes.DtSocio;
+import datatypes.DtUsuario;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 public class ConsultaUsuario extends JInternalFrame {
 	private static final long serialVersionUID = 1L;
 	private IControllerConsultaUsuario cUController;
 	private JComboBox<String> comboBoxUser;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
+	private JTextField textFieldNombre;
+	private JTextField textFieldApellido;
+	private JTextField textFieldEmail;
+	private JTextField textFieldFechaNac;
+	private JTextField textFieldSitioWeb;
+	private JTextField textFieldBibliog;
+	private JTextField textFieldDescrip;
 
 	/**
 	 * Create the frame.
 	 */
 	public ConsultaUsuario(IControllerConsultaUsuario cUController) {
+		this.cUController = cUController;
+		
+		setResizable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setClosable(true);
+		
 		setTitle("Consulta de Usuario");
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 463, 311);
 		getContentPane().setLayout(null);
 		
 		JLabel lblNickname = new JLabel("Nickname");
@@ -39,17 +53,17 @@ public class ConsultaUsuario extends JInternalFrame {
 		lblNickname.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		getContentPane().add(lblNickname);
 		
-		JList<String> list = new JList<String>();
-		list.setBounds(154, 57, 1, 1);
-		list.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		getContentPane().add(list);
-		
 		JButton btnSalir = new JButton("Salir");
-		btnSalir.setBounds(162, 219, 117, 29);
+		btnSalir.setBounds(161, 230, 117, 29);
 		btnSalir.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		getContentPane().add(btnSalir);
 		
 		JButton btnVerInfo = new JButton("Ver informacion");
+		btnVerInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				verInfo(e);
+			}
+		});
 		btnVerInfo.setBounds(269, 20, 138, 29);
 		getContentPane().add(btnVerInfo);
 		
@@ -73,48 +87,48 @@ public class ConsultaUsuario extends JInternalFrame {
 		lblFechaNac.setBounds(218, 108, 137, 16);
 		getContentPane().add(lblFechaNac);
 		
-		textField = new JTextField();
-		textField.setBounds(76, 70, 130, 26);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		textFieldNombre = new JTextField();
+		textFieldNombre.setBounds(76, 70, 130, 26);
+		getContentPane().add(textFieldNombre);
+		textFieldNombre.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(290, 70, 130, 26);
-		getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		textFieldApellido = new JTextField();
+		textFieldApellido.setBounds(290, 70, 130, 26);
+		getContentPane().add(textFieldApellido);
+		textFieldApellido.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(76, 103, 130, 26);
-		getContentPane().add(textField_2);
-		textField_2.setColumns(10);
+		textFieldEmail = new JTextField();
+		textFieldEmail.setBounds(76, 103, 130, 26);
+		getContentPane().add(textFieldEmail);
+		textFieldEmail.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(353, 103, 67, 26);
-		getContentPane().add(textField_3);
-		textField_3.setColumns(10);
+		textFieldFechaNac = new JTextField();
+		textFieldFechaNac.setBounds(353, 103, 67, 26);
+		getContentPane().add(textFieldFechaNac);
+		textFieldFechaNac.setColumns(10);
 		
 		JLabel lblSitioWeb = new JLabel("Sitio web");
 		lblSitioWeb.setBounds(18, 196, 61, 16);
 		getContentPane().add(lblSitioWeb);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(79, 191, 341, 26);
-		getContentPane().add(textField_4);
-		textField_4.setColumns(10);
+		textFieldSitioWeb = new JTextField();
+		textFieldSitioWeb.setBounds(79, 191, 341, 26);
+		getContentPane().add(textFieldSitioWeb);
+		textFieldSitioWeb.setColumns(10);
 		
 		JLabel lblDescripcion = new JLabel("Descripcion");
 		lblDescripcion.setBounds(18, 136, 81, 16);
 		getContentPane().add(lblDescripcion);
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(303, 136, 117, 53);
-		getContentPane().add(textField_5);
-		textField_5.setColumns(10);
+		textFieldBibliog = new JTextField();
+		textFieldBibliog.setBounds(303, 136, 117, 53);
+		getContentPane().add(textFieldBibliog);
+		textFieldBibliog.setColumns(10);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(96, 136, 110, 53);
-		getContentPane().add(textField_6);
+		textFieldDescrip = new JTextField();
+		textFieldDescrip.setColumns(10);
+		textFieldDescrip.setBounds(96, 136, 110, 53);
+		getContentPane().add(textFieldDescrip);
 		
 		JLabel lblBibliografia = new JLabel("Bibliografia");
 		lblBibliografia.setBounds(218, 136, 81, 16);
@@ -124,7 +138,26 @@ public class ConsultaUsuario extends JInternalFrame {
 	}
 	
 	public void iniciarlizarComboBoxes() {
-		DefaultComboBoxModel<String> modelusers = new DefaultComboBoxModel<String>(cUController.listarUsuarios());
-		comboBoxUser.setModel(modelusers);
+		DefaultComboBoxModel<String> modeluser = new DefaultComboBoxModel<String>(cUController.listarUsuarios());
+		comboBoxUser.setModel(modeluser);
+	}
+	
+	public void verInfo(ActionEvent e) {
+		String nickname = this.comboBoxUser.getSelectedItem().toString();
+//		int id = Integer.parseInt(nickname);
+		DtUsuario dtU;
+		DtProfesor dtP;
+//		DtSocio dtS;
+		dtU = this.cUController.DatosUsuario(nickname);
+		textFieldNombre.setText(dtU.getNombre());
+		textFieldApellido.setText(dtU.getApellido());
+		textFieldEmail.setText(dtU.getEmail());
+		textFieldFechaNac.setText(dtU.getFechaNac().toString());
+		if(dtU instanceof DtProfesor) {
+			dtP = (DtProfesor) dtU;
+			textFieldBibliog.setText(dtP.getBiografia());
+			textFieldDescrip.setText(dtP.getDescripcion());
+			textFieldSitioWeb.setText(dtP.getSitioWeb());
+		}
 	}
 }

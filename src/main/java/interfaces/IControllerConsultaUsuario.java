@@ -1,11 +1,12 @@
 package interfaces;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 import datatypes.DtUsuario;
 
 public interface IControllerConsultaUsuario {
 	public String[] listarUsuarios();
-	public ArrayList<DtUsuario> listarDatosUsuarios();
+	//public ArrayList<DtUsuario> listarDatosUsuarios();
+	public DtUsuario DatosUsuario(String nickname);
 
 }

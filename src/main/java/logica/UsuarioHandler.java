@@ -40,14 +40,11 @@ public class UsuarioHandler {
 	}
 
 	public ArrayList<String> obtenerUsuarios(){
-		if(usuarios != null) {
 		ArrayList<String> userList = new ArrayList<>();
 		for(Usuario u: usuarios) {
-			userList.add(new String(u.getNickname()));
+			userList.add(u.getNickname());
 		}
 		return userList;
-	}
-		return null;
 	}
 	
 	public ArrayList<Usuario> getUsuarios(){
