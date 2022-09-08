@@ -3,6 +3,8 @@ package logica;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import antlr.collections.List;
+
 
 @Entity
 public class InstitucionDeportiva {
@@ -10,6 +12,7 @@ public class InstitucionDeportiva {
 	private String nombre;
 	private String descripcion;
 	private String url;
+	//private List<ActividadDeportiva>actividadesDeportivas;
 	
 	//CONSTRUCTORES
 	
