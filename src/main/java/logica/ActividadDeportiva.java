@@ -3,7 +3,6 @@ package logica;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
-import java.sql.Time;
 
 import datatypes.DtActividadDeportiva;
 import datatypes.DtClase;

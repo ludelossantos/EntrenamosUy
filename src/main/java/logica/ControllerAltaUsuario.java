@@ -1,9 +1,6 @@
 package logica;
 
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.Pair;
-
 import datatypes.DtProfesor;
 import datatypes.DtSocio;
 import datatypes.DtUsuario;
@@ -35,14 +32,11 @@ public class ControllerAltaUsuario implements IControllerAltaUsuario {
 		usuarios.agregarUsuario(usuario);
 	} 
 	
-	
-	@Override //CARGA PARA PROBAR...
+	@Override 
 	public String[] listarInstituciones() {
 		ArrayList<String> instituciones = new ArrayList<String>();
-		instituciones.add("Aerobics");
-		instituciones.add("SportCity");
-		instituciones.add("DefensorSporting");
-		instituciones.add("BohemiosFC");
+		InstitucionDeportivaHandler instiHand = InstitucionDeportivaHandler.getInstancia();
+		instituciones = instiHand.obtenerInstituciones();
 		String[] insti = new String[4];
 	    int i=0;
 	    for(String s:instituciones) {
@@ -54,8 +48,9 @@ public class ControllerAltaUsuario implements IControllerAltaUsuario {
 
 	@Override //PARA PRUEBAS BORRAR
 	public InstitucionDeportiva buscarInstitucion(String insti) {
-		InstitucionDeportiva institu = new InstitucionDeportiva("prueba", "descripcion....", "url....");
-		return institu;
+		InstitucionDeportivaHandler instiHand = InstitucionDeportivaHandler.getInstancia();
+		InstitucionDeportiva institucion = instiHand.buscarInstitucionDeportiva(insti);
+		return institucion;
 	}
 }
 

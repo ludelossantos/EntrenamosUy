@@ -40,5 +40,12 @@ public class InstitucionDeportivaHandler {
 		return instituciones;
 	}
 	
-	
+	public ArrayList<InstitucionDeportiva> obtenerInstitucionesObjeto(){
+		ArrayList<InstitucionDeportiva> instituciones = new ArrayList<>();
+		for(InstitucionDeportiva i: institucionesDeportivas) {
+			instituciones.add(i);
+		}	
+		return instituciones;
+		
+	}
 }

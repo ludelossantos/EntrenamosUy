@@ -1,5 +1,6 @@
 package presentacion;
 
+
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -15,10 +16,7 @@ import interfaces.Factory;
 import interfaces.IControllerAltaUsuario;
 import interfaces.IControllerRegistroClase;
 
-import javax.swing.JInternalFrame;
-import javax.swing.JButton;
-import java.awt.BorderLayout;
-import javax.swing.JComboBox;
+import logica.cargaDatos;
 
 public class Principal {
 
@@ -46,13 +44,15 @@ public class Principal {
      */
 	public Principal() {
 		initialize();
-
 		Factory fabrica = Factory.getInstance();
 		IControllerAltaUsuario aUController = fabrica.getIControllerAltaUsuario();
 		IControllerRegistroClase rCController = fabrica.getIControllerRegistroClase();
 
 		Dimension desktopSize = frame.getSize();
 		Dimension jInternalFrameSize;
+		
+		cargaDatos carga = new cargaDatos();
+		carga.cargarDatos();//BORRAR ---------------------------------------------------------------
 		
 				altaUsuarioInternalFrame = new AltaUsuario(aUController);
 				jInternalFrameSize = altaUsuarioInternalFrame.getSize();
@@ -62,14 +62,13 @@ public class Principal {
 				frame.getContentPane().add(altaUsuarioInternalFrame);
 				
 				registroClaseInternalFrame = new RegistroClase(rCController);
-				jInternalFrameSize = registroClaseInternalFrame.getSize();
+						jInternalFrameSize = registroClaseInternalFrame.getSize();
 				registroClaseInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
 				    (desktopSize.height- jInternalFrameSize.height)/2);
 				registroClaseInternalFrame.setVisible(false);
-				frame.getContentPane().add(registroClaseInternalFrame);	
-				
+				frame.getContentPane().add(registroClaseInternalFrame);					
 	}
-    /**
+	/**
      * Initialize the contents of the frame.
      */
 	private void initialize() {
@@ -89,6 +88,7 @@ public class Principal {
 		mntmUsuarioAlta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mntmUsuarioAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//altaUsuarioInternalFrame.inicializarInstituciones();
 				altaUsuarioInternalFrame.setVisible(true);
 			}
 		});
@@ -146,7 +146,8 @@ public class Principal {
 		mntmClaseRegistro.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mntmClaseRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				registroClaseInternalFrame.setVisible(true);
+				registroClaseInternalFrame.inicializarComboBoxes();
+				registroClaseInternalFrame.setVisible(true);				
 			}
 		});
 		mnClase.add(mntmClaseRegistro);

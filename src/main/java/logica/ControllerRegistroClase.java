@@ -2,17 +2,10 @@ package logica;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.Map;
-
-import javax.swing.JOptionPane;
-
 import datatypes.DtActividadDeportiva;
 import datatypes.DtClase;
 import datatypes.DtSocio;
-import excepciones.NicknameRepetidoException;
 import excepciones.RegistroClaseRepetidoException;
-import interfaces.Clase;
 import interfaces.IControllerRegistroClase;
 import javafx.util.Pair;
 
@@ -55,20 +48,16 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 		InstitucionDeportiva insti = instiHand.buscarInstitucionDeportiva(institucion);
 		ArrayList<DtActividadDeportiva> actividades = insti.obtenerActividades();
 		ArrayList<Pair<DtClase,String>> listado = new ArrayList<>();
-		int i=0;
 		for(DtActividadDeportiva a: actividades) {
 			if(a.getNombre().equals(actividad)) {
 				ActividadDeportiva act = insti.buscarActividad(actividad);
-				int e=0;
 				for(DtClase dtc:act.obtenerClases()) {
 					String concat = new String();
 					concat = dtc.getNombre() + " " + dtc.getFecha() + " " + dtc.getHoraInicio();
 					Pair<DtClase, String> pair = new Pair<>(dtc, concat);
 					listado.add(pair);
-					e++;
 				}	
 			}
-			i++;
 		}
 		String[] repo = new String[listado.size()];
 		int u=0;
@@ -86,7 +75,8 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 		String[] ret = new String[socios.size()];
 		int i=0;
 		for(DtSocio s: socios) {
-			String concat = s.getNickname() + " / " + s.getNombre() + " " + s.getApellido();		
+			String concat = s.getNickname() + " / " + s.getNombre() + " " + s.getApellido();
+			
 			ret[i] = concat;
 			i++;
 		}
@@ -124,13 +114,15 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 	
 	@Override
 	public boolean usuarioRegistradoAClase(Socio socio, Clase clase){
+		boolean ret = false;
 		ArrayList<DtClase> clases = socio.obtenerClases();
-		for(DtClase c: clases) {
-			if(c.getNombre().equals(clase.getNombre())) {
-				return true;
+		if(!clases.isEmpty()) {
+			for(DtClase c: clases) {
+				if(c.getNombre().equals(clase.getNombre()))
+					ret = true;
 			}
 		}		
-		return false;
+		return ret;
 	}
 	
 

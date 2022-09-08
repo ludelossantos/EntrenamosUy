@@ -2,8 +2,6 @@ package interfaces;
 
 import java.util.Date;
 
-import datatypes.DtClase;
-import datatypes.DtSocio;
 import excepciones.RegistroClaseRepetidoException;
 import logica.Socio;
 import logica.Clase;

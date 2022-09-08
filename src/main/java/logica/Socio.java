@@ -3,13 +3,12 @@ package logica;
 import java.util.ArrayList;
 import java.util.Date;
 
-import datatypes.DtActividadDeportiva;
 import datatypes.DtClase;
 import datatypes.DtSocio;
 
 public class Socio extends Usuario {
 	
-	private ArrayList<Registro> clasesRegistradas;
+	private ArrayList<Registro> clasesRegistradas = new ArrayList<>();
 	
 	public Socio() {
 		super();
@@ -26,7 +25,7 @@ public class Socio extends Usuario {
 	public ArrayList<DtClase> obtenerClases(){
 		ArrayList<DtClase> lista = new ArrayList<>();
 		for(Registro c: clasesRegistradas) {
-			lista.add(c.getClase().getDtClase());
+				lista.add(c.getClase().getDtClase());
 		}
 		return lista;
 	}

@@ -2,6 +2,8 @@ package presentacion;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+
+import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -9,27 +11,15 @@ import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
-import java.util.Map;
-import java.util.Pair;
-
-import javax.swing.JTextArea;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
 import com.toedter.calendar.JDateChooser;
-
-import datatypes.DtClase;
-import datatypes.DtSocio;
 import excepciones.RegistroClaseRepetidoException;
-import interfaces.IControllerAltaUsuario;
-import interfaces.IControllerInstitucionDeportiva;
 import interfaces.IControllerRegistroClase;
-import logica.InstitucionDeportiva;
-import logica.Socio;
-import logica.Usuario;
 
+import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
 public class RegistroClase extends JInternalFrame {
@@ -37,13 +27,10 @@ public class RegistroClase extends JInternalFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private IControllerRegistroClase rCController;
-	private IControllerInstitucionDeportiva iDController;
-	private IControllerAltaUsuario aUController;
 	private JComboBox<String> comboBoxInstitucion;
 	private JComboBox<String> comboBoxActDepor;
 	private JComboBox<String> comboBoxSocio;
 	private JList<String> listSetClases;
-	private JTextArea textAreaClase;
 	private JDateChooser dateChooserFechaReg;
 	
 
@@ -59,12 +46,8 @@ public class RegistroClase extends JInternalFrame {
 		getContentPane().setLayout(null);
 		
 		JPanel panel_clases = new JPanel();
-		panel_clases.setBounds(33, 40, 505, 441);
+		panel_clases.setBounds(33, 40, 854, 407);
 		getContentPane().add(panel_clases);
-			
-		JPanel panel_registro = new JPanel();
-		panel_registro.setBounds(548, 40, 351, 142);
-		getContentPane().add(panel_registro);
 		panel_clases.setLayout(null);
 				
 		JLabel lblInstitucion = new JLabel("Institución");
@@ -76,25 +59,10 @@ public class RegistroClase extends JInternalFrame {
 		lblActivDeportiva.setBounds(22, 52, 138, 22);
 		lblActivDeportiva.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		panel_clases.add(lblActivDeportiva);
-		panel_registro.setLayout(null);
 		
-		JLabel lblClase = new JLabel("Clase");
-		lblClase.setBounds(19, 16, 36, 22);
-		lblClase.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		panel_registro.add(lblClase);
-		
-		JLabel lblSocio = new JLabel("Socio");
-		lblSocio.setBounds(19, 52, 39, 22);
-		lblSocio.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		panel_registro.add(lblSocio);
-		
-		JLabel lblFechaReg = new JLabel("Fecha registro");
-		lblFechaReg.setBounds(19, 92, 98, 22);
-		lblFechaReg.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		panel_registro.add(lblFechaReg);
-
 		comboBoxInstitucion = new JComboBox<String>();
-		comboBoxInstitucion.setBounds(105, 17, 373, 21);
+		comboBoxInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		comboBoxInstitucion.setBounds(170, 17, 665, 25);
 		comboBoxInstitucion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -104,7 +72,8 @@ public class RegistroClase extends JInternalFrame {
 		panel_clases.add(comboBoxInstitucion);
 		
 		comboBoxActDepor = new JComboBox<String>();
-		comboBoxActDepor.setBounds(170, 53, 308, 21);
+		comboBoxActDepor.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		comboBoxActDepor.setBounds(170, 53, 665, 25);
 		comboBoxActDepor.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -114,20 +83,29 @@ public class RegistroClase extends JInternalFrame {
 		panel_clases.add(comboBoxActDepor);
 		
 		listSetClases = new JList<String>();
-		listSetClases.setBounds(22, 94, 456, 316);
+		listSetClases.setBounds(22, 94, 813, 245);
+		listSetClases.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		panel_clases.add(listSetClases);
 		
-		textAreaClase = new JTextArea();
-		textAreaClase.setBounds(71, 16, 259, 22);
-		panel_registro.add(textAreaClase);
+		JLabel lblSocio = new JLabel("Socio");
+		lblSocio.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblSocio.setBounds(22, 362, 39, 22);
+		panel_clases.add(lblSocio);
+		
+		JLabel lblFechaReg = new JLabel("Fecha registro");
+		lblFechaReg.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblFechaReg.setBounds(524, 362, 98, 22);
+		panel_clases.add(lblFechaReg);
 		
 		comboBoxSocio = new JComboBox<String>();
-		comboBoxSocio.setBounds(68, 53, 262, 21);
-		panel_registro.add(comboBoxSocio);
+		comboBoxSocio.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		comboBoxSocio.setBounds(71, 359, 436, 25);
+		panel_clases.add(comboBoxSocio);
 		
 		dateChooserFechaReg = new JDateChooser();
-		dateChooserFechaReg.setBounds(127, 92, 203, 25);
-		panel_registro.add(dateChooserFechaReg);
+		dateChooserFechaReg.setBounds(632, 359, 203, 25);
+		panel_clases.add(dateChooserFechaReg);
+	
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.setFont(new Font("Segoe UI", Font.PLAIN, 16));
@@ -137,7 +115,7 @@ public class RegistroClase extends JInternalFrame {
 				registroClaseCancelarActionPerformed(e);
 			}
 		});
-		btnCancelar.setBounds(617, 446, 130, 35);
+		btnCancelar.setBounds(617, 457, 130, 35);
 		getContentPane().add(btnCancelar);
 		
 		JButton btnAceptar = new JButton("Aceptar");
@@ -148,29 +126,37 @@ public class RegistroClase extends JInternalFrame {
 				registroClaseAceptarActionPerformed(arg0);
 			}
 		});
-		btnAceptar.setBounds(757, 446, 130, 35);
+		btnAceptar.setBounds(757, 457, 130, 35);
 		getContentPane().add(btnAceptar);
 
 	}
 	
-	public void inicializarBoxes() {
+	public void inicializarComboBoxes() {
 		DefaultComboBoxModel<String> modelinsti = new DefaultComboBoxModel<String>(rCController.listarInstituciones());
 		comboBoxInstitucion.setModel(modelinsti);
+		comboBoxInstitucion.setSelectedIndex(0);
 		DefaultComboBoxModel<String> modelsocios = new DefaultComboBoxModel<String>(rCController.listarSocios());
 		comboBoxSocio.setModel(modelsocios);
+		comboBoxSocio.setSelectedIndex(0);
 	}
 	
-	private void cargaActividadesInstitucion(ActionEvent e) {
-		String institucion = this.comboBoxInstitucion.getSelectedItem().toString();
-		DefaultComboBoxModel<String> modelactividades = new DefaultComboBoxModel<String>(rCController.listarActividadesDeportivas(institucion));
-		comboBoxActDepor.setModel(modelactividades);			
+	protected void cargaActividadesInstitucion(ActionEvent e) {
+		if(comboBoxInstitucion.getSelectedIndex()!=0) {
+			String institucion = this.comboBoxInstitucion.getSelectedItem().toString();
+			DefaultComboBoxModel<String> modelactividades = new DefaultComboBoxModel<String>(rCController.listarActividadesDeportivas(institucion));
+			comboBoxActDepor.setModel(modelactividades);
+			comboBoxActDepor.setSelectedIndex(0);
+		}
 	}
 	
-	private void cargarClasesActividad(ActionEvent e) {
-		String institucion = this.comboBoxInstitucion.getSelectedItem().toString();
-		String actividad = this.comboBoxActDepor.getSelectedItem().toString();
-		DefaultComboBoxModel<String> modelclases = new DefaultComboBoxModel<String>(rCController.listarClasesActividad(institucion, actividad));
-		listSetClases.setModel(modelclases);		
+	protected void cargarClasesActividad(ActionEvent e) {
+		if(comboBoxActDepor.getSelectedIndex()!=0) {
+			String institucion = this.comboBoxInstitucion.getSelectedItem().toString();
+			String actividad = this.comboBoxActDepor.getSelectedItem().toString();
+			DefaultComboBoxModel<String> modelclases = new DefaultComboBoxModel<String>(rCController.listarClasesActividad(institucion, actividad));
+			listSetClases.setModel(modelclases);
+			listSetClases.setSelectedIndex(0);
+		}		
 	}	
 	
 	protected void registroClaseCancelarActionPerformed(ActionEvent arg0) {
@@ -190,7 +176,7 @@ public class RegistroClase extends JInternalFrame {
 				this.rCController.registroClase(institucion, actividad, datClase, nombApe, fechaReg);
 				JOptionPane.showMessageDialog(this, "Registro a clase exitoso", "Registro a dictado de Clase", JOptionPane.INFORMATION_MESSAGE);
 				limpiarFormulario();
-		           setVisible(false);
+		        setVisible(false);
 			}catch(RegistroClaseRepetidoException rr){
 				JOptionPane.showMessageDialog(this, rr.getMessage(), "Registro a dictado de Clase", JOptionPane.ERROR_MESSAGE);	
 			}	
@@ -205,7 +191,6 @@ public class RegistroClase extends JInternalFrame {
 		comboBoxInstitucion.setSelectedItem("Seleccione");
 		comboBoxActDepor.setSelectedItem("Seleccione");
 		comboBoxSocio.setSelectedItem("Seleccione");
-		textAreaClase.setText("");
 		Date date = new Date();
 		dateChooserFechaReg.setDate(date);
 	}

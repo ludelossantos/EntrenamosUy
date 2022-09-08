@@ -1,7 +1,5 @@
 package logica;
 
-import java.util.ArrayList;
-
 import interfaces.IControllerInstitucionDeportiva;
 
 public class ControllerInstitucionDeportiva implements IControllerInstitucionDeportiva {

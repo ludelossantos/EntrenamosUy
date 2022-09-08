@@ -66,4 +66,16 @@ public class InstitucionDeportiva {
 		return actividad;
 	}
 	
+	public void agregarActividadDeportiva(ActividadDeportiva actividad) {
+		actividades.add(actividad);
+	}
+	
+	public ArrayList<ActividadDeportiva> obtenerActividadesObjeto(){
+		ArrayList<ActividadDeportiva> lista = new ArrayList<>();
+		for(ActividadDeportiva a : actividades) {
+			lista.add(a);
+		}
+		return lista;
+	}
+	
 }

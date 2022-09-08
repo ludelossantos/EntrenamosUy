@@ -1,18 +1,12 @@
 package logica;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import datatypes.DtSocio;
-import javafx.util.Pair;  
+import datatypes.DtSocio;  
 
 public class UsuarioHandler {
 	private static UsuarioHandler instancia = null;
 	private List<Usuario> usuarios = new ArrayList<>();
-	private Pair<String,String> nuevo;
-
 	private UsuarioHandler() {
 		super();
 	}
@@ -57,7 +51,8 @@ public class UsuarioHandler {
 		ArrayList<DtSocio> listado = new ArrayList<>();
 		for(Usuario u: usuarios) {
 			if(u instanceof Socio) {
-				listado.add(u.getDtSocio());
+				Socio socio = (Socio) u;
+				listado.add(socio.getDtSocio());
 			}
 		}			
 		return listado;

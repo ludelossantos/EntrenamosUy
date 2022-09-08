@@ -24,6 +24,7 @@ import datatypes.DtUsuario;
 import excepciones.EmailRepetidoException;
 import excepciones.NicknameRepetidoException;
 import interfaces.IControllerAltaUsuario;
+import interfaces.IControllerRegistroClase;
 import logica.InstitucionDeportiva;
 
 import javax.swing.ScrollPaneConstants;
@@ -33,6 +34,7 @@ public class AltaUsuario extends JInternalFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private IControllerAltaUsuario aUController;
+	private IControllerRegistroClase rCController;
 	private JTextField textFieldNickname;
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellido;
@@ -180,15 +182,15 @@ public class AltaUsuario extends JInternalFrame {
 		scrollPane_1.setViewportView(textAreaBiografia);
 		textAreaBiografia.setEnabled(false);
 		
-		JLabel lblInstitucion = new JLabel("Institución");
+		JLabel lblInstitucion = new JLabel("InstituciÃ³n");
 		lblInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblInstitucion.setBounds(12, 12, 94, 25);
 		panel.add(lblInstitucion);
 		
 		comboBoxInstitucion = new JComboBox<String>();
-		comboBoxInstitucion.setBounds(93, 12, 687, 25);
+		comboBoxInstitucion.setBounds(105, 12, 675, 25);
 		panel.add(comboBoxInstitucion);
-		comboBoxInstitucion.setEnabled(false);
+		//comboBoxInstitucion.setEnabled(false);
 		
 		comboBoxUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent eve) {
@@ -239,8 +241,9 @@ public class AltaUsuario extends JInternalFrame {
 	}
 	
 	public void inicializarInstituciones() {
-		DefaultComboBoxModel<String> modelInstituciones = new DefaultComboBoxModel<String>(aUController.listarInstituciones());
-		comboBoxInstitucion.setModel(modelInstituciones);
+		DefaultComboBoxModel<String> modelinsti = new DefaultComboBoxModel<String>(this.rCController.listarInstituciones());
+		comboBoxInstitucion.setModel(modelinsti);
+		comboBoxInstitucion.setSelectedIndex(0);
 	}
 	
 	protected void altaUsuarioAceptarActionPerformed(ActionEvent arg0){

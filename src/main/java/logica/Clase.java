@@ -4,7 +4,6 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 
-import datatypes.DtActividadDeportiva;
 import datatypes.DtClase;
 
 public class Clase {
@@ -13,7 +12,7 @@ public class Clase {
 	private Time horaInicio;
 	private String url;
 	private Date fechaReg;
-	private ArrayList<Registro> sociosRegistrados;
+	private ArrayList<Registro> sociosRegistrados = new ArrayList<>();
 	
 	public Clase() {
 		super();
