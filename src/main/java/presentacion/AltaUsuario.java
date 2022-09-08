@@ -24,7 +24,6 @@ import datatypes.DtUsuario;
 import excepciones.EmailRepetidoException;
 import excepciones.NicknameRepetidoException;
 import interfaces.IControllerAltaUsuario;
-import interfaces.IControllerRegistroClase;
 import logica.InstitucionDeportiva;
 
 import javax.swing.ScrollPaneConstants;
@@ -34,7 +33,6 @@ public class AltaUsuario extends JInternalFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private IControllerAltaUsuario aUController;
-	private IControllerRegistroClase rCController;
 	private JTextField textFieldNickname;
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellido;
@@ -201,13 +199,13 @@ public class AltaUsuario extends JInternalFrame {
 					textAreaBiografia.setEnabled(true);
 					textFieldSitioWeb.setEnabled(true);
 					comboBoxInstitucion.setEnabled(true);
-					inicializarInstituciones();
+					//inicializarInstituciones();
 				}else {
 					comboBoxUsuario.setSelectedItem(true);
 					textAreaDescripcion.setEnabled(false);
 					textAreaBiografia.setEnabled(false);
 					textFieldSitioWeb.setEnabled(false);
-					comboBoxInstitucion.setEnabled(false);
+					//comboBoxInstitucion.setEnabled(false);
 				}				
 			}
 		});		
@@ -241,7 +239,7 @@ public class AltaUsuario extends JInternalFrame {
 	}
 	
 	public void inicializarInstituciones() {
-		DefaultComboBoxModel<String> modelinsti = new DefaultComboBoxModel<String>(this.rCController.listarInstituciones());
+		DefaultComboBoxModel<String> modelinsti = new DefaultComboBoxModel<String>(aUController.listarInstituciones());
 		comboBoxInstitucion.setModel(modelinsti);
 		comboBoxInstitucion.setSelectedIndex(0);
 	}

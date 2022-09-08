@@ -88,7 +88,7 @@ public class Principal {
 		mntmUsuarioAlta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mntmUsuarioAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//altaUsuarioInternalFrame.inicializarInstituciones();
+				altaUsuarioInternalFrame.inicializarInstituciones();
 				altaUsuarioInternalFrame.setVisible(true);
 			}
 		});

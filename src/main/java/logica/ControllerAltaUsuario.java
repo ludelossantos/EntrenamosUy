@@ -34,16 +34,15 @@ public class ControllerAltaUsuario implements IControllerAltaUsuario {
 	
 	@Override 
 	public String[] listarInstituciones() {
-		ArrayList<String> instituciones = new ArrayList<String>();
-		InstitucionDeportivaHandler instiHand = InstitucionDeportivaHandler.getInstancia();
-		instituciones = instiHand.obtenerInstituciones();
-		String[] insti = new String[4];
-	    int i=0;
-	    for(String s:instituciones) {
-	    	insti[i]=s;
-	    	i++;
-	    }
-		return insti;
+		InstitucionDeportivaHandler instHand = InstitucionDeportivaHandler.getInstancia();
+		ArrayList<String> instituciones = instHand.obtenerInstituciones();
+		String[] instiList = new String[instituciones.size()];
+		int i=0;
+		for(String n:instituciones) {
+			instiList[i]=n;
+			i++;
+		}
+		return instiList;
 	}
 
 	@Override //PARA PRUEBAS BORRAR
