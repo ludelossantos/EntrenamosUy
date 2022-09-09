@@ -9,4 +9,6 @@ public interface IControllerInstitucionDeportiva {
 	
 	public void altaInstitucion(String nombre, String descripcion, String url);
 	
+	public String[] obtenerInstituciones();
+	
 }

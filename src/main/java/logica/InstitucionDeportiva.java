@@ -66,4 +66,8 @@ public class InstitucionDeportiva {
 		return actividad;
 	}
 	
+	public void agregarActividad(ActividadDeportiva actividad) {
+		actividades.add(actividad);
+	}
+	
 }

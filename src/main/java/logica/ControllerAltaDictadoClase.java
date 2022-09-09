@@ -39,8 +39,12 @@ public class ControllerAltaDictadoClase implements IControllerAltaDictadoClase {
 		Profesor prof = (Profesor) usuario; //instancia Profesor
 		
 		if(!prof.getInstitucion().equals(institucion)) //verifico que el profesor trabaja en la institucion seleccionada
-			throw new ProfNoTrabajaInstitucion("El profesor '" + clase.getNickProfesor() + "' no trabaja en la institución '" + clase.getNomInstitucion() + "'");
+			throw new ProfNoTrabajaInstitucion("El profesor '" + clase.getNickProfesor() + "' no trabaja en la institución '" + institucion.getNombre() + "'");
 		
-		nuevaClase = new Clase(); //faltan parametros
+		nuevaClase = new Clase(clase.getNombre(), clase.getFecha(), clase.getHoraInicio(), clase.getUrl(), clase.getFechaReg()); //creo la nueva clase
+		
+		actividad.agregarClase(nuevaClase); //agrego la nueva clase de la actividad deportiva a la lista
+		
+		prof.agregarClase(nuevaClase); //agrego la nueva clase a la lista de clases dictadas del profesor
 	}
 }
