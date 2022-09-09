@@ -6,8 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Font;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
+
+import javax.persistence.Persistence;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -19,12 +19,6 @@ import interfaces.IControllerInstitucionDeportiva;
 
 public class Principal {
 	
-	private static EntityManagerFactory emf;
-	private static EntityManager em;
-	
-	
-	
-
 	private JFrame frame;
 	private AltaUsuario altaUsuarioInternalFrame;
 	private AltaInstitucionDeportiva altaInstitucionDeportivaInternalFrame;
@@ -33,6 +27,7 @@ public class Principal {
      * Launch the application.
      */
 	public static void main(String[] args) {
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

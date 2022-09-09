@@ -1,9 +1,15 @@
 package logica;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
+import persistencia.Conexion;
+
 public class InstitucionDeportivaHandler {
+
 	
 	//SINGLETON
 	private static InstitucionDeportivaHandler instancia = null;
@@ -20,7 +26,16 @@ public class InstitucionDeportivaHandler {
 	//METODOS
 	
 	public void agregarInstitucionDeportiva(InstitucionDeportiva institucion) {
-		institucionesDeportivas.add(institucion);
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		
+		//InstitucionDeportiva instiDepor = new InstitucionDeportiva("Goes","Un gym", "www.goes.com.uy");
+		
+		em.getTransaction().begin();
+		em.persist(institucion);		
+		em.getTransaction().commit();
+		
+		//institucionesDeportivas.add(institucion);
 	}
 	
 	public InstitucionDeportiva buscarInstitucionDeportiva(String nombre) {
@@ -32,14 +47,11 @@ public class InstitucionDeportivaHandler {
 		return aretornar;
 	}
 	
-	/*
-	public ArrayList<String> obtenerInstitucionDeportiva() {
-		ArrayList<String> listaInstituciones = new ArrayList<>();	
-		for(InstitucionDeportiva i: institucionesDeportivas) {
-			listaInstituciones.add(new String(i.getNombre()));
-		}
-		return listaInstituciones;
-	 }
-	*/
+	public InstitucionDeportiva obtenerPlataforma(String nombre){
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		InstitucionDeportiva insti = em.find(InstitucionDeportiva.class, nombre);
+		return insti;
+	}
 	
 }

@@ -27,4 +27,19 @@ public class ControllerInstitucionDeportiva implements IControllerInstitucionDep
 		idh.agregarInstitucionDeportiva(institucion);
 	}
 
+
+	@Override
+	public boolean existeInstitucionDeportiva(String nombre) {
+		InstitucionDeportivaHandler iDH = InstitucionDeportivaHandler.getInstancia();
+        InstitucionDeportiva institucion = iDH.obtenerPlataforma(nombre);
+        return institucion != null;
+	}
+
+/*
+	@Override
+	public void modificarInstitucionDeportiva(InstitucionDeportiva iD, String nombre, String descripcion, String url) {
+		// TODO Auto-generated method stub
+		
+	}
+*/
 }

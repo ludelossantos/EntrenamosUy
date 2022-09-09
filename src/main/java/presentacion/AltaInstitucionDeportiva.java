@@ -1,6 +1,7 @@
 package presentacion;
 
 import javax.swing.JFrame;
+
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -97,8 +98,7 @@ public class AltaInstitucionDeportiva extends JInternalFrame {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				altaInstitucionDeportivaAceptar();
-				cleanForm();
+				altaInstitucionDeportivaAceptar();				
 			}
 		});
 		btnAceptar.setFont(new Font("Segoe UI", Font.PLAIN, 16));
@@ -113,6 +113,32 @@ public class AltaInstitucionDeportiva extends JInternalFrame {
 		String descripcion = this.txtADescripcion.getText();
 		String url = this.txtUrl.getText();
 		
+		DtInstitucionDeportiva instiDepor = new DtInstitucionDeportiva(nombre, descripcion, url);
+				
+		try {
+			boolean res = this.aIDController.existeInstitucionDeportiva(nombre);
+			System.out.printf("Existe Institución: " + res);
+			if (!res) {
+				this.aIDController.altaInstitucion(instiDepor);
+				JOptionPane.showMessageDialog(this, "Se agrego correctamente la Institucion Deportiva");
+			} /*else {
+				int mod = JOptionPane.showConfirmDialog(AltaInstitucionDeportiva.this,
+						"Ya existe la Institucion, ¿desea modificarla?", "MODIFICAR PLATAFORMA",
+						JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				if (mod == 0) {
+					this.aIDController.mod(this.controlador.find(txtNombre.getText()), txtNombre.getText(),
+							txtDesc.getText(), txtUrl.getText());
+				}
+			}*/
+			
+
+		} catch (InstitucionDeportivaRepetidaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		/*
 		DtInstitucionDeportiva dtReturn = null;
 		dtReturn = new DtInstitucionDeportiva(nombre, descripcion, url);
 		try {
@@ -121,7 +147,8 @@ public class AltaInstitucionDeportiva extends JInternalFrame {
 					"Alta Institucion Deportiva", JOptionPane.INFORMATION_MESSAGE);
 		} catch (InstitucionDeportivaRepetidaException e) {
 			JOptionPane.showMessageDialog(this, e.getMessage(), "Alta Institucion Deportiva", JOptionPane.ERROR_MESSAGE);
-		}
+		}*/
+		cleanForm();
 	}
 	
 	protected void altaInstitucionDeportivaCancelar() {

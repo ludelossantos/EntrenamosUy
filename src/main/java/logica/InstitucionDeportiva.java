@@ -12,6 +12,9 @@ public class InstitucionDeportiva {
 	private String nombre;
 	private String descripcion;
 	private String url;
+	
+	//@onetomany_actDepor()
+	
 	//private List<ActividadDeportiva>actividadesDeportivas;
 	
 	//CONSTRUCTORES
