@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -13,6 +14,7 @@ import java.util.Date;
 
 import datatypes.DtActividadDeportiva;
 import datatypes.DtClase;
+import persistencia.Conexion;
 
 @Entity
 public class ActividadDeportiva {
@@ -78,7 +80,7 @@ public class ActividadDeportiva {
 	public void setFechaReg(Date fechaReg) {
 		this.fechaReg = fechaReg;
 	}
-	/*
+
 	public DtActividadDeportiva getDtActividadDeportiva() {
 		return new DtActividadDeportiva(nombre,descripcion);
 	}
@@ -88,15 +90,24 @@ public class ActividadDeportiva {
 	}
 	
 	public Clase buscarClase(String nombre) {
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		Clase clase = em.find(Clase.class, nombre);
+		return clase;		
+		/*
 		Clase clase = null;
 		for(Clase c : clases) {
 			if(c.getNombre().equals(nombre))
 				clase = c;
 		}
-		return clase;
+		return clase;*/
 	}
 	
 	public ArrayList<DtClase> obtenerClases(){
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		javax.persistence.Query query = em.createQuery("select a from Clase a");
+		List<Clase> clases = (List<Clase>) query.getResultList();
 		ArrayList<DtClase> listado = new ArrayList<>();
 		for(Clase c: clases) {
 			listado.add(c.getDtClase());
@@ -105,10 +116,14 @@ public class ActividadDeportiva {
 	}
 	
 	public ArrayList<Clase> obtenerClasesObjeto(){
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		javax.persistence.Query query = em.createQuery("select a from Clase a");
+		List<Clase> clases = (List<Clase>) query.getResultList();
 		ArrayList<Clase> listado = new ArrayList<>();
 		for(Clase c: clases) {
 			listado.add(c);
 		}
 		return listado;
-	}*/
+	}
 }

@@ -3,12 +3,15 @@ package logica;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.management.Query;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import datatypes.DtActividadDeportiva;
+import persistencia.Conexion;
 
 @Entity
 public class InstitucionDeportiva {
@@ -61,8 +64,12 @@ public class InstitucionDeportiva {
 
 
 	//METODOS
-	/*
+
 	public ArrayList<DtActividadDeportiva> obtenerActividades(){
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		javax.persistence.Query query = em.createQuery("select a from ActividadDeportiva a");
+		List<ActividadDeportiva> actividades = (List<ActividadDeportiva>) query.getResultList();
 		ArrayList<DtActividadDeportiva> lista = new ArrayList<>();
 		for(ActividadDeportiva a : actividades) {
 			lista.add(a.getDtActividadDeportiva());
@@ -71,11 +78,13 @@ public class InstitucionDeportiva {
 	}
 	
 	public ActividadDeportiva buscarActividad(String nombre) {
-		ActividadDeportiva actividad = null;
-		for(ActividadDeportiva a : actividades) {
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		ActividadDeportiva actividad = em.find(ActividadDeportiva.class, nombre);
+		/*for(ActividadDeportiva a : actividades) {
 			if(a.getNombre().equals(nombre))
 				actividad = a;
-		}
+		}*/
 		return actividad;
 	}
 	
@@ -84,11 +93,15 @@ public class InstitucionDeportiva {
 	}
 	
 	public ArrayList<ActividadDeportiva> obtenerActividadesObjeto(){
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		javax.persistence.Query query = em.createQuery("select a from ActividadDeportiva a");
+		List<ActividadDeportiva> actividades = (List<ActividadDeportiva>) query.getResultList();
 		ArrayList<ActividadDeportiva> lista = new ArrayList<>();
 		for(ActividadDeportiva a : actividades) {
 			lista.add(a);
 		}
 		return lista;
 	}
-	*/
+	
 }

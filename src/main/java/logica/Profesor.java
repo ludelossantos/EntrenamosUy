@@ -66,8 +66,8 @@ public class Profesor extends Usuario {
 	public void setInstitucion(InstitucionDeportiva institucion) {
 		this.institucion = institucion;
 	}
-	/*
+	
 	public void agregarClase(Clase clase) {
 		this.clasesQueDicta.add(clase);
-	}*/
+	}
 }

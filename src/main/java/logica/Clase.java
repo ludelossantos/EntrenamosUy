@@ -77,12 +77,12 @@ public class Clase {
 	public void setFechaReg(Date fechaReg) {
 		this.fechaReg = fechaReg;
 	}
-	/*
+	
 	public DtClase getDtClase() {
 		return new DtClase(nombre, fecha, horaInicio, url, fechaReg);
 	}
 
 	public void agregarRegistro(Registro registro) {
 		sociosRegistrados.add(registro);
-	}*/
+	}
 }
