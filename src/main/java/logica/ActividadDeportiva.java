@@ -2,18 +2,24 @@ package logica;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import java.util.Date;
 
 import datatypes.DtActividadDeportiva;
 import datatypes.DtClase;
 
+@Entity
 public class ActividadDeportiva {
+	@Id
 	private String nombre;
 	private String descripcion;
 	private int duracion;
 	private float costo;
 	private Date fechaReg;
-	private List<Clase> clases = new ArrayList<>();
+	//private List<Clase> clases = new ArrayList<>();
 	
 	public ActividadDeportiva() {
 		super();
@@ -67,7 +73,7 @@ public class ActividadDeportiva {
 	public void setFechaReg(Date fechaReg) {
 		this.fechaReg = fechaReg;
 	}
-	
+	/*
 	public DtActividadDeportiva getDtActividadDeportiva() {
 		return new DtActividadDeportiva(nombre,descripcion);
 	}
@@ -99,5 +105,5 @@ public class ActividadDeportiva {
 			listado.add(c);
 		}
 		return listado;
-	}
+	}*/
 }

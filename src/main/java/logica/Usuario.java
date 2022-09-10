@@ -2,7 +2,15 @@ package logica;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+@Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public abstract class Usuario {
+	@Id
 	private String nickname;
     private String nombre;
     private String apellido;

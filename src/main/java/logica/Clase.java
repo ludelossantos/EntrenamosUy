@@ -4,15 +4,20 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import datatypes.DtClase;
 
+@Entity
 public class Clase {
+	@Id
 	private String nombre;
 	private Date fecha;
 	private Time horaInicio;
 	private String url;
 	private Date fechaReg;
-	private ArrayList<Registro> sociosRegistrados = new ArrayList<>();
+	//private ArrayList<Registro> sociosRegistrados = new ArrayList<>();
 	
 	public Clase() {
 		super();
@@ -66,12 +71,12 @@ public class Clase {
 	public void setFechaReg(Date fechaReg) {
 		this.fechaReg = fechaReg;
 	}
-	
+	/*
 	public DtClase getDtClase() {
 		return new DtClase(nombre, fecha, horaInicio, url, fechaReg);
 	}
 
 	public void agregarRegistro(Registro registro) {
 		sociosRegistrados.add(registro);
-	}
+	}*/
 }

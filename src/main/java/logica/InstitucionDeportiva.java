@@ -3,13 +3,18 @@ package logica;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import datatypes.DtActividadDeportiva;
 
+@Entity
 public class InstitucionDeportiva {
+	@Id
 	private String nombre;
 	private String descripcion;
 	private String url;
-	private List<ActividadDeportiva> actividades = new ArrayList<>();
+	//private List<ActividadDeportiva> actividades = new ArrayList<>();
 	
 	//CONSTRUCTORES
 	
@@ -48,7 +53,7 @@ public class InstitucionDeportiva {
 
 
 	//METODOS
-	
+	/*
 	public ArrayList<DtActividadDeportiva> obtenerActividades(){
 		ArrayList<DtActividadDeportiva> lista = new ArrayList<>();
 		for(ActividadDeportiva a : actividades) {
@@ -77,5 +82,5 @@ public class InstitucionDeportiva {
 		}
 		return lista;
 	}
-	
+	*/
 }
