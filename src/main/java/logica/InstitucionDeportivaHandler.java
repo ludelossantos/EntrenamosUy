@@ -38,14 +38,6 @@ public class InstitucionDeportivaHandler {
 		//institucionesDeportivas.add(institucion);
 	}
 	
-	public InstitucionDeportiva buscarInstitucionDeportiva(String nombre) {
-		Conexion conexion = Conexion.getInstancia();
-		EntityManager eManager = conexion.getEntityManager();
-		
-		InstitucionDeportiva institucion = eManager.find(InstitucionDeportiva.class, nombre);
-		return institucion;
-	}
-	
 	/*
 	public InstitucionDeportiva buscarInstitucionDeportiva(String nombre) {
 		InstitucionDeportiva aretornar = null;

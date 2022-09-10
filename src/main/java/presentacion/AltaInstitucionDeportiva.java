@@ -117,7 +117,7 @@ public class AltaInstitucionDeportiva extends JInternalFrame {
 				
 		try {
 			boolean res = this.aIDController.existeInstitucionDeportiva(nombre);
-			System.out.printf("Existe Institución: " + res);
+			System.out.printf("Ya existe la Institución: " + nombre);
 			if (!res) {
 				this.aIDController.altaInstitucion(instiDepor);
 				JOptionPane.showMessageDialog(this, "Se agrego correctamente la Institucion Deportiva");
