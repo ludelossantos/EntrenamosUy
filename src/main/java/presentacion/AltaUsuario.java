@@ -16,8 +16,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import com.toedter.calendar.JDateChooser;
-
 import datatypes.DtProfesor;
 import datatypes.DtSocio;
 import datatypes.DtUsuario;
@@ -27,6 +25,8 @@ import interfaces.IControllerAltaUsuario;
 import logica.InstitucionDeportiva;
 
 import javax.swing.ScrollPaneConstants;
+
+import com.toedter.calendar.JDateChooser;
 
 public class AltaUsuario extends JInternalFrame {
 

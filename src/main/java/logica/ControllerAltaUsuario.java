@@ -27,7 +27,7 @@ public class ControllerAltaUsuario implements IControllerAltaUsuario {
 			throw new EmailRepetidoException("El email '" + nuevo.getEmail() + "' ya está en uso.");
 		}
 		if(nuevo instanceof DtProfesor)
-			usuario = new Profesor(nuevo.getNickname(), nuevo.getNombre(), nuevo.getApellido(), nuevo.getEmail(), nuevo.getFechaNac(), ((DtProfesor) nuevo).getDescripcion(), ((DtProfesor) nuevo).getBiografia(), ((DtProfesor) nuevo).getSitioWeb(), ((DtProfesor) nuevo).getInstitucion());
+			usuario = new Profesor(nuevo.getNickname(), nuevo.getNombre(), nuevo.getApellido(), nuevo.getEmail(), nuevo.getFechaNac(), ((DtProfesor) nuevo).getDescripcion(), ((DtProfesor) nuevo).getBiografia(), ((DtProfesor) nuevo).getSitioWeb());
 		if(nuevo instanceof DtSocio)
 			usuario = new Socio(nuevo.getNickname(), nuevo.getNombre(), nuevo.getApellido(), nuevo.getEmail(), nuevo.getFechaNac());
 		usuarios.agregarUsuario(usuario);

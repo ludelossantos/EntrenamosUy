@@ -16,7 +16,7 @@ public class UsuarioHandler {
 	private UsuarioHandler() {
 		super();
 	}
-S
+
 	public static UsuarioHandler getInstancia() {
 		if(instancia == null)
 			instancia = new UsuarioHandler();
