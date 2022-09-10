@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.awt.Font;
 
 
-import javax.persistence.Persistence;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;

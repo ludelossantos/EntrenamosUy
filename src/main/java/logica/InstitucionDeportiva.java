@@ -3,7 +3,6 @@ package logica;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import antlr.collections.List;
 
 
 @Entity
