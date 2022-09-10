@@ -6,7 +6,8 @@ import datatypes.DtUsuario;
 
 public interface IControllerConsultaUsuario {
 	public String[] listarUsuarios();
-	//public ArrayList<DtUsuario> listarDatosUsuarios();
 	public DtUsuario DatosUsuario(String nickname);
+	public String[] listarClases(String nickname);
+	public String[] listarActividades(String nickname);
 
 }

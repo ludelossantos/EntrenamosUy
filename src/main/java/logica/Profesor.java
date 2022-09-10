@@ -3,6 +3,7 @@ package logica;
 import java.util.ArrayList;
 import java.util.Date;
 
+import datatypes.DtClase;
 import datatypes.DtProfesor;
 import datatypes.DtUsuario;
 
@@ -76,7 +77,7 @@ public class Profesor extends Usuario {
 	}
 
 	public ArrayList<Clase> getClasesQueDicta() {
-		return clasesQueDicta;
+			return clasesQueDicta;
 	}
 
 	public void setClasesQueDicta(ArrayList<Clase> clasesQueDicta) {
@@ -85,6 +86,15 @@ public class Profesor extends Usuario {
 
 	public DtUsuario getDtUsuario() {
 		return new DtProfesor(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac(), this.descripcion, this.biografia, this.sitioWeb, this.institucion, this.clasesQueDicta);
+	}
+	
+	public ArrayList<DtClase> obtenerClasesQueDicta(){
+		ArrayList<DtClase> lista = new ArrayList<>();
+		for(Clase a : clasesQueDicta) {
+			lista.add(a.getDtClase());
+		}
+		return lista;
+		
 	}
 	
 }
