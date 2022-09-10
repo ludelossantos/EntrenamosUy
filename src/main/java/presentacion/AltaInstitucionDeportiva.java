@@ -149,6 +149,7 @@ public class AltaInstitucionDeportiva extends JInternalFrame {
 			JOptionPane.showMessageDialog(this, e.getMessage(), "Alta Institucion Deportiva", JOptionPane.ERROR_MESSAGE);
 		}*/
 		cleanForm();
+		setVisible(false);
 	}
 	
 	protected void altaInstitucionDeportivaCancelar() {
