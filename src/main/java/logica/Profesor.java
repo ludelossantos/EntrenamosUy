@@ -2,9 +2,13 @@ package logica;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 @DiscriminatorValue("P")
@@ -12,27 +16,23 @@ public class Profesor extends Usuario {
 	private String descripcion;
 	private String biografia;
 	private String sitioWeb;
-	//private InstitucionDeportiva institucion;
-	//private ArrayList<Clase> clasesQueDicta = new ArrayList();
+	
+	@ManyToOne
+	private InstitucionDeportiva institucion;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Clase> clasesQueDicta = new ArrayList<>();
 	
 	public Profesor() {
 		super();
 	}
-
+	
 	public Profesor(String descripcion, String biografia, String sitioWeb) {
 		super();
 		this.descripcion = descripcion;
 		this.biografia = biografia;
 		this.sitioWeb = sitioWeb;
 	}
-/*
-	public Profesor(String nickname, String nombre, String apellido, String email, Date fechaNac, String descripcion, String biografia, String sitioWeb, InstitucionDeportiva institucion) {
-		super(nickname, nombre, apellido, email, fechaNac);
-		this.descripcion = descripcion;
-		this.biografia = biografia;
-		this.sitioWeb = sitioWeb;
-		this.institucion = institucion;
-	}*/
 
 	public String getDescripcion() {
 		return descripcion;

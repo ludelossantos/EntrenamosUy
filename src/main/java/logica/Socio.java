@@ -2,9 +2,12 @@ package logica;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 import datatypes.DtClase;
 import datatypes.DtSocio;
@@ -13,7 +16,8 @@ import datatypes.DtSocio;
 @DiscriminatorValue("S")
 public class Socio extends Usuario {
 	
-	//private ArrayList<Registro> clasesRegistradas = new ArrayList<>();
+	@OneToMany(mappedBy = "socio",cascade = CascadeType.ALL)
+	private List<Registro> clasesRegistradas = new ArrayList<>();
 	
 	public Socio() {
 		super();

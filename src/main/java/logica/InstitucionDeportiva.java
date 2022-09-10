@@ -3,8 +3,10 @@ package logica;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import datatypes.DtActividadDeportiva;
 
@@ -14,7 +16,13 @@ public class InstitucionDeportiva {
 	private String nombre;
 	private String descripcion;
 	private String url;
-	//private List<ActividadDeportiva> actividades = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "institucion",cascade = CascadeType.ALL)
+	private List<Profesor> profesores = new ArrayList<>();
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<ActividadDeportiva> actividades = new ArrayList<>();
+	
 	
 	//CONSTRUCTORES
 	

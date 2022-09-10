@@ -3,8 +3,11 @@ package logica;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import java.util.Date;
 
@@ -19,7 +22,9 @@ public class ActividadDeportiva {
 	private int duracion;
 	private float costo;
 	private Date fechaReg;
-	//private List<Clase> clases = new ArrayList<>();
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Clase> clases = new ArrayList<>();
 	
 	public ActividadDeportiva() {
 		super();
