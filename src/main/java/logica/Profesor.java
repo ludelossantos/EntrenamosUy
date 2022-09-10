@@ -2,6 +2,7 @@ package logica;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import datatypes.DtClase;
 import datatypes.DtProfesor;
@@ -12,7 +13,7 @@ public class Profesor extends Usuario {
 	private String biografia;
 	private String sitioWeb;
 	private InstitucionDeportiva institucion;
-	private ArrayList<Clase> clasesQueDicta;
+	private List<Clase> clasesQueDicta = new ArrayList<>();
 	
 	public Profesor() {
 		super();
@@ -33,13 +34,11 @@ public class Profesor extends Usuario {
 		this.institucion = institucion;
 	}
 
-	public Profesor(String nickname, String nombre, String apellido, String email, Date fechaNac, String descripcion, String biografia, String sitioWeb, InstitucionDeportiva institucion, ArrayList<Clase> clasesQueDicta) {
+	public Profesor(String nickname, String nombre, String apellido, String email, Date fechaNac, String descripcion, String biografia, String sitioWeb) {
 		super(nickname, nombre, apellido, email, fechaNac);
 		this.descripcion = descripcion;
 		this.biografia = biografia;
 		this.sitioWeb = sitioWeb;
-		this.institucion = institucion;
-		this.clasesQueDicta = clasesQueDicta;
 	}
 
 	public String getDescripcion() {
@@ -76,7 +75,7 @@ public class Profesor extends Usuario {
 		
 	}
 
-	public ArrayList<Clase> getClasesQueDicta() {
+	public List<Clase> getClasesQueDicta() {
 			return clasesQueDicta;
 	}
 
@@ -85,7 +84,7 @@ public class Profesor extends Usuario {
 	}
 
 	public DtUsuario getDtUsuario() {
-		return new DtProfesor(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac(), this.descripcion, this.biografia, this.sitioWeb, this.institucion, this.clasesQueDicta);
+		return new DtProfesor(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac(), this.descripcion, this.biografia, this.sitioWeb);
 	}
 	
 	public ArrayList<DtClase> obtenerClasesQueDicta(){

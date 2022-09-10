@@ -9,7 +9,7 @@ import datatypes.DtUsuario;
 
 public class Socio extends Usuario {
 	
-	private ArrayList<Registro> clasesRegistradas;
+	private ArrayList<Registro> clasesRegistradas = new ArrayList<>();
 	
 	public Socio() {
 		super();

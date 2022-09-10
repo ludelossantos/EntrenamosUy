@@ -34,19 +34,8 @@ public class ControllerConsultaUsuario implements IControllerConsultaUsuario{
 	@Override
 	public String[] listarClases(String nickname) {
 		UsuarioHandler uH = UsuarioHandler.getInstancia();
+		String[] clases_ret = null;
 		Usuario user = uH.buscarUsuarioNick(nickname);
-		String [] clases_ret = null;
-		if (user instanceof Profesor) {
-			Profesor p = (Profesor) user;
-			if(!p.obtenerClasesQueDicta().isEmpty()) {
-				clases_ret = new String[p.obtenerClasesQueDicta().size()];
-				int i=0;
-				for(DtClase c : p.obtenerClasesQueDicta()) {
-					clases_ret[i]=c.getNombre();
-					i++;
-				}
-			}
-		}
 		if (user instanceof Socio) {
 			Socio s = (Socio) user;
 			if(!s.obtenerClases().isEmpty()) {
@@ -54,6 +43,17 @@ public class ControllerConsultaUsuario implements IControllerConsultaUsuario{
 				int i = 0;
 				for (DtClase c : s.obtenerClases()) {
 					clases_ret[i] = c.getNombre();
+					i++;
+				}
+			}
+		}
+		if (user instanceof Profesor) {
+			Profesor p = (Profesor) user;
+			if(!p.obtenerClasesQueDicta().isEmpty()) {
+				clases_ret = new String[p.obtenerClasesQueDicta().size()];
+				int i=0;
+				for(DtClase c : p.obtenerClasesQueDicta()) {
+					clases_ret[i]=c.getNombre();
 					i++;
 				}
 			}
@@ -78,5 +78,48 @@ public class ControllerConsultaUsuario implements IControllerConsultaUsuario{
 			}
 		}
 		return activ_ret;
+	}
+
+	@Override
+	public DtClase DatosClase(String nickname, String nombreActiv) {
+		UsuarioHandler uH = UsuarioHandler.getInstancia();
+		Usuario user = uH.buscarUsuarioNick(nickname);
+		DtClase retorno = null;
+		if (user instanceof Socio) {
+			Socio s = (Socio) user;
+			ArrayList<DtClase> clases = s.obtenerClases();
+			for(DtClase c: clases) {
+				if(c.getNombre().equals(nombreActiv)) {
+					retorno = c;
+				}
+			}
+		}
+		if (user instanceof Profesor) {
+			Profesor p = (Profesor) user;
+			ArrayList<DtClase> clases = p.obtenerClasesQueDicta();
+			for(DtClase c: clases) {
+				if(c.getNombre().equals(nombreActiv)) {
+					retorno = c;
+				}
+			}
+		}
+		return retorno;
+	}
+
+	@Override
+	public DtActividadDeportiva DatosActiv(String nickname, String nombreActiv) {
+		UsuarioHandler uH = UsuarioHandler.getInstancia();
+		Usuario user = uH.buscarUsuarioNick(nickname);
+		DtActividadDeportiva retorno = null;
+		if (user instanceof Profesor) {
+			Profesor p = (Profesor) user;
+			ArrayList<DtActividadDeportiva> actividades = p.getInstitucion().obtenerActividades();
+			for (DtActividadDeportiva a : actividades) {
+				if(a.getNombre().equals(nombreActiv)){
+					retorno = a;
+				}
+			}
+		}
+		return retorno;
 	}
 }

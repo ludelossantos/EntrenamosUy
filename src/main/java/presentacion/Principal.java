@@ -59,7 +59,7 @@ public class Principal {
 		consultaUsuarioInternalFrame = new ConsultaUsuario(cUController);
 		jInternalFrameSize = consultaUsuarioInternalFrame.getSize();
 		consultaUsuarioInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-		    (desktopSize.height- jInternalFrameSize.height)/2);
+		    (desktopSize.height- (jInternalFrameSize.height)*2)/70);
 		consultaUsuarioInternalFrame.setVisible(false);
 		frame.getContentPane().add(consultaUsuarioInternalFrame);
 

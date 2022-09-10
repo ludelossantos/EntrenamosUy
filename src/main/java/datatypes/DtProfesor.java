@@ -32,13 +32,11 @@ public class DtProfesor extends DtUsuario {
 		this.institucion = institucion;
 	}
 	
-	public DtProfesor(String nickname, String nombre, String apellido, String email, Date fechaNac, String descripcion, String biografia, String sitioWeb, InstitucionDeportiva institucion, ArrayList<Clase> clasesQueDicta) {
+	public DtProfesor(String nickname, String nombre, String apellido, String email, Date fechaNac, String descripcion, String biografia, String sitioWeb) {
 		super(nickname, nombre, apellido, email, fechaNac);
 		this.descripcion = descripcion;
 		this.biografia = biografia;
 		this.sitioWeb = sitioWeb;
-		this.institucion = institucion;
-		this.clasesQueDicta = clasesQueDicta;
 	}
 
 	public String getDescripcion() {
