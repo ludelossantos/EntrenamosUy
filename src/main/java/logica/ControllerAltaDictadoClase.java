@@ -1,5 +1,6 @@
 package logica;
 
+
 import java.util.ArrayList;
 
 import datatypes.DtActividadDeportiva;
@@ -39,7 +40,7 @@ public class ControllerAltaDictadoClase implements IControllerAltaDictadoClase {
 		Profesor prof = (Profesor) usuario; //instancia Profesor
 		
 		if(!prof.getInstitucion().equals(institucion)) //verifico que el profesor trabaja en la institucion seleccionada
-			throw new ProfNoTrabajaInstitucion("El profesor '" + clase.getNickProfesor() + "' no trabaja en la institución '" + clase.getNomInstitucion() + "'");
+			throw new ProfNoTrabajaInstitucion("El profesor '" + clase.getNickProfesor() + "' no trabaja en la instituciï¿½n '" + clase.getNomInstitucion() + "'");
 		
 		nuevaClase = new Clase(); //faltan parametros
 	}

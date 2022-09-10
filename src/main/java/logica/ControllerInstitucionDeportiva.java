@@ -1,5 +1,6 @@
 package logica;
 
+
 import interfaces.IControllerInstitucionDeportiva;
 
 public class ControllerInstitucionDeportiva implements IControllerInstitucionDeportiva {

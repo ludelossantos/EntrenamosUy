@@ -16,8 +16,6 @@ import interfaces.Factory;
 import interfaces.IControllerAltaUsuario;
 import interfaces.IControllerRegistroClase;
 
-import logica.cargaDatos;
-
 public class Principal {
 
 	private JFrame frame;
@@ -50,9 +48,6 @@ public class Principal {
 
 		Dimension desktopSize = frame.getSize();
 		Dimension jInternalFrameSize;
-		
-		cargaDatos carga = new cargaDatos();
-		carga.cargarDatos();//BORRAR ---------------------------------------------------------------
 		
 				altaUsuarioInternalFrame = new AltaUsuario(aUController);
 				jInternalFrameSize = altaUsuarioInternalFrame.getSize();
