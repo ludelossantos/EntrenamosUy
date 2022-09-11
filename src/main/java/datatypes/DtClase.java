@@ -29,6 +29,15 @@ public class DtClase {
 		this.nomInstitucion = nomInstitucion;
 	}
 
+	public DtClase(String nombre, Date fecha, Time horaInicio, String url, Date fechaReg) {
+		super();
+		this.nombre = nombre;
+		this.fecha = fecha;
+		this.horaInicio = horaInicio;
+		this.url = url;
+		this.fechaReg = fechaReg;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}

@@ -1,5 +1,7 @@
 package interfaces;
 
+import java.util.ArrayList;
+
 import datatypes.DtActividadDeportiva;
 import datatypes.DtClase;
 
@@ -14,5 +16,5 @@ public interface IControllerConsultaUsuario {
 	public String[] listarActividades(String nickname);
 	public DtClase DatosClase(String nickname, String nombreActiv);
 	public DtActividadDeportiva DatosActiv(String nickname, String nombreActiv);
-
+	public ArrayList<DtUsuario> listarDatosUsuarios();
 }

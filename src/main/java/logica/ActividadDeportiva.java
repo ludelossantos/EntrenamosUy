@@ -90,7 +90,7 @@ public class ActividadDeportiva {
 	}
 
 	public DtActividadDeportiva getDtActividadDeportiva() {
-		return new DtActividadDeportiva(nombre,descripcion, duracion, costo, fechaReg);
+		return new DtActividadDeportiva(this.getNombre(), this.getDescripcion(), this.getDuracion(), this.getCosto(), this.getFechaReg());
 	}
 
 	// METODOS
@@ -127,6 +127,18 @@ public class ActividadDeportiva {
 			listado.add(c);
 		}
 		return listado;
+	}
+	
+	public DtActividadDeportiva getDtActividadDeportiva() {
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		javax.persistence.Query query = em.createQuery("select c from Clase c");
+		List<Clase> clases = (List<Clase>) query.getResultList();
+		ArrayList<String> listadoClases = new ArrayList<>();
+		for(Clase c: clases) {
+			listadoClases.add(c.getNombre());
+		}
+		return new DtActividadDeportiva(nombre,descripcion, duracion, costo, fechaReg, listadoClases);
 	}
 
 }

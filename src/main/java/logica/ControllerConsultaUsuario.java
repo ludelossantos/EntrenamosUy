@@ -122,4 +122,16 @@ public class ControllerConsultaUsuario implements IControllerConsultaUsuario{
 		}
 		return retorno;
 	}
+	
+	@Override
+	public ArrayList<DtUsuario> listarDatosUsuarios() {
+		UsuarioHandler uH = UsuarioHandler.getInstancia();
+		ArrayList<Usuario> usuarios = uH.getUsuarios();
+		ArrayList<DtUsuario> dtUsuarios = new ArrayList<>();
+		for(Usuario u : usuarios) {
+			dtUsuarios.add(u.getDtUsuario());
+		}
+		return dtUsuarios;
+	}
+	
 }
