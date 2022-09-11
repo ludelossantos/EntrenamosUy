@@ -27,6 +27,7 @@ import logica.InstitucionDeportiva;
 import javax.swing.ScrollPaneConstants;
 
 import com.toedter.calendar.JDateChooser;
+import javax.swing.border.LineBorder;
 
 public class AltaUsuario extends JInternalFrame {
 
@@ -129,6 +130,7 @@ public class AltaUsuario extends JInternalFrame {
 		getContentPane().add(comboBoxUsuario);
 			
 		JPanel panel = new JPanel();
+		panel.setBorder(new LineBorder(Color.LIGHT_GRAY));
 		panel.setBounds(49, 165, 790, 270);
 		getContentPane().add(panel);
 		panel.setLayout(null);
@@ -188,7 +190,7 @@ public class AltaUsuario extends JInternalFrame {
 		comboBoxInstitucion = new JComboBox<String>();
 		comboBoxInstitucion.setBounds(105, 12, 675, 25);
 		panel.add(comboBoxInstitucion);
-		//comboBoxInstitucion.setEnabled(false);
+		comboBoxInstitucion.setEnabled(false);
 		
 		comboBoxUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent eve) {
@@ -199,7 +201,7 @@ public class AltaUsuario extends JInternalFrame {
 					textAreaBiografia.setEnabled(true);
 					textFieldSitioWeb.setEnabled(true);
 					comboBoxInstitucion.setEnabled(true);
-					inicializarInstituciones();
+					//inicializarInstituciones();
 				}else {
 					comboBoxUsuario.setSelectedItem(true);
 					textAreaDescripcion.setEnabled(false);

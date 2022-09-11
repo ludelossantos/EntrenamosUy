@@ -84,8 +84,8 @@ public class Principal {
 		
 		consultaUsuarioInternalFrame = new ConsultaUsuario(cUController);
 		jInternalFrameSize = consultaUsuarioInternalFrame.getSize();
-		consultaUsuarioInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-		    (desktopSize.height- (jInternalFrameSize.height)*2)/70);
+		consultaUsuarioInternalFrame.setLocation(121,
+		    28);
 		consultaUsuarioInternalFrame.setVisible(false);
 		frame.getContentPane().add(consultaUsuarioInternalFrame);
 		
@@ -117,6 +117,7 @@ public class Principal {
 		mntmUsuarioAlta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mntmUsuarioAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				altaUsuarioInternalFrame.inicializarInstituciones();
 				altaUsuarioInternalFrame.setVisible(true);
 			}
 		});

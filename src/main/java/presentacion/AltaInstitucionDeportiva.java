@@ -36,51 +36,46 @@ public class AltaInstitucionDeportiva extends JInternalFrame {
 		setResizable(false);
         setIconifiable(false);
         setMaximizable(false);
-        setBounds(100, 100, 450, 450);
+        setBounds(100, 100, 682, 438);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setClosable(true);
         setTitle("Alta Institucion Deportiva");	
 		getContentPane().setLayout(null);
 		
-		JLabel lblTitulo = new JLabel("Alta de Institución Deportiva");
-		lblTitulo.setFont(new Font("Palatino Linotype", Font.BOLD, 20));
-		lblTitulo.setBounds(87, 36, 271, 42);
-		getContentPane().add(lblTitulo);
-		
-		JLabel lblNombre = new JLabel("Nombre:");
+		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblNombre.setBounds(49, 118, 84, 28);
+		lblNombre.setBounds(48, 42, 84, 28);
 		getContentPane().add(lblNombre);
 		
 		txtNombre = new JTextField();
 		txtNombre.setToolTipText("Ingrese Nombre de la Institución");
 		txtNombre.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		txtNombre.setBounds(155, 118, 213, 28);
+		txtNombre.setBounds(126, 43, 488, 25);
 		txtNombre.setColumns(10);
 		getContentPane().add(txtNombre);
 		
-		JLabel lblDescripcion = new JLabel("Descripcion:");
+		JLabel lblDescripcion = new JLabel("Descripción");
 		lblDescripcion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblDescripcion.setBounds(49, 172, 98, 31);
+		lblDescripcion.setBounds(48, 80, 98, 31);
 		getContentPane().add(lblDescripcion);
 		
 		/*JTextArea*/ txtADescripcion = new JTextArea();
 		txtADescripcion.setToolTipText("Ingrese Descripcion");
 		txtADescripcion.setLineWrap(true);
 		txtADescripcion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		txtADescripcion.setBounds(155, 172, 213, 70);
+		txtADescripcion.setBounds(48, 121, 566, 147);
 		getContentPane().add(txtADescripcion);
 		
-		JLabel lblUrl = new JLabel("URL:");
+		JLabel lblUrl = new JLabel("URL");
 		lblUrl.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblUrl.setBounds(49, 268, 51, 28);
+		lblUrl.setBounds(48, 278, 51, 28);
 		getContentPane().add(lblUrl);
 		
 		txtUrl = new JTextField();
 		txtUrl.setToolTipText("Ingrese URL (www...)");
 		txtUrl.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		txtUrl.setColumns(10);
-		txtUrl.setBounds(155, 268, 213, 28);
+		txtUrl.setBounds(97, 279, 517, 25);
 		getContentPane().add(txtUrl);
 		
 		JButton btnCancelar = new JButton("Cancelar");
@@ -92,7 +87,7 @@ public class AltaInstitucionDeportiva extends JInternalFrame {
 			}
 		});
 		btnCancelar.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		btnCancelar.setBounds(74, 343, 115, 37);
+		btnCancelar.setBounds(374, 324, 115, 35);
 		getContentPane().add(btnCancelar);
 		
 		JButton btnAceptar = new JButton("Aceptar");
@@ -102,7 +97,7 @@ public class AltaInstitucionDeportiva extends JInternalFrame {
 			}
 		});
 		btnAceptar.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		btnAceptar.setBounds(243, 343, 115, 37);
+		btnAceptar.setBounds(499, 324, 115, 35);
 		getContentPane().add(btnAceptar);
 
 	}
