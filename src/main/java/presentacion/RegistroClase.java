@@ -134,7 +134,7 @@ public class RegistroClase extends JInternalFrame {
 	public void inicializarComboBoxes() {
 		DefaultComboBoxModel<String> modelinsti = new DefaultComboBoxModel<String>(rCController.listarInstituciones());
 		comboBoxInstitucion.setModel(modelinsti);
-		comboBoxInstitucion.setSelectedIndex(0);
+		//comboBoxInstitucion.setSelectedIndex(0);
 		DefaultComboBoxModel<String> modelsocios = new DefaultComboBoxModel<String>(rCController.listarSocios());
 		comboBoxSocio.setModel(modelsocios);
 		comboBoxSocio.setSelectedIndex(0);
@@ -184,7 +184,20 @@ public class RegistroClase extends JInternalFrame {
 	}
 	
 	private boolean checkFormulario() {
-		return true;//completar 
+		if(comboBoxInstitucion.getSelectedItem() == null) {
+			JOptionPane.showMessageDialog(this, "Seleccione la institución.", "Registro a dictado de Clase", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		String actividad = this.comboBoxActDepor.getSelectedItem().toString();
+		String datClase = this.listSetClases.getSelectedValue().toString();
+		String nombApe = this.comboBoxSocio.getSelectedItem().toString();
+		java.util.Date fechaReg = this.dateChooserFechaReg.getDate();
+
+		if(actividad.isEmpty() || datClase.isEmpty() || nombApe.isEmpty() || (fechaReg==null)){		
+			JOptionPane.showMessageDialog(this, "Complete todos los campos.", "Registro a dictado de Clase", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		return true;
 	}
 	
 	private void limpiarFormulario() {

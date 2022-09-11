@@ -199,13 +199,13 @@ public class AltaUsuario extends JInternalFrame {
 					textAreaBiografia.setEnabled(true);
 					textFieldSitioWeb.setEnabled(true);
 					comboBoxInstitucion.setEnabled(true);
-					//inicializarInstituciones();
+					inicializarInstituciones();
 				}else {
 					comboBoxUsuario.setSelectedItem(true);
 					textAreaDescripcion.setEnabled(false);
 					textAreaBiografia.setEnabled(false);
 					textFieldSitioWeb.setEnabled(false);
-					//comboBoxInstitucion.setEnabled(false);
+					comboBoxInstitucion.setEnabled(false);
 				}				
 			}
 		});		
@@ -241,7 +241,7 @@ public class AltaUsuario extends JInternalFrame {
 	public void inicializarInstituciones() {
 		DefaultComboBoxModel<String> modelinsti = new DefaultComboBoxModel<String>(aUController.listarInstituciones());
 		comboBoxInstitucion.setModel(modelinsti);
-		comboBoxInstitucion.setSelectedIndex(0);
+		//comboBoxInstitucion.setSelectedIndex(0);
 	}
 	
 	protected void altaUsuarioAceptarActionPerformed(ActionEvent arg0){
@@ -284,12 +284,14 @@ public class AltaUsuario extends JInternalFrame {
 		}
 }
 	
-	private boolean checkFormulario() {
+	private boolean checkFormulario() {		
 		String nickname = this.textFieldNickname.getText();
 		String nombre = this.textFieldNombre.getText();
 		String apellido = this.textFieldApellido.getText();
 		String email = this.textFieldEmail.getText();
 		java.util.Date fechaNac = this.dateChooser.getDate();
+		String tipoU = this.comboBoxUsuario.getSelectedItem().toString();
+		String descripcion = this.textAreaDescripcion.getText();
 		
 		if(nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || (fechaNac==null)){		
 			/*if(nickname.isEmpty())
@@ -303,6 +305,14 @@ public class AltaUsuario extends JInternalFrame {
 			if(fechaNac==null)
 				this.dateChooser.setBackground(Color.PINK);*/
 			JOptionPane.showMessageDialog(this, "Complete los campos en blanco.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		if(tipoU.equals("Profesor") && comboBoxInstitucion.getSelectedItem() == null) {
+			JOptionPane.showMessageDialog(this, "Seleccione la institución.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		if(tipoU.equals("Profesor") && descripcion.isEmpty()) {
+			JOptionPane.showMessageDialog(this, "Ingrese una descripción.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 		return true;
