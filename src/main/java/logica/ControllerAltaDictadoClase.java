@@ -1,9 +1,10 @@
 package logica;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.TreeMap;
+//import java.util.TreeMap;
 
 import datatypes.DtActividadDeportiva;
 import datatypes.DtClase;
@@ -20,7 +21,7 @@ public class ControllerAltaDictadoClase implements IControllerAltaDictadoClase {
 		InstitucionDeportiva institucion = idh.buscarInstitucionDeportiva(nombre);
 		ArrayList<DtActividadDeportiva> actividades = institucion.obtenerActividades();
 		ArrayList<Map<DtActividadDeportiva,String>> listaActividades = new ArrayList<>();
-		Map<DtActividadDeportiva,String> pair = new TreeMap<DtActividadDeportiva,String>();
+		Map<DtActividadDeportiva,String> pair = new HashMap<DtActividadDeportiva,String>();
 		for(DtActividadDeportiva dta : actividades) {
 			String concat = new String();
 			concat = dta.getNombre() + " - " + dta.getDescripcion();
