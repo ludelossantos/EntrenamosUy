@@ -10,21 +10,27 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import java.util.Date;
-
 import datatypes.DtActividadDeportiva;
 import datatypes.DtClase;
 import persistencia.Conexion;
+import java.math.BigDecimal;
+
+import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Date;
+
+import datatypes.DtActividadDeportiva;
 
 @Entity
 public class ActividadDeportiva {
 	@Id
 	private String nombre;
 	private String descripcion;
-	private int duracion;
-	private float costo;
+	private Float duracion;
+	private BigDecimal costo;
 	private Date fechaReg;
-	
+		
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Clase> clases = new ArrayList<>();
 	
@@ -33,7 +39,7 @@ public class ActividadDeportiva {
 		super();
 	}
 
-	public ActividadDeportiva(String nombre, String descripcion, int duracion, float costo, Date fechaReg) {
+	public ActividadDeportiva(String nombre, String descripcion, Float duracion, BigDecimal costo, Date fechaReg) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -59,19 +65,19 @@ public class ActividadDeportiva {
 		this.descripcion = descripcion;
 	}
 
-	public int getDuracion() {
+	public Float getDuracion() {
 		return duracion;
 	}
 
-	public void setDuracion(int duracion) {
+	public void setDuracion(Float duracion) {
 		this.duracion = duracion;
 	}
 
-	public float getCosto() {
+	public BigDecimal getCosto() {
 		return costo;
 	}
 
-	public void setCosto(float costo) {
+	public void setCosto(BigDecimal costo) {
 		this.costo = costo;
 	}
 
@@ -86,7 +92,7 @@ public class ActividadDeportiva {
 	public DtActividadDeportiva getDtActividadDeportiva() {
 		return new DtActividadDeportiva(nombre,descripcion, duracion, costo, fechaReg);
 	}
-	
+
 	// METODOS
 	public void agregarClase(Clase clase) {
 		this.clases.add(clase);
@@ -122,4 +128,5 @@ public class ActividadDeportiva {
 		}
 		return listado;
 	}
+
 }

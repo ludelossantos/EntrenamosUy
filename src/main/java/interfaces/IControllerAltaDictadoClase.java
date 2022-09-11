@@ -11,6 +11,6 @@ import excepciones.ProfNoTrabajaInstitucion;
 
 public interface IControllerAltaDictadoClase {
 	public ArrayList<DtActividadDeportiva> listarActividades(String nombre);
-	
+	public String[] listarActividades(String nombre);
 	public void altaClase(DtClase clase) throws ClaseRepetidaException, NoExisteUsuarioException, EsSocioException, ProfNoTrabajaInstitucion;
 }

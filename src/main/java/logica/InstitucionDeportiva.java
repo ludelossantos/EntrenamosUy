@@ -99,6 +99,5 @@ public class InstitucionDeportiva {
 			lista.add(a);
 		}
 		return lista;
-	}	
-		
+	}		
 }

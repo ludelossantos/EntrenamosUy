@@ -99,7 +99,7 @@ public class Profesor extends Usuario {
 		}
 		return lista;		
 	}
-	
+		
 	public void agregarClase(Clase clase) {
 		this.clasesQueDicta.add(clase);
 	}
