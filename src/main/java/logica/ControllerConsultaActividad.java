@@ -16,7 +16,7 @@ public class ControllerConsultaActividad implements IControllerConsultaActividad
 
 	@Override
 	public String[] listarActividades(String nombreInstitucion) {
-		/*
+		
 		InstitucionDeportivaHandler instiHand = InstitucionDeportivaHandler.getInstancia();
 		InstitucionDeportiva insti = instiHand.buscarInstitucionDeportiva(nombreInstitucion);
 		ArrayList<DtActividadDeportiva> actividades = insti.obtenerActividades();
@@ -26,9 +26,9 @@ public class ControllerConsultaActividad implements IControllerConsultaActividad
 			listado[i] = a.getNombre();
 			i++;
 		}
-		return listado;		*/
+		return listado;		/*
 		return InstitucionDeportivaHandler.getInstancia().buscarInstitucionDeportiva(nombreInstitucion)
-		.obtenerActividadesObjeto().stream().map(i -> i.getNombre()).toArray(String[]::new);
+		.obtenerActividadesObjeto().stream().map(i -> i.getNombre()).toArray(String[]::new);*/
 	}
 
 	@Override

@@ -1,12 +1,12 @@
 package presentacion;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.JInternalFrame;
@@ -18,15 +18,15 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SpinnerDateModel;
 import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
 import com.toedter.calendar.JDateChooser;
 
-import datatypes.DtActividadDeportiva;
 import datatypes.DtClase;
 import excepciones.ClaseRepetidaException;
 import excepciones.EsSocioException;
@@ -35,6 +35,7 @@ import excepciones.ProfNoTrabajaInstitucion;
 import interfaces.IControllerAltaDictadoClase;
 import interfaces.IControllerInstitucionDeportiva;
 import javax.swing.SwingConstants;
+import java.awt.ScrollPane;
 
 public class AltaDictadoClase extends JInternalFrame {
 
@@ -43,7 +44,7 @@ public class AltaDictadoClase extends JInternalFrame {
 	private IControllerAltaDictadoClase altaDictadoClaseController;
 	//private IControllerInstitucionDeportiva instDepController;
 	private JComboBox<String> comboBoxInstitucion;
-	private JList<DtActividadDeportiva> listActividades;
+	private JList<String> listActividades;
 	private JTextField textFieldNombre;
 	private JDateChooser dateChooserFecha;
 	private JSpinner spinnerHorario;
@@ -86,15 +87,16 @@ public class AltaDictadoClase extends JInternalFrame {
 		lblActividades.setBounds(247, 58, 196, 22);
 		getContentPane().add(lblActividades);
 		
-		listActividades = new JList<DtActividadDeportiva>();
+		listActividades = new JList<String>();
 		listActividades.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listActividades.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		listActividades.setBounds(247, 93, 408, 79);
+		listActividades.setBounds(247, 100, 379, 68);
+		listActividades.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		getContentPane().add(listActividades);
 		
-		JScrollBar scrollBar_1 = new JScrollBar();
-		scrollBar_1.setBounds(634, 93, 21, 79);
-		getContentPane().add(scrollBar_1);
+		JScrollPane scrollPane = new JScrollPane(listActividades);
+		scrollPane.setBounds(247, 93, 408, 79);
+		getContentPane().add(scrollPane);
 
 		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(new Font("Segoe UI", Font.PLAIN, 16));
@@ -194,17 +196,23 @@ public class AltaDictadoClase extends JInternalFrame {
 		getContentPane().add(lblTitulo);
 		
 		
+		
+		
 	}
 	
+
 	protected void aceptarAltaClaseActionPerformed(ActionEvent arg0) {
 		if(checkFormulario()) {
 			String nomInstitucion = this.comboBoxInstitucion.getSelectedItem().toString();
-			DtActividadDeportiva actividad = this.listActividades.getSelectedValue();
+			String actividad = this.listActividades.getSelectedValue();
 			String nombre = this.textFieldNombre.getText();
 			String profesor = this.textFieldProfesor.getText();
 			String url = this.textFieldURL.getText();
 			Date fecha = this.dateChooserFecha.getDate();
-			Time hora = (Time) spinnerHorario.getValue();
+			
+			Calendar c  = Calendar.getInstance();
+			Date hora = (Date) spinnerHorario.getValue();
+			c.setTime(hora);
 			
 			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); //parseo de string a date
 			Date fechaAlta = null;
@@ -214,12 +222,12 @@ public class AltaDictadoClase extends JInternalFrame {
 				e.printStackTrace();
 			}
 			
-			DtClase clase = new DtClase(nombre, fecha, hora, url, fechaAlta, actividad.getNombre(), profesor, nomInstitucion);
+			DtClase clase = new DtClase(nombre, fecha, c.getTime(), url, fechaAlta, actividad, profesor, nomInstitucion);
 			
 			try {
 				this.altaDictadoClaseController.altaClase(clase);
 				JOptionPane.showMessageDialog(this, "La clase se ha programado con éxito", "Alta Dictado Clase", JOptionPane.INFORMATION_MESSAGE);
-				System.out.println("crea clase "+ clase.getNombre() +"de la actividad deportiva "+ clase.getNomActividad() +" en la institucion "+ clase.getNomInstitucion() +"");
+				System.out.println("crea clase "+ clase.getNombre() +"de la actividad deportiva "+ clase.getActividad() +" en la institucion "+ clase.getNomInstitucion() +"");
 				limpiarFormulario();
 				setVisible(false);
 			} catch(ClaseRepetidaException cr) {
@@ -242,20 +250,10 @@ public class AltaDictadoClase extends JInternalFrame {
 	protected void cargarActividades(ActionEvent e) {
 		if(comboBoxInstitucion.getSelectedItem() != null) {
 			String institucion = this.comboBoxInstitucion.getSelectedItem().toString();
-			ArrayList<DtActividadDeportiva> actividades = altaDictadoClaseController.listarActividades(institucion);
-			DefaultListModel<DtActividadDeportiva> modelActividades = new DefaultListModel<DtActividadDeportiva>();
-			for(DtActividadDeportiva dtad : actividades) {
-				modelActividades.addElement(dtad);
-			}
+			DefaultComboBoxModel<String> modelActividades = new DefaultComboBoxModel<>(altaDictadoClaseController.listarActividades(institucion));
 			listActividades.setModel(modelActividades);
+			listActividades.setSelectedIndex(0);
 		}
-		/*if(comboBoxActDepor.getSelectedIndex()!=0) {
-			String institucion = this.comboBoxInstitucion.getSelectedItem().toString();
-			String actividad = this.comboBoxActDepor.getSelectedItem().toString();
-			DefaultComboBoxModel<String> modelclases = new DefaultComboBoxModel<String>(rCController.listarClasesActividad(institucion, actividad));
-			listSetClases.setModel(modelclases);
-			listSetClases.setSelectedIndex(0);
-		}*/
 	}
 	
 	private boolean checkFormulario() {

@@ -79,5 +79,17 @@ public class UsuarioHandler {
 			}
 		}			
 		return listado;
-	}		
+	}
+	public ArrayList<Usuario> getUsuarios(){
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		javax.persistence.Query query = em.createQuery("select u from Usuario u");
+		List<Usuario> usuarios = (List<Usuario>) query.getResultList();
+		ArrayList<Usuario> listUsuario = new ArrayList<>(); 
+		for (Usuario user : usuarios) {
+			listUsuario.add(user);
+		}
+		return listUsuario;	
+	}
+
 }
