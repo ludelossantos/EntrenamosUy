@@ -11,7 +11,9 @@ import datatypes.DtSocio;
 import persistencia.Conexion;  
 
 public class UsuarioHandler {
+	//SINGLETON
 	private static UsuarioHandler instancia = null;
+	
 	private UsuarioHandler() {
 		super();
 	}
@@ -21,7 +23,8 @@ public class UsuarioHandler {
 			instancia = new UsuarioHandler();
 		return instancia;
 	}
-
+	
+	//METODOS
 	public Usuario buscarUsuarioNick(String nickname) {
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();

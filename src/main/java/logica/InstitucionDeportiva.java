@@ -29,8 +29,7 @@ public class InstitucionDeportiva {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<ActividadDeportiva> actividades = new ArrayList<>();
-	
-	
+		
 	//CONSTRUCTORES
 	
 	public InstitucionDeportiva() {
@@ -67,6 +66,17 @@ public class InstitucionDeportiva {
 
 	//METODOS
 
+	public ActividadDeportiva buscarActividad(String nombre) {
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		ActividadDeportiva actividad = em.find(ActividadDeportiva.class, nombre);
+		return actividad;
+	}
+
+	public void agregarActividadDeportiva(ActividadDeportiva actividad) {
+		actividades.add(actividad);
+	}
+	
 	public ArrayList<DtActividadDeportiva> obtenerActividades(){
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
@@ -78,18 +88,7 @@ public class InstitucionDeportiva {
 		}
 		return lista;
 	}
-	
-	public ActividadDeportiva buscarActividad(String nombre) {
-		Conexion conexion = Conexion.getInstancia();
-		EntityManager em = conexion.getEntityManager();
-		ActividadDeportiva actividad = em.find(ActividadDeportiva.class, nombre);
-		return actividad;
-	}
-	
-	public void agregarActividadDeportiva(ActividadDeportiva actividad) {
-		actividades.add(actividad);
-	}
-	
+
 	public ArrayList<ActividadDeportiva> obtenerActividadesObjeto(){
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
@@ -100,6 +99,6 @@ public class InstitucionDeportiva {
 			lista.add(a);
 		}
 		return lista;
-	}
+	}	
 		
 }

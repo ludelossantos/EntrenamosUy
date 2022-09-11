@@ -23,6 +23,7 @@ public class Registro {
 	@Temporal(TemporalType.DATE)
 	private Date fechaReg;
 
+	//CONSTRUCTORES
 	public Registro() {
 		super();
 	}
@@ -35,6 +36,7 @@ public class Registro {
 		
 	}
 
+	//GETTERS Y SETTERS
 	public Socio getSocio() {
 		return socio;
 	}

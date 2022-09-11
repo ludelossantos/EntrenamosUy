@@ -29,6 +29,7 @@ public class Profesor extends Usuario {
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Clase> clasesQueDicta = new ArrayList<>();
 	
+	//CONSTRUCTORES
 	public Profesor() {
 		super();
 	}
@@ -40,6 +41,7 @@ public class Profesor extends Usuario {
 		this.sitioWeb = sitioWeb;
 	}
 	
+	//GETTERS Y SETTERS
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -85,6 +87,7 @@ public class Profesor extends Usuario {
 		return new DtProfesor(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac(), this.descripcion, this.biografia, this.sitioWeb);
 	}
 	
+	//METODOS
 	public ArrayList<DtClase> obtenerClasesQueDicta(){
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();

@@ -12,7 +12,6 @@ public class ControllerInstitucionDeportiva implements IControllerInstitucionDep
 		super();
 	}
 	
-	
 	// METODOS
 
 	@Override
@@ -34,11 +33,4 @@ public class ControllerInstitucionDeportiva implements IControllerInstitucionDep
         return institucion != null;
 	}
 
-/*
-	@Override
-	public void modificarInstitucionDeportiva(InstitucionDeportiva iD, String nombre, String descripcion, String url) {
-		// TODO Auto-generated method stub
-		
-	}
-*/
 }

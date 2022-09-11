@@ -24,6 +24,7 @@ public class Clase {
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Registro> sociosRegistrados = new ArrayList<>();
 	
+	//CONSTRUCTORES
 	public Clase() {
 		super();
 	}
@@ -37,6 +38,7 @@ public class Clase {
 		this.fechaReg = fechaReg;
 	}
 
+	//GETTERS Y SETTERS
 	public String getNombre() {
 		return nombre;
 	}
@@ -81,6 +83,7 @@ public class Clase {
 		return new DtClase(nombre, fecha, horaInicio, url, fechaReg);
 	}
 
+	//METODOS
 	public void agregarRegistro(Registro registro) {
 		sociosRegistrados.add(registro);
 	}

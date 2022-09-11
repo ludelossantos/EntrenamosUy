@@ -9,8 +9,7 @@ import persistencia.Conexion;
 public class InstitucionDeportivaHandler {
 	//SINGLETON
 	private static InstitucionDeportivaHandler instancia = null;
-	//private List<InstitucionDeportiva>institucionesDeportivas = new ArrayList<>();
-	
+
 	private InstitucionDeportivaHandler() {}
 	
 	public static InstitucionDeportivaHandler getInstancia() {
@@ -24,7 +23,6 @@ public class InstitucionDeportivaHandler {
 	public void agregarInstitucionDeportiva(InstitucionDeportiva institucion) {
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
-		
 		em.getTransaction().begin();
 		em.persist(institucion);
 		em.getTransaction().commit();
@@ -67,5 +65,5 @@ public class InstitucionDeportivaHandler {
 		InstitucionDeportiva insti = em.find(InstitucionDeportiva.class, nombre);
 		return insti;
 	}
-	
+
 }

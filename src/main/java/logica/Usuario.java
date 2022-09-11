@@ -20,6 +20,7 @@ public abstract class Usuario {
     private String email;
     private Date fechaNac;
     
+    //CONSTRUCTORES
 	public Usuario() {
 		super();
 	}
@@ -33,6 +34,7 @@ public abstract class Usuario {
 		this.fechaNac = fechaNac;
 	}
 
+	//GETTERS Y SETTERS
 	public String getNickname() {
 		return nickname;
 	}

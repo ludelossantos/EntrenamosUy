@@ -21,6 +21,7 @@ public class Socio extends Usuario {
 	@OneToMany(mappedBy = "socio",cascade = CascadeType.ALL)
 	private List<Registro> clasesRegistradas = new ArrayList<>();
 	
+	//CONSTRUCTORES
 	public Socio() {
 		super();
 	}
@@ -29,6 +30,12 @@ public class Socio extends Usuario {
 		super(nickname, nombre, apellido, email, fechaNac);
 	}
 	
+	//GETTERS Y SETTERS
+	public DtSocio getDtSocio() {
+		return new DtSocio(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac());
+	}
+	
+	//METODOS
 	public void agregarRegistro(Registro registro) {
 		clasesRegistradas.add(registro);
 	}
@@ -45,7 +52,4 @@ public class Socio extends Usuario {
 		return lista;
 	}
 	
-	public DtSocio getDtSocio() {
-		return new DtSocio(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac());
-	}
 }

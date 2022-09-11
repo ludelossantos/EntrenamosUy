@@ -28,6 +28,7 @@ public class ActividadDeportiva {
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Clase> clases = new ArrayList<>();
 	
+	//CONSTRUCTORES
 	public ActividadDeportiva() {
 		super();
 	}
@@ -40,7 +41,8 @@ public class ActividadDeportiva {
 		this.costo = costo;
 		this.fechaReg = fechaReg;
 	}
-
+	
+	//GETTERS & SETTERS
 	public String getNombre() {
 		return nombre;
 	}
@@ -82,9 +84,10 @@ public class ActividadDeportiva {
 	}
 
 	public DtActividadDeportiva getDtActividadDeportiva() {
-		return new DtActividadDeportiva(nombre,descripcion);
+		return new DtActividadDeportiva(nombre,descripcion, duracion, costo, fechaReg);
 	}
 	
+	// METODOS
 	public void agregarClase(Clase clase) {
 		this.clases.add(clase);
 	}

@@ -17,6 +17,7 @@ import interfaces.Factory;
 import interfaces.IControllerAltaUsuario;
 import interfaces.IControllerRegistroClase;
 import interfaces.IControllerInstitucionDeportiva;
+import interfaces.IControllerConsultaActividad;
 import interfaces.IControllerConsultaUsuario;
 
 public class Principal {
@@ -26,6 +27,7 @@ public class Principal {
 	private RegistroClase registroClaseInternalFrame;
 	private AltaInstitucionDeportiva altaInstitucionDeportivaInternalFrame;
 	private ConsultaUsuario consultaUsuarioInternalFrame;
+	private ConsultaActividad consultaActividadInternalFrame;
 
 	/**
      * Launch the application.
@@ -48,12 +50,14 @@ public class Principal {
      */
 	public Principal() {
 		initialize();
+
 		Factory fabrica = Factory.getInstance();
 		IControllerAltaUsuario aUController = fabrica.getIControllerAltaUsuario();
 		IControllerRegistroClase rCController = fabrica.getIControllerRegistroClase();
 		IControllerConsultaUsuario cUController = fabrica.getIControllerConsultaUsuario(); 
 		IControllerInstitucionDeportiva aIDController = fabrica.getIControllerInstitucionDeportiva();
-		
+		IControllerConsultaActividad cAController = fabrica.getIControllerConsultaActividad();
+
 		Dimension desktopSize = frame.getSize();
 		Dimension jInternalFrameSize;
 		
@@ -84,6 +88,13 @@ public class Principal {
 		    (desktopSize.height- (jInternalFrameSize.height)*2)/70);
 		consultaUsuarioInternalFrame.setVisible(false);
 		frame.getContentPane().add(consultaUsuarioInternalFrame);
+		
+		consultaActividadInternalFrame = new ConsultaActividad(cAController);
+		jInternalFrameSize = consultaActividadInternalFrame.getSize();
+		consultaActividadInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+		    (desktopSize.height- jInternalFrameSize.height)/2);
+		consultaActividadInternalFrame.setVisible(false);
+		frame.getContentPane().add(consultaActividadInternalFrame);
 
 	}
 	/**
@@ -151,6 +162,12 @@ public class Principal {
 		mnActividadDeportiva.add(mntmActDepoAlta);
 
 		JMenuItem mntmActDepoConsulta = new JMenuItem("Consulta");
+		mntmActDepoConsulta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				consultaActividadInternalFrame.cargarComboInstituciones();
+				consultaActividadInternalFrame.setVisible(true);
+			}
+		});
 		mntmActDepoConsulta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnActividadDeportiva.add(mntmActDepoConsulta);
 
