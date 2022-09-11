@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import datatypes.DtActividadDeportiva;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
@@ -21,7 +23,7 @@ public class InstitucionDeportiva {
 	private String nombre;
 	private String descripcion;
 	private String url;
-	
+		
 	@OneToMany(mappedBy = "institucion",cascade = CascadeType.ALL)
 	private List<Profesor> profesores = new ArrayList<>();
 	
@@ -41,7 +43,6 @@ public class InstitucionDeportiva {
 		this.descripcion = descripcion;
 		this.url = url;
 	}
-
 
 	// GETTERS & SETTERS
 	
@@ -64,7 +65,6 @@ public class InstitucionDeportiva {
 		this.url = url;
 	}
 
-
 	//METODOS
 
 	public ArrayList<DtActividadDeportiva> obtenerActividades(){
@@ -83,10 +83,6 @@ public class InstitucionDeportiva {
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
 		ActividadDeportiva actividad = em.find(ActividadDeportiva.class, nombre);
-		/*for(ActividadDeportiva a : actividades) {
-			if(a.getNombre().equals(nombre))
-				actividad = a;
-		}*/
 		return actividad;
 	}
 	
@@ -105,5 +101,5 @@ public class InstitucionDeportiva {
 		}
 		return lista;
 	}
-	
+		
 }

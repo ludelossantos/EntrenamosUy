@@ -32,6 +32,7 @@ public class Registro {
 		this.socio = socio;
 		this.clase = clase;
 		this.fechaReg = fechaReg;
+		
 	}
 
 	public Socio getSocio() {
@@ -57,6 +58,5 @@ public class Registro {
 	public void setFechaReg(Date fechaReg) {
 		this.fechaReg = fechaReg;
 	}
-	
 	
 }

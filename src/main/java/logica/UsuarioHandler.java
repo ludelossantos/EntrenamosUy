@@ -12,7 +12,6 @@ import persistencia.Conexion;
 
 public class UsuarioHandler {
 	private static UsuarioHandler instancia = null;
-	//private List<Usuario> usuarios = new ArrayList<>();
 	private UsuarioHandler() {
 		super();
 	}
@@ -27,12 +26,6 @@ public class UsuarioHandler {
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
 		Usuario usuario = em.find(Usuario.class, nickname);
-		/*
-		Usuario usuario = null;
-		for(Usuario u: usuarios) {
-			if(u.getNickname().equals(nickname))
-				usuario = u;
-		}*/
 		return usuario;
 	}
 
@@ -63,10 +56,9 @@ public class UsuarioHandler {
 		EntityManager em = conexion.getEntityManager();
 		javax.persistence.Query query = em.createQuery("select u from Usuario u");
 		List<Usuario> usuarios = (List<Usuario>) query.getResultList();
-
 		ArrayList<String> userList = new ArrayList<>();
 		for(Usuario u: usuarios) {
-			userList.add(new String(u.getNickname()));
+			userList.add(u.getNickname());
 		}
 		return userList;
 	}
@@ -76,7 +68,6 @@ public class UsuarioHandler {
 		EntityManager em = conexion.getEntityManager();
 		javax.persistence.Query query = em.createQuery("select u from Usuario u");
 		List<Usuario> usuarios = (List<Usuario>) query.getResultList();
-		
 		ArrayList<DtSocio> listado = new ArrayList<>();
 		for(Usuario u: usuarios) {
 			if(u instanceof Socio) {

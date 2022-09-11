@@ -7,6 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+import datatypes.DtProfesor;
+import datatypes.DtUsuario;
+
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public abstract class Usuario {
@@ -20,7 +23,7 @@ public abstract class Usuario {
 	public Usuario() {
 		super();
 	}
-
+	
 	public Usuario(String nickname, String nombre, String apellido, String email, Date fechaNac) {
 		super();
 		this.nickname = nickname;
@@ -68,6 +71,10 @@ public abstract class Usuario {
 
 	public void setFechaNac(Date fechaNac) {
 		this.fechaNac = fechaNac;
-	}    
-       
+	}
+	
+	public DtUsuario getDtUsuario() {
+		return new DtUsuario(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac());
+	}
+	       
 }

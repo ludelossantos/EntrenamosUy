@@ -241,7 +241,6 @@ public class AltaUsuario extends JInternalFrame {
 	public void inicializarInstituciones() {
 		DefaultComboBoxModel<String> modelinsti = new DefaultComboBoxModel<String>(aUController.listarInstituciones());
 		comboBoxInstitucion.setModel(modelinsti);
-		//comboBoxInstitucion.setSelectedIndex(0);
 	}
 	
 	protected void altaUsuarioAceptarActionPerformed(ActionEvent arg0){

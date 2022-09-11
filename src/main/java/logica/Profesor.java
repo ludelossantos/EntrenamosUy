@@ -4,9 +4,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import datatypes.DtClase;
+import datatypes.DtProfesor;
+import datatypes.DtUsuario;
+import persistencia.Conexion;
+
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -26,16 +32,14 @@ public class Profesor extends Usuario {
 	public Profesor() {
 		super();
 	}
-	
-	
-	
+		
 	public Profesor(String nickname, String nombre, String apellido, String email, Date fechaNac, String descripcion, String biografia, String sitioWeb) {
 		super(nickname, nombre, apellido, email, fechaNac);
 		this.descripcion = descripcion;
 		this.biografia = biografia;
 		this.sitioWeb = sitioWeb;
 	}
-
+	
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -67,6 +71,30 @@ public class Profesor extends Usuario {
 
 	public void setInstitucion(InstitucionDeportiva institucion) {
 		this.institucion = institucion;
+	}
+
+	public List<Clase> getClasesQueDicta() {
+			return clasesQueDicta;
+	}
+
+	public void setClasesQueDicta(ArrayList<Clase> clasesQueDicta) {
+		this.clasesQueDicta = clasesQueDicta;
+	}
+
+	public DtUsuario getDtUsuario() {
+		return new DtProfesor(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac(), this.descripcion, this.biografia, this.sitioWeb);
+	}
+	
+	public ArrayList<DtClase> obtenerClasesQueDicta(){
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		javax.persistence.Query query = em.createQuery("select a from Clase a");
+		List<Clase> clasesQueDicta = (List<Clase>) query.getResultList();
+		ArrayList<DtClase> lista = new ArrayList<>();
+		for(Clase a : clasesQueDicta) {
+			lista.add(a.getDtClase());
+		}
+		return lista;		
 	}
 	
 	public void agregarClase(Clase clase) {

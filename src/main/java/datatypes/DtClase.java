@@ -17,6 +17,7 @@ public class DtClase {
 		super();
 	}
 
+	
 	public DtClase(String nombre, Date fecha, Time horaInicio, String url, Date fechaReg) {
 		super();
 		this.nombre = nombre;
@@ -57,4 +58,25 @@ public class DtClase {
 	public String getNickProfesor() {
 		return nickProfesor;
 	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+	public void setHoraInicio(Time horaInicio) {
+		this.horaInicio = horaInicio;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
+	public void setFechaReg(Date fechaReg) {
+		this.fechaReg = fechaReg;
+	}
+	
+	
 }

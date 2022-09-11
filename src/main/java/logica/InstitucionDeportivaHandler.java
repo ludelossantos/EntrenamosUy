@@ -2,16 +2,11 @@ package logica;
 
 
 import java.util.ArrayList;
-
 import java.util.List;
-
 import javax.persistence.EntityManager;
-
 import persistencia.Conexion;
 
 public class InstitucionDeportivaHandler {
-
-	
 	//SINGLETON
 	private static InstitucionDeportivaHandler instancia = null;
 	//private List<InstitucionDeportiva>institucionesDeportivas = new ArrayList<>();
@@ -38,12 +33,7 @@ public class InstitucionDeportivaHandler {
 	public InstitucionDeportiva buscarInstitucionDeportiva(String nombre) {
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
-		
 		InstitucionDeportiva aretornar = em.find(InstitucionDeportiva.class, nombre);
-		/*for(InstitucionDeportiva i: institucionesDeportivas) {
-			if(i.getNombre().equals(nombre))
-				aretornar = i;
-		}*/
 		return aretornar;
 	}
 
@@ -52,13 +42,10 @@ public class InstitucionDeportivaHandler {
 		EntityManager em = conexion.getEntityManager();
 		javax.persistence.Query query = em.createQuery("select i from InstitucionDeportiva i");
 		List<InstitucionDeportiva> institucionesDeportivas = (List<InstitucionDeportiva>) query.getResultList();
-		
 		ArrayList<String> instituciones = new ArrayList<>();
-		//if(!institucionesDeportivas.isEmpty()) {
-			for(InstitucionDeportiva i: institucionesDeportivas) {
-				instituciones.add(new String(i.getNombre()));
-			}
-		//}	
+		for(InstitucionDeportiva i: institucionesDeportivas) {
+			instituciones.add(new String(i.getNombre()));
+		}
 		return instituciones;
 	}
 	
@@ -67,13 +54,11 @@ public class InstitucionDeportivaHandler {
 		EntityManager em = conexion.getEntityManager();
 		javax.persistence.Query query = em.createQuery("select i from InstitucionDeportiva i");
 		List<InstitucionDeportiva> institucionesDeportivas = (List<InstitucionDeportiva>) query.getResultList();
-		
 		ArrayList<InstitucionDeportiva> instituciones = new ArrayList<>();
 		for(InstitucionDeportiva i: institucionesDeportivas) {
 			instituciones.add(i);
 		}	
 		return instituciones;
-		
 	}
 	
 	public InstitucionDeportiva obtenerInstitucionDeportiva(String nombre){

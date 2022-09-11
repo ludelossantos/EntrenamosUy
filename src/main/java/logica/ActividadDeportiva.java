@@ -93,15 +93,8 @@ public class ActividadDeportiva {
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
 		Clase clase = em.find(Clase.class, nombre);
-		return clase;		
-		/*
-		Clase clase = null;
-		for(Clase c : clases) {
-			if(c.getNombre().equals(nombre))
-				clase = c;
-		}
-		return clase;*/
-	}
+		return clase;
+	}	
 	
 	public ArrayList<DtClase> obtenerClases(){
 		Conexion conexion = Conexion.getInstancia();

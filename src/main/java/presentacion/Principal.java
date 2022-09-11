@@ -17,6 +17,7 @@ import interfaces.Factory;
 import interfaces.IControllerAltaUsuario;
 import interfaces.IControllerRegistroClase;
 import interfaces.IControllerInstitucionDeportiva;
+import interfaces.IControllerConsultaUsuario;
 
 public class Principal {
 	
@@ -24,6 +25,7 @@ public class Principal {
 	private AltaUsuario altaUsuarioInternalFrame;
 	private RegistroClase registroClaseInternalFrame;
 	private AltaInstitucionDeportiva altaInstitucionDeportivaInternalFrame;
+	private ConsultaUsuario consultaUsuarioInternalFrame;
 
 	/**
      * Launch the application.
@@ -49,7 +51,7 @@ public class Principal {
 		Factory fabrica = Factory.getInstance();
 		IControllerAltaUsuario aUController = fabrica.getIControllerAltaUsuario();
 		IControllerRegistroClase rCController = fabrica.getIControllerRegistroClase();
-
+		IControllerConsultaUsuario cUController = fabrica.getIControllerConsultaUsuario(); 
 		IControllerInstitucionDeportiva aIDController = fabrica.getIControllerInstitucionDeportiva();
 		
 		Dimension desktopSize = frame.getSize();
@@ -76,6 +78,13 @@ public class Principal {
 		altaInstitucionDeportivaInternalFrame.setVisible(false);
 		frame.getContentPane().add(altaInstitucionDeportivaInternalFrame);
 		
+		consultaUsuarioInternalFrame = new ConsultaUsuario(cUController);
+		jInternalFrameSize = consultaUsuarioInternalFrame.getSize();
+		consultaUsuarioInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+		    (desktopSize.height- (jInternalFrameSize.height)*2)/70);
+		consultaUsuarioInternalFrame.setVisible(false);
+		frame.getContentPane().add(consultaUsuarioInternalFrame);
+
 	}
 	/**
      * Initialize the contents of the frame.
@@ -97,13 +106,18 @@ public class Principal {
 		mntmUsuarioAlta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mntmUsuarioAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//altaUsuarioInternalFrame.inicializarInstituciones();
 				altaUsuarioInternalFrame.setVisible(true);
 			}
 		});
 		mnUsuario.add(mntmUsuarioAlta);
 
 		JMenuItem mntmUsuarioConsulta = new JMenuItem("Consulta");
+		mntmUsuarioConsulta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				consultaUsuarioInternalFrame.iniciarlizarComboBoxes();
+				consultaUsuarioInternalFrame.setVisible(true);
+			}
+		});
 		mntmUsuarioConsulta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnUsuario.add(mntmUsuarioConsulta);
 
