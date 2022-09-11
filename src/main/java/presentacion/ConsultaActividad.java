@@ -67,10 +67,16 @@ public class ConsultaActividad extends JInternalFrame{
 		comboBoxInstitucion = new JComboBox<String>();		
 		comboBoxInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		comboBoxInstitucion.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cargaActividadesInstitucion(e);	
+			}
+		});
+		/*comboBoxInstitucion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				comboBoxActividades.setEnabled(true);
 			}
-		});
+		});*/
 		comboBoxInstitucion.setBounds(133, 33, 393, 25);
 		getContentPane().add(comboBoxInstitucion);
 		cargarComboInstituciones();
@@ -79,7 +85,7 @@ public class ConsultaActividad extends JInternalFrame{
 		 
 		comboBoxActividades = new JComboBox<String>();
 		comboBoxActividades.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		cargarComboActividades(institucion);
+		//cargarComboActividades(institucion);
 		comboBoxActividades.setEnabled(false);
 		comboBoxActividades.setBounds(133, 72, 393, 25);
 		getContentPane().add(comboBoxActividades);
@@ -174,12 +180,22 @@ public class ConsultaActividad extends JInternalFrame{
 		comboBoxInstitucion.setModel(modelinst);
 		this.institucion =(String)comboBoxInstitucion.getSelectedItem();
 	}
-	
+	/*
 	public void cargarComboActividades(String nombreInstitucion) {
 		DefaultComboBoxModel<String> modelactiv = new DefaultComboBoxModel<String>(cAController.listarActividades(nombreInstitucion));
 		comboBoxActividades.setModel(modelactiv);
 		this.actividad =(String)comboBoxActividades.getSelectedItem();
+	}*/
+	
+	protected void cargaActividadesInstitucion(ActionEvent e) {
+		if(comboBoxInstitucion.getSelectedIndex()!=0) {
+			String institucion = this.comboBoxInstitucion.getSelectedItem().toString();
+			DefaultComboBoxModel<String> modelactividades = new DefaultComboBoxModel<String>(cAController.listarActividades(institucion));
+			comboBoxActividades.setModel(modelactividades);
+			comboBoxActividades.setSelectedIndex(0);
+		}
 	}
+	
 	
 	@SuppressWarnings("deprecation")
 	public void mostrarDatos(String nombreInstitucion, String nombreActividad) {
