@@ -72,6 +72,13 @@ public class Principal {
 		altaUsuarioInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
 		    (desktopSize.height- jInternalFrameSize.height)/2);
 		altaUsuarioInternalFrame.setVisible(false);
+		
+		consultaActividadInternalFrame = new ConsultaActividad(cAController);
+		jInternalFrameSize = consultaActividadInternalFrame.getSize();
+		consultaActividadInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+		    (desktopSize.height- jInternalFrameSize.height)/2);
+		consultaActividadInternalFrame.setVisible(false);
+		frame.getContentPane().add(consultaActividadInternalFrame);
 		frame.getContentPane().add(altaUsuarioInternalFrame);
 		
 		registroClaseInternalFrame = new RegistroClase(rCController);
@@ -94,13 +101,6 @@ public class Principal {
 		    28);
 		consultaUsuarioInternalFrame.setVisible(false);
 		frame.getContentPane().add(consultaUsuarioInternalFrame);
-		
-		consultaActividadInternalFrame = new ConsultaActividad(cAController);
-		jInternalFrameSize = consultaActividadInternalFrame.getSize();
-		consultaActividadInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-		    (desktopSize.height- jInternalFrameSize.height)/2);
-		consultaActividadInternalFrame.setVisible(false);
-		frame.getContentPane().add(consultaActividadInternalFrame);
 		
 		altaActividadDeportivaInternalFrame = new AltaActividadDeportiva(aADController);
 		jInternalFrameSize = altaActividadDeportivaInternalFrame.getSize();

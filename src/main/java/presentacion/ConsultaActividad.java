@@ -14,7 +14,6 @@ import javax.swing.JTextField;
 
 import datatypes.DtActividadDeportiva;
 import interfaces.IControllerConsultaActividad;
-import interfaces.IControllerConsultaUsuario;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
@@ -49,9 +48,9 @@ public class ConsultaActividad extends JInternalFrame{
 		
 		JLabel lblNickname = new JLabel("Institución");
 		lblNickname.setBounds(31, 37, 92, 16);
-		setBounds(100, 100, 450, 300);
-		getContentPane().setLayout(null);
-	
+		lblNickname.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		getContentPane().add(lblNickname);
+		
 		JList<String> list = new JList<String>();
 		list.setBounds(154, 57, 1, 1);
 		list.setFont(new Font("Segoe UI", Font.PLAIN, 16));
@@ -81,7 +80,6 @@ public class ConsultaActividad extends JInternalFrame{
 				comboBoxActividades.setEnabled(true);
 			}
 		});*/
-		comboBoxInstitucion.setBounds(133, 33, 393, 25);
 		getContentPane().add(comboBoxInstitucion);
 		cargarComboInstituciones();
 
@@ -90,7 +88,7 @@ public class ConsultaActividad extends JInternalFrame{
 		comboBoxActividades.setBounds(133, 72, 393, 25);
 		comboBoxActividades.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		//cargarComboActividades(institucion);
-		comboBoxActividades.setEnabled(false);
+		//comboBoxActividades.setEnabled(false);
 		getContentPane().add(comboBoxActividades);
 
 		
@@ -193,6 +191,7 @@ public class ConsultaActividad extends JInternalFrame{
 		comboBoxInstitucion.setModel(modelinst);
 		this.institucion =(String)comboBoxInstitucion.getSelectedItem();
 	}
+	
 	/*
 	public void cargarComboActividades(String nombreInstitucion) {
 		DefaultComboBoxModel<String> modelactiv = new DefaultComboBoxModel<String>(cAController.listarActividades(nombreInstitucion));
