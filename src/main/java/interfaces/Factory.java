@@ -2,6 +2,7 @@ package interfaces;
 
 import logica.ControllerAltaUsuario;
 import logica.ControllerRegistroClase;
+import logica.ControllerInstitucionDeportiva;
 
 public class Factory {
 	private static Factory instancia = null;
@@ -21,4 +22,9 @@ public class Factory {
 	public IControllerRegistroClase getIControllerRegistroClase() {
 		return new ControllerRegistroClase();
 	}
+	
+	public IControllerInstitucionDeportiva getIControllerInstitucionDeportiva() {
+		return new ControllerInstitucionDeportiva();
+	}
+	
 }

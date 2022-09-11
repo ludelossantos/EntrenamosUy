@@ -284,39 +284,39 @@ public class AltaUsuario extends JInternalFrame {
 		}
 }
 	
-	private boolean checkFormulario() {		
-		String nickname = this.textFieldNickname.getText();
-		String nombre = this.textFieldNombre.getText();
-		String apellido = this.textFieldApellido.getText();
-		String email = this.textFieldEmail.getText();
-		java.util.Date fechaNac = this.dateChooser.getDate();
-		String tipoU = this.comboBoxUsuario.getSelectedItem().toString();
-		String descripcion = this.textAreaDescripcion.getText();
-		
-		if(nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || (fechaNac==null)){		
-			/*if(nickname.isEmpty())
-				this.textFieldNickname.setBackground(Color.PINK);
-			if(nombre.isEmpty())
-				this.textFieldNombre.setBackground(Color.PINK);
-			if (apellido.isEmpty())
-				this.textFieldApellido.setBackground(Color.PINK);
-			if(email.isEmpty())
-				this.textFieldEmail.setBackground(Color.PINK);
-			if(fechaNac==null)
-				this.dateChooser.setBackground(Color.PINK);*/
-			JOptionPane.showMessageDialog(this, "Complete los campos en blanco.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
-			return false;
-		}
-		if(tipoU.equals("Profesor") && comboBoxInstitucion.getSelectedItem() == null) {
-			JOptionPane.showMessageDialog(this, "Seleccione la institución.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
-			return false;
-		}
-		if(tipoU.equals("Profesor") && descripcion.isEmpty()) {
-			JOptionPane.showMessageDialog(this, "Ingrese una descripción.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
-			return false;
-		}
-		return true;
+private boolean checkFormulario() {		
+	String nickname = this.textFieldNickname.getText();
+	String nombre = this.textFieldNombre.getText();
+	String apellido = this.textFieldApellido.getText();
+	String email = this.textFieldEmail.getText();
+	java.util.Date fechaNac = this.dateChooser.getDate();
+	String tipoU = this.comboBoxUsuario.getSelectedItem().toString();
+	String descripcion = this.textAreaDescripcion.getText();
+	
+	if(nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || (fechaNac==null)){		
+		/*if(nickname.isEmpty())
+			this.textFieldNickname.setBackground(Color.PINK);
+		if(nombre.isEmpty())
+			this.textFieldNombre.setBackground(Color.PINK);
+		if (apellido.isEmpty())
+			this.textFieldApellido.setBackground(Color.PINK);
+		if(email.isEmpty())
+			this.textFieldEmail.setBackground(Color.PINK);
+		if(fechaNac==null)
+			this.dateChooser.setBackground(Color.PINK);*/
+		JOptionPane.showMessageDialog(this, "Complete los campos en blanco.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
+		return false;
 	}
+	if(tipoU.equals("Profesor") && comboBoxInstitucion.getSelectedItem() == null) {
+		JOptionPane.showMessageDialog(this, "Seleccione la institución.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
+		return false;
+	}
+	if(tipoU.equals("Profesor") && descripcion.isEmpty()) {
+		JOptionPane.showMessageDialog(this, "Ingrese una descripción.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
+		return false;
+	}
+	return true;
+}
 		
 	protected void altaUsuarioCancelarActionPerformed(ActionEvent arg0) {
 		limpiarFormulario();

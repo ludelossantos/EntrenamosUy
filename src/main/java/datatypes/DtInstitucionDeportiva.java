@@ -29,9 +29,4 @@ public class DtInstitucionDeportiva {
 	public String getUrl() {
 		return url;
 	}
-
-	
-	
-	
-
 }

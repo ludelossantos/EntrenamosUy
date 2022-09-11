@@ -2,6 +2,7 @@ package logica;
 
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -9,6 +10,7 @@ import javax.persistence.EntityManager;
 import persistencia.Conexion;
 
 public class InstitucionDeportivaHandler {
+
 	
 	//SINGLETON
 	private static InstitucionDeportivaHandler instancia = null;
@@ -73,4 +75,12 @@ public class InstitucionDeportivaHandler {
 		return instituciones;
 		
 	}
+	
+	public InstitucionDeportiva obtenerInstitucionDeportiva(String nombre){
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		InstitucionDeportiva insti = em.find(InstitucionDeportiva.class, nombre);
+		return insti;
+	}
+	
 }

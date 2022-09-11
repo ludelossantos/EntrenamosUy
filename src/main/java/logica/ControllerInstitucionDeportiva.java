@@ -1,6 +1,7 @@
 package logica;
 
-
+import datatypes.DtInstitucionDeportiva;
+import excepciones.InstitucionDeportivaRepetidaException;
 import interfaces.IControllerInstitucionDeportiva;
 
 public class ControllerInstitucionDeportiva implements IControllerInstitucionDeportiva {
@@ -13,21 +14,31 @@ public class ControllerInstitucionDeportiva implements IControllerInstitucionDep
 	
 	
 	// METODOS
- 
+
 	@Override
-	public Boolean existeInstitucion(String nombre) {
+	public void altaInstitucion(DtInstitucionDeportiva instDepor) throws InstitucionDeportivaRepetidaException {
 		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();
-		if (idh.buscarInstitucionDeportiva(nombre).equals(null))
-			return false;
-		else
-			return true;
+		
+		InstitucionDeportiva institucion = idh.obtenerInstitucionDeportiva(instDepor.getNombre());
+		if(institucion != null)
+			throw new InstitucionDeportivaRepetidaException("Ya existe registrada una Institución Deportiva con el nombre: " + instDepor.getNombre());
+		
+		institucion = new InstitucionDeportiva(instDepor.getNombre(), instDepor.getDescripcion(), instDepor.getUrl());
+		idh.agregarInstitucionDeportiva(institucion);
 	}
 
 	@Override
-	public void altaInstitucion(String nombre, String descripcion, String url) {
-		InstitucionDeportiva institucion = new InstitucionDeportiva();
-		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();
-		idh.agregarInstitucionDeportiva(institucion);
+	public boolean existeInstitucionDeportiva(String nombre) {
+		InstitucionDeportivaHandler iDH = InstitucionDeportivaHandler.getInstancia();
+		InstitucionDeportiva institucion = iDH.obtenerInstitucionDeportiva(nombre);
+        return institucion != null;
 	}
-	
+
+/*
+	@Override
+	public void modificarInstitucionDeportiva(InstitucionDeportiva iD, String nombre, String descripcion, String url) {
+		// TODO Auto-generated method stub
+		
+	}
+*/
 }

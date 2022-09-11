@@ -6,4 +6,6 @@ public class InstitucionDeportivaRepetidaException extends Exception{
 	public InstitucionDeportivaRepetidaException(String string) {
 		super(string);
 	}
+
 }
+

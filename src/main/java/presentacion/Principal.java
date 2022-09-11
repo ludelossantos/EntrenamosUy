@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Font;
 
+
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -15,17 +16,20 @@ import javax.swing.JMenuItem;
 import interfaces.Factory;
 import interfaces.IControllerAltaUsuario;
 import interfaces.IControllerRegistroClase;
+import interfaces.IControllerInstitucionDeportiva;
 
 public class Principal {
-
+	
 	private JFrame frame;
 	private AltaUsuario altaUsuarioInternalFrame;
 	private RegistroClase registroClaseInternalFrame;
+	private AltaInstitucionDeportiva altaInstitucionDeportivaInternalFrame;
 
 	/**
      * Launch the application.
      */
 	public static void main(String[] args) {
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -46,22 +50,32 @@ public class Principal {
 		IControllerAltaUsuario aUController = fabrica.getIControllerAltaUsuario();
 		IControllerRegistroClase rCController = fabrica.getIControllerRegistroClase();
 
+		IControllerInstitucionDeportiva aIDController = fabrica.getIControllerInstitucionDeportiva();
+		
 		Dimension desktopSize = frame.getSize();
 		Dimension jInternalFrameSize;
 		
-				altaUsuarioInternalFrame = new AltaUsuario(aUController);
-				jInternalFrameSize = altaUsuarioInternalFrame.getSize();
-				altaUsuarioInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-				    (desktopSize.height- jInternalFrameSize.height)/2);
-				altaUsuarioInternalFrame.setVisible(false);
-				frame.getContentPane().add(altaUsuarioInternalFrame);
-				
-				registroClaseInternalFrame = new RegistroClase(rCController);
-						jInternalFrameSize = registroClaseInternalFrame.getSize();
-				registroClaseInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-				    (desktopSize.height- jInternalFrameSize.height)/2);
-				registroClaseInternalFrame.setVisible(false);
-				frame.getContentPane().add(registroClaseInternalFrame);					
+		altaUsuarioInternalFrame = new AltaUsuario(aUController);
+		jInternalFrameSize = altaUsuarioInternalFrame.getSize();
+		altaUsuarioInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+		    (desktopSize.height- jInternalFrameSize.height)/2);
+		altaUsuarioInternalFrame.setVisible(false);
+		frame.getContentPane().add(altaUsuarioInternalFrame);
+		
+		registroClaseInternalFrame = new RegistroClase(rCController);
+				jInternalFrameSize = registroClaseInternalFrame.getSize();
+		registroClaseInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+		    (desktopSize.height- jInternalFrameSize.height)/2);
+		registroClaseInternalFrame.setVisible(false);
+		frame.getContentPane().add(registroClaseInternalFrame);					
+	
+		altaInstitucionDeportivaInternalFrame = new AltaInstitucionDeportiva(aIDController);
+		jInternalFrameSize = altaInstitucionDeportivaInternalFrame.getSize();
+		altaInstitucionDeportivaInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width) / 2, 
+				(desktopSize.height - jInternalFrameSize.height) / 2);
+		altaInstitucionDeportivaInternalFrame.setVisible(false);
+		frame.getContentPane().add(altaInstitucionDeportivaInternalFrame);
+		
 	}
 	/**
      * Initialize the contents of the frame.
@@ -103,6 +117,11 @@ public class Principal {
 
 		JMenuItem mnInstitucionAlta = new JMenuItem("Alta");
 		mnInstitucionAlta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		mnInstitucionAlta.addActionListener(new ActionListener ( ) {
+			public void actionPerformed(ActionEvent e) {
+				altaInstitucionDeportivaInternalFrame.setVisible(true);
+			}
+		});
 		mnInstitucion.add(mnInstitucionAlta);
 
 		JMenuItem mntmInstitucionModificar = new JMenuItem("Modificar");
