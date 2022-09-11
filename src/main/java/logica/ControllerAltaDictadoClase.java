@@ -1,54 +1,48 @@
 package logica;
 
 import java.util.ArrayList;
-import javafx.util.Pair;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
+
 import datatypes.DtActividadDeportiva;
 import datatypes.DtClase;
 import excepciones.ClaseRepetidaException;
 import excepciones.EsSocioException;
-import excepciones.NoExisteUsuarioException;
+import excepciones.NoExisteUsuarioException;	
 import excepciones.ProfNoTrabajaInstitucion;
 import interfaces.IControllerAltaDictadoClase;
 
 public class ControllerAltaDictadoClase implements IControllerAltaDictadoClase {
-	
+	@Override
 	public String[] listarActividades(String nombre){
 		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();
 		InstitucionDeportiva institucion = idh.buscarInstitucionDeportiva(nombre);
 		ArrayList<DtActividadDeportiva> actividades = institucion.obtenerActividades();
-		ArrayList<Pair<String,String>> listaActividades = new ArrayList<>();
-		
-		/*ArrayList<DtActividadDeportiva> actividades = institucion.obtenerActividades();
-		return actividades;
-		
-		ArrayList<DtActividadDeportiva> actividades = insti.obtenerActividades();
-		ArrayList<Pair<DtClase,String>> listado = new ArrayList<>();
-		for(DtActividadDeportiva a: actividades) {
-			if(a.getNombre().equals(actividad)) {
-				ActividadDeportiva act = insti.buscarActividad(actividad);
-				for(DtClase dtc:act.obtenerClases()) {
-					String concat = new String();
-					concat = dtc.getNombre() + " " + dtc.getFecha() + " " + dtc.getHoraInicio();
-					Pair<DtClase, String> pair = new Pair<>(dtc, concat);
-					listado.add(pair);
-				}	
-			}
+		ArrayList<Map<DtActividadDeportiva,String>> listaActividades = new ArrayList<>();
+		Map<DtActividadDeportiva,String> pair = new TreeMap<DtActividadDeportiva,String>();
+		for(DtActividadDeportiva dta : actividades) {
+			String concat = new String();
+			concat = dta.getNombre() + " - " + dta.getDescripcion();
+			pair.put(dta, concat);
+			listaActividades.add(pair);
 		}
-		String[] repo = new String[listado.size()];
-		int u=0;
-		for(Pair<DtClase,String> dtc:listado) {
-			repo[u] = dtc.getValue();
-			u++;
+		String[] retorno = new String[listaActividades.size()];
+		int i = 0;
+		Iterator<DtActividadDeportiva> it = pair.keySet().iterator();
+		while(it.hasNext()) {
+			DtActividadDeportiva key = (DtActividadDeportiva) it.next();
+			retorno[i] = pair.get(key);
+			i++;
 		}
-		return repo;
-		*/
+		return retorno;
 	}
 
 	public void altaClase(DtClase clase) throws ClaseRepetidaException, NoExisteUsuarioException, EsSocioException, ProfNoTrabajaInstitucion {
 		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();
 		InstitucionDeportiva institucion = idh.buscarInstitucionDeportiva(clase.getNomInstitucion()); //instancio institucion deportiva
 		
-		ActividadDeportiva actividad = institucion.buscarActividad(clase.getNomActividad()); //instancio actividad deportiva
+		ActividadDeportiva actividad = buscarActividadSeleccionada(institucion, clase.getActividad()); //instancio actividad deportiva
 		
 		Clase nuevaClase = actividad.buscarClase(clase.getNombre()); //busco si ya existe una clase con ese nombre
 		if(nuevaClase != null)
@@ -71,5 +65,12 @@ public class ControllerAltaDictadoClase implements IControllerAltaDictadoClase {
 		actividad.agregarClase(nuevaClase); //agrego la nueva clase de la actividad deportiva a la lista
 		
 		prof.agregarClase(nuevaClase); //agrego la nueva clase a la lista de clases dictadas del profesor
+	}
+	
+	public ActividadDeportiva buscarActividadSeleccionada(InstitucionDeportiva institucion, String actividad) {
+		String[] split = actividad.split(" - ");
+		String nomActividad = split[0];
+		ActividadDeportiva retorno = institucion.buscarActividad(nomActividad);
+		return retorno;
 	}
 }
