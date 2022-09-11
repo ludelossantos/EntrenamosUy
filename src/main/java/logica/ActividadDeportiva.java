@@ -129,7 +129,7 @@ public class ActividadDeportiva {
 		return listado;
 	}
 	
-	public DtActividadDeportiva getDtActividadDeportiva() {
+	public DtActividadDeportiva getDtActividadDeportivaMaxi() {
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
 		javax.persistence.Query query = em.createQuery("select c from Clase c");

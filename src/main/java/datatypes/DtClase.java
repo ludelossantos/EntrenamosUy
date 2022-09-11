@@ -29,11 +29,11 @@ public class DtClase {
 		this.nomInstitucion = nomInstitucion;
 	}
 
-	public DtClase(String nombre, Date fecha, Time horaInicio, String url, Date fechaReg) {
+	public DtClase(String nombre, Date fecha, Date horaInicio2, String url, Date fechaReg) {
 		super();
 		this.nombre = nombre;
 		this.fecha = fecha;
-		this.horaInicio = horaInicio;
+		this.horaInicio = horaInicio2;
 		this.url = url;
 		this.fechaReg = fechaReg;
 	}

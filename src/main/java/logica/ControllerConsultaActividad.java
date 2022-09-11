@@ -33,7 +33,7 @@ public class ControllerConsultaActividad implements IControllerConsultaActividad
 
 	@Override
 	public DtActividadDeportiva obtenerDatosActividad(String nombreInstitucion, String nombreActividad) {
-		return InstitucionDeportivaHandler.getInstancia().buscarInstitucionDeportiva(nombreInstitucion).buscarActividad(nombreActividad).getDtActividadDeportiva();
+		return InstitucionDeportivaHandler.getInstancia().buscarInstitucionDeportiva(nombreInstitucion).buscarActividad(nombreActividad).getDtActividadDeportivaMaxi();
 	}
 	
 	
