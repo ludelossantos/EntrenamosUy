@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 import datatypes.DtActividadDeportiva;
 import interfaces.IControllerConsultaActividad;
+import interfaces.IControllerConsultaUsuario;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
@@ -48,9 +49,9 @@ public class ConsultaActividad extends JInternalFrame{
 		
 		JLabel lblNickname = new JLabel("Institución");
 		lblNickname.setBounds(31, 37, 92, 16);
-		lblNickname.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		getContentPane().add(lblNickname);
-		
+		setBounds(100, 100, 450, 300);
+		getContentPane().setLayout(null);
+	
 		JList<String> list = new JList<String>();
 		list.setBounds(154, 57, 1, 1);
 		list.setFont(new Font("Segoe UI", Font.PLAIN, 16));
