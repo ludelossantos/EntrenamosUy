@@ -20,6 +20,7 @@ import datatypes.DtClase;
 import datatypes.DtProfesor;
 import datatypes.DtSocio;
 import datatypes.DtUsuario;
+import presentacion.ConsultaActividad;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -67,7 +68,8 @@ public class ConsultaUsuario extends JInternalFrame {
 	private JTextField textFieldURLClase;
 	private JLabel lblDescripActiv;
 	private JTextField textFieldDescripActiv;
-
+	private ConsultaActividad consultaActividad;
+	//private ConsultaActividad consultaActividadInternalFrame;
 	/**
 	 * Create the frame.
 	 */
@@ -211,6 +213,12 @@ public class ConsultaUsuario extends JInternalFrame {
 		getContentPane().add(btnVerInfoClases);
 		
 		btnVerInfoActiv = new JButton("Ver mas informacion");
+		btnVerInfoActiv.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				verMasActiv(e);
+				salir(e);		
+			}
+		});
 		btnVerInfoActiv.setBounds(414, 596, 164, 29);
 		getContentPane().add(btnVerInfoActiv);
 		
@@ -346,6 +354,7 @@ public class ConsultaUsuario extends JInternalFrame {
 		textFieldRegistroClase.setVisible(false);
 		textFieldURLClase.setVisible(false);
 		lblNombreClase.setVisible(false);
+		lblNombreClase.setVisible(false);
 		lblFechaClase.setVisible(false);
 		lblHoraClase.setVisible(false);
 		lblFechaRegistroClase.setVisible(false);
@@ -478,5 +487,13 @@ public class ConsultaUsuario extends JInternalFrame {
 		textFieldBibliog.setText("");
 		textFieldDescrip.setText("");
 		textFieldSitioWeb.setText("");
+	}
+	
+	private void verMasActiv(ActionEvent e) {
+		String activ = (String) comboBoxActiv.getSelectedItem();
+		String nickname = this.comboBoxUser.getSelectedItem().toString();
+		String insti = cUController.obtenerInstitucion(nickname);
+		consultaActividad.mostrarDatos(insti,activ);
+		consultaActividad.setVisible(true);
 	}
 }

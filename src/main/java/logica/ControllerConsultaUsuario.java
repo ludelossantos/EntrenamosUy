@@ -122,4 +122,16 @@ public class ControllerConsultaUsuario implements IControllerConsultaUsuario{
 		}
 		return retorno;
 	}
+
+	@Override
+	public String obtenerInstitucion(String nickname) {
+		UsuarioHandler uH = UsuarioHandler.getInstancia();
+		String insti_ret = null;
+		Usuario user = uH.buscarUsuarioNick(nickname);
+		if (user instanceof Profesor) {
+			Profesor p = (Profesor) user;
+				insti_ret = p.getInstitucion().getNombre();
+			}
+	return insti_ret;
+	}
 }

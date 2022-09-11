@@ -78,4 +78,15 @@ public class InstitucionDeportiva {
 		return lista;
 	}
 	
+	
+	public ActividadDeportiva obtenerActividad(String nombre) {
+		ActividadDeportiva aretornar = null;
+		for(ActividadDeportiva a: actividades) {
+			if(a.getNombre().equals(nombre))
+				aretornar = a;
+		}
+		return aretornar;
+	}
+
+	
 }
