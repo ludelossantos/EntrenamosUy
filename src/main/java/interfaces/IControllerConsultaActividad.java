@@ -4,10 +4,10 @@ import datatypes.DtActividadDeportiva;
 
 public interface IControllerConsultaActividad {
 
-	String[] listarInstituciones();
+	public String[] listarInstituciones();
 
-	String[] listarActividades(String nombreInstitucion);
+	public String[] listarActividades(String nombreInstitucion);
 	
-	DtActividadDeportiva obtenerDatosActividad(String nombreInstitucion, String nombreActividad);
+	public DtActividadDeportiva obtenerDatosActividad(String nombreInstitucion, String nombreActividad);
 
 }

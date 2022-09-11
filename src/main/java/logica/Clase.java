@@ -17,7 +17,7 @@ public class Clase {
 	@Id
 	private String nombre;
 	private Date fecha;
-	private Time horaInicio;
+	private Date horaInicio;
 	private String url;
 	private Date fechaReg;
 	
@@ -29,7 +29,7 @@ public class Clase {
 		super();
 	}
 
-	public Clase(String nombre, Date fecha, Time horaInicio, String url, Date fechaReg) {
+	public Clase(String nombre, Date fecha, Date horaInicio, String url, Date fechaReg) {
 		super();
 		this.nombre = nombre;
 		this.fecha = fecha;
@@ -55,11 +55,11 @@ public class Clase {
 		this.fecha = fecha;
 	}
 
-	public Time getHoraInicio() {
+	public Date getHoraInicio() {
 		return horaInicio;
 	}
 
-	public void setHoraInicio(Time horaInicio) {
+	public void setHoraInicio(Date horaInicio) {
 		this.horaInicio = horaInicio;
 	}
 

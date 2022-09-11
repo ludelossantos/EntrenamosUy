@@ -1,7 +1,6 @@
 package presentacion;
 
 import javax.swing.JFrame;
-
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -20,106 +19,109 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 
 public class AltaInstitucionDeportiva extends JInternalFrame {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private IControllerInstitucionDeportiva aIDController;
-	
+
 	private JTextField txtNombre;
 	private JTextArea txtADescripcion;
 	private JTextField txtUrl;
-	
+
 
 	public AltaInstitucionDeportiva(IControllerInstitucionDeportiva aIDC) {
 		aIDController = aIDC;
-		
+
 		setResizable(false);
         setIconifiable(false);
         setMaximizable(false);
-        setBounds(100, 100, 682, 438);
+        setBounds(100, 100, 450, 355);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setClosable(true);
-        setTitle("Alta Institucion Deportiva");	
+        setTitle("Alta Instituci\u00F3n Deportiva");	
 		getContentPane().setLayout(null);
-		
-		JLabel lblNombre = new JLabel("Nombre");
+
+		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblNombre.setBounds(48, 42, 84, 28);
+		lblNombre.setBounds(50, 23, 84, 28);
 		getContentPane().add(lblNombre);
-		
+
 		txtNombre = new JTextField();
-		txtNombre.setToolTipText("Ingrese Nombre de la Institución");
 		txtNombre.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		txtNombre.setBounds(126, 43, 488, 25);
-		txtNombre.setColumns(10);
+		txtNombre.setBounds(156, 23, 213, 28);
 		getContentPane().add(txtNombre);
-		
-		JLabel lblDescripcion = new JLabel("Descripción");
+		txtNombre.setColumns(10);
+
+		JLabel lblDescripcion = new JLabel("Descripci\u00F3n:");
 		lblDescripcion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblDescripcion.setBounds(48, 80, 98, 31);
+		lblDescripcion.setBounds(50, 77, 98, 31);
 		getContentPane().add(lblDescripcion);
-		
-		/*JTextArea*/ txtADescripcion = new JTextArea();
-		txtADescripcion.setToolTipText("Ingrese Descripcion");
+
+		txtADescripcion = new JTextArea();
+		txtADescripcion.setWrapStyleWord(true);
 		txtADescripcion.setLineWrap(true);
 		txtADescripcion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		txtADescripcion.setBounds(48, 121, 566, 147);
+		txtADescripcion.setBounds(156, 77, 213, 70);
 		getContentPane().add(txtADescripcion);
-		
-		JLabel lblUrl = new JLabel("URL");
+
+		JLabel lblUrl = new JLabel("URL:");
 		lblUrl.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblUrl.setBounds(48, 278, 51, 28);
+		lblUrl.setBounds(50, 173, 51, 28);
 		getContentPane().add(lblUrl);
-		
+
 		txtUrl = new JTextField();
-		txtUrl.setToolTipText("Ingrese URL (www...)");
 		txtUrl.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		txtUrl.setColumns(10);
-		txtUrl.setBounds(97, 279, 517, 25);
+		txtUrl.setBounds(156, 173, 213, 28);
 		getContentPane().add(txtUrl);
-		
+
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				altaInstitucionDeportivaCancelar();
-				cleanForm();
+				altaInstitucionDeportivaCancelarActionPerformed(e);
 			}
 		});
 		btnCancelar.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		btnCancelar.setBounds(374, 324, 115, 35);
+		btnCancelar.setBounds(75, 248, 115, 37);
 		getContentPane().add(btnCancelar);
-		
+
 		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		btnAceptar.setBounds(244, 248, 115, 37);
 		btnAceptar.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
-				altaInstitucionDeportivaAceptar();				
+				altaInstitucionDeportivaAceptarActionPerformed(e);
 			}
 		});
-		btnAceptar.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		btnAceptar.setBounds(499, 324, 115, 35);
 		getContentPane().add(btnAceptar);
 
 	}
+
+
+	protected void altaInstitucionDeportivaAceptarActionPerformed(ActionEvent arg0) {
+		if(checkFormulario()) {
+			String nombre = this.txtNombre.getText();
+			String descripcion = this.txtADescripcion.getText();
+			String url = this.txtUrl.getText();
 	
-	
-	protected void altaInstitucionDeportivaAceptar() {
-		String nombre = this.txtNombre.getText();
-		String descripcion = this.txtADescripcion.getText();
-		String url = this.txtUrl.getText();
-		DtInstitucionDeportiva instiDepor = new DtInstitucionDeportiva(nombre, descripcion, url);
-		
-		try {
-			this.aIDController.altaInstitucion(instiDepor);
-			JOptionPane.showMessageDialog(this, "Se agrego correctamente la Institucion Deportiva");
-			cleanForm();
-			setVisible(false);
-		}catch(InstitucionDeportivaRepetidaException e){
-			JOptionPane.showMessageDialog(this, e.getMessage(), "Alta Institucion Deportiva", JOptionPane.ERROR_MESSAGE);
+			DtInstitucionDeportiva dtReturn = null;
+			dtReturn = new DtInstitucionDeportiva(nombre, descripcion, url);
+			try {
+				this.aIDController.altaInstitucion(dtReturn);
+				JOptionPane.showMessageDialog(this, "La Institucion Deportiva se ha creado con exito", 
+						"Alta Institucion Deportiva", JOptionPane.INFORMATION_MESSAGE);
+				System.out.println("crea institucion deportiva "+ dtReturn.getNombre() +"");
+				cleanForm();
+				setVisible(false);
+			} catch (InstitucionDeportivaRepetidaException e) {
+				JOptionPane.showMessageDialog(this, e.getMessage(), "Alta Institucion Deportiva", JOptionPane.ERROR_MESSAGE);
+			}
 		}
 	}
-	
-	protected void altaInstitucionDeportivaCancelar() {
+
+	protected void altaInstitucionDeportivaCancelarActionPerformed(ActionEvent arg0) {
 		cleanForm();
 		setVisible(false);
 	}
@@ -129,4 +131,16 @@ public class AltaInstitucionDeportiva extends JInternalFrame {
 		 this.txtADescripcion.setText("");
 		 this.txtUrl.setText("");
 	 }
+	 
+	 private boolean checkFormulario() {
+			String nombre = this.txtNombre.getText();
+			String descripcion = this.txtADescripcion.getText();
+			String url = this.txtUrl.getText();
+			
+			if(nombre.isEmpty() || descripcion.isEmpty() || url.isEmpty()){		
+				JOptionPane.showMessageDialog(this, "Complete los campos en blanco.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+			return true;
+		}
 }

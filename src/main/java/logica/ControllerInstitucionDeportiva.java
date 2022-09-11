@@ -1,5 +1,7 @@
 package logica;
 
+import java.util.ArrayList;
+
 import datatypes.DtInstitucionDeportiva;
 import excepciones.InstitucionDeportivaRepetidaException;
 import interfaces.IControllerInstitucionDeportiva;
@@ -33,4 +35,16 @@ public class ControllerInstitucionDeportiva implements IControllerInstitucionDep
         return institucion != null;
 	}
 
+	public String[] obtenerInstituciones() {
+		ArrayList<String> instituciones;
+		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();
+		instituciones = idh.obtenerInstituciones();
+		String[] aRetornar = new String[instituciones.size()];
+        int i=0;
+        for(String inst : instituciones) {
+        	aRetornar[i] = inst;
+        	i++;
+        }
+        return aRetornar;
+	}
 }

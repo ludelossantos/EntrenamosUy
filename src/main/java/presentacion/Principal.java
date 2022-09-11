@@ -14,6 +14,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 import interfaces.Factory;
+import interfaces.IControllerAltaActividadDep;
+import interfaces.IControllerAltaDictadoClase;
 import interfaces.IControllerAltaUsuario;
 import interfaces.IControllerRegistroClase;
 import interfaces.IControllerInstitucionDeportiva;
@@ -28,6 +30,8 @@ public class Principal {
 	private AltaInstitucionDeportiva altaInstitucionDeportivaInternalFrame;
 	private ConsultaUsuario consultaUsuarioInternalFrame;
 	private ConsultaActividad consultaActividadInternalFrame;
+	private AltaActividadDeportiva altaActividadDeportivaInternalFrame;
+	private AltaDictadoClase altaDictadoClaseInternalFrame;
 
 	/**
      * Launch the application.
@@ -57,6 +61,8 @@ public class Principal {
 		IControllerConsultaUsuario cUController = fabrica.getIControllerConsultaUsuario(); 
 		IControllerInstitucionDeportiva aIDController = fabrica.getIControllerInstitucionDeportiva();
 		IControllerConsultaActividad cAController = fabrica.getIControllerConsultaActividad();
+		IControllerAltaActividadDep aADController = fabrica.getIControllerAltaActividadDep();
+		IControllerAltaDictadoClase aDCController = fabrica.getIControllerAltaDictadoClase();
 
 		Dimension desktopSize = frame.getSize();
 		Dimension jInternalFrameSize;
@@ -95,6 +101,20 @@ public class Principal {
 		    (desktopSize.height- jInternalFrameSize.height)/2);
 		consultaActividadInternalFrame.setVisible(false);
 		frame.getContentPane().add(consultaActividadInternalFrame);
+		
+		altaActividadDeportivaInternalFrame = new AltaActividadDeportiva(aADController);
+		jInternalFrameSize = altaActividadDeportivaInternalFrame.getSize();
+		altaActividadDeportivaInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+				(desktopSize.height - jInternalFrameSize.height) / 2);
+		altaActividadDeportivaInternalFrame.setVisible(false);
+		frame.getContentPane().add(altaActividadDeportivaInternalFrame);
+		
+		altaDictadoClaseInternalFrame = new AltaDictadoClase(aIDController, aDCController);
+		jInternalFrameSize = altaDictadoClaseInternalFrame.getSize();
+		altaDictadoClaseInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+				(desktopSize.height - jInternalFrameSize.height) / 2);
+		altaDictadoClaseInternalFrame.setVisible(false);
+		frame.getContentPane().add(altaDictadoClaseInternalFrame);
 
 	}
 	/**
@@ -160,6 +180,14 @@ public class Principal {
 
 		JMenuItem mntmActDepoAlta = new JMenuItem("Alta");
 		mntmActDepoAlta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		mntmActDepoAlta.addActionListener(new ActionListener ( ) {
+			public void actionPerformed(ActionEvent e) {
+				Factory fabrica = Factory.getInstance();
+				IControllerInstitucionDeportiva aIDController = fabrica.getIControllerInstitucionDeportiva();
+				altaActividadDeportivaInternalFrame.inicializarComboBoxes(aIDController);
+				altaActividadDeportivaInternalFrame.setVisible(true);
+			}
+		});
 		mnActividadDeportiva.add(mntmActDepoAlta);
 
 		JMenuItem mntmActDepoConsulta = new JMenuItem("Consulta");
@@ -186,6 +214,14 @@ public class Principal {
 
 		JMenuItem mntmClaseAlta = new JMenuItem("Alta");
 		mntmClaseAlta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		mntmClaseAlta.addActionListener(new ActionListener ( ) {
+			public void actionPerformed(ActionEvent e) {
+				Factory fabrica = Factory.getInstance();
+				IControllerInstitucionDeportiva aIDController = fabrica.getIControllerInstitucionDeportiva();
+				altaDictadoClaseInternalFrame.inicializarComboBoxes(aIDController);
+				altaDictadoClaseInternalFrame.setVisible(true);
+			}
+		});
 		mnClase.add(mntmClaseAlta);
 
 		JMenuItem mntmClaseRegistro = new JMenuItem("Registro");

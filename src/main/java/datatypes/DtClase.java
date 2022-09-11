@@ -6,18 +6,29 @@ import java.util.Date;
 public class DtClase {
 	private String nombre;
 	private Date fecha;
-	private Time horaInicio;
+	private Date horaInicio;
 	private String url;
 	private Date fechaReg;
-	private String nomActividad;
-	private String nomInstitucion;
+	private String actividad;
 	private String nickProfesor;
+	private String nomInstitucion;
 	
 	public DtClase() {
 		super();
 	}
 
-	
+	public DtClase(String nombre, Date fecha, Date horaInicio, String url, Date fechaReg, String actividad, String nickProfesor, String nomInstitucion) {
+		super();
+		this.nombre = nombre;
+		this.fecha = fecha;
+		this.horaInicio = horaInicio;
+		this.url = url;
+		this.fechaReg = fechaReg;
+		this.actividad = actividad;
+		this.nickProfesor = nickProfesor;
+		this.nomInstitucion = nomInstitucion;
+	}
+
 	public DtClase(String nombre, Date fecha, Time horaInicio, String url, Date fechaReg) {
 		super();
 		this.nombre = nombre;
@@ -26,7 +37,7 @@ public class DtClase {
 		this.url = url;
 		this.fechaReg = fechaReg;
 	}
-
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -35,7 +46,7 @@ public class DtClase {
 		return fecha;
 	}
 
-	public Time getHoraInicio() {
+	public Date getHoraInicio() {
 		return horaInicio;
 	}
 
@@ -47,8 +58,8 @@ public class DtClase {
 		return fechaReg;
 	}
 	
-	public String getNomActividad() {
-		return nomActividad;
+	public String getActividad() {
+		return actividad;
 	}
 	
 	public String getNomInstitucion() {
@@ -77,6 +88,4 @@ public class DtClase {
 	public void setFechaReg(Date fechaReg) {
 		this.fechaReg = fechaReg;
 	}
-	
-	
 }
