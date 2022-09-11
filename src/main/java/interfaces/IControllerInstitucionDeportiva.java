@@ -1,13 +1,11 @@
 package interfaces;
 
-import java.util.ArrayList;
-import datatypes.DtActividadDeportiva;
+import datatypes.DtInstitucionDeportiva;
+import excepciones.InstitucionDeportivaRepetidaException;
 
 public interface IControllerInstitucionDeportiva {
 	
-	public Boolean existeInstitucion(String nombre);
-	
-	public void altaInstitucion(String nombre, String descripcion, String url);
+	public void altaInstitucion(DtInstitucionDeportiva instDepor) throws InstitucionDeportivaRepetidaException;
 	
 	public String[] obtenerInstituciones();
 	

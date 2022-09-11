@@ -2,6 +2,8 @@ package logica;
 
 import java.util.ArrayList;
 
+import datatypes.DtInstitucionDeportiva;
+import excepciones.InstitucionDeportivaRepetidaException;
 import interfaces.IControllerInstitucionDeportiva;
 
 public class ControllerInstitucionDeportiva implements IControllerInstitucionDeportiva {
@@ -14,21 +16,17 @@ public class ControllerInstitucionDeportiva implements IControllerInstitucionDep
 	
 	// METODOS
  
-	public Boolean existeInstitucion(String nombre) {
+	public void altaInstitucion(DtInstitucionDeportiva instDepor) throws InstitucionDeportivaRepetidaException {
 		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();
-		if (idh.buscarInstitucionDeportiva(nombre).equals(null))
-			return false;
-		else
-			return true;
-	}
 
-	public void altaInstitucion(String nombre, String descripcion, String url) {
-		InstitucionDeportiva institucion = new InstitucionDeportiva();
-		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();
+		InstitucionDeportiva institucion = idh.buscarInstitucionDeportiva(instDepor.getNombre());
+		if(institucion != null)
+			throw new InstitucionDeportivaRepetidaException("Ya existe registrada una Institución Deportiva con el nombre: " + instDepor.getNombre());
+
+		institucion = new InstitucionDeportiva(instDepor.getNombre(), instDepor.getDescripcion(), instDepor.getUrl());
 		idh.agregarInstitucionDeportiva(institucion);
 	}
-//puede que falte excepcion de nombre repetido
-	
+
 	@Override
 	public String[] obtenerInstituciones() {
 		ArrayList<String> instituciones;
@@ -42,5 +40,4 @@ public class ControllerInstitucionDeportiva implements IControllerInstitucionDep
         }
         return aRetornar;
 	}
-
 }

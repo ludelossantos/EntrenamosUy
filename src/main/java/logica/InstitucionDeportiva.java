@@ -51,7 +51,7 @@ public class InstitucionDeportiva {
 	
 	public ArrayList<DtActividadDeportiva> obtenerActividades(){
 		ArrayList<DtActividadDeportiva> lista = new ArrayList<>();
-		for(ActividadDeportiva a : actividades) {
+		for(ActividadDeportiva a : this.actividades) {
 			lista.add(a.getDtActividadDeportiva());
 		}
 		return lista;

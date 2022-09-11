@@ -1,7 +1,7 @@
 package logica;
 
 import java.util.ArrayList;
-
+import javafx.util.Pair;
 import datatypes.DtActividadDeportiva;
 import datatypes.DtClase;
 import excepciones.ClaseRepetidaException;
@@ -12,11 +12,36 @@ import interfaces.IControllerAltaDictadoClase;
 
 public class ControllerAltaDictadoClase implements IControllerAltaDictadoClase {
 	
-	public ArrayList<DtActividadDeportiva> listarActividades(String nombre){
+	public String[] listarActividades(String nombre){
 		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();
 		InstitucionDeportiva institucion = idh.buscarInstitucionDeportiva(nombre);
 		ArrayList<DtActividadDeportiva> actividades = institucion.obtenerActividades();
+		ArrayList<Pair<String,String>> listaActividades = new ArrayList<>();
+		
+		/*ArrayList<DtActividadDeportiva> actividades = institucion.obtenerActividades();
 		return actividades;
+		
+		ArrayList<DtActividadDeportiva> actividades = insti.obtenerActividades();
+		ArrayList<Pair<DtClase,String>> listado = new ArrayList<>();
+		for(DtActividadDeportiva a: actividades) {
+			if(a.getNombre().equals(actividad)) {
+				ActividadDeportiva act = insti.buscarActividad(actividad);
+				for(DtClase dtc:act.obtenerClases()) {
+					String concat = new String();
+					concat = dtc.getNombre() + " " + dtc.getFecha() + " " + dtc.getHoraInicio();
+					Pair<DtClase, String> pair = new Pair<>(dtc, concat);
+					listado.add(pair);
+				}	
+			}
+		}
+		String[] repo = new String[listado.size()];
+		int u=0;
+		for(Pair<DtClase,String> dtc:listado) {
+			repo[u] = dtc.getValue();
+			u++;
+		}
+		return repo;
+		*/
 	}
 
 	public void altaClase(DtClase clase) throws ClaseRepetidaException, NoExisteUsuarioException, EsSocioException, ProfNoTrabajaInstitucion {

@@ -27,6 +27,7 @@ import interfaces.IControllerAltaUsuario;
 import logica.InstitucionDeportiva;
 
 import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
 
 public class AltaUsuario extends JInternalFrame {
 
@@ -107,7 +108,7 @@ public class AltaUsuario extends JInternalFrame {
 		getContentPane().add(textFieldEmail);
 		textFieldEmail.setColumns(10);
 		
-		JLabel lblFechaNac = new JLabel("Fecha de nacimiento");
+		JLabel lblFechaNac = new JLabel("Fecha de Nacimiento");
 		lblFechaNac.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblFechaNac.setBackground(new Color(240, 240, 240));
 		lblFechaNac.setBounds(438, 122, 152, 25);
@@ -133,7 +134,7 @@ public class AltaUsuario extends JInternalFrame {
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblDescripcion = new JLabel("Descripción");
+		JLabel lblDescripcion = new JLabel("Descripci\u00F3n");
 		lblDescripcion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblDescripcion.setBackground(new Color(240, 240, 240));
 		lblDescripcion.setBounds(12, 45, 117, 25);
@@ -152,7 +153,7 @@ public class AltaUsuario extends JInternalFrame {
 		textFieldSitioWeb.setColumns(10);
 		textFieldSitioWeb.setEnabled(false);
 		
-		JLabel lblBiografia = new JLabel("Biografía");
+		JLabel lblBiografia = new JLabel("Biograf\u00EDa");
 		lblBiografia.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblBiografia.setBackground(new Color(240, 240, 240));
 		lblBiografia.setBounds(389, 45, 130, 25);
@@ -180,7 +181,7 @@ public class AltaUsuario extends JInternalFrame {
 		scrollPane_1.setViewportView(textAreaBiografia);
 		textAreaBiografia.setEnabled(false);
 		
-		JLabel lblInstitucion = new JLabel("Instituci�n");
+		JLabel lblInstitucion = new JLabel("Instituci\u00F3n");
 		lblInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblInstitucion.setBounds(12, 12, 94, 25);
 		panel.add(lblInstitucion);
@@ -262,16 +263,20 @@ public class AltaUsuario extends JInternalFrame {
 				String sitioWeb = this.textFieldSitioWeb.getText();
 				String insti = this.comboBoxInstitucion.getSelectedItem().toString();
 				InstitucionDeportiva institucion = this.aUController.buscarInstitucion(insti);	
-				System.out.println("crea profesor");
+				//System.out.println("crea profesor");
 				dt = new DtProfesor(nickname, nombre, apellido, email, fechaNac, descripcion, biografia, sitioWeb, institucion);
 			}else {
-				System.out.println("crea socio");
+				//System.out.println("crea socio");
 				dt = new DtSocio(nickname, nombre, apellido, email, fechaNac);
 			}
 			
 			try {
 				this.aUController.altaUsuario(dt);
 				JOptionPane.showMessageDialog(this, "El usuario se ha creado con éxito", "Alta usuario", JOptionPane.INFORMATION_MESSAGE);
+				if(dt instanceof DtProfesor)
+					System.out.println("crea profesor "+ dt.getNickname() +" ");
+				if(dt instanceof DtSocio)
+					System.out.println("crea socio "+ dt.getNickname() +" ");
 				limpiarFormulario();
 	            setVisible(false);
 			} catch(NicknameRepetidoException rn) {
