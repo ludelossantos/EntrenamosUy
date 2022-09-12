@@ -29,6 +29,15 @@ public class DtClase {
 		this.nomInstitucion = nomInstitucion;
 	}
 
+	public DtClase(String nombre, Date fecha, Date horaInicio2, String url, Date fechaReg) {
+		super();
+		this.nombre = nombre;
+		this.fecha = fecha;
+		this.horaInicio = horaInicio2;
+		this.url = url;
+		this.fechaReg = fechaReg;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -53,11 +62,30 @@ public class DtClase {
 		return actividad;
 	}
 	
+	public String getNomInstitucion() {
+		return nomInstitucion;
+	}
+	
 	public String getNickProfesor() {
 		return nickProfesor;
 	}
 	
-	public String getNomInstitucion() {
-		return nomInstitucion;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+	public void setHoraInicio(Time horaInicio) {
+		this.horaInicio = horaInicio;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
+	public void setFechaReg(Date fechaReg) {
+		this.fechaReg = fechaReg;
 	}
 }

@@ -1,7 +1,6 @@
 package logica;
 
 import java.util.ArrayList;
-
 import datatypes.DtProfesor;
 import datatypes.DtSocio;
 import datatypes.DtUsuario;
@@ -27,32 +26,30 @@ public class ControllerAltaUsuario implements IControllerAltaUsuario {
 			throw new EmailRepetidoException("El email '" + nuevo.getEmail() + "' ya está en uso.");
 		}
 		if(nuevo instanceof DtProfesor)
-			usuario = new Profesor(nuevo.getNickname(), nuevo.getNombre(), nuevo.getApellido(), nuevo.getEmail(), nuevo.getFechaNac(), ((DtProfesor) nuevo).getDescripcion(), ((DtProfesor) nuevo).getBiografia(), ((DtProfesor) nuevo).getSitioWeb(), ((DtProfesor) nuevo).getInstitucion());
+			usuario = new Profesor(nuevo.getNickname(), nuevo.getNombre(), nuevo.getApellido(), nuevo.getEmail(), nuevo.getFechaNac(), ((DtProfesor) nuevo).getDescripcion(), ((DtProfesor) nuevo).getBiografia(), ((DtProfesor) nuevo).getSitioWeb());
 		if(nuevo instanceof DtSocio)
 			usuario = new Socio(nuevo.getNickname(), nuevo.getNombre(), nuevo.getApellido(), nuevo.getEmail(), nuevo.getFechaNac());
 		usuarios.agregarUsuario(usuario);
 	} 
 	
-	@Override //CARGA PARA PROBAR...
+	@Override 
 	public String[] listarInstituciones() {
-		ArrayList<String> instituciones = new ArrayList<String>();
-		instituciones.add("Aerobics");
-		instituciones.add("SportCity");
-		instituciones.add("DefensorSporting");
-		instituciones.add("BohemiosFC");
-		String[] insti = new String[4];
-	    int i=0;
-	    for(String s:instituciones) {
-	    	insti[i]=s;
-	    	i++;
-	    }
-		return insti;
+		InstitucionDeportivaHandler instHand = InstitucionDeportivaHandler.getInstancia();
+		ArrayList<String> instituciones = instHand.obtenerInstituciones();
+		String[] instiList = new String[instituciones.size()];
+		int i=0;
+		for(String n:instituciones) {
+			instiList[i]=n;
+			i++;
+		}
+		return instiList;
 	}
 
 	@Override //PARA PRUEBAS BORRAR
 	public InstitucionDeportiva buscarInstitucion(String insti) {
-		InstitucionDeportiva institu = new InstitucionDeportiva("prueba", "descripcion....", "url....");
-		return institu;
+		InstitucionDeportivaHandler instiHand = InstitucionDeportivaHandler.getInstancia();
+		InstitucionDeportiva institucion = instiHand.buscarInstitucionDeportiva(insti);
+		return institucion;
 	}
 }
 

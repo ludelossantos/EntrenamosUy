@@ -146,7 +146,6 @@ public class AltaActividadDeportiva extends JInternalFrame {
 	public void inicializarComboBoxes(IControllerInstitucionDeportiva instDepController) {
 		DefaultComboBoxModel<String> modelinsti = new DefaultComboBoxModel<String>(instDepController.obtenerInstituciones());
 		comboBoxInstitucion.setModel(modelinsti);
-		comboBoxInstitucion.setSelectedIndex(0);
 	}
 	
 	protected void aceptarAltaActividadActionPerformed(ActionEvent arg0) {
@@ -179,7 +178,7 @@ public class AltaActividadDeportiva extends JInternalFrame {
 			
 			try {
 				this.altaActDepController.altaActividadDep(nombre, nomInstitucion, descripcion, duracion, costo, fechaAlta);
-				JOptionPane.showMessageDialog(this, "La actividad deportiva se ha creado con éxito", "Alta Actividad Deportiva", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this, "La actividad deportiva se ha creado con ï¿½xito", "Alta Actividad Deportiva", JOptionPane.INFORMATION_MESSAGE);
 				System.out.println("crea actividad deportiva "+ nombre +" en la institucion "+ nomInstitucion +"");
 				limpiarFormulario();
 				setVisible(false);

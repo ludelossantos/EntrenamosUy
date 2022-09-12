@@ -6,8 +6,9 @@
 	<class>logica.Clase</class>	
 	<class>logica.Usuario</class>
 	<class>logica.Profesor</class>
+	<class>logica.Socio</class>
 	<class>logica.Registro</class>	
-	<properties>
+		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="create" />
 			<property name="hibernate.connection.username" value="postgres"/>

@@ -212,7 +212,7 @@ public class AltaDictadoClase extends JInternalFrame {
 			
 			try {
 				this.altaDictadoClaseController.altaClase(clase);
-				JOptionPane.showMessageDialog(this, "La clase se ha programado con éxito", "Alta Dictado Clase", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this, "La clase se ha programado con ï¿½xito", "Alta Dictado Clase", JOptionPane.INFORMATION_MESSAGE);
 				System.out.println("crea clase "+ clase.getNombre() +"de la actividad deportiva "+ clase.getActividad() +" en la institucion "+ clase.getNomInstitucion() +"");
 				limpiarFormulario();
 				setVisible(false);
@@ -272,6 +272,6 @@ public class AltaDictadoClase extends JInternalFrame {
 	public void inicializarComboBoxes(IControllerInstitucionDeportiva instDepController) {
 		DefaultComboBoxModel<String> modelinsti = new DefaultComboBoxModel<String>(instDepController.obtenerInstituciones());
 		comboBoxInstitucion.setModel(modelinsti);
-		comboBoxInstitucion.setSelectedIndex(0);
+		//comboBoxInstitucion.setSelectedIndex(0); esto tira error en todos lados
 	}
 }

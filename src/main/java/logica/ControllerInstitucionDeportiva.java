@@ -15,19 +15,26 @@ public class ControllerInstitucionDeportiva implements IControllerInstitucionDep
 	}
 	
 	// METODOS
- 
+
+	@Override
 	public void altaInstitucion(DtInstitucionDeportiva instDepor) throws InstitucionDeportivaRepetidaException {
 		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();
-
-		InstitucionDeportiva institucion = idh.buscarInstitucionDeportiva(instDepor.getNombre());
+		
+		InstitucionDeportiva institucion = idh.obtenerInstitucionDeportiva(instDepor.getNombre());
 		if(institucion != null)
-			throw new InstitucionDeportivaRepetidaException("Ya existe registrada una Institución Deportiva con el nombre: " + instDepor.getNombre());
-
+			throw new InstitucionDeportivaRepetidaException("Ya existe registrada una InstituciÃ³n Deportiva con el nombre: " + instDepor.getNombre());
+		
 		institucion = new InstitucionDeportiva(instDepor.getNombre(), instDepor.getDescripcion(), instDepor.getUrl());
 		idh.agregarInstitucionDeportiva(institucion);
 	}
 
 	@Override
+	public boolean existeInstitucionDeportiva(String nombre) {
+		InstitucionDeportivaHandler iDH = InstitucionDeportivaHandler.getInstancia();
+		InstitucionDeportiva institucion = iDH.obtenerInstitucionDeportiva(nombre);
+        return institucion != null;
+	}
+
 	public String[] obtenerInstituciones() {
 		ArrayList<String> instituciones;
 		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();

@@ -20,11 +20,11 @@ public class ControllerAltaActividadDep implements IControllerAltaActividadDep {
 		
 		ActividadDeportiva actividad = institucion.buscarActividad(nomInstitucion); //busco si existe una actividad con ese nombre en la institucion
 		if(actividad != null)
-			throw new ExisteActividadDepException("Ya existe la actividad '" + nombre + "' en la institución '" + nomInstitucion +"'");
+			throw new ExisteActividadDepException("Ya existe la actividad '" + nombre + "' en la instituciï¿½n '" + nomInstitucion +"'");
 		
 		actividad = new ActividadDeportiva(nombre, descripcion, duracion, costo, fechaAlta); //se crea la actividad deportiva
 		
-		institucion.agregarActividad(actividad); //agrego la actividad a la lista de actividades de la institucion
+		institucion.agregarActividadDeportiva(actividad); //agrego la actividad a la lista de actividades de la institucion
 		
 	}
 }

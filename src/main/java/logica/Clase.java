@@ -1,15 +1,30 @@
 package logica;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import datatypes.DtClase;
+
+@Entity
 public class Clase {
+	@Id
 	private String nombre;
 	private Date fecha;
 	private Date horaInicio;
 	private String url;
 	private Date fechaReg;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Registro> sociosRegistrados = new ArrayList<>();
+	
+	//CONSTRUCTORES
 	public Clase() {
 		super();
 	}
@@ -23,6 +38,7 @@ public class Clase {
 		this.fechaReg = fechaReg;
 	}
 
+	//GETTERS Y SETTERS
 	public String getNombre() {
 		return nombre;
 	}
@@ -61,5 +77,14 @@ public class Clase {
 
 	public void setFechaReg(Date fechaReg) {
 		this.fechaReg = fechaReg;
+	}
+	
+	public DtClase getDtClase() {
+		return new DtClase(nombre, fecha, horaInicio, url, fechaReg);
+	}
+
+	//METODOS
+	public void agregarRegistro(Registro registro) {
+		sociosRegistrados.add(registro);
 	}
 }

@@ -4,7 +4,7 @@ public class DtInstitucionDeportiva {
 	private String nombre;
 	private String descripcion;
 	private String url;
-
+	
 	//CONSTRUCTORES
 	public DtInstitucionDeportiva() {
 		super();
@@ -29,5 +29,4 @@ public class DtInstitucionDeportiva {
 	public String getUrl() {
 		return url;
 	}
-
 }
