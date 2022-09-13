@@ -11,6 +11,8 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import java.text.SimpleDateFormat;
 
+import interfaces.Factory;
+import interfaces.IControllerConsultaActividad;
 import interfaces.IControllerConsultaUsuario;
 
 import javax.swing.JTextField;
@@ -68,14 +70,17 @@ public class ConsultaUsuario extends JInternalFrame {
 	private JLabel lblUrlClase;
 	private JTextField textFieldURLClase;
 	private JLabel lblDescripActiv;
-	private JTextField textFieldDescripActiv;
+	private JTextField textFieldDescripActiv; 
 	private ConsultaActividad consultaActividad;
+	
 	//private ConsultaActividad consultaActividadInternalFrame;
 	/**
 	 * Create the frame.
 	 */
-	public ConsultaUsuario(IControllerConsultaUsuario cUController) {
+	public ConsultaUsuario(IControllerConsultaUsuario cUController, ConsultaActividad consultaActividad2) {
 		this.cUController = cUController;
+		this.consultaActividad = consultaActividad2;
+		
 		
 		setResizable(true);
         setIconifiable(true);
@@ -221,14 +226,15 @@ public class ConsultaUsuario extends JInternalFrame {
 		
 		btnVerInfoActiv = new JButton("Ver mas informacion");
 		btnVerInfoActiv.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		btnVerInfoActiv.setBounds(658, 536, 218, 35);
+		//btnVerInfoActiv.setBounds(711, 539, 218, 35);
 		btnVerInfoActiv.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				consultaActividad.setVisible(true);
 				verMasActiv(e);
-				salir(e);		
+				//salir(e);		
 			}
 		});
-		btnVerInfoActiv.setBounds(414, 596, 164, 29);
+		btnVerInfoActiv.setBounds(657, 536, 218, 35);
 		getContentPane().add(btnVerInfoActiv);
 		
 		comboBoxClases = new JComboBox<String>();
@@ -244,7 +250,7 @@ public class ConsultaUsuario extends JInternalFrame {
 		lblSinClases = new JLabel("No tiene clases asociadas");
 		lblSinClases.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblSinClases.setForeground(Color.RED);
-		lblSinClases.setBounds(359, 433, 183, 16);
+		lblSinClases.setBounds(379, 433, 183, 16);
 		getContentPane().add(lblSinClases);
 		
 		lblSinActividades = new JLabel("No tiene actividades asociadas");
@@ -418,6 +424,7 @@ public class ConsultaUsuario extends JInternalFrame {
 			comboBoxClases.setModel(modelclase);
 			comboBoxClases.setVisible(true);
 			btnVerInfoClases.setVisible(true);
+			lblSinClases.setVisible(false);
 			String clase = (String) comboBoxClases.getSelectedItem();
 			infoClase(nickname, clase);
 		} else {
@@ -470,7 +477,6 @@ public class ConsultaUsuario extends JInternalFrame {
 		String fechaR = formatter.format(clase.getFechaReg());
 		textFieldRegistroClase.setText(fechaR);
 		textFieldURLClase.setText(clase.getUrl());
-		lblSinClases.setVisible(true);
 		textFieldNomClase.setVisible(true);
 		textFechaClase.setVisible(true);
 		textHoraClase.setVisible(true);
@@ -522,11 +528,13 @@ public class ConsultaUsuario extends JInternalFrame {
 		textFieldSitioWeb.setText("");
 	}
 	
-	private void verMasActiv(ActionEvent e) {
+	private void verMasActiv(ActionEvent e) {		
 		String activ = (String) comboBoxActiv.getSelectedItem();
 		String nickname = this.comboBoxUser.getSelectedItem().toString();
 		String insti = cUController.obtenerInstitucion(nickname);
+		setVisible(false);
+		consultaActividad.getComboBoxActividades().setSelectedItem(activ);
+		consultaActividad.getComboBoxInstitucion().setSelectedItem(insti);
 		consultaActividad.mostrarDatos(insti,activ);
-		consultaActividad.setVisible(true);
 	}
 }
