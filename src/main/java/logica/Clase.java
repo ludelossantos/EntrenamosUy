@@ -33,13 +33,14 @@ public class Clase {
 		super();
 	}
 
-	public Clase(String nombre, Date fecha, Date horaInicio, String url, Date fechaReg) {
+	public Clase(String nombre, Date fecha, Date horaInicio, String url, Date fechaReg, ActividadDeportiva actividad) {
 		super();
 		this.nombre = nombre;
 		this.fecha = fecha;
 		this.horaInicio = horaInicio;
 		this.url = url;
 		this.fechaReg = fechaReg;
+		this.actividad = actividad;
 	}
 
 	//GETTERS Y SETTERS

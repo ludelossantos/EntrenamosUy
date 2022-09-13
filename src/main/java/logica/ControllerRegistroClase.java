@@ -94,7 +94,7 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 	}
 	
 	public Clase buscarClaseSeleccionada(String institucion, String actividad , String datClase) {
-		String[] arr = datClase.split(" ");
+		String[] arr = datClase.split(" / ");
 		String nombClase = arr [0];
 		Clase ret = null;
 		InstitucionDeportivaHandler instiHand = InstitucionDeportivaHandler.getInstancia();
