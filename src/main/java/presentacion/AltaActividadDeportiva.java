@@ -31,7 +31,6 @@ public class AltaActividadDeportiva extends JInternalFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private IControllerAltaActividadDep altaActDepController;
-	//private IControllerInstitucionDeportiva instDepController;
 	private JTextField textFieldNombre;
 	private JTextArea textAreaDescripcion;
 	private JTextField textFieldDuracion;
@@ -183,9 +182,9 @@ public class AltaActividadDeportiva extends JInternalFrame {
 				limpiarFormulario();
 				setVisible(false);
 			} catch(ExisteActividadDepException existe) {
-				JOptionPane.showMessageDialog(this, existe.getMessage(), "Alta Actividad Deportiva", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this, existe.getMessage(), "Alta Actividad Deportiva", JOptionPane.ERROR_MESSAGE);
 			} catch(NoExistenInstitucionesException inst) {
-				JOptionPane.showMessageDialog(this, inst.getMessage(), "Alta Actividad Deportiva", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this, inst.getMessage(), "Alta Actividad Deportiva", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}

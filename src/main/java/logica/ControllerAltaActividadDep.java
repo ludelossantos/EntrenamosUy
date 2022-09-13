@@ -21,12 +21,10 @@ public class ControllerAltaActividadDep implements IControllerAltaActividadDep {
 		ArrayList<String> existenInstituciones = idh.obtenerInstituciones();
 		if(existenInstituciones.isEmpty())
 			throw new NoExistenInstitucionesException("No existen instituciones en el sistema, debe dar de alta al menos una para poder continuar");
+		if(idh.existeActividadDep(nombre))
+			throw new ExisteActividadDepException("Ya existe la actividad '" + nombre + "' en la instituci\u00F3n '" + nomInstitucion +"'");
 		
-		ActividadDeportiva actividad = institucion.buscarActividad(nomInstitucion); //busco si existe una actividad con ese nombre en la institucion
-		if(actividad != null)
-			throw new ExisteActividadDepException("Ya existe la actividad '" + nombre + "' en la instituci�n '" + nomInstitucion +"'");
-		
-		actividad = new ActividadDeportiva(nombre, descripcion, duracion, costo, fechaAlta); //se crea la actividad deportiva
+		ActividadDeportiva actividad = new ActividadDeportiva(nombre, descripcion, duracion, costo, fechaAlta, institucion); //se crea la actividad deportiva
 		
 		institucion.agregarActividadDeportiva(actividad); //agrego la actividad a la lista de actividades de la institucion
 		Conexion conexion = Conexion.getInstancia();

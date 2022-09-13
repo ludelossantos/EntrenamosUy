@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+
 import datatypes.DtActividadDeportiva;
 import datatypes.DtClase;
 import excepciones.ClaseRepetidaException;
@@ -12,12 +14,13 @@ import excepciones.EsSocioException;
 import excepciones.NoExisteUsuarioException;	
 import excepciones.ProfNoTrabajaInstitucion;
 import interfaces.IControllerAltaDictadoClase;
+import persistencia.Conexion;
 
 public class ControllerAltaDictadoClase implements IControllerAltaDictadoClase {
 	@Override
-	public String[] listarActividades(String nombre){
+	public String[] listarActividades(String nomInstitucion){
 		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();
-		InstitucionDeportiva institucion = idh.buscarInstitucionDeportiva(nombre);
+		InstitucionDeportiva institucion = idh.buscarInstitucionDeportiva(nomInstitucion);
 		ArrayList<DtActividadDeportiva> actividades = institucion.obtenerActividades();
 		ArrayList<Map<DtActividadDeportiva,String>> listaActividades = new ArrayList<>();
 		Map<DtActividadDeportiva,String> pair = new HashMap<DtActividadDeportiva,String>();
@@ -44,8 +47,7 @@ public class ControllerAltaDictadoClase implements IControllerAltaDictadoClase {
 		
 		ActividadDeportiva actividad = buscarActividadSeleccionada(institucion, clase.getActividad()); //instancio actividad deportiva
 		
-		Clase nuevaClase = actividad.buscarClase(clase.getNombre()); //busco si ya existe una clase con ese nombre
-		if(nuevaClase != null)
+		if(idh.existeClase(clase.getNombre()))
 			throw new ClaseRepetidaException("Ya existe una clase con nombre '" + clase.getNombre() + "'");
 		
 		UsuarioHandler usuarios = UsuarioHandler.getInstancia();
@@ -60,11 +62,17 @@ public class ControllerAltaDictadoClase implements IControllerAltaDictadoClase {
 		if(!prof.getInstitucion().equals(institucion)) //verifico que el profesor trabaja en la institucion seleccionada
 			throw new ProfNoTrabajaInstitucion("El profesor '" + clase.getNickProfesor() + "' no trabaja en la instituci�n '" + institucion.getNombre() + "'");
 		
-		nuevaClase = new Clase(clase.getNombre(), clase.getFecha(), clase.getHoraInicio(), clase.getUrl(), clase.getFechaReg(), actividad); //creo la nueva clase
+		Clase nuevaClase = new Clase(clase.getNombre(), clase.getFecha(), clase.getHoraInicio(), clase.getUrl(), clase.getFechaReg(), actividad); //creo la nueva clase
 		
 		actividad.agregarClase(nuevaClase); //agrego la nueva clase de la actividad deportiva a la lista
 		
 		prof.agregarClase(nuevaClase); //agrego la nueva clase a la lista de clases dictadas del profesor
+		
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		em.getTransaction().begin();
+		em.persist(actividad);
+		em.getTransaction().commit();
 	}
 	
 	public ActividadDeportiva buscarActividadSeleccionada(InstitucionDeportiva institucion, String actividad) {
