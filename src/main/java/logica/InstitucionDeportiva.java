@@ -107,4 +107,5 @@ public class InstitucionDeportiva {
 	public void agregarProfesor(Profesor prof) {
 		profesores.add(prof);
 	}
+
 }

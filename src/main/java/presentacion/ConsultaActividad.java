@@ -77,7 +77,8 @@ public class ConsultaActividad extends JInternalFrame{
 		btnVerInfo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		btnVerInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mostrarDatos(institucion, actividad);
+				//mostrarDatos(institucion, actividad);
+				mostrarDatos2();
 			}
 		});
 		getContentPane().add(btnVerInfo);
@@ -91,10 +92,16 @@ public class ConsultaActividad extends JInternalFrame{
 			public void actionPerformed(ActionEvent e) {
 				cargaActividadesInstitucion(e);	
 			}
-		});*/
+		});
 		comboBoxInstitucion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				comboBoxActividades.setEnabled(true);
+			}
+		});*/
+		comboBoxInstitucion.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cargarActividades(e);				
 			}
 		});
 		getContentPane().add(comboBoxInstitucion);
@@ -104,7 +111,7 @@ public class ConsultaActividad extends JInternalFrame{
 		comboBoxActividades = new JComboBox<String>();
 		comboBoxActividades.setBounds(133, 72, 393, 25);
 		comboBoxActividades.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		cargarComboActividades(institucion);
+		//cargarComboActividades(institucion);
 		comboBoxActividades.setEnabled(false);
 		getContentPane().add(comboBoxActividades);
 
@@ -209,13 +216,22 @@ public class ConsultaActividad extends JInternalFrame{
 		this.institucion =(String)comboBoxInstitucion.getSelectedItem();
 	}
 	
-	
+	protected void cargarActividades(ActionEvent e) {
+		if(comboBoxInstitucion.getSelectedItem() != null) {
+			String institucion = this.comboBoxInstitucion.getSelectedItem().toString();
+			DefaultComboBoxModel<String> modelActividades = new DefaultComboBoxModel<>(cAController.listarActividades(institucion));
+			comboBoxActividades.setModel(modelActividades);
+			comboBoxActividades.setEnabled(true);
+			//comboBoxActividades.setSelectedIndex(0);
+		}
+	}
+	/*
 	public void cargarComboActividades(String nombreInstitucion) {
 		DefaultComboBoxModel<String> modelactiv = new DefaultComboBoxModel<String>(cAController.listarActividades(nombreInstitucion));
 		comboBoxActividades.setModel(modelactiv);
 		this.actividad =(String)comboBoxActividades.getSelectedItem();
 	}
-	/*
+	
 	protected void cargaActividadesInstitucion(ActionEvent e) {
 		if(comboBoxInstitucion.getSelectedIndex()!=0) {
 			String institucion = this.comboBoxInstitucion.getSelectedItem().toString();
@@ -225,7 +241,13 @@ public class ConsultaActividad extends JInternalFrame{
 		}
 	}
 	*/
-	@SuppressWarnings("deprecation")
+	protected void mostrarDatos2() {
+		String nombreInstitucion = this.comboBoxInstitucion.getSelectedItem().toString();
+		String nombreActividad = this.comboBoxInstitucion.getSelectedItem().toString();
+		mostrarDatos(nombreInstitucion,nombreActividad);
+	}
+	
+	//@SuppressWarnings("deprecation")
 	public void mostrarDatos(String nombreInstitucion, String nombreActividad) {
 		DtActividadDeportiva DtAct = cAController.obtenerDatosActividad(nombreInstitucion ,nombreActividad);
 		setVisible(true);

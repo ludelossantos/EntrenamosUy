@@ -22,7 +22,6 @@ import datatypes.DtClase;
 import datatypes.DtProfesor;
 import datatypes.DtSocio;
 import datatypes.DtUsuario;
-import presentacion.ConsultaActividad;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
