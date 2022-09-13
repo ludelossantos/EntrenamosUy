@@ -89,7 +89,8 @@ public class ActividadDeportiva {
 	}
 
 	public DtActividadDeportiva getDtActividadDeportiva() {
-		return new DtActividadDeportiva(this.getNombre(), this.getDescripcion(), this.getDuracion(), this.getCosto(), this.getFechaReg());
+		//return new DtActividadDeportiva(this.getNombre(), this.getDescripcion(), this.getDuracion(), this.getCosto(), this.getFechaReg());
+		return new DtActividadDeportiva(this.nombre, this.descripcion, this.duracion, this.costo, this.fechaReg);
 	}
 
 	// METODOS
@@ -98,10 +99,15 @@ public class ActividadDeportiva {
 	}
 	
 	public Clase buscarClase(String nombre) {
-		Conexion conexion = Conexion.getInstancia();
+		/*Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
 		Clase clase = em.find(Clase.class, nombre);
-		return clase;
+		return clase;*/
+		for(Clase c : clases) {
+			if(c.getNombre().equals(nombre))
+				return c;
+		}
+		return null;
 	}	
 	
 	public ArrayList<DtClase> obtenerClases(){

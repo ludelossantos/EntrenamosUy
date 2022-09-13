@@ -78,7 +78,7 @@ public class ConsultaActividad extends JInternalFrame{
 		btnVerInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//mostrarDatos(institucion, actividad);
-				//mostrarDatos2();
+				mostrarDatos2();
 			}
 		});
 		getContentPane().add(btnVerInfo);
@@ -86,6 +86,7 @@ public class ConsultaActividad extends JInternalFrame{
 		comboBoxInstitucion = new JComboBox<String>();		
 		comboBoxInstitucion.setBounds(133, 33, 393, 25);
 		comboBoxInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		comboBoxInstitucion.setEnabled(true);
 		/*
 		comboBoxInstitucion.addActionListener(new ActionListener() {
 			@Override
@@ -243,7 +244,7 @@ public class ConsultaActividad extends JInternalFrame{
 	*/
 	protected void mostrarDatos2() {
 		String nombreInstitucion = this.comboBoxInstitucion.getSelectedItem().toString();
-		String nombreActividad = this.comboBoxInstitucion.getSelectedItem().toString();
+		String nombreActividad = this.comboBoxActividades.getSelectedItem().toString();
 		mostrarDatos(nombreInstitucion,nombreActividad);
 	}
 	
@@ -252,10 +253,15 @@ public class ConsultaActividad extends JInternalFrame{
 		DtActividadDeportiva DtAct = cAController.obtenerDatosActividad(nombreInstitucion ,nombreActividad);
 		setVisible(true);
 		this.textFieldNombre.setText(DtAct.getNombre());
-		this.textFieldDuracion.setText(String.valueOf(DtAct.getDuracion()));
-		this.textFieldCosto.setText(String.valueOf(DtAct.getCosto()));
+		//this.textFieldDuracion.setText(String.valueOf(DtAct.getDuracion()));
+		//this.textFieldCosto.setText(String.valueOf(DtAct.getCosto()));
+		this.textFieldDuracion.setText(DtAct.getDuracion().toString());
+		this.textFieldCosto.setText(DtAct.getCosto().toString());
 		this.textFieldDescripcion.setText(DtAct.getDescripcion());
-		this.textFieldFecha.setText(DtAct.getFechaReg().toLocaleString());
+		//this.textFieldFecha.setText(DtAct.getFechaReg().toLocaleString());
+		this.textFieldFecha.setText(DtAct.getFechaReg().toString());
 		this.textArea.setText(DtAct.getClasesAsociadas());
+		System.out.println(DtAct.getClasesAsociadas());
+		System.out.println(nombreActividad);
 	}
 }

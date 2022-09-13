@@ -69,10 +69,15 @@ public class InstitucionDeportiva {
 	//METODOS
 
 	public ActividadDeportiva buscarActividad(String nombre) {
-		Conexion conexion = Conexion.getInstancia();
+		/*Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
-		ActividadDeportiva actividad = em.find(ActividadDeportiva.class, nombre);
-		return actividad;
+		ActividadDeportiva actividad = em.find(ActividadDeportiva.class, nombre);*/
+		for(ActividadDeportiva a : this.actividades) {
+			if(a.getNombre().equals(nombre)) {
+				return a;
+			}
+		}
+		return null;
 	}
 
 	public void agregarActividadDeportiva(ActividadDeportiva actividad) {
@@ -107,5 +112,11 @@ public class InstitucionDeportiva {
 	public void agregarProfesor(Profesor prof) {
 		profesores.add(prof);
 	}
-
+	
+	public ActividadDeportiva buscarActividadSeleccionada(String actividad) {
+		String[] split = actividad.split(" - ");
+		String nomActividad = split[0];
+		ActividadDeportiva retorno = buscarActividad(nomActividad);
+		return retorno;
+	}
 }

@@ -2,9 +2,5 @@
 target
 .classpath
 .project
-<<<<<<< HEAD
-.src\main\java\persistencia\Conexion.java
-=======
 .src\main\java\persistencia\Conexion.java
 .src\main\java\META-INF\persistence.xml
->>>>>>> 8fe993b368677c521b30750f1065b606d3d265eb

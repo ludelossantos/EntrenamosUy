@@ -534,6 +534,8 @@ public class ConsultaUsuario extends JInternalFrame {
 		setVisible(false);
 		consultaActividad.getComboBoxActividades().setSelectedItem(activ);
 		consultaActividad.getComboBoxInstitucion().setSelectedItem(insti);
+		consultaActividad.getComboBoxActividades().setEnabled(false);
+		consultaActividad.getComboBoxInstitucion().setEnabled(false);
 		consultaActividad.mostrarDatos(insti,activ);
 	}
 }

@@ -20,7 +20,7 @@ public class ControllerConsultaActividad implements IControllerConsultaActividad
 	@Override
 	public String[] listarActividades(String nombreInstitucion) {	
 		/*return InstitucionDeportivaHandler.getInstancia().buscarInstitucionDeportiva(nombreInstitucion)
-		.obtenerActividadesObjeto().stream().map(i -> i.getNombre()).toArray(String[]::new);*/
+		.obtenerActividadesObjeto().stream().map(i -> i.getNombre()).toArray(String[]::new);	*/
 		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();
 		InstitucionDeportiva institucion = idh.buscarInstitucionDeportiva(nombreInstitucion);
 		ArrayList<DtActividadDeportiva> actividades = institucion.obtenerActividades();
@@ -41,11 +41,21 @@ public class ControllerConsultaActividad implements IControllerConsultaActividad
 			i++;
 		}
 		return retorno;
-		
 	}
 
 	@Override
 	public DtActividadDeportiva obtenerDatosActividad(String nombreInstitucion, String nombreActividad) {
-		return InstitucionDeportivaHandler.getInstancia().buscarInstitucionDeportiva(nombreInstitucion).buscarActividad(nombreActividad).getDtActividadDeportivaMaxi();
+		InstitucionDeportiva institucion = InstitucionDeportivaHandler.getInstancia().buscarInstitucionDeportiva(nombreInstitucion);
+		ActividadDeportiva actividad = institucion.buscarActividadSeleccionada(nombreActividad);
+		DtActividadDeportiva dta = actividad.getDtActividadDeportivaMaxi();
+		return dta;
+		//return InstitucionDeportivaHandler.getInstancia().buscarInstitucionDeportiva(nombreInstitucion).buscarActividad(nombreActividad).getDtActividadDeportivaMaxi();
+	}
+	
+	public ActividadDeportiva buscarActividadSeleccionada(InstitucionDeportiva institucion, String actividad) {
+		String[] split = actividad.split(" - ");
+		String nomActividad = split[0];
+		ActividadDeportiva retorno = institucion.buscarActividad(nomActividad);
+		return retorno;
 	}
 }
