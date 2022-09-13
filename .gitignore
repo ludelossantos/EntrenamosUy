@@ -3,3 +3,4 @@ target
 .classpath
 .project
 .src\main\java\persistencia\Conexion.java
+.src\main\java\META-INF\persistence.xml

@@ -12,8 +12,8 @@
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.connection.username" value="postgres"/>
-			<property name="hibernate.connection.password" value="luna"/>
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/pap"/>
+			<property name="hibernate.connection.password" value="lapass"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/entrenamosUy"/>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 		</properties>
 	</persistence-unit>
