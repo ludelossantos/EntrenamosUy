@@ -50,7 +50,7 @@ public class RegistroClase extends JInternalFrame {
 		getContentPane().add(panel_clases);
 		panel_clases.setLayout(null);
 				
-		JLabel lblInstitucion = new JLabel("Instituci\u00F3n");
+		JLabel lblInstitucion = new JLabel("Institución");
 		lblInstitucion.setBounds(22, 16, 73, 22);
 		lblInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		panel_clases.add(lblInstitucion);
@@ -185,7 +185,7 @@ public class RegistroClase extends JInternalFrame {
 	
 	private boolean checkFormulario() {
 		if(comboBoxInstitucion.getSelectedItem() == null) {
-			JOptionPane.showMessageDialog(this, "Seleccione la instituci\u00F3n.", "Registro a dictado de Clase", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Seleccione la institución.", "Registro a dictado de Clase", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 		String actividad = this.comboBoxActDepor.getSelectedItem().toString();

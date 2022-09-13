@@ -217,13 +217,13 @@ public class AltaDictadoClase extends JInternalFrame {
 				limpiarFormulario();
 				setVisible(false);
 			} catch(ClaseRepetidaException cr) {
-				JOptionPane.showMessageDialog(this, cr.getMessage(), "Alta Actividad Deportiva", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, cr.getMessage(), "Alta Actividad Deportiva", JOptionPane.INFORMATION_MESSAGE);
 			} catch(NoExisteUsuarioException neu) {
-				JOptionPane.showMessageDialog(this, neu.getMessage(), "Alta Actividad Deportiva", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, neu.getMessage(), "Alta Actividad Deportiva", JOptionPane.INFORMATION_MESSAGE);
 			} catch(EsSocioException es) {
-				JOptionPane.showMessageDialog(this, es.getMessage(), "Alta Actividad Deportiva", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, es.getMessage(), "Alta Actividad Deportiva", JOptionPane.INFORMATION_MESSAGE);
 			} catch(ProfNoTrabajaInstitucion pnti) {
-				JOptionPane.showMessageDialog(this, pnti.getMessage(), "Alta Actividad Deportiva", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, pnti.getMessage(), "Alta Actividad Deportiva", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 	}
