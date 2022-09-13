@@ -201,7 +201,7 @@ public class AltaDictadoClase extends JInternalFrame {
 			c.setTime(hora);
 			
 			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); //parseo de string a date
-			Date fechaAlta = null;
+			Date fechaAlta = new Date();
 			try {
 				fechaAlta = formato.parse(this.textFieldFechaAlta.getText());
 			} catch (ParseException e) {
