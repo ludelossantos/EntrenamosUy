@@ -1,6 +1,5 @@
 package presentacion;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,7 +17,6 @@ import javax.swing.JTextArea;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
-import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 
@@ -82,7 +80,6 @@ public class AltaActividadDeportiva extends JInternalFrame {
 		textAreaDescripcion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		textAreaDescripcion.setLineWrap(true);
 		textAreaDescripcion.setBounds(188, 107, 166, 81);
-		textAreaDescripcion.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		getContentPane().add(textAreaDescripcion);
 		
 		JLabel lblDuracion = new JLabel("Duraci\u00F3n");
