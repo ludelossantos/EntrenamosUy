@@ -137,7 +137,7 @@ public class RegistroClase extends JInternalFrame {
 		//comboBoxInstitucion.setSelectedIndex(0);
 		DefaultComboBoxModel<String> modelsocios = new DefaultComboBoxModel<String>(rCController.listarSocios());
 		comboBoxSocio.setModel(modelsocios);
-		comboBoxSocio.setSelectedIndex(0);
+		//comboBoxSocio.setSelectedIndex(0);
 	}
 	
 	protected void cargaActividadesInstitucion(ActionEvent e) {
