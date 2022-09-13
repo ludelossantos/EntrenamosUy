@@ -72,7 +72,7 @@ public class ConsultaActividad extends JInternalFrame{
 		list.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		getContentPane().add(list);
 		
-		JButton btnVerInfo = new JButton("Ver información");
+		JButton btnVerInfo = new JButton("Ver informaci\u00F3n");
 		btnVerInfo.setBounds(396, 108, 130, 35);
 		btnVerInfo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		btnVerInfo.addActionListener(new ActionListener() {
