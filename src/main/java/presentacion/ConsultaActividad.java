@@ -78,7 +78,7 @@ public class ConsultaActividad extends JInternalFrame{
 		btnVerInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//mostrarDatos(institucion, actividad);
-				mostrarDatos2();
+				//mostrarDatos2();
 			}
 		});
 		getContentPane().add(btnVerInfo);

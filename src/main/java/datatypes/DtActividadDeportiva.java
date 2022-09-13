@@ -3,6 +3,7 @@ package datatypes;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class DtActividadDeportiva {
 	private String nombre;
@@ -10,7 +11,7 @@ public class DtActividadDeportiva {
 	private Float duracion;
 	private BigDecimal costo;
 	private Date fechaReg;
-	private ArrayList<String> clasesAsociadasList = new ArrayList<>();
+	private List<String> clasesAsociadasList = new ArrayList<>();
 
 	public DtActividadDeportiva() {
 		super();
@@ -25,7 +26,7 @@ public class DtActividadDeportiva {
 		this.fechaReg = fechaReg;
 	}
 	
-	public DtActividadDeportiva(String nombre, String descripcion, Float duracion, BigDecimal costo, Date fechaReg, ArrayList<String> clasesAsociadasList) {
+	public DtActividadDeportiva(String nombre, String descripcion, Float duracion, BigDecimal costo, Date fechaReg, List<String> clasesAsociadasList) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;

@@ -47,23 +47,18 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 	public String[] listarClasesActividad(String institucion, String actividad) {
 		InstitucionDeportivaHandler instiHand = InstitucionDeportivaHandler.getInstancia();
 		InstitucionDeportiva insti = instiHand.buscarInstitucionDeportiva(institucion);
-		ArrayList<DtActividadDeportiva> actividades = insti.obtenerActividades();
-		ArrayList<Pair<DtClase,String>> listado = new ArrayList<>();
-		for(DtActividadDeportiva a: actividades) {
-			if(a.getNombre().equals(actividad)) {
-				ActividadDeportiva act = insti.buscarActividad(actividad);
-				for(DtClase dtc:act.obtenerClases()) {
-					String concat = new String();
-					concat = dtc.getNombre() + " " + dtc.getFecha() + " " + dtc.getHoraInicio();
-					Pair<DtClase, String> pair = new Pair<>(dtc, concat);
-					listado.add(pair);
-				}	
-			}
+		ActividadDeportiva acti = insti.buscarActividad(actividad);
+		ArrayList<DtClase> clases = acti.obtenerClases();
+		ArrayList<String> listado = new ArrayList<>();
+		for(DtClase dtc: clases) {
+			String concat = new String();
+			concat = dtc.getNombre() + "  /  " + dtc.getFecha() + "  /  "  + dtc.getHoraInicio();
+			listado.add(concat);
 		}
 		String[] repo = new String[listado.size()];
 		int u=0;
-		for(Pair<DtClase,String> dtc:listado) {
-			repo[u] = dtc.getValue();
+		for(String s:listado) {
+			repo[u] = s;
 			u++;
 		}
 		return repo;
