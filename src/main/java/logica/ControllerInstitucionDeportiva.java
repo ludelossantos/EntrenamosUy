@@ -22,7 +22,7 @@ public class ControllerInstitucionDeportiva implements IControllerInstitucionDep
 		
 		InstitucionDeportiva institucion = idh.obtenerInstitucionDeportiva(instDepor.getNombre());
 		if(institucion != null)
-			throw new InstitucionDeportivaRepetidaException("Ya existe registrada una Institución Deportiva con el nombre: " + instDepor.getNombre());
+			throw new InstitucionDeportivaRepetidaException("Ya existe registrada una Instituci\u00F3n Deportiva con el nombre: " + instDepor.getNombre());
 		
 		institucion = new InstitucionDeportiva(instDepor.getNombre(), instDepor.getDescripcion(), instDepor.getUrl());
 		idh.agregarInstitucionDeportiva(institucion);

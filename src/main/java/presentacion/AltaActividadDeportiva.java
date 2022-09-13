@@ -82,7 +82,7 @@ public class AltaActividadDeportiva extends JInternalFrame {
 		textAreaDescripcion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		textAreaDescripcion.setLineWrap(true);
 		textAreaDescripcion.setBounds(188, 107, 166, 81);
-		textAreaDescripcion.setBorder(BorderFactory.createLineBorder(Color.lightGray));
+		//textAreaDescripcion.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		getContentPane().add(textAreaDescripcion);
 		
 		JLabel lblDuracion = new JLabel("Duraci\u00F3n");

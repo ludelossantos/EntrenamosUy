@@ -60,7 +60,7 @@ public class ControllerAltaDictadoClase implements IControllerAltaDictadoClase {
 		Profesor prof = (Profesor) usuario; //instancia Profesor
 		
 		if(!prof.getInstitucion().equals(institucion)) //verifico que el profesor trabaja en la institucion seleccionada
-			throw new ProfNoTrabajaInstitucion("El profesor '" + clase.getNickProfesor() + "' no trabaja en la instituci�n '" + institucion.getNombre() + "'");
+			throw new ProfNoTrabajaInstitucion("El profesor '" + clase.getNickProfesor() + "' no trabaja en la instituci\u00F3n '" + institucion.getNombre() + "'");
 		
 		Clase nuevaClase = new Clase(clase.getNombre(), clase.getFecha(), clase.getHoraInicio(), clase.getUrl(), clase.getFechaReg(), actividad); //creo la nueva clase
 		

@@ -42,7 +42,8 @@ public class InstitucionDeportivaHandler {
 		List<InstitucionDeportiva> institucionesDeportivas = (List<InstitucionDeportiva>) query.getResultList();
 		ArrayList<String> instituciones = new ArrayList<>();
 		for(InstitucionDeportiva i: institucionesDeportivas) {
-			instituciones.add(new String(i.getNombre()));
+			//instituciones.add(new String(i.getNombre()));
+			instituciones.add(i.getNombre());
 		}
 		return instituciones;
 	}
