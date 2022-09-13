@@ -107,8 +107,8 @@ public class ActividadDeportiva {
 	public ArrayList<DtClase> obtenerClases(){
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
-		javax.persistence.Query query = em.createQuery("select a from Clase a");
-		List<Clase> clases = (List<Clase>) query.getResultList();
+		//javax.persistence.Query query = em.createQuery("select a from Clase a");
+		//List<Clase> clases = (List<Clase>) query.getResultList();
 		ArrayList<DtClase> listado = new ArrayList<>();
 		for(Clase c: clases) {
 			listado.add(c.getDtClase());
@@ -129,11 +129,11 @@ public class ActividadDeportiva {
 	}
 	
 	public DtActividadDeportiva getDtActividadDeportivaMaxi() {
-		Conexion conexion = Conexion.getInstancia();
-		EntityManager em = conexion.getEntityManager();
-		javax.persistence.Query query = em.createQuery("select c from Clase c");
-		List<Clase> clases = (List<Clase>) query.getResultList();
-		ArrayList<String> listadoClases = new ArrayList<>();
+		//Conexion conexion = Conexion.getInstancia();
+		//EntityManager em = conexion.getEntityManager();
+		//javax.persistence.Query query = em.createQuery("select c from Clase c");
+		//List<Clase> clases = (List<Clase>) query.getResultList();
+		List<String> listadoClases = new ArrayList<>();
 		for(Clase c: clases) {
 			listadoClases.add(c.getNombre());
 		}

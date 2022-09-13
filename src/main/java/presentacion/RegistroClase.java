@@ -141,7 +141,7 @@ public class RegistroClase extends JInternalFrame {
 	}
 	
 	protected void cargaActividadesInstitucion(ActionEvent e) {
-		if(comboBoxInstitucion.getSelectedIndex()!=0) {
+		if(comboBoxInstitucion.getSelectedItem() != null) {
 			String institucion = this.comboBoxInstitucion.getSelectedItem().toString();
 			DefaultComboBoxModel<String> modelactividades = new DefaultComboBoxModel<String>(rCController.listarActividadesDeportivas(institucion));
 			comboBoxActDepor.setModel(modelactividades);
@@ -150,12 +150,12 @@ public class RegistroClase extends JInternalFrame {
 	}
 	
 	protected void cargarClasesActividad(ActionEvent e) {
-		if(comboBoxActDepor.getSelectedIndex()!=0) {
+		if(comboBoxActDepor.getSelectedItem() != null) {
 			String institucion = this.comboBoxInstitucion.getSelectedItem().toString();
 			String actividad = this.comboBoxActDepor.getSelectedItem().toString();
 			DefaultComboBoxModel<String> modelclases = new DefaultComboBoxModel<String>(rCController.listarClasesActividad(institucion, actividad));
 			listSetClases.setModel(modelclases);
-			listSetClases.setSelectedIndex(0);
+			//listSetClases.setSelectedIndex(0);
 		}		
 	}	
 	
