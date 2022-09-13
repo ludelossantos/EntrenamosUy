@@ -178,7 +178,7 @@ public class AltaActividadDeportiva extends JInternalFrame {
 			
 			try {
 				this.altaActDepController.altaActividadDep(nombre, nomInstitucion, descripcion, duracion, costo, fechaAlta);
-				JOptionPane.showMessageDialog(this, "La actividad deportiva se ha creado con �xito", "Alta Actividad Deportiva", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this, "La actividad deportiva se ha creado con \u00E9xito", "Alta Actividad Deportiva", JOptionPane.INFORMATION_MESSAGE);
 				System.out.println("crea actividad deportiva "+ nombre +" en la institucion "+ nomInstitucion +"");
 				limpiarFormulario();
 				setVisible(false);

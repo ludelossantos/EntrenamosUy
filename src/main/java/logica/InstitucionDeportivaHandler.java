@@ -65,5 +65,4 @@ public class InstitucionDeportivaHandler {
 		InstitucionDeportiva insti = em.find(InstitucionDeportiva.class, nombre);
 		return insti;
 	}
-
 }

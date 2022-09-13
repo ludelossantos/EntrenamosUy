@@ -1,12 +1,16 @@
 package logica;
 
 import java.util.ArrayList;
+
+import javax.persistence.EntityManager;
+
 import datatypes.DtProfesor;
 import datatypes.DtSocio;
 import datatypes.DtUsuario;
 import excepciones.EmailRepetidoException;
 import excepciones.NicknameRepetidoException;
 import interfaces.IControllerAltaUsuario;
+import persistencia.Conexion;
 
 public class ControllerAltaUsuario implements IControllerAltaUsuario {
 
@@ -25,11 +29,22 @@ public class ControllerAltaUsuario implements IControllerAltaUsuario {
 		if(usuario != null) {
 			throw new EmailRepetidoException("El email '" + nuevo.getEmail() + "' ya está en uso.");
 		}
-		if(nuevo instanceof DtProfesor)
-			usuario = new Profesor(nuevo.getNickname(), nuevo.getNombre(), nuevo.getApellido(), nuevo.getEmail(), nuevo.getFechaNac(), ((DtProfesor) nuevo).getDescripcion(), ((DtProfesor) nuevo).getBiografia(), ((DtProfesor) nuevo).getSitioWeb());
-		if(nuevo instanceof DtSocio)
-			usuario = new Socio(nuevo.getNickname(), nuevo.getNombre(), nuevo.getApellido(), nuevo.getEmail(), nuevo.getFechaNac());
-		usuarios.agregarUsuario(usuario);
+		if(nuevo instanceof DtProfesor) {
+			InstitucionDeportiva institucion = ((DtProfesor) nuevo).getInstitucion();
+			Profesor profe = new Profesor(nuevo.getNickname(), nuevo.getNombre(), nuevo.getApellido(), nuevo.getEmail(), nuevo.getFechaNac(), 
+					((DtProfesor) nuevo).getDescripcion(), ((DtProfesor) nuevo).getBiografia(), ((DtProfesor) nuevo).getSitioWeb(), institucion);
+			usuarios.agregarUsuario(profe);
+			institucion.agregarProfesor(profe);
+			Conexion conexion = Conexion.getInstancia();
+			EntityManager em = conexion.getEntityManager();
+			em.getTransaction().begin();
+			em.persist(institucion);
+			em.getTransaction().commit();
+		}
+		if(nuevo instanceof DtSocio) {
+			Socio socio = new Socio(nuevo.getNickname(), nuevo.getNombre(), nuevo.getApellido(), nuevo.getEmail(), nuevo.getFechaNac());
+			usuarios.agregarUsuario(socio);
+		}
 	} 
 	
 	@Override 

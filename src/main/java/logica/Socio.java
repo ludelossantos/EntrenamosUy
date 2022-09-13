@@ -18,7 +18,7 @@ import persistencia.Conexion;
 @DiscriminatorValue("S")
 public class Socio extends Usuario {
 	
-	@OneToMany(mappedBy = "socio",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "socio",cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Registro> clasesRegistradas = new ArrayList<>();
 	
 	//CONSTRUCTORES

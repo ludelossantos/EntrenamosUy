@@ -157,7 +157,7 @@ public class Principal {
 		mntmUsuarioModificar.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnUsuario.add(mntmUsuarioModificar);
 
-		JMenu mnInstitucion = new JMenu("Institución");
+		JMenu mnInstitucion = new JMenu("Instituci\u00F3n");
 		mnInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		menuBar.add(mnInstitucion);
 

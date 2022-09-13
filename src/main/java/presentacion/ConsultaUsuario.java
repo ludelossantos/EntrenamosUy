@@ -487,9 +487,11 @@ public class ConsultaUsuario extends JInternalFrame {
 	private void infoActiv(String nickname, String nombreAct) {
 		DtActividadDeportiva activ = cUController.DatosActiv(nickname, nombreAct);
 		textFieldNomActiv.setText(activ.getNombre());
-		String costo = Float.toString(activ.getCosto());
+		//String costo = Float.toString(activ.getCosto());
+		String costo = activ.getCosto().toString();
 		textFieldCostoActiv.setText(costo);
-		String duracion = Integer.toString(activ.getDuracion());
+		//String duracion = Integer.toString(activ.getDuracion());
+		String duracion = activ.getDuracion().toString();
 		textFieldDuracionActiv.setText(duracion);
 		textFieldDescripActiv.setText(activ.getDescripcion());
 		String fecha = formatter.format(activ.getFechaReg());

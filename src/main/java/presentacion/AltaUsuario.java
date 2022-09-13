@@ -135,7 +135,7 @@ public class AltaUsuario extends JInternalFrame {
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblDescripcion = new JLabel("Descripción");
+		JLabel lblDescripcion = new JLabel("Descripci\u00F3n");
 		lblDescripcion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblDescripcion.setBackground(new Color(240, 240, 240));
 		lblDescripcion.setBounds(12, 45, 117, 25);
@@ -154,7 +154,7 @@ public class AltaUsuario extends JInternalFrame {
 		textFieldSitioWeb.setColumns(10);
 		textFieldSitioWeb.setEnabled(false);
 		
-		JLabel lblBiografia = new JLabel("Biografía");
+		JLabel lblBiografia = new JLabel("Biograf\u00EDa");
 		lblBiografia.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblBiografia.setBackground(new Color(240, 240, 240));
 		lblBiografia.setBounds(389, 45, 130, 25);
@@ -182,7 +182,7 @@ public class AltaUsuario extends JInternalFrame {
 		scrollPane_1.setViewportView(textAreaBiografia);
 		textAreaBiografia.setEnabled(false);
 		
-		JLabel lblInstitucion = new JLabel("Institución");
+		JLabel lblInstitucion = new JLabel("Instituci\u00F3n");
 		lblInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblInstitucion.setBounds(12, 12, 94, 25);
 		panel.add(lblInstitucion);

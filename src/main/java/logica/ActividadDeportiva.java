@@ -30,8 +30,11 @@ public class ActividadDeportiva {
 	private Float duracion;
 	private BigDecimal costo;
 	private Date fechaReg;
-		
-	@OneToMany(cascade = CascadeType.ALL)
+
+	//@ManyToOne
+	//private InstitucionDeportiva institucion;	
+	
+	@OneToMany(mappedBy = "actividad", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Clase> clases = new ArrayList<>();
 	
 	//CONSTRUCTORES
@@ -95,7 +98,12 @@ public class ActividadDeportiva {
 
 	// METODOS
 	public void agregarClase(Clase clase) {
-		this.clases.add(clase);
+		//this.clases.add(clase);
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		em.getTransaction().begin();
+		em.persist(clase);
+		em.getTransaction().commit();
 	}
 	
 	public Clase buscarClase(String nombre) {

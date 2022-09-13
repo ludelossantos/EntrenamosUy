@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 
 import datatypes.DtActividadDeportiva;
 
@@ -24,7 +26,7 @@ public class InstitucionDeportiva {
 	private String descripcion;
 	private String url;
 		
-	@OneToMany(mappedBy = "institucion",cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Profesor> profesores = new ArrayList<>();
 	
 	@OneToMany(cascade = CascadeType.ALL)
@@ -99,6 +101,10 @@ public class InstitucionDeportiva {
 			lista.add(a);
 		}
 		return lista;
-	}		
+	}
+	
+	public void agregarProfesor(Profesor prof) {
+		profesores.add(prof);
+	}
 	
 }

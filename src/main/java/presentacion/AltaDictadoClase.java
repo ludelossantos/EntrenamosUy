@@ -212,7 +212,7 @@ public class AltaDictadoClase extends JInternalFrame {
 			
 			try {
 				this.altaDictadoClaseController.altaClase(clase);
-				JOptionPane.showMessageDialog(this, "La clase se ha programado con �xito", "Alta Dictado Clase", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this, "La clase se ha programado con \u00E9xito", "Alta Dictado Clase", JOptionPane.INFORMATION_MESSAGE);
 				System.out.println("crea clase "+ clase.getNombre() +"de la actividad deportiva "+ clase.getActividad() +" en la institucion "+ clase.getNomInstitucion() +"");
 				limpiarFormulario();
 				setVisible(false);

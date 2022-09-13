@@ -9,6 +9,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import datatypes.DtClase;
 
@@ -21,7 +22,10 @@ public class Clase {
 	private String url;
 	private Date fechaReg;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@ManyToOne
+	private ActividadDeportiva actividad;
+	
+	@OneToMany(mappedBy = "clase", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Registro> sociosRegistrados = new ArrayList<>();
 	
 	//CONSTRUCTORES

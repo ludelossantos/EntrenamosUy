@@ -4,9 +4,13 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.EntityManager;
+
+import datatypes.DtProfesor;
 import excepciones.ExisteActividadDepException;
 import excepciones.NoExistenInstitucionesException;
 import interfaces.IControllerAltaActividadDep;
+import persistencia.Conexion;
 
 public class ControllerAltaActividadDep implements IControllerAltaActividadDep {
 	
@@ -25,6 +29,10 @@ public class ControllerAltaActividadDep implements IControllerAltaActividadDep {
 		actividad = new ActividadDeportiva(nombre, descripcion, duracion, costo, fechaAlta); //se crea la actividad deportiva
 		
 		institucion.agregarActividadDeportiva(actividad); //agrego la actividad a la lista de actividades de la institucion
-		
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		em.getTransaction().begin();
+		em.persist(institucion);
+		em.getTransaction().commit();
 	}
 }
