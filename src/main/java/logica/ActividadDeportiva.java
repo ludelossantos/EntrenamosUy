@@ -29,6 +29,8 @@ public class ActividadDeportiva {
 	@ManyToOne
 	private InstitucionDeportiva institucion;
 	
+	
+	//@OneToMany(cascade = CascadeType.ALL)
 	@OneToMany(mappedBy = "actividad", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Clase> clases = new ArrayList<>();
 	
@@ -97,7 +99,7 @@ public class ActividadDeportiva {
 	public void agregarClase(Clase clase) {
 		this.clases.add(clase);
 	}
-	
+
 	public Clase buscarClase(String nombre) {
 		/*Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();

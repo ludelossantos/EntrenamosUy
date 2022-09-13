@@ -3,12 +3,16 @@ package logica;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import javax.persistence.EntityManager;
+
 import datatypes.DtActividadDeportiva;
 import datatypes.DtClase;
 import datatypes.DtSocio;
 import excepciones.RegistroClaseRepetidoException;
 import interfaces.IControllerRegistroClase;
 import javafx.util.Pair;
+import persistencia.Conexion;
 
 public class ControllerRegistroClase implements IControllerRegistroClase {
 	
@@ -91,20 +95,14 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 	public Clase buscarClaseSeleccionada(String institucion, String actividad , String datClase) {
 		String[] arr = datClase.split(" / ");
 		String nombClase = arr [0];
-		Clase ret = null;
+		nombClase = nombClase.substring(0,nombClase.length()-1);
+		System.out.println(nombClase+"/");
+		Clase ret;
 		InstitucionDeportivaHandler instiHand = InstitucionDeportivaHandler.getInstancia();
 		InstitucionDeportiva insti = instiHand.buscarInstitucionDeportiva(institucion);
-		ArrayList<DtActividadDeportiva> actividades = insti.obtenerActividades();
-		for(DtActividadDeportiva a: actividades) {
-			if(a.getNombre().equals(actividad)) {
-				ActividadDeportiva act = insti.buscarActividad(actividad);
-				for(Clase c:act.obtenerClasesObjeto()) {
-					if(c.getNombre().equals(nombClase)) {
-						return ret = c;
-					}
-				}	
-			}
-		}
+		ActividadDeportiva acti = insti.buscarActividad(actividad);
+		ret = acti.buscarClase(nombClase);
+		//System.out.println(ret.getNombre());
 		return ret;
 	}
 	
@@ -126,11 +124,19 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 	public void registroClase(String institucion, String actividad, String datClase, String nombApe, Date fechaReg) throws RegistroClaseRepetidoException {
 		Socio socio = this.buscarSocioNombreApellido(nombApe);
 		Clase clase = this.buscarClaseSeleccionada(institucion, actividad, datClase);
+		System.out.println(clase.getNombre() + "   " + socio.getNombre());
 		if(this.usuarioRegistradoAClase(socio, clase)) {
 			throw new RegistroClaseRepetidoException("El socio '" + socio.getNombre() + " " + socio.getApellido() + "' ya está registrado en esta clase.");
 		}
 		Registro registro = new Registro(socio, clase, fechaReg);
+		System.out.println(registro.getSocio().getApellido() + "     " + registro.getClase().getNombre());
 		socio.agregarRegistro(registro);
-		clase.agregarRegistro(registro);	
+		clase.agregarRegistro(registro);
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		em.getTransaction().begin();
+		em.persist(socio);
+		em.persist(clase);
+		em.getTransaction().commit();
 	}
 }
