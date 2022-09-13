@@ -2,6 +2,7 @@ package logica;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -15,12 +16,6 @@ import datatypes.DtClase;
 import persistencia.Conexion;
 import java.math.BigDecimal;
 
-import java.util.Date;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Date;
-
-import datatypes.DtActividadDeportiva;
 
 @Entity
 public class ActividadDeportiva {
@@ -31,8 +26,8 @@ public class ActividadDeportiva {
 	private BigDecimal costo;
 	private Date fechaReg;
 
-	//@ManyToOne
-	//private InstitucionDeportiva institucion;	
+	@ManyToOne
+	private InstitucionDeportiva institucion;
 	
 	@OneToMany(mappedBy = "actividad", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Clase> clases = new ArrayList<>();
@@ -42,13 +37,14 @@ public class ActividadDeportiva {
 		super();
 	}
 
-	public ActividadDeportiva(String nombre, String descripcion, Float duracion, BigDecimal costo, Date fechaReg) {
+	public ActividadDeportiva(String nombre, String descripcion, Float duracion, BigDecimal costo, Date fechaReg, InstitucionDeportiva institucion) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.duracion = duracion;
 		this.costo = costo;
 		this.fechaReg = fechaReg;
+		this.institucion = institucion;
 	}
 	
 	//GETTERS & SETTERS
@@ -98,12 +94,7 @@ public class ActividadDeportiva {
 
 	// METODOS
 	public void agregarClase(Clase clase) {
-		//this.clases.add(clase);
-		Conexion conexion = Conexion.getInstancia();
-		EntityManager em = conexion.getEntityManager();
-		em.getTransaction().begin();
-		em.persist(clase);
-		em.getTransaction().commit();
+		this.clases.add(clase);
 	}
 	
 	public Clase buscarClase(String nombre) {

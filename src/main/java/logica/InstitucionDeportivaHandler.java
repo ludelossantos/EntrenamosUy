@@ -65,4 +65,36 @@ public class InstitucionDeportivaHandler {
 		InstitucionDeportiva insti = em.find(InstitucionDeportiva.class, nombre);
 		return insti;
 	}
+	
+	public Boolean existeActividadDep(String actividad) {
+		Boolean existe = false;
+		List<InstitucionDeportiva> instituciones = obtenerInstitucionesObjeto();
+		List<ActividadDeportiva> actividades;
+		for(InstitucionDeportiva i: instituciones) {
+			actividades = i.obtenerActividadesObjeto();
+			for(ActividadDeportiva a : actividades) {
+				if(a.getNombre().equals(actividad))
+					existe = true;
+			}
+		}	
+		return existe;
+	}
+	
+	public Boolean existeClase(String clase) {
+		Boolean existe = false;
+		List<InstitucionDeportiva> instituciones = obtenerInstitucionesObjeto();
+		List<ActividadDeportiva> actividades;
+		List<Clase> clases;
+		for(InstitucionDeportiva i : instituciones) {
+			actividades = i.obtenerActividadesObjeto();
+			for(ActividadDeportiva a : actividades) {
+				clases = a.obtenerClasesObjeto();
+				for(Clase c : clases) {
+					if(c.getNombre().equals(clase))
+						existe = true;
+				}
+			}
+		}
+		return existe;
+	}
 }

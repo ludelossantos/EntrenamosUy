@@ -95,7 +95,7 @@ public class Principal {
 		altaInstitucionDeportivaInternalFrame.setVisible(false);
 		frame.getContentPane().add(altaInstitucionDeportivaInternalFrame);
 		
-		consultaUsuarioInternalFrame = new ConsultaUsuario(cUController);
+		consultaUsuarioInternalFrame = new ConsultaUsuario(cUController, consultaActividadInternalFrame);
 		jInternalFrameSize = consultaUsuarioInternalFrame.getSize();
 		consultaUsuarioInternalFrame.setLocation(121,
 		    28);
