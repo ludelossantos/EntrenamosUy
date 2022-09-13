@@ -33,6 +33,22 @@ public class ConsultaActividad extends JInternalFrame{
 	private String institucion;
 	private String actividad;
 
+	public JComboBox<String> getComboBoxInstitucion() {
+		return comboBoxInstitucion;
+	}
+
+	public void setComboBoxInstitucion(JComboBox<String> comboBoxInstitucion) {
+		this.comboBoxInstitucion = comboBoxInstitucion;
+	}
+
+	public JComboBox<String> getComboBoxActividades() {
+		return comboBoxActividades;
+	}
+
+	public void setComboBoxActividades(JComboBox<String> comboBoxActividades) {
+		this.comboBoxActividades = comboBoxActividades;
+	}
+
 	/**
 	 * Create the frame.
 	 */
@@ -69,17 +85,18 @@ public class ConsultaActividad extends JInternalFrame{
 		comboBoxInstitucion = new JComboBox<String>();		
 		comboBoxInstitucion.setBounds(133, 33, 393, 25);
 		comboBoxInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		/*
 		comboBoxInstitucion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cargaActividadesInstitucion(e);	
 			}
-		});
-		/*comboBoxInstitucion.addActionListener(new ActionListener() {
+		});*/
+		comboBoxInstitucion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				comboBoxActividades.setEnabled(true);
 			}
-		});*/
+		});
 		getContentPane().add(comboBoxInstitucion);
 		cargarComboInstituciones();
 
@@ -87,8 +104,8 @@ public class ConsultaActividad extends JInternalFrame{
 		comboBoxActividades = new JComboBox<String>();
 		comboBoxActividades.setBounds(133, 72, 393, 25);
 		comboBoxActividades.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		//cargarComboActividades(institucion);
-		//comboBoxActividades.setEnabled(false);
+		cargarComboActividades(institucion);
+		comboBoxActividades.setEnabled(false);
 		getContentPane().add(comboBoxActividades);
 
 		
@@ -103,24 +120,24 @@ public class ConsultaActividad extends JInternalFrame{
 		getContentPane().add(lblNombre);
 		
 		textFieldNombre = new JTextField();
+		textFieldNombre.setEditable(false);
 		textFieldNombre.setBounds(132, 153, 393, 25);
 		textFieldNombre.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		textFieldNombre.setColumns(10);
-		textFieldNombre.setEnabled(false);
 		getContentPane().add(textFieldNombre);
 		
 		textFieldDuracion = new JTextField();
+		textFieldDuracion.setEditable(false);
 		textFieldDuracion.setBounds(133, 418, 253, 25);
 		textFieldDuracion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		textFieldDuracion.setColumns(10);
-		textFieldDuracion.setEnabled(false);
 		getContentPane().add(textFieldDuracion);
 		
 		textFieldDescripcion = new JTextField();
+		textFieldDescripcion.setEditable(false);
 		textFieldDescripcion.setBounds(133, 200, 253, 130);
 		textFieldDescripcion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		textFieldDescripcion.setColumns(10);
-		textFieldDescripcion.setEnabled(false);
 		getContentPane().add(textFieldDescripcion);
 		
 		JLabel lblDuracion = new JLabel("Duración");
@@ -134,10 +151,10 @@ public class ConsultaActividad extends JInternalFrame{
 		getContentPane().add(lblCosto);
 		
 		textFieldCosto = new JTextField();
+		textFieldCosto.setEditable(false);
 		textFieldCosto.setBounds(133, 364, 253, 26);
 		textFieldCosto.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		textFieldCosto.setColumns(10);
-		textFieldCosto.setEnabled(false);
 		getContentPane().add(textFieldCosto);
 		
 		JLabel lblFechaReg = new JLabel("Registrado");
@@ -146,10 +163,10 @@ public class ConsultaActividad extends JInternalFrame{
 		getContentPane().add(lblFechaReg);
 		
 		textFieldFecha = new JTextField();
+		textFieldFecha.setEditable(false);
 		textFieldFecha.setBounds(133, 469, 253, 26);
 		textFieldFecha.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		textFieldFecha.setColumns(10);
-		textFieldFecha.setEnabled(false);
 		getContentPane().add(textFieldFecha);
 		
 		JButton btnLimpiarPantalla = new JButton("Limpiar");
@@ -172,11 +189,11 @@ public class ConsultaActividad extends JInternalFrame{
 		getContentPane().add(scrollPane);
 		
 		JTextArea textArea_1 = new JTextArea();
+		textArea_1.setEditable(false);
 		scrollPane.setViewportView(textArea_1);
 		textArea_1.setLineWrap(true);
 		textArea_1.setWrapStyleWord(true);
 		textArea_1.setWrapStyleWord(true);
-		textArea_1.setEnabled(false);
 		this.textArea = textArea_1;
 		
 		JLabel lblDescripcion = new JLabel("Descripción");
@@ -192,13 +209,13 @@ public class ConsultaActividad extends JInternalFrame{
 		this.institucion =(String)comboBoxInstitucion.getSelectedItem();
 	}
 	
-	/*
+	
 	public void cargarComboActividades(String nombreInstitucion) {
 		DefaultComboBoxModel<String> modelactiv = new DefaultComboBoxModel<String>(cAController.listarActividades(nombreInstitucion));
 		comboBoxActividades.setModel(modelactiv);
 		this.actividad =(String)comboBoxActividades.getSelectedItem();
-	}*/
-	
+	}
+	/*
 	protected void cargaActividadesInstitucion(ActionEvent e) {
 		if(comboBoxInstitucion.getSelectedIndex()!=0) {
 			String institucion = this.comboBoxInstitucion.getSelectedItem().toString();
@@ -207,10 +224,11 @@ public class ConsultaActividad extends JInternalFrame{
 			comboBoxActividades.setSelectedIndex(0);
 		}
 	}
-	
+	*/
 	@SuppressWarnings("deprecation")
 	public void mostrarDatos(String nombreInstitucion, String nombreActividad) {
 		DtActividadDeportiva DtAct = cAController.obtenerDatosActividad(nombreInstitucion ,nombreActividad);
+		setVisible(true);
 		this.textFieldNombre.setText(DtAct.getNombre());
 		this.textFieldDuracion.setText(String.valueOf(DtAct.getDuracion()));
 		this.textFieldCosto.setText(String.valueOf(DtAct.getCosto()));
