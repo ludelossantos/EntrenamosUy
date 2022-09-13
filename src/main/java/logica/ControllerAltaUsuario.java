@@ -23,11 +23,11 @@ public class ControllerAltaUsuario implements IControllerAltaUsuario {
 		UsuarioHandler usuarios = UsuarioHandler.getInstancia();
 		Usuario usuario = usuarios.buscarUsuarioNick(nuevo.getNickname());
 		if(usuario != null) {
-			throw new NicknameRepetidoException("El nickname '" + nuevo.getNickname() + "' ya está en uso.");
+			throw new NicknameRepetidoException("El nickname '" + nuevo.getNickname() + "' ya est\u00E1 en uso.");
 		}
 		usuario = usuarios.buscarUsuarioEmail(nuevo.getEmail());
 		if(usuario != null) {
-			throw new EmailRepetidoException("El email '" + nuevo.getEmail() + "' ya está en uso.");
+			throw new EmailRepetidoException("El email '" + nuevo.getEmail() + "' ya est\u00E1 en uso.");
 		}
 		if(nuevo instanceof DtProfesor) {
 			InstitucionDeportiva institucion = ((DtProfesor) nuevo).getInstitucion();

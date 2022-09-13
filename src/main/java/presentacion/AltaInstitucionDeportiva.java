@@ -113,13 +113,13 @@ public class AltaInstitucionDeportiva extends JInternalFrame {
 			dtReturn = new DtInstitucionDeportiva(nombre, descripcion, url);
 			try {
 				this.aIDController.altaInstitucion(dtReturn);
-				JOptionPane.showMessageDialog(this, "La Institucion Deportiva se ha creado con exito", 
+				JOptionPane.showMessageDialog(this, "La Instituci\u00F3n Deportiva se ha creado con \u00E9xito", 
 						"Alta Institucion Deportiva", JOptionPane.INFORMATION_MESSAGE);
 				System.out.println("crea institucion deportiva "+ dtReturn.getNombre() +"");
 				cleanForm();
 				setVisible(false);
 			} catch (InstitucionDeportivaRepetidaException e) {
-				JOptionPane.showMessageDialog(this, e.getMessage(), "Alta Institucion Deportiva", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, e.getMessage(), "Alta Instituci\u00F3n Deportiva", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}

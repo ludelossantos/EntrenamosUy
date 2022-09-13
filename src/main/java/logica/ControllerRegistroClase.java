@@ -102,7 +102,6 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 		InstitucionDeportiva insti = instiHand.buscarInstitucionDeportiva(institucion);
 		ActividadDeportiva acti = insti.buscarActividad(actividad);
 		ret = acti.buscarClase(nombClase);
-		//System.out.println(ret.getNombre());
 		return ret;
 	}
 	
@@ -126,7 +125,7 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 		Clase clase = this.buscarClaseSeleccionada(institucion, actividad, datClase);
 		System.out.println(clase.getNombre() + "   " + socio.getNombre());
 		if(this.usuarioRegistradoAClase(socio, clase)) {
-			throw new RegistroClaseRepetidoException("El socio '" + socio.getNombre() + " " + socio.getApellido() + "' ya está registrado en esta clase.");
+			throw new RegistroClaseRepetidoException("El socio '" + socio.getNombre() + " " + socio.getApellido() + "' ya est\u00E1 registrado en esta clase.");
 		}
 		Registro registro = new Registro(socio, clase, fechaReg);
 		System.out.println(registro.getSocio().getApellido() + "     " + registro.getClase().getNombre());

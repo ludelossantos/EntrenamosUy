@@ -94,7 +94,7 @@ public class RegistroClase extends JInternalFrame {
 		
 		JLabel lblFechaReg = new JLabel("Fecha Registro");
 		lblFechaReg.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblFechaReg.setBounds(524, 362, 98, 22);
+		lblFechaReg.setBounds(519, 362, 114, 22);
 		panel_clases.add(lblFechaReg);
 		
 		comboBoxSocio = new JComboBox<String>();

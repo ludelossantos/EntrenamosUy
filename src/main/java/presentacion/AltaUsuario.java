@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -253,8 +255,6 @@ public class AltaUsuario extends JInternalFrame {
 			String email = this.textFieldEmail.getText();
 			
 			java.util.Date fechaNac = dateChooser.getDate();
-			//Long fechaL = fechaS.getTime();
-			//java.sql.Date fechaSQL = new java.sql.Date(fechaL);
 
 			String tipo = this.comboBoxUsuario.getSelectedItem().toString();		
 			DtUsuario dt = null;			
@@ -273,7 +273,7 @@ public class AltaUsuario extends JInternalFrame {
 			
 			try {
 				this.aUController.altaUsuario(dt);
-				JOptionPane.showMessageDialog(this, "El usuario se ha creado con éxito", "Alta usuario", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this, "El usuario se ha creado con \u00E9xito", "Alta usuario", JOptionPane.INFORMATION_MESSAGE);
 				limpiarFormulario();
 	            setVisible(false);
 			} catch(NicknameRepetidoException rn) {
@@ -294,26 +294,16 @@ private boolean checkFormulario() {
 	String tipoU = this.comboBoxUsuario.getSelectedItem().toString();
 	String descripcion = this.textAreaDescripcion.getText();
 	
-	if(nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || (fechaNac==null)){		
-		/*if(nickname.isEmpty())
-			this.textFieldNickname.setBackground(Color.PINK);
-		if(nombre.isEmpty())
-			this.textFieldNombre.setBackground(Color.PINK);
-		if (apellido.isEmpty())
-			this.textFieldApellido.setBackground(Color.PINK);
-		if(email.isEmpty())
-			this.textFieldEmail.setBackground(Color.PINK);
-		if(fechaNac==null)
-			this.dateChooser.setBackground(Color.PINK);*/
+	if(nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || (fechaNac==null)){
 		JOptionPane.showMessageDialog(this, "Complete los campos en blanco.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
 		return false;
 	}
 	if(tipoU.equals("Profesor") && comboBoxInstitucion.getSelectedItem() == null) {
-		JOptionPane.showMessageDialog(this, "Seleccione la institución.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(this, "Seleccione la instituci\u00F3n.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
 		return false;
 	}
 	if(tipoU.equals("Profesor") && descripcion.isEmpty()) {
-		JOptionPane.showMessageDialog(this, "Ingrese una descripción.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(this, "Ingrese una descripci\u00F3n.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
 		return false;
 	}
 	return true;
@@ -330,8 +320,9 @@ private boolean checkFormulario() {
 		 textFieldApellido.setText("");
 		 textFieldEmail.setText("");
 		 textFieldSitioWeb.setText("");
-		 comboBoxUsuario.setSelectedItem("Socio"); //NO SE BORRA REVISAR
-		 textAreaDescripcion.setText("");  //NO SE BORRA REVISAR
-		 textAreaBiografia.setText("");  //NO SE BORRA REVISAR
+		 comboBoxUsuario.setSelectedItem("Socio");
+		 textAreaDescripcion.setText("");
+		 textAreaBiografia.setText("");
+		 dateChooser.setDate(new Date());
 	 }
 }

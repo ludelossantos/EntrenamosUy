@@ -87,18 +87,6 @@ public class ConsultaActividad extends JInternalFrame{
 		comboBoxInstitucion.setBounds(133, 33, 393, 25);
 		comboBoxInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		comboBoxInstitucion.setEnabled(true);
-		/*
-		comboBoxInstitucion.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cargaActividadesInstitucion(e);	
-			}
-		});
-		comboBoxInstitucion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				comboBoxActividades.setEnabled(true);
-			}
-		});*/
 		comboBoxInstitucion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -226,22 +214,7 @@ public class ConsultaActividad extends JInternalFrame{
 			//comboBoxActividades.setSelectedIndex(0);
 		}
 	}
-	/*
-	public void cargarComboActividades(String nombreInstitucion) {
-		DefaultComboBoxModel<String> modelactiv = new DefaultComboBoxModel<String>(cAController.listarActividades(nombreInstitucion));
-		comboBoxActividades.setModel(modelactiv);
-		this.actividad =(String)comboBoxActividades.getSelectedItem();
-	}
 	
-	protected void cargaActividadesInstitucion(ActionEvent e) {
-		if(comboBoxInstitucion.getSelectedIndex()!=0) {
-			String institucion = this.comboBoxInstitucion.getSelectedItem().toString();
-			DefaultComboBoxModel<String> modelactividades = new DefaultComboBoxModel<String>(cAController.listarActividades(institucion));
-			comboBoxActividades.setModel(modelactividades);
-			comboBoxActividades.setSelectedIndex(0);
-		}
-	}
-	*/
 	protected void mostrarDatos2() {
 		String nombreInstitucion = this.comboBoxInstitucion.getSelectedItem().toString();
 		String nombreActividad = this.comboBoxActividades.getSelectedItem().toString();
@@ -252,27 +225,10 @@ public class ConsultaActividad extends JInternalFrame{
 		DtActividadDeportiva DtAct = cAController.obtenerDatosActividad(nombreInstitucion ,nombreActividad);
 		setVisible(true);
 		this.textFieldNombre.setText(DtAct.getNombre());
-		//this.textFieldDuracion.setText(String.valueOf(DtAct.getDuracion()));
-		//this.textFieldCosto.setText(String.valueOf(DtAct.getCosto()));
 		this.textFieldDuracion.setText(DtAct.getDuracion().toString());
 		this.textFieldCosto.setText(DtAct.getCosto().toString());
 		this.textFieldDescripcion.setText(DtAct.getDescripcion());
-		//this.textFieldFecha.setText(DtAct.getFechaReg().toLocaleString());
 		this.textFieldFecha.setText(DtAct.getFechaReg().toString());
 		this.textArea.setText(DtAct.getClasesAsociadas());
 	}
-	/*
-	public void mostrarDatosConsUser(String nombreInstitucion, String nombreActividad, String nickname) {
-		DtActividadDeportiva DtAct = cAController.obtenerDatosActividadConsUser(nombreInstitucion, nombreActividad, nickname);
-		setVisible(true);
-		this.textFieldNombre.setText(DtAct.getNombre());
-		//this.textFieldDuracion.setText(String.valueOf(DtAct.getDuracion()));
-		//this.textFieldCosto.setText(String.valueOf(DtAct.getCosto()));
-		this.textFieldDuracion.setText(DtAct.getDuracion().toString());
-		this.textFieldCosto.setText(DtAct.getCosto().toString());
-		this.textFieldDescripcion.setText(DtAct.getDescripcion());
-		//this.textFieldFecha.setText(DtAct.getFechaReg().toLocaleString());
-		this.textFieldFecha.setText(DtAct.getFechaReg().toString());
-		this.textArea.setText(DtAct.getClasesAsociadas());
-	}*/
 }
