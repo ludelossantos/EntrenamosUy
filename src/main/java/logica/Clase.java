@@ -25,6 +25,9 @@ public class Clase {
 	@ManyToOne
 	private ActividadDeportiva actividad;
 	
+	@ManyToOne
+	private Profesor profesor;
+	
 	@OneToMany(mappedBy = "clase", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Registro> sociosRegistrados = new ArrayList<>();
 	
@@ -33,7 +36,7 @@ public class Clase {
 		super();
 	}
 
-	public Clase(String nombre, Date fecha, Date horaInicio, String url, Date fechaReg, ActividadDeportiva actividad) {
+	public Clase(String nombre, Date fecha, Date horaInicio, String url, Date fechaReg, ActividadDeportiva actividad, Profesor profesor) {
 		super();
 		this.nombre = nombre;
 		this.fecha = fecha;
@@ -41,6 +44,7 @@ public class Clase {
 		this.url = url;
 		this.fechaReg = fechaReg;
 		this.actividad = actividad;
+		this.profesor = profesor;
 	}
 
 	//GETTERS Y SETTERS
@@ -84,8 +88,12 @@ public class Clase {
 		this.fechaReg = fechaReg;
 	}
 	
+	public Profesor getProfesor() {
+		return profesor;
+	}
+	
 	public DtClase getDtClase() {
-		return new DtClase(nombre, fecha, horaInicio, url, fechaReg);
+		return new DtClase(nombre, fecha, horaInicio, url, fechaReg, profesor.getNickname());
 	}
 
 	//METODOS

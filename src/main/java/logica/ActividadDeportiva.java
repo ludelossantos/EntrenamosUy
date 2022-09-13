@@ -147,5 +147,21 @@ public class ActividadDeportiva {
 		}
 		return new DtActividadDeportiva(nombre,descripcion, duracion, costo, fechaReg, listadoClases);
 	}
+	/*
+	public DtActividadDeportiva getDtActividadDeportivaMaxi2(String nickname) {
+		//Conexion conexion = Conexion.getInstancia();
+		//EntityManager em = conexion.getEntityManager();
+		//javax.persistence.Query query = em.createQuery("select c from Clase c");
+		//List<Clase> clases = (List<Clase>) query.getResultList();
+		List<String> listadoClases = new ArrayList<>();
+		for(Clase c: clases) {
+			if(c.getProfesor().getNickname().equals(nickname)) {
+				System.out.println(c.getProfesor().getNickname());
+				System.out.println(nickname);
+				listadoClases.add(c.getNombre());
+			}
+		}
+		return new DtActividadDeportiva(nombre,descripcion, duracion, costo, fechaReg, listadoClases);
+	}*/
 
 }

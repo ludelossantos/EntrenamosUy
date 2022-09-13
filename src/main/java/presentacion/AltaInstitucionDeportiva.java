@@ -5,6 +5,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 
@@ -15,6 +16,7 @@ import excepciones.InstitucionDeportivaRepetidaException;
 import interfaces.IControllerInstitucionDeportiva;
 
 import javax.swing.JTextArea;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 
@@ -61,6 +63,7 @@ public class AltaInstitucionDeportiva extends JInternalFrame {
 		txtADescripcion.setWrapStyleWord(true);
 		txtADescripcion.setLineWrap(true);
 		txtADescripcion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		txtADescripcion.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		txtADescripcion.setBounds(156, 77, 213, 70);
 		getContentPane().add(txtADescripcion);
 

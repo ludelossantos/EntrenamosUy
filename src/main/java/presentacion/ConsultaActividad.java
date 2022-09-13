@@ -62,7 +62,7 @@ public class ConsultaActividad extends JInternalFrame{
 		setBounds(100, 100, 579, 616);
 		getContentPane().setLayout(null);
 		
-		JLabel lblNickname = new JLabel("Institución");
+		JLabel lblNickname = new JLabel("Instituci\u00F3n");
 		lblNickname.setBounds(31, 37, 92, 16);
 		lblNickname.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		getContentPane().add(lblNickname);
@@ -72,8 +72,8 @@ public class ConsultaActividad extends JInternalFrame{
 		list.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		getContentPane().add(list);
 		
-		JButton btnVerInfo = new JButton("Ver informaci\u00F3n");
-		btnVerInfo.setBounds(396, 108, 130, 35);
+		JButton btnVerInfo = new JButton("Ver Informaci\u00F3n");
+		btnVerInfo.setBounds(369, 108, 157, 35);
 		btnVerInfo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		btnVerInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -118,12 +118,12 @@ public class ConsultaActividad extends JInternalFrame{
 
 		
 		JLabel lblActividades = new JLabel("Actividad");
-		lblActividades.setBounds(42, 73, 92, 16);
+		lblActividades.setBounds(31, 73, 92, 16);
 		lblActividades.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		getContentPane().add(lblActividades);
 		
 		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(42, 154, 61, 25);
+		lblNombre.setBounds(31, 154, 61, 25);
 		lblNombre.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		getContentPane().add(lblNombre);
 		
@@ -148,13 +148,13 @@ public class ConsultaActividad extends JInternalFrame{
 		textFieldDescripcion.setColumns(10);
 		getContentPane().add(textFieldDescripcion);
 		
-		JLabel lblDuracion = new JLabel("Duración");
-		lblDuracion.setBounds(45, 419, 78, 25);
+		JLabel lblDuracion = new JLabel("Duraci\u00F3n");
+		lblDuracion.setBounds(31, 419, 78, 25);
 		lblDuracion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		getContentPane().add(lblDuracion);
 		
 		JLabel lblCosto = new JLabel("Costo");
-		lblCosto.setBounds(73, 365, 47, 25);
+		lblCosto.setBounds(31, 365, 47, 25);
 		lblCosto.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		getContentPane().add(lblCosto);
 		
@@ -204,8 +204,8 @@ public class ConsultaActividad extends JInternalFrame{
 		textArea_1.setWrapStyleWord(true);
 		this.textArea = textArea_1;
 		
-		JLabel lblDescripcion = new JLabel("Descripción");
-		lblDescripcion.setBounds(25, 201, 128, 128);
+		JLabel lblDescripcion = new JLabel("Descripci\u00F3n");
+		lblDescripcion.setBounds(31, 201, 128, 128);
 		getContentPane().add(lblDescripcion);
 		lblDescripcion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		
@@ -248,7 +248,6 @@ public class ConsultaActividad extends JInternalFrame{
 		mostrarDatos(nombreInstitucion,nombreActividad);
 	}
 	
-	//@SuppressWarnings("deprecation")
 	public void mostrarDatos(String nombreInstitucion, String nombreActividad) {
 		DtActividadDeportiva DtAct = cAController.obtenerDatosActividad(nombreInstitucion ,nombreActividad);
 		setVisible(true);
@@ -261,7 +260,19 @@ public class ConsultaActividad extends JInternalFrame{
 		//this.textFieldFecha.setText(DtAct.getFechaReg().toLocaleString());
 		this.textFieldFecha.setText(DtAct.getFechaReg().toString());
 		this.textArea.setText(DtAct.getClasesAsociadas());
-		System.out.println(DtAct.getClasesAsociadas());
-		System.out.println(nombreActividad);
 	}
+	/*
+	public void mostrarDatosConsUser(String nombreInstitucion, String nombreActividad, String nickname) {
+		DtActividadDeportiva DtAct = cAController.obtenerDatosActividadConsUser(nombreInstitucion, nombreActividad, nickname);
+		setVisible(true);
+		this.textFieldNombre.setText(DtAct.getNombre());
+		//this.textFieldDuracion.setText(String.valueOf(DtAct.getDuracion()));
+		//this.textFieldCosto.setText(String.valueOf(DtAct.getCosto()));
+		this.textFieldDuracion.setText(DtAct.getDuracion().toString());
+		this.textFieldCosto.setText(DtAct.getCosto().toString());
+		this.textFieldDescripcion.setText(DtAct.getDescripcion());
+		//this.textFieldFecha.setText(DtAct.getFechaReg().toLocaleString());
+		this.textFieldFecha.setText(DtAct.getFechaReg().toString());
+		this.textArea.setText(DtAct.getClasesAsociadas());
+	}*/
 }

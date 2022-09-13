@@ -50,12 +50,12 @@ public class RegistroClase extends JInternalFrame {
 		getContentPane().add(panel_clases);
 		panel_clases.setLayout(null);
 				
-		JLabel lblInstitucion = new JLabel("Institución");
-		lblInstitucion.setBounds(22, 16, 73, 22);
+		JLabel lblInstitucion = new JLabel("Instituci\u00F3n");
+		lblInstitucion.setBounds(22, 16, 108, 22);
 		lblInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		panel_clases.add(lblInstitucion);
 		
-		JLabel lblActivDeportiva = new JLabel("Actividad deportiva");
+		JLabel lblActivDeportiva = new JLabel("Actividad Deportiva");
 		lblActivDeportiva.setBounds(22, 52, 138, 22);
 		lblActivDeportiva.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		panel_clases.add(lblActivDeportiva);
@@ -92,7 +92,7 @@ public class RegistroClase extends JInternalFrame {
 		lblSocio.setBounds(22, 362, 39, 22);
 		panel_clases.add(lblSocio);
 		
-		JLabel lblFechaReg = new JLabel("Fecha registro");
+		JLabel lblFechaReg = new JLabel("Fecha Registro");
 		lblFechaReg.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblFechaReg.setBounds(524, 362, 98, 22);
 		panel_clases.add(lblFechaReg);

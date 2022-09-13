@@ -9,7 +9,7 @@ import datatypes.DtUsuario;
 import interfaces.IControllerConsultaUsuario;
 
 public class ControllerConsultaUsuario implements IControllerConsultaUsuario{
-
+          
 	@Override
 	public String[] listarUsuarios() {
 		UsuarioHandler uH = UsuarioHandler.getInstancia();
@@ -68,10 +68,10 @@ public class ControllerConsultaUsuario implements IControllerConsultaUsuario{
 		Usuario user = uH.buscarUsuarioNick(nickname);
 		if (user instanceof Profesor) {
 			Profesor p = (Profesor) user;
-			if(!p.getInstitucion().obtenerActividades().isEmpty()) {
-				activ_ret = new String[p.getInstitucion().obtenerActividades().size()];
+			if(!p.getInstitucion().obtenerActividadesProfesor(p.getNickname()).isEmpty()) {
+				activ_ret = new String[p.getInstitucion().obtenerActividadesProfesor(p.getNickname()).size()];
 				int i=0;
-				for(DtActividadDeportiva a : p.getInstitucion().obtenerActividades()) {
+				for(DtActividadDeportiva a : p.getInstitucion().obtenerActividadesProfesor(p.getNickname())) {
 					activ_ret[i]=a.getNombre();
 					i++;
 				}

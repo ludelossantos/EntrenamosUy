@@ -9,5 +9,4 @@ public interface IControllerConsultaActividad {
 	public String[] listarActividades(String nombreInstitucion);
 	
 	public DtActividadDeportiva obtenerDatosActividad(String nombreInstitucion, String nombreActividad);
-
 }

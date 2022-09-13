@@ -8,6 +8,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 
 import datatypes.DtActividadDeportiva;
+import datatypes.DtClase;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -15,7 +16,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import datatypes.DtActividadDeportiva;
 import persistencia.Conexion;
 
 
@@ -118,5 +118,28 @@ public class InstitucionDeportiva {
 		String nomActividad = split[0];
 		ActividadDeportiva retorno = buscarActividad(nomActividad);
 		return retorno;
+	}
+	
+	public ArrayList<DtActividadDeportiva> obtenerActividadesProfesor(String profesor){
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		//javax.persistence.Query query = em.createQuery("select a from ActividadDeportiva a");
+		//javax.persistence.Query query = em.createQuery("select a " + "from ActividadDeportiva a " + "where " + "a.institucion = :nomInstitucion", ActividadDeportiva.class);
+		//List<ActividadDeportiva> actividades = (List<ActividadDeportiva>) query.getResultList();
+		Profesor profe = null;
+		for(Profesor p : this.profesores) {
+			if(p.getNickname().equals(profesor)) {
+				profe = p;
+			}
+		}
+		ArrayList<DtActividadDeportiva> lista = new ArrayList<>();
+		for(ActividadDeportiva a : this.actividades) {
+			for(DtClase c : a.obtenerClases()) {
+				if(c.getNickProfesor().equals(profe.getNickname())) {
+					lista.add(a.getDtActividadDeportiva());					
+				}
+			}
+		}
+		return lista;
 	}
 }

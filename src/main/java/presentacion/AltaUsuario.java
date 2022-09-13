@@ -108,7 +108,7 @@ public class AltaUsuario extends JInternalFrame {
 		getContentPane().add(textFieldEmail);
 		textFieldEmail.setColumns(10);
 		
-		JLabel lblFechaNac = new JLabel("Fecha de nacimiento");
+		JLabel lblFechaNac = new JLabel("Fecha de Nacimiento");
 		lblFechaNac.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblFechaNac.setBackground(new Color(240, 240, 240));
 		lblFechaNac.setBounds(438, 122, 152, 25);

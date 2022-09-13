@@ -106,7 +106,7 @@ public class ConsultaUsuario extends JInternalFrame {
 		btnSalir.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		getContentPane().add(btnSalir);
 		
-		JButton btnVerInfo = new JButton("Ver informacion");
+		JButton btnVerInfo = new JButton("Ver Informaci\u00F3n");
 		btnVerInfo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		btnVerInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -136,7 +136,7 @@ public class ConsultaUsuario extends JInternalFrame {
 		lblMail.setBounds(53, 161, 61, 25);
 		getContentPane().add(lblMail);
 		
-		JLabel lblFechaNac = new JLabel("Fecha de nacimiento");
+		JLabel lblFechaNac = new JLabel("Fecha de Nacimiento");
 		lblFechaNac.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblFechaNac.setBounds(551, 161, 151, 25);
 		getContentPane().add(lblFechaNac);
@@ -172,7 +172,7 @@ public class ConsultaUsuario extends JInternalFrame {
 		getContentPane().add(textFieldSitioWeb);
 		textFieldSitioWeb.setColumns(10);
 		
-		lblDescripcion = new JLabel("Descripcion");
+		lblDescripcion = new JLabel("Descripci\u00F3n");
 		lblDescripcion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblDescripcion.setBounds(53, 196, 126, 25);
 		getContentPane().add(lblDescripcion);
@@ -218,12 +218,12 @@ public class ConsultaUsuario extends JInternalFrame {
 		lblActividades.setBounds(53, 503, 138, 23);
 		getContentPane().add(lblActividades);
 		
-		btnVerInfoClases = new JButton("Ver mas informacion");
+		btnVerInfoClases = new JButton("Ver mas Informaci\u00F3n");
 		btnVerInfoClases.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		btnVerInfoClases.setBounds(657, 363, 218, 35);
 		getContentPane().add(btnVerInfoClases);
 		
-		btnVerInfoActiv = new JButton("Ver mas informacion");
+		btnVerInfoActiv = new JButton("Ver mas Informaci\u00F3n");
 		btnVerInfoActiv.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		//btnVerInfoActiv.setBounds(711, 539, 218, 35);
 		btnVerInfoActiv.addActionListener(new ActionListener() {
@@ -268,12 +268,12 @@ public class ConsultaUsuario extends JInternalFrame {
 		lblFechaClase.setBounds(432, 408, 48, 25);
 		getContentPane().add(lblFechaClase);
 		
-		lblHoraClase = new JLabel("Hora de inicio");
+		lblHoraClase = new JLabel("Hora de Inicio");
 		lblHoraClase.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblHoraClase.setBounds(660, 408, 103, 25);
 		getContentPane().add(lblHoraClase);
 		
-		lblFechaRegistroClase = new JLabel("Fecha de registro");
+		lblFechaRegistroClase = new JLabel("Fecha de Registro");
 		lblFechaRegistroClase.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblFechaRegistroClase.setBounds(586, 448, 130, 25);
 		getContentPane().add(lblFechaRegistroClase);
@@ -310,12 +310,12 @@ public class ConsultaUsuario extends JInternalFrame {
 		lblCostoActiv.setBounds(255, 617, 48, 25);
 		getContentPane().add(lblCostoActiv);
 		
-		lblDuracion = new JLabel("Duracion");
+		lblDuracion = new JLabel("Duraci\u00F3n");
 		lblDuracion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblDuracion.setBounds(53, 617, 69, 25);
 		getContentPane().add(lblDuracion);
 		
-		lblRegistroActiv = new JLabel("Fecha de registro");
+		lblRegistroActiv = new JLabel("Fecha de Registro");
 		lblRegistroActiv.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblRegistroActiv.setBounds(53, 652, 137, 25);
 		getContentPane().add(lblRegistroActiv);
@@ -352,7 +352,7 @@ public class ConsultaUsuario extends JInternalFrame {
 		textFieldURLClase.setBounds(123, 447, 439, 25);
 		getContentPane().add(textFieldURLClase);
 		
-		lblDescripActiv = new JLabel("Descripcion");
+		lblDescripActiv = new JLabel("Descripci\u00F3n");
 		lblDescripActiv.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblDescripActiv.setBounds(460, 581, 92, 25);
 		getContentPane().add(lblDescripActiv);
@@ -535,7 +535,6 @@ public class ConsultaUsuario extends JInternalFrame {
 		consultaActividad.getComboBoxActividades().setSelectedItem(activ);
 		consultaActividad.getComboBoxInstitucion().setSelectedItem(insti);
 		consultaActividad.getComboBoxActividades().setEnabled(false);
-		consultaActividad.getComboBoxInstitucion().setEnabled(false);
 		consultaActividad.mostrarDatos(insti,activ);
 	}
 }
