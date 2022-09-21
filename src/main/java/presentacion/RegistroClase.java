@@ -104,7 +104,6 @@ public class RegistroClase extends JInternalFrame {
 		
 		dateChooserFechaReg = new JDateChooser();
 		dateChooserFechaReg.setBounds(632, 359, 203, 25);
-		dateChooserFechaReg.setEnabled(false);
 		panel_clases.add(dateChooserFechaReg);
 	
 		
