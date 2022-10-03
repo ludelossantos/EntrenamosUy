@@ -1,7 +1,6 @@
 package logica;
 
 import java.util.ArrayList;
-
 import datatypes.DtInstitucionDeportiva;
 import excepciones.InstitucionDeportivaRepetidaException;
 import interfaces.IControllerInstitucionDeportiva;
@@ -14,7 +13,7 @@ public class ControllerInstitucionDeportiva implements IControllerInstitucionDep
 		super();
 	}
 	
-	// METODOS
+	// METODOS INSTITUCIONES
 
 	@Override
 	public void altaInstitucion(DtInstitucionDeportiva instDepor) throws InstitucionDeportivaRepetidaException {
@@ -46,5 +45,12 @@ public class ControllerInstitucionDeportiva implements IControllerInstitucionDep
         	i++;
         }
         return aRetornar;
+	}
+	
+	@Override
+	public InstitucionDeportiva buscarInstitucion(String institucion) {
+		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();
+		InstitucionDeportiva insti = idh.buscarInstitucionDeportiva(institucion);
+		return insti;
 	}
 }

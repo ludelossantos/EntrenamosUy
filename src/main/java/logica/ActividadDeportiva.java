@@ -118,7 +118,7 @@ public class ActividadDeportiva {
 		//javax.persistence.Query query = em.createQuery("select a from Clase a");
 		//List<Clase> clases = (List<Clase>) query.getResultList();
 		ArrayList<DtClase> listado = new ArrayList<>();
-		for(Clase c: clases) {
+		for(Clase c: this.clases) {
 			listado.add(c.getDtClase());
 		}
 		return listado;

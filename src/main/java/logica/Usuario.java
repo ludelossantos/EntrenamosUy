@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
-import datatypes.DtProfesor;
 import datatypes.DtUsuario;
 
 @Entity
@@ -19,12 +18,13 @@ public abstract class Usuario {
     private String apellido;
     private String email;
     private Date fechaNac;
+    private String pass;
     
     //CONSTRUCTORES
 	public Usuario() {
 		super();
 	}
-	
+	/*
 	public Usuario(String nickname, String nombre, String apellido, String email, Date fechaNac) {
 		super();
 		this.nickname = nickname;
@@ -32,6 +32,16 @@ public abstract class Usuario {
 		this.apellido = apellido;
 		this.email = email;
 		this.fechaNac = fechaNac;
+	}*/
+	
+	public Usuario(String nickname, String nombre, String apellido, String email, Date fechaNac, String pass) {
+		super();
+		this.nickname = nickname;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.email = email;
+		this.fechaNac = fechaNac;
+		this.pass = pass;
 	}
 
 	//GETTERS Y SETTERS
@@ -75,8 +85,18 @@ public abstract class Usuario {
 		this.fechaNac = fechaNac;
 	}
 	
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+	
 	public DtUsuario getDtUsuario() {
 		return new DtUsuario(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac());
 	}
+	
+
 	       
 }

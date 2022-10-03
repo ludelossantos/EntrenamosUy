@@ -4,16 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
-
 import datatypes.DtActividadDeportiva;
 import datatypes.DtClase;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import persistencia.Conexion;

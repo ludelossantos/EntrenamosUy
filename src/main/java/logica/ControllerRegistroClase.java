@@ -1,9 +1,9 @@
 package logica;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
 import javax.persistence.EntityManager;
 
 import datatypes.DtActividadDeportiva;
@@ -11,7 +11,6 @@ import datatypes.DtClase;
 import datatypes.DtSocio;
 import excepciones.RegistroClaseRepetidoException;
 import interfaces.IControllerRegistroClase;
-import javafx.util.Pair;
 import persistencia.Conexion;
 
 public class ControllerRegistroClase implements IControllerRegistroClase {
@@ -19,20 +18,7 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 	public ControllerRegistroClase() {
 		super();
 	}
-	
-	@Override
-	public String[] listarInstituciones() {
-		InstitucionDeportivaHandler instHand = InstitucionDeportivaHandler.getInstancia();
-		ArrayList<String> instituciones = instHand.obtenerInstituciones();
-		String[] instiList = new String[instituciones.size()];
-		int i=0;
-		for(String n:instituciones) {
-			instiList[i]=n;
-			i++;
-		}
-		return instiList;
-	}	
-	
+
 	@Override
 	public String[] listarActividadesDeportivas(String institucion) {
 		InstitucionDeportivaHandler instiHand = InstitucionDeportivaHandler.getInstancia();
@@ -55,8 +41,16 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 		ArrayList<DtClase> clases = acti.obtenerClases();
 		ArrayList<String> listado = new ArrayList<>();
 		for(DtClase dtc: clases) {
+			String pattern = "MM-dd-yyyy";
+			String patternHora = "HH:mm";
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+			SimpleDateFormat simpleDateFormatHora = new SimpleDateFormat(patternHora);
+			String fecha = simpleDateFormat.format(dtc.getFecha());
+			String hora = simpleDateFormatHora.format(dtc.getHoraInicio());
+	
 			String concat = new String();
-			concat = dtc.getNombre() + "  /  " + dtc.getFecha() + "  /  "  + dtc.getHoraInicio();
+			concat = dtc.getNombre() + "  /  " + fecha + "  /  "  + hora + "  /  "  + dtc.getNickProfesor();
+			//concat = dtc.getNombre() + "  /  " + dtc.getFecha() + "  /  "  + dtc.getHoraInicio();
 			listado.add(concat);
 		}
 		String[] repo = new String[listado.size()];
@@ -67,7 +61,6 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 		}
 		return repo;
 	}
-	
 	
 	public String[] listarSocios() {
 		UsuarioHandler usuHand = UsuarioHandler.getInstancia();
@@ -117,7 +110,6 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 		}		
 		return ret;
 	}
-	
 
 	@Override
 	public void registroClase(String institucion, String actividad, String datClase, String nombApe, Date fechaReg) throws RegistroClaseRepetidoException {

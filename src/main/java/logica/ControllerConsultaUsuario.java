@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import datatypes.DtActividadDeportiva;
 import datatypes.DtClase;
-import datatypes.DtProfesor;
 import datatypes.DtUsuario;
 import interfaces.IControllerConsultaUsuario;
 

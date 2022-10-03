@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import logica.Clase;
-import logica.InstitucionDeportiva;
 
 public class DtProfesor extends DtUsuario {
 	private String descripcion;
 	private String biografia;
 	private String sitioWeb;
-	InstitucionDeportiva institucion;
+	private String institucion;
 	private ArrayList<Clase> clasesQueDicta;
 	
 	public DtProfesor() {
@@ -24,8 +23,8 @@ public class DtProfesor extends DtUsuario {
 		this.sitioWeb = sitioWeb;
 	}
 	
-	public DtProfesor(String nickname, String nombre, String apellido, String email, Date fechaNac, String descripcion, String biografia, String sitioWeb, InstitucionDeportiva institucion) {
-		super(nickname, nombre, apellido, email, fechaNac);
+	public DtProfesor(String nickname, String nombre, String apellido, String email, Date fechaNac, String pass, String descripcion, String biografia, String sitioWeb, String institucion) {
+		super(nickname, nombre, apellido, email, fechaNac, pass);
 		this.descripcion = descripcion;
 		this.biografia = biografia;
 		this.sitioWeb = sitioWeb;
@@ -50,7 +49,7 @@ public class DtProfesor extends DtUsuario {
 	public String getSitioWeb() {
 		return sitioWeb;
 	}
-	public InstitucionDeportiva getInstitucion() {
+	public String getInstitucion() {
 		return institucion;
 	}
 

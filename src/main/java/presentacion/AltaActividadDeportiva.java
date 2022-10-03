@@ -26,7 +26,6 @@ import excepciones.ExisteActividadDepException;
 import excepciones.NoExistenInstitucionesException;
 import interfaces.IControllerAltaActividadDep;
 import interfaces.IControllerInstitucionDeportiva;
-import javax.swing.SwingConstants;
 
 public class AltaActividadDeportiva extends JInternalFrame {
 	

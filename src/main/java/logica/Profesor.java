@@ -34,8 +34,8 @@ public class Profesor extends Usuario {
 		super();
 	}
 		
-	public Profesor(String nickname, String nombre, String apellido, String email, Date fechaNac, String descripcion, String biografia, String sitioWeb, InstitucionDeportiva institucion) {
-		super(nickname, nombre, apellido, email, fechaNac);
+	public Profesor(String nickname, String nombre, String apellido, String email, Date fechaNac, String pass, String descripcion, String biografia, String sitioWeb, InstitucionDeportiva institucion) {
+		super(nickname, nombre, apellido, email, fechaNac, pass);
 		this.descripcion = descripcion;
 		this.biografia = biografia;
 		this.sitioWeb = sitioWeb;
@@ -86,7 +86,7 @@ public class Profesor extends Usuario {
 
 	public DtUsuario getDtUsuario() {
 		return new DtProfesor(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac(), this.descripcion, this.biografia, this.sitioWeb);
-	}
+	}	
 	
 	//METODOS
 	public ArrayList<DtClase> obtenerClasesQueDicta(){

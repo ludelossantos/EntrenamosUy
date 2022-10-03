@@ -80,6 +80,7 @@ public class UsuarioHandler {
 		}			
 		return listado;
 	}
+	
 	public ArrayList<Usuario> getUsuarios(){
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
@@ -92,4 +93,24 @@ public class UsuarioHandler {
 		return listUsuario;	
 	}
 
+	
+	public boolean existeUsuarioPass(String usuario, String pass) {
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		Query query = (Query) em.createQuery("select u.nickname from Usuario u WHERE (u.email = :usuario OR u.nickname = :usuario) AND u.pass = :pass");
+		((javax.persistence.Query) query).setParameter("usuario", usuario);
+		((javax.persistence.Query) query).setParameter("pass", pass);
+		ArrayList<String> resEmail = (ArrayList<String>) ((javax.persistence.Query) query).getResultList();
+
+		return resEmail != null && resEmail.size() > 0;
+	}
+	
+	public String tipoUsuario(String nickname) {
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		Query query = (Query) em.createQuery("select u.dtype from Usuario u WHERE u.nickname = :usuario OR u.email = :usuario");
+		((javax.persistence.Query) query).setParameter("usuario", nickname);
+		ArrayList<String> res = (ArrayList<String>) ((javax.persistence.Query) query).getResultList();
+		return res.get(0);
+	}
 }
