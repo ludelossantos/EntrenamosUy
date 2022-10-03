@@ -81,7 +81,7 @@ public class InstitucionDeportiva {
 	
 	public ArrayList<DtActividadDeportiva> obtenerActividades(){
 		Conexion conexion = Conexion.getInstancia();
-		EntityManager em = conexion.getEntityManager();
+		conexion.getEntityManager();
 		//javax.persistence.Query query = em.createQuery("select a from ActividadDeportiva a");
 		//javax.persistence.Query query = em.createQuery("select a " + "from ActividadDeportiva a " + "where " + "a.institucion = :nomInstitucion", ActividadDeportiva.class);
 		//List<ActividadDeportiva> actividades = (List<ActividadDeportiva>) query.getResultList();
@@ -117,7 +117,7 @@ public class InstitucionDeportiva {
 	
 	public ArrayList<DtActividadDeportiva> obtenerActividadesProfesor(String profesor){
 		Conexion conexion = Conexion.getInstancia();
-		EntityManager em = conexion.getEntityManager();
+		conexion.getEntityManager();
 		//javax.persistence.Query query = em.createQuery("select a from ActividadDeportiva a");
 		//javax.persistence.Query query = em.createQuery("select a " + "from ActividadDeportiva a " + "where " + "a.institucion = :nomInstitucion", ActividadDeportiva.class);
 		//List<ActividadDeportiva> actividades = (List<ActividadDeportiva>) query.getResultList();

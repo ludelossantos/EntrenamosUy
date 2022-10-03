@@ -114,7 +114,7 @@ public class ActividadDeportiva {
 	
 	public ArrayList<DtClase> obtenerClases(){
 		Conexion conexion = Conexion.getInstancia();
-		EntityManager em = conexion.getEntityManager();
+		conexion.getEntityManager();
 		//javax.persistence.Query query = em.createQuery("select a from Clase a");
 		//List<Clase> clases = (List<Clase>) query.getResultList();
 		ArrayList<DtClase> listado = new ArrayList<>();

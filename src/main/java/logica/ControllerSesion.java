@@ -1,5 +1,6 @@
 package logica;
 
+import datatypes.DtUsuario;
 import excepciones.UsuarioEnUsoException;
 import interfaces.IControllerSesion;
 
@@ -25,5 +26,15 @@ public class ControllerSesion implements IControllerSesion {
 			throw new UsuarioEnUsoException("Credenciales incorrectas.");
 		}
 		return res;
+	}
+	
+	@Override
+	public DtUsuario obtenerDtUsuario(String usuario) {
+		UsuarioHandler usuHand = UsuarioHandler.getInstancia();
+		Usuario usu = usuHand.buscarUsuarioNick(usuario);
+		if(usu == null) {
+			usu = usuHand.buscarUsuarioEmail(usuario);
+		}
+		return usu.getDtUsuario();
 	}
 }
