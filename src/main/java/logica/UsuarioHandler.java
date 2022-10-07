@@ -93,24 +93,29 @@ public class UsuarioHandler {
 		return listUsuario;	
 	}
 
-	
 	public boolean existeUsuarioPass(String usuario, String pass) {
-		Conexion conexion = Conexion.getInstancia();
-		EntityManager em = conexion.getEntityManager();
-		Query query = (Query) em.createQuery("select u.nickname from Usuario u WHERE (u.email = :usuario OR u.nickname = :usuario) AND u.pass = :pass");
-		((javax.persistence.Query) query).setParameter("usuario", usuario);
-		((javax.persistence.Query) query).setParameter("pass", pass);
-		ArrayList<String> resEmail = (ArrayList<String>) ((javax.persistence.Query) query).getResultList();
+        Conexion conexion = Conexion.getInstancia();
+        EntityManager em = conexion.getEntityManager();
+        javax.persistence.Query query = em.createQuery("select u.nickname from Usuario u WHERE (u.email = :usuario OR u.nickname = :usuario) AND u.pass = :pass");
+        query.setParameter("usuario", usuario);
+        query.setParameter("pass", pass);
+        ArrayList<String> res = (ArrayList<String>) query.getResultList();
 
-		return resEmail != null && resEmail.size() > 0;
-	}
-	
-	public String tipoUsuario(String nickname) {
-		Conexion conexion = Conexion.getInstancia();
-		EntityManager em = conexion.getEntityManager();
-		Query query = (Query) em.createQuery("select u.dtype from Usuario u WHERE u.nickname = :usuario OR u.email = :usuario");
-		((javax.persistence.Query) query).setParameter("usuario", nickname);
-		ArrayList<String> res = (ArrayList<String>) ((javax.persistence.Query) query).getResultList();
-		return res.get(0);
+        return res != null && res.size() > 0;
+    }
+
+	public String tipoUsuario(String usuario) {    			    
+        Conexion conexion = Conexion.getInstancia();
+        EntityManager em = conexion.getEntityManager();
+        javax.persistence.Query query = em.createQuery("select u from Usuario u WHERE u.nickname = :usuario OR u.email = :usuario");
+        query.setParameter("usuario", usuario);
+        Usuario usu = (Usuario) query.getSingleResult();
+//        Usuario usu = em.find(Usuario.class, res.get(0));
+        System.out.println("ingresa " + usu.getNickname());	    
+		if(usu instanceof Socio) {
+		    System.out.println("socio tipousuario");
+            return "S";
+        }
+		return "P";
 	}
 }

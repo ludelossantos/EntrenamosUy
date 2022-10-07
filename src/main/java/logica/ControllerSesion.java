@@ -19,8 +19,10 @@ public class ControllerSesion implements IControllerSesion {
 			String tipo = usuHand.tipoUsuario(usuario);
 			if(tipo != null && tipo.equals("S")) {
 				res= 1;
+				System.out.println("resultado socio");
 			}else if(tipo != null && tipo.equals("P")) {
 				res= 2;
+				System.out.println("resultado profesor");
 			}
 		} else {
 			throw new UsuarioEnUsoException("Credenciales incorrectas.");
