@@ -61,7 +61,7 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 		}
 		return repo;
 	}
-	
+	@Override
 	public String[] listarSocios() {
 		UsuarioHandler usuHand = UsuarioHandler.getInstancia();
 		ArrayList<DtSocio> socios = usuHand.obtenerSocios();
@@ -85,6 +85,7 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 		return socio;
 	}
 	
+	@Override
 	public Clase buscarClaseSeleccionada(String institucion, String actividad , String datClase) {
 		String[] arr = datClase.split(" / ");
 		String nombClase = arr [0];
