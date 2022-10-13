@@ -62,6 +62,21 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 		}
 		return repo;
 	}
+	
+	public DtClase[] listarDtClasesActividad(String institucion, String actividad) {
+	    InstitucionDeportivaHandler instiHand = InstitucionDeportivaHandler.getInstancia();
+        InstitucionDeportiva insti = instiHand.buscarInstitucionDeportiva(institucion);
+        ActividadDeportiva acti = insti.buscarActividad(actividad);
+        ArrayList<DtClase> clases = acti.obtenerClases();
+        DtClase[] ret = new DtClase[clases.size()];
+        int n=0;
+        for(DtClase dtc: clases) {
+            ret[n] = dtc;
+            n++;
+        }
+        return ret;
+	}	
+	
 	@Override
 	public String[] listarSocios() {
 		UsuarioHandler usuHand = UsuarioHandler.getInstancia();
@@ -99,6 +114,20 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 		ret = acti.buscarClase(nombClase);
 		return ret;
 	}
+	
+	@Override
+    public DtClase buscarDtClaseSeleccionada(String institucion, String actividad , String datClase) {
+        String[] arr = datClase.split(" / ");
+        String nombClase = arr [0];
+        nombClase = nombClase.substring(0,nombClase.length()-1);
+        System.out.println(nombClase+"/");
+        InstitucionDeportivaHandler instiHand = InstitucionDeportivaHandler.getInstancia();
+        InstitucionDeportiva insti = instiHand.buscarInstitucionDeportiva(institucion);
+        ActividadDeportiva acti = insti.buscarActividad(actividad);
+        Clase ret = acti.buscarClase(nombClase);
+        DtClase dtCla = ret.getDtClase();
+        return dtCla;
+    }
 	
 	@Override
 	public boolean usuarioRegistradoAClase(Socio socio, Clase clase){
