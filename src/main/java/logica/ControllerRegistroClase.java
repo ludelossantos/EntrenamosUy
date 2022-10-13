@@ -1,6 +1,7 @@
 package logica;
 
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -115,12 +116,18 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 	@Override
 	public void registroClase(String institucion, String actividad, String datClase, String nombApe, Date fechaReg) throws RegistroClaseRepetidoException {
 		Socio socio = this.buscarSocioNombreApellido(nombApe);
-		Clase clase = this.buscarClaseSeleccionada(institucion, actividad, datClase);
+		Clase clase = this.buscarClaseSeleccionada(institucion, actividad, datClase);	
 		System.out.println(clase.getNombre() + "   " + socio.getNombre());
 		if(this.usuarioRegistradoAClase(socio, clase)) {
 			throw new RegistroClaseRepetidoException("El socio '" + socio.getNombre() + " " + socio.getApellido() + "' ya est\u00E1 registrado en esta clase.");
 		}
-		Registro registro = new Registro(socio, clase, fechaReg);
+		
+		InstitucionDeportivaHandler instiHand = InstitucionDeportivaHandler.getInstancia();
+        InstitucionDeportiva insti = instiHand.buscarInstitucionDeportiva(institucion);
+        ActividadDeportiva acti = insti.buscarActividad(actividad);
+        BigDecimal costo = acti.getCosto();
+		
+		Registro registro = new Registro(socio, clase, fechaReg, costo);
 		System.out.println(registro.getSocio().getApellido() + "     " + registro.getClase().getNombre());
 		socio.agregarRegistro(registro);
 		clase.agregarRegistro(registro);
