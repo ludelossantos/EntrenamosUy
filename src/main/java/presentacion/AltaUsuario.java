@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -16,17 +18,18 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import com.toedter.calendar.JDateChooser;
-
 import datatypes.DtProfesor;
 import datatypes.DtSocio;
 import datatypes.DtUsuario;
 import excepciones.EmailRepetidoException;
 import excepciones.NicknameRepetidoException;
 import interfaces.IControllerAltaUsuario;
-import logica.InstitucionDeportiva;
-
+import interfaces.IControllerInstitucionDeportiva;
 import javax.swing.ScrollPaneConstants;
+
+import com.toedter.calendar.JDateChooser;
+import javax.swing.border.LineBorder;
+import java.awt.SystemColor;
 
 public class AltaUsuario extends JInternalFrame {
 
@@ -43,9 +46,10 @@ public class AltaUsuario extends JInternalFrame {
 	private JTextArea textAreaDescripcion;
 	private JTextArea textAreaBiografia;
 	private JComboBox<String> comboBoxInstitucion;
+	private JTextField textFieldPass;
 	
 
-	public AltaUsuario(IControllerAltaUsuario aUController) {
+	public AltaUsuario(IControllerAltaUsuario aUController, IControllerInstitucionDeportiva instDepController) {
 		this.aUController = aUController;
 		setResizable(true);
         setIconifiable(true);
@@ -53,7 +57,7 @@ public class AltaUsuario extends JInternalFrame {
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setClosable(true);
         setTitle("Alta Usuario");	
-		setBounds(100, 100, 910, 555);
+		setBounds(100, 100, 913, 614);
 		getContentPane().setLayout(null);
 		
 		JLabel lblNickname = new JLabel("Nickname");
@@ -103,14 +107,14 @@ public class AltaUsuario extends JInternalFrame {
 		
 		textFieldEmail = new JTextField();
 		textFieldEmail.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		textFieldEmail.setBounds(131, 122, 292, 25);
+		textFieldEmail.setBounds(131, 122, 695, 25);
 		getContentPane().add(textFieldEmail);
 		textFieldEmail.setColumns(10);
 		
-		JLabel lblFechaNac = new JLabel("Fecha de nacimiento");
+		JLabel lblFechaNac = new JLabel("Fecha de Nacimiento");
 		lblFechaNac.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblFechaNac.setBackground(new Color(240, 240, 240));
-		lblFechaNac.setBounds(438, 122, 152, 25);
+		lblFechaNac.setBounds(60, 157, 152, 25);
 		getContentPane().add(lblFechaNac);
 		
 		JLabel lblTipo = new JLabel("Tipo");
@@ -129,11 +133,12 @@ public class AltaUsuario extends JInternalFrame {
 		getContentPane().add(comboBoxUsuario);
 			
 		JPanel panel = new JPanel();
-		panel.setBounds(49, 165, 790, 270);
+		panel.setBorder(new LineBorder(Color.LIGHT_GRAY));
+		panel.setBounds(49, 215, 790, 270);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblDescripcion = new JLabel("Descripción");
+		JLabel lblDescripcion = new JLabel("Descripci\u00F3n");
 		lblDescripcion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblDescripcion.setBackground(new Color(240, 240, 240));
 		lblDescripcion.setBounds(12, 45, 117, 25);
@@ -152,7 +157,7 @@ public class AltaUsuario extends JInternalFrame {
 		textFieldSitioWeb.setColumns(10);
 		textFieldSitioWeb.setEnabled(false);
 		
-		JLabel lblBiografia = new JLabel("Biografía");
+		JLabel lblBiografia = new JLabel("Biograf\u00EDa");
 		lblBiografia.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		lblBiografia.setBackground(new Color(240, 240, 240));
 		lblBiografia.setBounds(389, 45, 130, 25);
@@ -180,13 +185,15 @@ public class AltaUsuario extends JInternalFrame {
 		scrollPane_1.setViewportView(textAreaBiografia);
 		textAreaBiografia.setEnabled(false);
 		
-		JLabel lblInstitución = new JLabel("Institución");
-		lblInstitución.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblInstitución.setBounds(12, 12, 94, 25);
-		panel.add(lblInstitución);
+		JLabel lblInstitucion = new JLabel("Instituci\u00F3n");
+		lblInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblInstitucion.setBounds(12, 12, 94, 25);
+		panel.add(lblInstitucion);
 		
 		comboBoxInstitucion = new JComboBox<String>();
-		comboBoxInstitucion.setBounds(93, 12, 687, 25);
+		comboBoxInstitucion.setBounds(105, 12, 675, 25);
+		DefaultComboBoxModel<String> modelinsti = new DefaultComboBoxModel<String>(instDepController.obtenerInstituciones());
+		comboBoxInstitucion.setModel(modelinsti);
 		panel.add(comboBoxInstitucion);
 		comboBoxInstitucion.setEnabled(false);
 		
@@ -199,7 +206,7 @@ public class AltaUsuario extends JInternalFrame {
 					textAreaBiografia.setEnabled(true);
 					textFieldSitioWeb.setEnabled(true);
 					comboBoxInstitucion.setEnabled(true);
-					inicializarInstituciones();
+					//inicializarInstituciones();
 				}else {
 					comboBoxUsuario.setSelectedItem(true);
 					textAreaDescripcion.setEnabled(false);
@@ -218,7 +225,7 @@ public class AltaUsuario extends JInternalFrame {
 				altaUsuarioAceptarActionPerformed(arg0);
 			}
 		});
-		btnAceptar.setBounds(709, 444, 130, 35);
+		btnAceptar.setBounds(709, 511, 130, 35);
 		getContentPane().add(btnAceptar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
@@ -229,18 +236,31 @@ public class AltaUsuario extends JInternalFrame {
 				altaUsuarioCancelarActionPerformed(e);
 			}
 		});
-		btnCancelar.setBounds(564, 444, 130, 35);
+		btnCancelar.setBounds(564, 511, 130, 35);
 		getContentPane().add(btnCancelar);
 		
 		dateChooser = new JDateChooser();
 		dateChooser.getCalendarButton().setLocation(783, 0);
-		dateChooser.setBounds(600, 122, 225, 25);
+		dateChooser.setBounds(222, 157, 201, 25);
 		getContentPane().add(dateChooser);
+		
+		JLabel lblPass = new JLabel("Contraseña");
+		lblPass.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblPass.setBackground(SystemColor.menu);
+		lblPass.setBounds(438, 157, 89, 25);
+		getContentPane().add(lblPass);
+		
+		textFieldPass = new JTextField();
+		textFieldPass.setForeground(Color.DARK_GRAY);
+		textFieldPass.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		textFieldPass.setColumns(10);
+		textFieldPass.setBounds(521, 157, 305, 25);
+		getContentPane().add(textFieldPass);
 	}
 	
-	public void inicializarInstituciones() {
-		DefaultComboBoxModel<String> modelInstituciones = new DefaultComboBoxModel<String>(aUController.listarInstituciones());
-		comboBoxInstitucion.setModel(modelInstituciones);
+	public void inicializarInstituciones(IControllerInstitucionDeportiva instDepController) {
+		DefaultComboBoxModel<String> modelinsti = new DefaultComboBoxModel<String>(instDepController.obtenerInstituciones());
+		comboBoxInstitucion.setModel(modelinsti);
 	}
 	
 	protected void altaUsuarioAceptarActionPerformed(ActionEvent arg0){
@@ -249,10 +269,9 @@ public class AltaUsuario extends JInternalFrame {
 			String nombre = this.textFieldNombre.getText();
 			String apellido = this.textFieldApellido.getText();
 			String email = this.textFieldEmail.getText();
+			String pass= this.textFieldPass.getText();
 			
 			java.util.Date fechaNac = dateChooser.getDate();
-			//Long fechaL = fechaS.getTime();
-			//java.sql.Date fechaSQL = new java.sql.Date(fechaL);
 
 			String tipo = this.comboBoxUsuario.getSelectedItem().toString();		
 			DtUsuario dt = null;			
@@ -260,18 +279,18 @@ public class AltaUsuario extends JInternalFrame {
 				String descripcion = this.textAreaDescripcion.getText();
 				String biografia = this.textAreaBiografia.getText();
 				String sitioWeb = this.textFieldSitioWeb.getText();
-				String insti = this.comboBoxInstitucion.getSelectedItem().toString();
-				InstitucionDeportiva institucion = this.aUController.buscarInstitucion(insti);	
+				String insti = this.comboBoxInstitucion.getSelectedItem().toString(); 
+				//InstitucionDeportiva institucion = this.instDepController.buscarInstitucion(insti);	
 				System.out.println("crea profesor");
-				dt = new DtProfesor(nickname, nombre, apellido, email, fechaNac, descripcion, biografia, sitioWeb, institucion);
+				dt = new DtProfesor(nickname, nombre, apellido, email, fechaNac, pass, descripcion, biografia, sitioWeb, insti);
 			}else {
 				System.out.println("crea socio");
-				dt = new DtSocio(nickname, nombre, apellido, email, fechaNac);
+				dt = new DtSocio(nickname, nombre, apellido, email, fechaNac, pass);
 			}
 			
 			try {
 				this.aUController.altaUsuario(dt);
-				JOptionPane.showMessageDialog(this, "El usuario se ha creado con éxito", "Alta usuario", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this, "El usuario se ha creado con \u00E9xito", "Alta usuario", JOptionPane.INFORMATION_MESSAGE);
 				limpiarFormulario();
 	            setVisible(false);
 			} catch(NicknameRepetidoException rn) {
@@ -283,29 +302,30 @@ public class AltaUsuario extends JInternalFrame {
 		}
 }
 	
-	private boolean checkFormulario() {
-		String nickname = this.textFieldNickname.getText();
-		String nombre = this.textFieldNombre.getText();
-		String apellido = this.textFieldApellido.getText();
-		String email = this.textFieldEmail.getText();
-		java.util.Date fechaNac = this.dateChooser.getDate();
-		
-		if(nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || (fechaNac==null)){		
-			/*if(nickname.isEmpty())
-				this.textFieldNickname.setBackground(Color.PINK);
-			if(nombre.isEmpty())
-				this.textFieldNombre.setBackground(Color.PINK);
-			if (apellido.isEmpty())
-				this.textFieldApellido.setBackground(Color.PINK);
-			if(email.isEmpty())
-				this.textFieldEmail.setBackground(Color.PINK);
-			if(fechaNac==null)
-				this.dateChooser.setBackground(Color.PINK);*/
-			JOptionPane.showMessageDialog(this, "Complete los campos en blanco.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
-			return false;
-		}
-		return true;
+private boolean checkFormulario() {		
+	String nickname = this.textFieldNickname.getText();
+	String nombre = this.textFieldNombre.getText();
+	String apellido = this.textFieldApellido.getText();
+	String email = this.textFieldEmail.getText();
+	java.util.Date fechaNac = this.dateChooser.getDate();
+	String tipoU = this.comboBoxUsuario.getSelectedItem().toString();
+	String descripcion = this.textAreaDescripcion.getText();
+	String pass = this.textFieldPass.getText();
+	
+	if(nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || (fechaNac==null) || pass.isEmpty()){
+		JOptionPane.showMessageDialog(this, "Complete los campos en blanco.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
+		return false;
 	}
+	if(tipoU.equals("Profesor") && comboBoxInstitucion.getSelectedItem() == null) {
+		JOptionPane.showMessageDialog(this, "Seleccione la instituci\u00F3n.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
+		return false;
+	}
+	if(tipoU.equals("Profesor") && descripcion.isEmpty()) {
+		JOptionPane.showMessageDialog(this, "Ingrese una descripci\u00F3n.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
+		return false;
+	}
+	return true;
+}
 		
 	protected void altaUsuarioCancelarActionPerformed(ActionEvent arg0) {
 		limpiarFormulario();
@@ -318,8 +338,12 @@ public class AltaUsuario extends JInternalFrame {
 		 textFieldApellido.setText("");
 		 textFieldEmail.setText("");
 		 textFieldSitioWeb.setText("");
-		 comboBoxUsuario.setSelectedItem("Socio"); //NO SE BORRA REVISAR
-		 textAreaDescripcion.setText("");  //NO SE BORRA REVISAR
-		 textAreaBiografia.setText("");  //NO SE BORRA REVISAR
+		 textFieldPass.setText("");
+		 Date myObj = new Date();
+		 dateChooser.setDate(myObj);
+		 comboBoxUsuario.setSelectedItem("Socio");
+		 textAreaDescripcion.setText("");
+		 textAreaBiografia.setText("");
+		 dateChooser.setDate(new Date());
 	 }
 }

@@ -5,3 +5,7 @@ target
 .project
 .metadata
 .idea
+.src\main\java\persistencia\Conexion.java
+.src\main\java\META-INF\persistence.xml
+.bin
+
