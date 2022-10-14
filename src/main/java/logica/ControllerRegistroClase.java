@@ -167,4 +167,46 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 		em.persist(clase);
 		em.getTransaction().commit();
 	}
+	//nuevas para web
+	
+	@Override
+	public Socio buscarSocio(String nickname) {
+	    UsuarioHandler usuHand = UsuarioHandler.getInstancia();
+        Socio socio = (Socio) usuHand.buscarUsuarioNick(nickname);
+        return socio;
+	}
+	@Override
+	public Clase buscarClase(String institucion, String actividad, String clase) {
+        InstitucionDeportivaHandler instiHand = InstitucionDeportivaHandler.getInstancia();
+        InstitucionDeportiva insti = instiHand.buscarInstitucionDeportiva(institucion);
+        ActividadDeportiva acti = insti.buscarActividad(actividad);
+        Clase ret = acti.buscarClase(clase);
+        return ret;
+	}
+	
+	
+    @Override
+    public void registroClaseWeb(String institucion, String actividad, String nombclase, String nickname, Date fechaReg) throws RegistroClaseRepetidoException {
+        Socio socio = this.buscarSocio(nickname);
+        Clase clase = this.buscarClase(institucion, actividad, nombclase);  
+        if(this.usuarioRegistradoAClase(socio, clase)) {
+            throw new RegistroClaseRepetidoException("El socio '" + socio.getNombre() + " " + socio.getApellido() + "' ya est\u00E1 registrado en esta clase.");
+        }
+        
+        InstitucionDeportivaHandler instiHand = InstitucionDeportivaHandler.getInstancia();
+        InstitucionDeportiva insti = instiHand.buscarInstitucionDeportiva(institucion);
+        ActividadDeportiva acti = insti.buscarActividad(actividad);
+        BigDecimal costo = acti.getCosto();
+        
+        Registro registro = new Registro(socio, clase, fechaReg, costo);
+        System.out.println(registro.getSocio().getApellido() + "     " + registro.getClase().getNombre());
+        socio.agregarRegistro(registro);
+        clase.agregarRegistro(registro);
+        Conexion conexion = Conexion.getInstancia();
+        EntityManager em = conexion.getEntityManager();
+        em.getTransaction().begin();
+        em.persist(socio);
+        em.persist(clase);
+        em.getTransaction().commit();
+    }
 }
