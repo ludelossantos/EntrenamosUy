@@ -8,4 +8,5 @@ target
 .src\main\java\persistencia\Conexion.java
 .src\main\java\META-INF\persistence.xml
 .bin
-
+.DS_Store
+nbactions.xml
