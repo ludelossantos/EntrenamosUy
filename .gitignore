@@ -8,6 +8,9 @@ target
 .src/main/java/persisntencia/Conexion.java
 .src/main/java/META-INF/persistence.xml
 
+/src/main/java/persisntencia/Conexion.java
+/src/main/java/META-INF/persistence.xml
+
 jgoodies-forms-1.8.0
 jgoodies-forms-1.8.0-sources
 
