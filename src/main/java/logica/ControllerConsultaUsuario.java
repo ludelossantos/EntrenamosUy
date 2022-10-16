@@ -152,10 +152,10 @@ public class ControllerConsultaUsuario implements IControllerConsultaUsuario{
 		String[] clases_ret = null;
 		if(user instanceof Profesor) {
 			Profesor p = (Profesor) user;
-			if(!p.obtenerClasesQueDicta().isEmpty()) {
-				clases_ret = new String[p.obtenerClasesQueDicta().size()];
+			if(!p.obtenerClasesActividad(nomActividad).isEmpty()) {
+				clases_ret = new String[p.obtenerClasesActividad(nomActividad).size()];
 				int i=0;
-				for(DtClase c : p.obtenerClasesQueDicta()) {
+				for(DtClase c : p.obtenerClasesActividad(nomActividad)) {
 					clases_ret[i] = c.getNombre();
 					i++;
 				}
