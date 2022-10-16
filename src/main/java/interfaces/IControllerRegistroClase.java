@@ -18,4 +18,8 @@ public interface IControllerRegistroClase {
     public DtClase buscarDtClaseSeleccionada(String institucion, String actividad , String datClase);
 	public boolean usuarioRegistradoAClase(Socio socio, Clase clase);	
 	public void registroClase(String institucion, String actividad, String datClase, String nombApe, Date fechaReg) throws RegistroClaseRepetidoException;
+	//nuevas para web... se deberia unificar para ambos
+	public Socio buscarSocio(String nickname);
+    public Clase buscarClase(String institucion, String actividad, String clase);
+	public void registroClaseWeb(String institucion, String actividad, String clase, String nickname, Date fechaReg) throws RegistroClaseRepetidoException;
 }
