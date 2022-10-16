@@ -48,11 +48,8 @@ public class ControllerConsultaClase implements IControllerConsultaClase{
 		Profesor profe = (Profesor) user; //casteo a profesor ya que este metodo se ejecuta solo para profesores
 		InstitucionDeportiva instiProf = profe.getInstitucion(); //busco institucion donde trabaja el profesor
 		ActividadDeportiva actividad = instiProf.buscarActividad(nomActividad); //busco la actividad seleccionada
-		System.out.println(nomClase+"en controller");
 		Clase clase = actividad.buscarClase(nomClase); //busco la clase seleccionada
-		System.out.println("en servidor "+clase.getNombre());
 		DtClase clase_ret = clase.getDtClase(); //crea un dtclase con los datos para retornar
-		System.out.println("en controller dtclase "+clase_ret.getNombre());
 		return clase_ret;
 	}
 }

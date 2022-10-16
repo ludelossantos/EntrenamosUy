@@ -105,22 +105,6 @@ public class ActividadDeportiva {
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
 		Clase clase = em.find(Clase.class, nombre);
-		//javax.persistence.Query query = em.createQuery("select a from Clase a where a.nombre = :nombre");
-		//query.setParameter("nombre", nombre);
-		/*List<Clase> clasesQueDicta = (List<Clase>) query.getResultList();
-		ArrayList<DtClase> lista = new ArrayList<>();
-		for(Clase a : clasesQueDicta) {
-			lista.add(a.getDtClase());
-		}
-		return lista;*/
-		/*for(Clase c : clases) {
-			if(c.getNombre().equals(nombre))
-				return c;
-		}
-		return null;*/
-		//Clase clase = null;
-		//clase = (Clase) query.getSingleResult();
-		System.out.println("en actdepor "+clase.getNombre());
 		return clase;
 	}	
 	
