@@ -30,7 +30,7 @@ public class ControllerAltaUsuario implements IControllerAltaUsuario {
 		if(nuevo instanceof DtProfesor) {
 			InstitucionDeportivaHandler instiHand = InstitucionDeportivaHandler.getInstancia();
 			InstitucionDeportiva institucion = instiHand.buscarInstitucionDeportiva(((DtProfesor) nuevo).getInstitucion());
-			Profesor profe = new Profesor(nuevo.getNickname(), nuevo.getNombre(), nuevo.getApellido(), nuevo.getEmail(), nuevo.getFechaNac(), nuevo.getPass(),
+			Profesor profe = new Profesor(nuevo.getNickname(), nuevo.getNombre(), nuevo.getApellido(), nuevo.getEmail(), nuevo.getFechaNac(), nuevo.getPass(), nuevo.getFoto(),
 					((DtProfesor) nuevo).getDescripcion(), ((DtProfesor) nuevo).getBiografia(), ((DtProfesor) nuevo).getSitioWeb(), institucion);
 			usuarios.agregarUsuario(profe);
 			institucion.agregarProfesor(profe);
@@ -41,7 +41,7 @@ public class ControllerAltaUsuario implements IControllerAltaUsuario {
 			em.getTransaction().commit();
 		}
 		if(nuevo instanceof DtSocio) {
-			Socio socio = new Socio(nuevo.getNickname(), nuevo.getNombre(), nuevo.getApellido(), nuevo.getEmail(), nuevo.getFechaNac(), nuevo.getPass());
+			Socio socio = new Socio(nuevo.getNickname(), nuevo.getNombre(), nuevo.getApellido(), nuevo.getEmail(), nuevo.getFechaNac(), nuevo.getPass(), nuevo.getFoto());
 			usuarios.agregarUsuario(socio);
 		}
 	} 

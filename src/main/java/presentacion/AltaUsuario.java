@@ -47,6 +47,7 @@ public class AltaUsuario extends JInternalFrame {
 	private JTextArea textAreaBiografia;
 	private JComboBox<String> comboBoxInstitucion;
 	private JTextField textFieldPass;
+	private JTextField textFieldFoto;
 	
 
 	public AltaUsuario(IControllerAltaUsuario aUController, IControllerInstitucionDeportiva instDepController) {
@@ -134,7 +135,7 @@ public class AltaUsuario extends JInternalFrame {
 			
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(Color.LIGHT_GRAY));
-		panel.setBounds(49, 215, 790, 270);
+		panel.setBounds(49, 231, 790, 270);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -256,6 +257,18 @@ public class AltaUsuario extends JInternalFrame {
 		textFieldPass.setColumns(10);
 		textFieldPass.setBounds(521, 157, 305, 25);
 		getContentPane().add(textFieldPass);
+		
+		JLabel lblFoto = new JLabel("Cargue url de foto");
+		lblFoto.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblFoto.setBackground(SystemColor.menu);
+		lblFoto.setBounds(60, 192, 130, 25);
+		getContentPane().add(lblFoto);
+		
+		textFieldFoto = new JTextField();
+		textFieldFoto.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		textFieldFoto.setColumns(10);
+		textFieldFoto.setBounds(200, 192, 626, 25);
+		getContentPane().add(textFieldFoto);
 	}
 	
 	public void inicializarInstituciones(IControllerInstitucionDeportiva instDepController) {
@@ -270,6 +283,7 @@ public class AltaUsuario extends JInternalFrame {
 			String apellido = this.textFieldApellido.getText();
 			String email = this.textFieldEmail.getText();
 			String pass= this.textFieldPass.getText();
+			String foto= this.textFieldFoto.getText();
 			
 			java.util.Date fechaNac = dateChooser.getDate();
 
@@ -282,10 +296,10 @@ public class AltaUsuario extends JInternalFrame {
 				String insti = this.comboBoxInstitucion.getSelectedItem().toString(); 
 				//InstitucionDeportiva institucion = this.instDepController.buscarInstitucion(insti);	
 				System.out.println("crea profesor");
-				dt = new DtProfesor(nickname, nombre, apellido, email, fechaNac, pass, descripcion, biografia, sitioWeb, insti);
+				dt = new DtProfesor(nickname, nombre, apellido, email, fechaNac, pass, foto, descripcion, biografia, sitioWeb, insti);
 			}else {
 				System.out.println("crea socio");
-				dt = new DtSocio(nickname, nombre, apellido, email, fechaNac, pass);
+				dt = new DtSocio(nickname, nombre, apellido, email, fechaNac, pass, foto);
 			}
 			
 			try {
