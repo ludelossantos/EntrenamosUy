@@ -18,4 +18,5 @@ public interface IControllerConsultaUsuario {
 	public DtClase DatosClase(String nickname, String nombreActiv);
 	public DtActividadDeportiva DatosActiv(String nickname, String nombreActiv);
 	public ArrayList<DtUsuario> listarDatosUsuarios();
+	public String[] obtenerClasesActividad(String nickname, String nomActividad);
 }
