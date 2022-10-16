@@ -257,11 +257,11 @@ public class AltaUsuario extends JInternalFrame {
 		textFieldPass.setBounds(521, 157, 305, 25);
 		getContentPane().add(textFieldPass);
 	}
-	/*
-	public void inicializarInstituciones() {
+	
+	public void inicializarInstituciones(IControllerInstitucionDeportiva instDepController) {
 		DefaultComboBoxModel<String> modelinsti = new DefaultComboBoxModel<String>(instDepController.obtenerInstituciones());
 		comboBoxInstitucion.setModel(modelinsti);
-	}*/
+	}
 	
 	protected void altaUsuarioAceptarActionPerformed(ActionEvent arg0){
 		if(checkFormulario()) {
@@ -310,8 +310,9 @@ private boolean checkFormulario() {
 	java.util.Date fechaNac = this.dateChooser.getDate();
 	String tipoU = this.comboBoxUsuario.getSelectedItem().toString();
 	String descripcion = this.textAreaDescripcion.getText();
+	String pass = this.textFieldPass.getText();
 	
-	if(nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || (fechaNac==null)){
+	if(nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || (fechaNac==null) || pass.isEmpty()){
 		JOptionPane.showMessageDialog(this, "Complete los campos en blanco.", "Alta usuario", JOptionPane.ERROR_MESSAGE);
 		return false;
 	}

@@ -85,7 +85,7 @@ public class Profesor extends Usuario {
 	}
 
 	public DtUsuario getDtUsuario() {
-		return new DtProfesor(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac(), this.descripcion, this.biografia, this.sitioWeb);
+		return new DtProfesor(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac(), this.descripcion, this.biografia, this.sitioWeb, this.institucion.getNombre());
 	}	
 	
 	//METODOS
@@ -103,5 +103,19 @@ public class Profesor extends Usuario {
 		
 	public void agregarClase(Clase clase) {
 		this.clasesQueDicta.add(clase);
+	}
+	
+	public ArrayList<DtClase> obtenerClasesActividad(String nomActividad){
+		Conexion conexion = Conexion.getInstancia();
+		EntityManager em = conexion.getEntityManager();
+		javax.persistence.Query query = em.createQuery("select a from Clase a");
+		List<Clase> clasesQueDicta = (List<Clase>) query.getResultList();
+		ArrayList<DtClase> lista = new ArrayList<>();
+		for(Clase a : clasesQueDicta) {
+			if(a.getActividad().getNombre().equals(nomActividad)) {
+				lista.add(a.getDtClase());
+			}
+		}
+		return lista;
 	}
 }

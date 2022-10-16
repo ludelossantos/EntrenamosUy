@@ -1,5 +1,6 @@
 package logica;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -25,17 +26,19 @@ public class Registro {
 	private Clase clase;
 	@Temporal(TemporalType.DATE)
 	private Date fechaReg;
+	private BigDecimal costo;
 
 	//CONSTRUCTORES
 	public Registro() {
 		super();
 	}
 
-	public Registro(Socio socio, Clase clase, Date fechaReg) {
+	public Registro(Socio socio, Clase clase, Date fechaReg, BigDecimal costo) {
 		super();
 		this.socio = socio;
 		this.clase = clase;
 		this.fechaReg = fechaReg;
+		this.costo = costo;
 		
 	}
 
@@ -63,5 +66,13 @@ public class Registro {
 	public void setFechaReg(Date fechaReg) {
 		this.fechaReg = fechaReg;
 	}
-	
+
+    public BigDecimal getCosto() {
+        return costo;
+    }
+
+    public void setCosto(BigDecimal costo) {
+        this.costo = costo;
+    }
+
 }

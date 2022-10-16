@@ -47,7 +47,9 @@ public class Socio extends Usuario {
 		List<Registro> clasesRegistradas = (List<Registro>) query.getResultList();
 		ArrayList<DtClase> lista = new ArrayList<>();
 		for(Registro r: clasesRegistradas) {
-				lista.add(r.getClase().getDtClase());
+		    if(r.getSocio().getNickname().equals(this.getNickname())) {
+		        lista.add(r.getClase().getDtClase());
+		    }
 		}
 		return lista;
 	}

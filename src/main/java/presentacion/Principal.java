@@ -137,7 +137,9 @@ public class Principal {
 		mntmUsuarioAlta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mntmUsuarioAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//altaUsuarioInternalFrame.inicializarInstituciones();
+			    Factory fabrica = Factory.getInstance();
+	            IControllerInstitucionDeportiva aIDController = fabrica.getIControllerInstitucionDeportiva();
+				altaUsuarioInternalFrame.inicializarInstituciones(aIDController);
 				altaUsuarioInternalFrame.setVisible(true);
 			}
 		});
@@ -228,7 +230,9 @@ public class Principal {
 		mntmClaseRegistro.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mntmClaseRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//registroClaseInternalFrame.inicializarComboBoxes();
+			    Factory fabrica = Factory.getInstance();
+                IControllerInstitucionDeportiva aIDController = fabrica.getIControllerInstitucionDeportiva();
+                registroClaseInternalFrame.inicializarComboBoxes(aIDController);
 				registroClaseInternalFrame.setVisible(true);				
 			}
 		});

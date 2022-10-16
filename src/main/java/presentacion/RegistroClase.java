@@ -66,6 +66,7 @@ public class RegistroClase extends JInternalFrame {
 		comboBoxInstitucion = new JComboBox<String>();
 		comboBoxInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		comboBoxInstitucion.setBounds(170, 13, 665, 28);
+		comboBoxInstitucion.setSelectedItem("Seleccione una insitucion");
 		comboBoxInstitucion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -77,6 +78,7 @@ public class RegistroClase extends JInternalFrame {
 		comboBoxActDepor = new JComboBox<String>();
 		comboBoxActDepor.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		comboBoxActDepor.setBounds(170, 49, 665, 28);
+		comboBoxActDepor.setSelectedItem("Seleccione una actividad deportiva");
 		comboBoxActDepor.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -104,6 +106,7 @@ public class RegistroClase extends JInternalFrame {
 		comboBoxSocio = new JComboBox<String>();
 		comboBoxSocio.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		comboBoxSocio.setBounds(71, 359, 436, 28);
+		comboBoxSocio.setSelectedItem("Seleccione un socio");
 		panel_clases.add(comboBoxSocio);
 		
 		textFieldRegistro = new JTextField();
@@ -137,8 +140,7 @@ public class RegistroClase extends JInternalFrame {
 		});
 		btnAceptar.setBounds(757, 457, 130, 35);
 		getContentPane().add(btnAceptar);
-		
-		inicializarComboBoxes(instDepController);
+	
 	}
 	
 	public void inicializarComboBoxes(IControllerInstitucionDeportiva instDepController) {
@@ -198,20 +200,25 @@ public class RegistroClase extends JInternalFrame {
 			return false;
 		}
 		String actividad = this.comboBoxActDepor.getSelectedItem().toString();
-		String datClase = this.listSetClases.getSelectedValue().toString();
-		String nombApe = this.comboBoxSocio.getSelectedItem().toString();
-		
-		if(actividad.isEmpty() || datClase.isEmpty() || nombApe.isEmpty()){		
-			JOptionPane.showMessageDialog(this, "Complete todos los campos.", "Registro a dictado de Clase", JOptionPane.ERROR_MESSAGE);
-			return false;
+		if(listSetClases.getSelectedValue() != null) {
+		    String datClase = this.listSetClases.getSelectedValue().toString();
+	        String nombApe = this.comboBoxSocio.getSelectedItem().toString();
+	        
+	        if(actividad.isEmpty() || nombApe.isEmpty()){     
+	            JOptionPane.showMessageDialog(this, "Complete todos los campos.", "Registro a dictado de Clase", JOptionPane.ERROR_MESSAGE);
+	            return false;
+	        }
+		}else {
+		    JOptionPane.showMessageDialog(this, "Complete todos los campos.", "Registro a dictado de Clase", JOptionPane.ERROR_MESSAGE);
+		    return false;
 		}
 		return true;
 	}
 	
 	private void limpiarFormulario() {
-		comboBoxInstitucion.setSelectedItem("Seleccione");
-		comboBoxActDepor.setSelectedItem("Seleccione");
-		comboBoxSocio.setSelectedItem("Seleccione");
-		textFieldRegistro.setText("");
+		comboBoxInstitucion.setSelectedIndex(0);
+		comboBoxActDepor.setSelectedIndex(0);
+		comboBoxSocio.setSelectedIndex(0);
+		listSetClases.clearSelection();
 	}
 }
