@@ -90,6 +90,10 @@ public class Clase {
 		return profesor;
 	}
 	
+	public ActividadDeportiva getActividad() {
+		return actividad;
+	}
+	
 	public DtClase getDtClase() {
 		return new DtClase(nombre, fecha, horaInicio, url, fechaReg, profesor.getNickname());
 	}
