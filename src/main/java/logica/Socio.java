@@ -26,8 +26,8 @@ public class Socio extends Usuario {
 		super();
 	}
 	
-	public Socio(String nickname, String nombre, String apellido, String email, Date fechaNac, String pass) {
-		super(nickname, nombre, apellido, email, fechaNac, pass);
+	public Socio(String nickname, String nombre, String apellido, String email, Date fechaNac, String pass, String foto) {
+		super(nickname, nombre, apellido, email, fechaNac, pass, foto);
 	}
 	
 	//GETTERS Y SETTERS

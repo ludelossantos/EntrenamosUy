@@ -37,6 +37,6 @@ public class ControllerSesion implements IControllerSesion {
 		if(usu == null) {
 			usu = usuHand.buscarUsuarioEmail(usuario);
 		}
-		return usu.getDtUsuario();
+		return usu.getDtUsuarioFoto();
 	}
 }
