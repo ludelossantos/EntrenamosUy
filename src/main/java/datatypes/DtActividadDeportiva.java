@@ -55,6 +55,10 @@ public class DtActividadDeportiva {
 	public Date getFechaReg() {
 		return fechaReg;
 	}
+        
+        public List<String> getClasesAsociadasList(){
+            return clasesAsociadasList;
+        }
 	
 	public String getClasesAsociadas() {
 		String aRetornar = new String("Clases asociadas");

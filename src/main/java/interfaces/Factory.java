@@ -8,6 +8,7 @@ import logica.ControllerSesion;
 import logica.ControllerInstitucionDeportiva;
 import logica.ControllerConsultaActividad;
 import logica.ControllerConsultaUsuario;
+import logica.ControllerConsultaClase;
 
 public class Factory {
 	private static Factory instancia = null;
@@ -50,5 +51,9 @@ public class Factory {
 	
 	public IControllerSesion getIControllerSesion() {
 		return new ControllerSesion();
+	}
+	
+	public IControllerConsultaClase getIControllerConsultaClase() {
+		return new ControllerConsultaClase();
 	}
 }

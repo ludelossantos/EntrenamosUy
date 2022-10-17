@@ -101,15 +101,11 @@ public class ActividadDeportiva {
 	}
 
 	public Clase buscarClase(String nombre) {
-		/*Conexion conexion = Conexion.getInstancia();
+		System.out.println(nombre);
+		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
 		Clase clase = em.find(Clase.class, nombre);
-		return clase;*/
-		for(Clase c : clases) {
-			if(c.getNombre().equals(nombre))
-				return c;
-		}
-		return null;
+		return clase;
 	}	
 	
 	public ArrayList<DtClase> obtenerClases(){
