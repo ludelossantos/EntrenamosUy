@@ -11,7 +11,7 @@ import datatypes.DtClase;
 import datatypes.DtSocio;
 import excepciones.RegistroClaseRepetidoException;
 import interfaces.IControllerRegistroClase;
-import javafx.util.Pair;
+//import javafx.util.Pair;
 import persistencia.Conexion;
 
 public class ControllerRegistroClase implements IControllerRegistroClase {
