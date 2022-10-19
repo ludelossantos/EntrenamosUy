@@ -65,4 +65,7 @@ public class DtActividadDeportiva {
 		return aRetornar;
 	}
 	
+	public List<String> getClasesAsociadasList(){
+	    return clasesAsociadasList;
+	}
 }

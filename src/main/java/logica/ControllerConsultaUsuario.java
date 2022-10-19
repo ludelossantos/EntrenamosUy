@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import datatypes.DtActividadDeportiva;
 import datatypes.DtClase;
-import datatypes.DtProfesor;
 import datatypes.DtUsuario;
 import interfaces.IControllerConsultaUsuario;
 
@@ -144,5 +143,24 @@ public class ControllerConsultaUsuario implements IControllerConsultaUsuario{
 				insti_ret = p.getInstitucion().getNombre();
 			}
 	return insti_ret;
+	}
+	
+	@Override
+	public String[] obtenerClasesActividad(String nickname, String nomActividad) {
+		UsuarioHandler uH = UsuarioHandler.getInstancia();
+		Usuario user = uH.buscarUsuarioNick(nickname);
+		String[] clases_ret = null;
+		if(user instanceof Profesor) {
+			Profesor p = (Profesor) user;
+			if(!p.obtenerClasesActividad(nomActividad).isEmpty()) {
+				clases_ret = new String[p.obtenerClasesActividad(nomActividad).size()];
+				int i=0;
+				for(DtClase c : p.obtenerClasesActividad(nomActividad)) {
+					clases_ret[i] = c.getNombre();
+					i++;
+				}
+			}
+		}
+		return clases_ret;
 	}
 }

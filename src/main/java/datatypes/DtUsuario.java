@@ -8,6 +8,8 @@ public class DtUsuario {
     private String apellido;
     private String email;
     private Date fechaNac;
+    private String pass;
+    private String foto;
     
 	public DtUsuario() {
 		super();
@@ -21,6 +23,27 @@ public class DtUsuario {
 		this.email = email;
 		this.fechaNac = fechaNac;
 	}
+		
+	public DtUsuario(String nickname, String nombre, String apellido, String email, Date fechaNac, String pass) {
+		super();
+		this.nickname = nickname;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.email = email;
+		this.fechaNac = fechaNac;
+		this.pass = pass;
+	}
+
+	public DtUsuario(String nickname, String nombre, String apellido, String email, Date fechaNac, String pass, String foto) {
+        super();
+        this.nickname = nickname;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.fechaNac = fechaNac;
+        this.pass = pass;
+        this.foto = foto;
+    }
 
 	public String getNickname() {
 		return nickname;
@@ -41,6 +64,13 @@ public class DtUsuario {
 	public Date getFechaNac() {
 		return fechaNac;
 	}
-    
+	
+	public String getPass() {
+		return pass;
+	}
+	
+    public String getFoto() {
+        return foto;
+    }
     
 }

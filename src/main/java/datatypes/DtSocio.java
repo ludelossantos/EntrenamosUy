@@ -16,9 +16,18 @@ public class DtSocio extends DtUsuario {
 	}
 	
 	public DtSocio(String nickname, String nombre, String apellido, String email, Date fechaNac, Clase clase) {
-		super(nickname, nombre, apellido, email, fechaNac);
-		this.clase = clase;
+        super(nickname, nombre, apellido, email, fechaNac);
+        this.clase = clase;
+    }
+	
+	public DtSocio(String nickname, String nombre, String apellido, String email, Date fechaNac, String pass) {
+		super(nickname, nombre, apellido, email, fechaNac, pass);
 	}
+	
+	public DtSocio(String nickname, String nombre, String apellido, String email, Date fechaNac, String pass, String foto) {
+        super(nickname, nombre, apellido, email, fechaNac, pass, foto);
+    }
+	
 
 	public Clase getClase() {
 		return clase;

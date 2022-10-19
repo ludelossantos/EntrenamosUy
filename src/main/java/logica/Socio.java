@@ -25,9 +25,9 @@ public class Socio extends Usuario {
 	public Socio() {
 		super();
 	}
-
-	public Socio(String nickname, String nombre, String apellido, String email, Date fechaNac) {
-		super(nickname, nombre, apellido, email, fechaNac);
+	
+	public Socio(String nickname, String nombre, String apellido, String email, Date fechaNac, String pass, String foto) {
+		super(nickname, nombre, apellido, email, fechaNac, pass, foto);
 	}
 	
 	//GETTERS Y SETTERS
@@ -47,7 +47,9 @@ public class Socio extends Usuario {
 		List<Registro> clasesRegistradas = (List<Registro>) query.getResultList();
 		ArrayList<DtClase> lista = new ArrayList<>();
 		for(Registro r: clasesRegistradas) {
-				lista.add(r.getClase().getDtClase());
+		    if(r.getSocio().getNickname().equals(this.getNickname())) {
+		        lista.add(r.getClase().getDtClase());
+		    }
 		}
 		return lista;
 	}

@@ -1,8 +1,5 @@
 package interfaces;
 
-import java.util.ArrayList;
-
-import datatypes.DtActividadDeportiva;
 import datatypes.DtClase;
 import excepciones.EsSocioException;
 import excepciones.ClaseRepetidaException;

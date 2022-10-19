@@ -23,8 +23,6 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-
 import com.toedter.calendar.JDateChooser;
 
 import datatypes.DtClase;

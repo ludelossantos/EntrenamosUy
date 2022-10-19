@@ -30,9 +30,6 @@ public class ConsultaActividad extends JInternalFrame{
 	private JTextField textFieldCosto;
 	private JTextField textFieldFecha;
 	private JTextArea textArea;
-	private String institucion;
-	private String actividad;
-
 	public JComboBox<String> getComboBoxInstitucion() {
 		return comboBoxInstitucion;
 	}
@@ -202,7 +199,7 @@ public class ConsultaActividad extends JInternalFrame{
 	public void cargarComboInstituciones() {
 		DefaultComboBoxModel<String> modelinst = new DefaultComboBoxModel<String>(cAController.listarInstituciones());
 		comboBoxInstitucion.setModel(modelinst);
-		this.institucion =(String)comboBoxInstitucion.getSelectedItem();
+		//(String)comboBoxInstitucion.getSelectedItem();
 	}
 	
 	protected void cargarActividades(ActionEvent e) {

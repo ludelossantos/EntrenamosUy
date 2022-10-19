@@ -4,27 +4,27 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import logica.Clase;
-import logica.InstitucionDeportiva;
 
 public class DtProfesor extends DtUsuario {
 	private String descripcion;
 	private String biografia;
 	private String sitioWeb;
-	InstitucionDeportiva institucion;
+	private String institucion;
 	private ArrayList<Clase> clasesQueDicta;
 	
 	public DtProfesor() {
 		super();
 	}
 
-	public DtProfesor(String descripcion, String biografia, String sitioWeb) {
+	public DtProfesor(String descripcion, String biografia, String sitioWeb, String institucion) {
 		super();
 		this.descripcion = descripcion;
 		this.biografia = biografia;
 		this.sitioWeb = sitioWeb;
+		this.institucion = institucion;
 	}
 	
-	public DtProfesor(String nickname, String nombre, String apellido, String email, Date fechaNac, String descripcion, String biografia, String sitioWeb, InstitucionDeportiva institucion) {
+	public DtProfesor(String nickname, String nombre, String apellido, String email, Date fechaNac, String descripcion, String biografia, String sitioWeb, String institucion) {
 		super(nickname, nombre, apellido, email, fechaNac);
 		this.descripcion = descripcion;
 		this.biografia = biografia;
@@ -32,13 +32,22 @@ public class DtProfesor extends DtUsuario {
 		this.institucion = institucion;
 	}
 	
-	public DtProfesor(String nickname, String nombre, String apellido, String email, Date fechaNac, String descripcion, String biografia, String sitioWeb) {
-		super(nickname, nombre, apellido, email, fechaNac);
-		this.descripcion = descripcion;
-		this.biografia = biografia;
-		this.sitioWeb = sitioWeb;
-	}
-
+    public DtProfesor(String nickname, String nombre, String apellido, String email, Date fechaNac, String pass, String descripcion, String biografia, String sitioWeb, String institucion) {
+        super(nickname, nombre, apellido, email, fechaNac, pass);
+        this.descripcion = descripcion;
+        this.biografia = biografia;
+        this.sitioWeb = sitioWeb;
+        this.institucion = institucion;
+    }
+    
+    public DtProfesor(String nickname, String nombre, String apellido, String email, Date fechaNac, String pass, String foto, String descripcion, String biografia, String sitioWeb, String institucion) {
+        super(nickname, nombre, apellido, email, fechaNac, pass, foto);
+        this.descripcion = descripcion;
+        this.biografia = biografia;
+        this.sitioWeb = sitioWeb;
+        this.institucion = institucion;
+    }
+    
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -50,7 +59,7 @@ public class DtProfesor extends DtUsuario {
 	public String getSitioWeb() {
 		return sitioWeb;
 	}
-	public InstitucionDeportiva getInstitucion() {
+	public String getInstitucion() {
 		return institucion;
 	}
 

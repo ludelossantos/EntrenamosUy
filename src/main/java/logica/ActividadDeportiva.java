@@ -99,26 +99,31 @@ public class ActividadDeportiva {
 	public void agregarClase(Clase clase) {
 		this.clases.add(clase);
 	}
-
+/*
 	public Clase buscarClase(String nombre) {
-		/*Conexion conexion = Conexion.getInstancia();
+		System.out.println(nombre);
+		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
 		Clase clase = em.find(Clase.class, nombre);
-		return clase;*/
-		for(Clase c : clases) {
-			if(c.getNombre().equals(nombre))
-				return c;
-		}
-		return null;
-	}	
+		System.out.println("en actdepor "+clase.getNombre());
+		return clase;
+	}*/
+	
+	public Clase buscarClase(String nombre) {
+        System.out.println(nombre);
+        Conexion conexion = Conexion.getInstancia();
+        EntityManager em = conexion.getEntityManager();
+        Clase clase = em.find(Clase.class, nombre);
+        return clase;
+    }
 	
 	public ArrayList<DtClase> obtenerClases(){
 		Conexion conexion = Conexion.getInstancia();
-		EntityManager em = conexion.getEntityManager();
+		conexion.getEntityManager();
 		//javax.persistence.Query query = em.createQuery("select a from Clase a");
 		//List<Clase> clases = (List<Clase>) query.getResultList();
 		ArrayList<DtClase> listado = new ArrayList<>();
-		for(Clase c: clases) {
+		for(Clase c: this.clases) {
 			listado.add(c.getDtClase());
 		}
 		return listado;

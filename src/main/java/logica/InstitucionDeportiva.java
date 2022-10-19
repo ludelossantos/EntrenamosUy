@@ -4,16 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
-
 import datatypes.DtActividadDeportiva;
 import datatypes.DtClase;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import persistencia.Conexion;
@@ -86,7 +81,7 @@ public class InstitucionDeportiva {
 	
 	public ArrayList<DtActividadDeportiva> obtenerActividades(){
 		Conexion conexion = Conexion.getInstancia();
-		EntityManager em = conexion.getEntityManager();
+		conexion.getEntityManager();
 		//javax.persistence.Query query = em.createQuery("select a from ActividadDeportiva a");
 		//javax.persistence.Query query = em.createQuery("select a " + "from ActividadDeportiva a " + "where " + "a.institucion = :nomInstitucion", ActividadDeportiva.class);
 		//List<ActividadDeportiva> actividades = (List<ActividadDeportiva>) query.getResultList();
@@ -122,7 +117,7 @@ public class InstitucionDeportiva {
 	
 	public ArrayList<DtActividadDeportiva> obtenerActividadesProfesor(String profesor){
 		Conexion conexion = Conexion.getInstancia();
-		EntityManager em = conexion.getEntityManager();
+		conexion.getEntityManager();
 		//javax.persistence.Query query = em.createQuery("select a from ActividadDeportiva a");
 		//javax.persistence.Query query = em.createQuery("select a " + "from ActividadDeportiva a " + "where " + "a.institucion = :nomInstitucion", ActividadDeportiva.class);
 		//List<ActividadDeportiva> actividades = (List<ActividadDeportiva>) query.getResultList();

@@ -1,7 +1,5 @@
 package logica;
 
-import java.util.ArrayList;
-
 import javax.persistence.EntityManager;
 
 import datatypes.DtProfesor;
@@ -30,8 +28,9 @@ public class ControllerAltaUsuario implements IControllerAltaUsuario {
 			throw new EmailRepetidoException("El email '" + nuevo.getEmail() + "' ya est\u00E1 en uso.");
 		}
 		if(nuevo instanceof DtProfesor) {
-			InstitucionDeportiva institucion = ((DtProfesor) nuevo).getInstitucion();
-			Profesor profe = new Profesor(nuevo.getNickname(), nuevo.getNombre(), nuevo.getApellido(), nuevo.getEmail(), nuevo.getFechaNac(), 
+			InstitucionDeportivaHandler instiHand = InstitucionDeportivaHandler.getInstancia();
+			InstitucionDeportiva institucion = instiHand.buscarInstitucionDeportiva(((DtProfesor) nuevo).getInstitucion());
+			Profesor profe = new Profesor(nuevo.getNickname(), nuevo.getNombre(), nuevo.getApellido(), nuevo.getEmail(), nuevo.getFechaNac(), nuevo.getPass(), nuevo.getFoto(),
 					((DtProfesor) nuevo).getDescripcion(), ((DtProfesor) nuevo).getBiografia(), ((DtProfesor) nuevo).getSitioWeb(), institucion);
 			usuarios.agregarUsuario(profe);
 			institucion.agregarProfesor(profe);
@@ -42,30 +41,10 @@ public class ControllerAltaUsuario implements IControllerAltaUsuario {
 			em.getTransaction().commit();
 		}
 		if(nuevo instanceof DtSocio) {
-			Socio socio = new Socio(nuevo.getNickname(), nuevo.getNombre(), nuevo.getApellido(), nuevo.getEmail(), nuevo.getFechaNac());
+			Socio socio = new Socio(nuevo.getNickname(), nuevo.getNombre(), nuevo.getApellido(), nuevo.getEmail(), nuevo.getFechaNac(), nuevo.getPass(), nuevo.getFoto());
 			usuarios.agregarUsuario(socio);
 		}
 	} 
-	
-	@Override 
-	public String[] listarInstituciones() {
-		InstitucionDeportivaHandler instHand = InstitucionDeportivaHandler.getInstancia();
-		ArrayList<String> instituciones = instHand.obtenerInstituciones();
-		String[] instiList = new String[instituciones.size()];
-		int i=0;
-		for(String n:instituciones) {
-			instiList[i]=n;
-			i++;
-		}
-		return instiList;
-	}
-
-	@Override //PARA PRUEBAS BORRAR
-	public InstitucionDeportiva buscarInstitucion(String insti) {
-		InstitucionDeportivaHandler instiHand = InstitucionDeportivaHandler.getInstancia();
-		InstitucionDeportiva institucion = instiHand.buscarInstitucionDeportiva(insti);
-		return institucion;
-	}
 }
 
 

@@ -11,8 +11,6 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import java.text.SimpleDateFormat;
 
-import interfaces.Factory;
-import interfaces.IControllerConsultaActividad;
 import interfaces.IControllerConsultaUsuario;
 
 import javax.swing.JTextField;

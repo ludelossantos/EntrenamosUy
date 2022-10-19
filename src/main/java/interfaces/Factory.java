@@ -4,9 +4,11 @@ import logica.ControllerAltaActividadDep;
 import logica.ControllerAltaDictadoClase;
 import logica.ControllerAltaUsuario;
 import logica.ControllerRegistroClase;
+import logica.ControllerSesion;
 import logica.ControllerInstitucionDeportiva;
 import logica.ControllerConsultaActividad;
 import logica.ControllerConsultaUsuario;
+import logica.ControllerConsultaClase;
 
 public class Factory {
 	private static Factory instancia = null;
@@ -45,5 +47,13 @@ public class Factory {
 	
 	public IControllerAltaDictadoClase getIControllerAltaDictadoClase() {
 		return new ControllerAltaDictadoClase();
+	}
+	
+	public IControllerSesion getIControllerSesion() {
+		return new ControllerSesion();
+	}
+	
+	public IControllerConsultaClase getIControllerConsultaClase() {
+		return new ControllerConsultaClase();
 	}
 }

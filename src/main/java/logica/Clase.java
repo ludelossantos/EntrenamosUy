@@ -1,6 +1,5 @@
 package logica;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,7 +7,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import datatypes.DtClase;
@@ -90,6 +88,10 @@ public class Clase {
 	
 	public Profesor getProfesor() {
 		return profesor;
+	}
+	
+	public ActividadDeportiva getActividad() {
+		return actividad;
 	}
 	
 	public DtClase getDtClase() {

@@ -6,7 +6,6 @@ import java.util.Date;
 
 import javax.persistence.EntityManager;
 
-import datatypes.DtProfesor;
 import excepciones.ExisteActividadDepException;
 import excepciones.NoExistenInstitucionesException;
 import interfaces.IControllerAltaActividadDep;

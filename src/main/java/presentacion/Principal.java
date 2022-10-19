@@ -59,15 +59,15 @@ public class Principal {
 		IControllerAltaUsuario aUController = fabrica.getIControllerAltaUsuario();
 		IControllerRegistroClase rCController = fabrica.getIControllerRegistroClase();
 		IControllerConsultaUsuario cUController = fabrica.getIControllerConsultaUsuario(); 
-		IControllerInstitucionDeportiva aIDController = fabrica.getIControllerInstitucionDeportiva();
 		IControllerConsultaActividad cAController = fabrica.getIControllerConsultaActividad();
 		IControllerAltaActividadDep aADController = fabrica.getIControllerAltaActividadDep();
 		IControllerAltaDictadoClase aDCController = fabrica.getIControllerAltaDictadoClase();
+		IControllerInstitucionDeportiva aIDController = fabrica.getIControllerInstitucionDeportiva();
 
 		Dimension desktopSize = frame.getSize();
 		Dimension jInternalFrameSize;
 		
-		altaUsuarioInternalFrame = new AltaUsuario(aUController);
+		altaUsuarioInternalFrame = new AltaUsuario(aUController, aIDController);
 		jInternalFrameSize = altaUsuarioInternalFrame.getSize();
 		altaUsuarioInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
 		    (desktopSize.height- jInternalFrameSize.height)/2);
@@ -81,7 +81,7 @@ public class Principal {
 		frame.getContentPane().add(consultaActividadInternalFrame);
 		frame.getContentPane().add(altaUsuarioInternalFrame);
 		
-		registroClaseInternalFrame = new RegistroClase(rCController);
+		registroClaseInternalFrame = new RegistroClase(rCController, aIDController);
 				jInternalFrameSize = registroClaseInternalFrame.getSize();
 		registroClaseInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
 		    (desktopSize.height- jInternalFrameSize.height)/2);
@@ -137,7 +137,9 @@ public class Principal {
 		mntmUsuarioAlta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mntmUsuarioAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				altaUsuarioInternalFrame.inicializarInstituciones();
+			    Factory fabrica = Factory.getInstance();
+	            IControllerInstitucionDeportiva aIDController = fabrica.getIControllerInstitucionDeportiva();
+				altaUsuarioInternalFrame.inicializarInstituciones(aIDController);
 				altaUsuarioInternalFrame.setVisible(true);
 			}
 		});
@@ -228,7 +230,9 @@ public class Principal {
 		mntmClaseRegistro.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mntmClaseRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				registroClaseInternalFrame.inicializarComboBoxes();
+			    Factory fabrica = Factory.getInstance();
+                IControllerInstitucionDeportiva aIDController = fabrica.getIControllerInstitucionDeportiva();
+                registroClaseInternalFrame.inicializarComboBoxes(aIDController);
 				registroClaseInternalFrame.setVisible(true);				
 			}
 		});
