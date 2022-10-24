@@ -25,6 +25,7 @@ public class ActividadDeportiva {
 	private Float duracion;
 	private BigDecimal costo;
 	private Date fechaReg;
+	private String foto;
 
 	@ManyToOne
 	private InstitucionDeportiva institucion;
@@ -48,7 +49,17 @@ public class ActividadDeportiva {
 		this.fechaReg = fechaReg;
 		this.institucion = institucion;
 	}
-	
+	public ActividadDeportiva(String nombre, String descripcion, Float duracion, BigDecimal costo, Date fechaReg, InstitucionDeportiva institucion, String foto) {
+		super();
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.duracion = duracion;
+		this.costo = costo;
+		this.fechaReg = fechaReg;
+		this.institucion = institucion;
+		this.foto = foto;
+	}
+
 	//GETTERS & SETTERS
 	public String getNombre() {
 		return nombre;
@@ -90,23 +101,48 @@ public class ActividadDeportiva {
 		this.fechaReg = fechaReg;
 	}
 
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	// METODOS
+
 	public DtActividadDeportiva getDtActividadDeportiva() {
 		//return new DtActividadDeportiva(this.getNombre(), this.getDescripcion(), this.getDuracion(), this.getCosto(), this.getFechaReg());
 		return new DtActividadDeportiva(this.nombre, this.descripcion, this.duracion, this.costo, this.fechaReg);
 	}
+	public DtActividadDeportiva getDtActividadDeportivaFoto() {
+		//return new DtActividadDeportiva(this.getNombre(), this.getDescripcion(), this.getDuracion(), this.getCosto(), this.getFechaReg());
+		return new  DtActividadDeportiva(this.nombre, this.descripcion, this.duracion, this.costo, this.fechaReg, this.foto);
+	}
 
-	// METODOS
 	public void agregarClase(Clase clase) {
 		this.clases.add(clase);
 	}
-
+/*
 	public Clase buscarClase(String nombre) {
 		System.out.println(nombre);
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
 		Clase clase = em.find(Clase.class, nombre);
+<<<<<<< HEAD
+=======
+		System.out.println("en actdepor "+clase.getNombre());
+>>>>>>> fotos
 		return clase;
-	}	
+	}*/
+	
+	public Clase buscarClase(String nombre) {
+        System.out.println(nombre);
+        Conexion conexion = Conexion.getInstancia();
+        EntityManager em = conexion.getEntityManager();
+        Clase clase = em.find(Clase.class, nombre);
+        return clase;
+    }
 	
 	public ArrayList<DtClase> obtenerClases(){
 		Conexion conexion = Conexion.getInstancia();
@@ -115,7 +151,7 @@ public class ActividadDeportiva {
 		//List<Clase> clases = (List<Clase>) query.getResultList();
 		ArrayList<DtClase> listado = new ArrayList<>();
 		for(Clase c: this.clases) {
-			listado.add(c.getDtClase());
+			listado.add(c.getDtClaseFoto());
 		}
 		return listado;
 	}

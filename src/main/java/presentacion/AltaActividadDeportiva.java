@@ -38,6 +38,7 @@ public class AltaActividadDeportiva extends JInternalFrame {
 	private JTextField textFieldCosto;
 	private JTextField textFieldFechaAlta;
 	private JComboBox<String> comboBoxInstitucion;
+	private JTextField textFieldFoto;
 
 	public AltaActividadDeportiva(IControllerAltaActividadDep altaActDepController) {
 		this.altaActDepController = altaActDepController;
@@ -47,32 +48,32 @@ public class AltaActividadDeportiva extends JInternalFrame {
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setClosable(true);
         setTitle("Alta Actividad Deportiva");
-		setBounds(100, 100, 407, 416);
+		setBounds(100, 100, 579, 487);
 		getContentPane().setLayout(null);
 		
 		JLabel lblInstitucion = new JLabel("Instituci\u00F3n Deportiva");
-		lblInstitucion.setBounds(39, 27, 144, 22);
+		lblInstitucion.setBounds(36, 43, 159, 22);
 		lblInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		getContentPane().add(lblInstitucion);
 		
 		comboBoxInstitucion = new JComboBox<String>();
 		comboBoxInstitucion.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		comboBoxInstitucion.setBounds(188, 27, 166, 22);
+		comboBoxInstitucion.setBounds(198, 43, 336, 25);
 		getContentPane().add(comboBoxInstitucion);
 		
 		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(39, 67, 124, 22);
+		lblNombre.setBounds(36, 83, 124, 22);
 		lblNombre.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		getContentPane().add(lblNombre);
 		
 		textFieldNombre = new JTextField();
 		textFieldNombre.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		textFieldNombre.setBounds(188, 67, 166, 22);
+		textFieldNombre.setBounds(198, 82, 336, 25);
 		getContentPane().add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
 		JLabel lblDescripcion = new JLabel("Descripci\u00F3n");
-		lblDescripcion.setBounds(39, 107, 124, 22);
+		lblDescripcion.setBounds(36, 123, 124, 22);
 		lblDescripcion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		getContentPane().add(lblDescripcion);
 
@@ -81,39 +82,39 @@ public class AltaActividadDeportiva extends JInternalFrame {
 		textAreaDescripcion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		textAreaDescripcion.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		textAreaDescripcion.setLineWrap(true);
-		textAreaDescripcion.setBounds(188, 107, 166, 81);
+		textAreaDescripcion.setBounds(198, 123, 336, 81);
 		getContentPane().add(textAreaDescripcion);
 		
 		JLabel lblDuracion = new JLabel("Duraci\u00F3n");
-		lblDuracion.setBounds(39, 206, 124, 22);
+		lblDuracion.setBounds(36, 222, 124, 22);
 		lblDuracion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		getContentPane().add(lblDuracion);
 
 		textFieldDuracion = new JTextField();
 		textFieldDuracion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		textFieldDuracion.setBounds(188, 206, 166, 22);
+		textFieldDuracion.setBounds(198, 221, 336, 25);
 		getContentPane().add(textFieldDuracion);
 		textFieldDuracion.setColumns(10);
 		
 		JLabel lblCosto = new JLabel("Costo");
-		lblCosto.setBounds(39, 246, 124, 22);
+		lblCosto.setBounds(36, 262, 124, 22);
 		lblCosto.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		getContentPane().add(lblCosto);
 
 		textFieldCosto = new JTextField();
 		textFieldCosto.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		textFieldCosto.setBounds(188, 246, 166, 22);
+		textFieldCosto.setBounds(198, 261, 336, 25);
 		getContentPane().add(textFieldCosto);
 		textFieldCosto.setColumns(10);
 		
 		JLabel lblFechaAlta = new JLabel("Fecha de Alta");
-		lblFechaAlta.setBounds(39, 286, 124, 22);
+		lblFechaAlta.setBounds(36, 339, 124, 22);
 		lblFechaAlta.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		getContentPane().add(lblFechaAlta);
 		
 		textFieldFechaAlta = new JTextField();
 		textFieldFechaAlta.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		textFieldFechaAlta.setBounds(188, 286, 166, 22);
+		textFieldFechaAlta.setBounds(198, 338, 336, 25);
 		Date fecha = new Date(); //fecha y hora actual
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); //se formatea la fecha en una cadena
 		textFieldFechaAlta.setText(sdf.format(fecha));
@@ -121,7 +122,7 @@ public class AltaActividadDeportiva extends JInternalFrame {
 		getContentPane().add(textFieldFechaAlta);
 		
 		JButton btnAceptar = new JButton("Aceptar");
-		btnAceptar.setBounds(66, 338, 97, 25);
+		btnAceptar.setBounds(330, 386, 97, 35);
 		btnAceptar.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		btnAceptar.addActionListener(new ActionListener() {
 			@Override
@@ -132,7 +133,7 @@ public class AltaActividadDeportiva extends JInternalFrame {
 		getContentPane().add(btnAceptar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(225, 338, 97, 25);
+		btnCancelar.setBounds(437, 386, 97, 35);
 		btnCancelar.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		btnCancelar.addActionListener(new ActionListener() {
 			@Override
@@ -141,6 +142,17 @@ public class AltaActividadDeportiva extends JInternalFrame {
 			}
 		});
 		getContentPane().add(btnCancelar);
+		
+		JLabel lblUrlFoto = new JLabel("URL foto");
+		lblUrlFoto.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblUrlFoto.setBounds(36, 299, 124, 22);
+		getContentPane().add(lblUrlFoto);
+		
+		textFieldFoto = new JTextField();
+		textFieldFoto.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		textFieldFoto.setColumns(10);
+		textFieldFoto.setBounds(198, 298, 336, 25);
+		getContentPane().add(textFieldFoto);
 		
 	}
 	
@@ -155,6 +167,7 @@ public class AltaActividadDeportiva extends JInternalFrame {
 			String nomInstitucion = this.comboBoxInstitucion.getSelectedItem().toString();
 			String descripcion = this.textAreaDescripcion.getText();
 			Float duracion = Float.parseFloat(this.textFieldDuracion.getText()); //parseo de string a float
+			String foto = this.textFieldFoto.getText();
 	
 			DecimalFormatSymbols simbolos = new DecimalFormatSymbols(); //el siguiente bloque de codigo es para convertir de string a bigdecimal
 			simbolos.setGroupingSeparator(',');
@@ -178,7 +191,7 @@ public class AltaActividadDeportiva extends JInternalFrame {
 			}
 			
 			try {
-				this.altaActDepController.altaActividadDep(nombre, nomInstitucion, descripcion, duracion, costo, fechaAlta);
+				this.altaActDepController.altaActividadDep(nombre, nomInstitucion, descripcion, duracion, costo, fechaAlta, foto);
 				JOptionPane.showMessageDialog(this, "La actividad deportiva se ha creado con \u00E9xito", "Alta Actividad Deportiva", JOptionPane.INFORMATION_MESSAGE);
 				System.out.println("crea actividad deportiva "+ nombre +" en la institucion "+ nomInstitucion +"");
 				limpiarFormulario();
