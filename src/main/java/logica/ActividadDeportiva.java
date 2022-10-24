@@ -129,10 +129,7 @@ public class ActividadDeportiva {
 		Conexion conexion = Conexion.getInstancia();
 		EntityManager em = conexion.getEntityManager();
 		Clase clase = em.find(Clase.class, nombre);
-<<<<<<< HEAD
-=======
 		System.out.println("en actdepor "+clase.getNombre());
->>>>>>> fotos
 		return clase;
 	}*/
 	
