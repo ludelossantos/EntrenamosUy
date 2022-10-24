@@ -12,6 +12,7 @@ public class DtClase {
 	private String actividad;
 	private String nickProfesor;
 	private String nomInstitucion;
+	private String foto;
 	
 	public DtClase() {
 		super();
@@ -38,7 +39,18 @@ public class DtClase {
 		this.fechaReg = fechaReg;
 		this.nickProfesor = profesor;
 	}
-	
+	public DtClase(String nombre, Date fecha, Date horaInicio, String url, Date fechaReg, String actividad, String nickProfesor, String nomInstitucion, String foto) {
+		super();
+		this.nombre = nombre;
+		this.fecha = fecha;
+		this.horaInicio = horaInicio;
+		this.url = url;
+		this.fechaReg = fechaReg;
+		this.actividad = actividad;
+		this.nickProfesor = nickProfesor;
+		this.nomInstitucion = nomInstitucion;
+		this.foto = foto;
+	}
 	public String getNombre() {
 		return nombre;
 	}
@@ -88,5 +100,8 @@ public class DtClase {
 	
 	public void setFechaReg(Date fechaReg) {
 		this.fechaReg = fechaReg;
+	}
+	public String getFoto() {
+		return foto;
 	}
 }

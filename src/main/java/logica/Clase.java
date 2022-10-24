@@ -19,6 +19,7 @@ public class Clase {
 	private Date horaInicio;
 	private String url;
 	private Date fechaReg;
+	private String foto;
 	
 	@ManyToOne
 	private ActividadDeportiva actividad;
@@ -43,6 +44,17 @@ public class Clase {
 		this.fechaReg = fechaReg;
 		this.actividad = actividad;
 		this.profesor = profesor;
+	}
+	public Clase(String nombre, Date fecha, Date horaInicio, String url, Date fechaReg, ActividadDeportiva actividad, Profesor profesor, String foto) {
+		super();
+		this.nombre = nombre;
+		this.fecha = fecha;
+		this.horaInicio = horaInicio;
+		this.url = url;
+		this.fechaReg = fechaReg;
+		this.actividad = actividad;
+		this.profesor = profesor;
+		this.foto = foto;
 	}
 
 	//GETTERS Y SETTERS
@@ -93,7 +105,14 @@ public class Clase {
 	public ActividadDeportiva getActividad() {
 		return actividad;
 	}
-	
+
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
 	public DtClase getDtClase() {
 		return new DtClase(nombre, fecha, horaInicio, url, fechaReg, profesor.getNickname());
 	}

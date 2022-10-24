@@ -11,6 +11,7 @@ public class DtActividadDeportiva {
 	private Float duracion;
 	private BigDecimal costo;
 	private Date fechaReg;
+	private String foto;
 	private List<String> clasesAsociadasList = new ArrayList<>();
 
 	public DtActividadDeportiva() {
@@ -35,6 +36,15 @@ public class DtActividadDeportiva {
 		this.fechaReg = fechaReg;
 		this.clasesAsociadasList = clasesAsociadasList;
 	}
+	public DtActividadDeportiva(String nombre, String descripcion, Float float1, BigDecimal bigDecimal, Date fechaReg, String foto) {
+		super();
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.duracion = float1;
+		this.costo = bigDecimal;
+		this.fechaReg = fechaReg;
+		this.foto = foto;
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -55,7 +65,10 @@ public class DtActividadDeportiva {
 	public Date getFechaReg() {
 		return fechaReg;
 	}
-	
+	public String getFoto() {
+		return foto;
+	}
+
 	public String getClasesAsociadas() {
 		String aRetornar = new String("Clases asociadas");
 		for(String s: clasesAsociadasList) {
