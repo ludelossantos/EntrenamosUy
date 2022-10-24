@@ -116,6 +116,10 @@ public class Clase {
 	public DtClase getDtClase() {
 		return new DtClase(nombre, fecha, horaInicio, url, fechaReg, profesor.getNickname());
 	}
+	
+	public DtClase getDtClaseFoto() {
+        return new DtClase(nombre, fecha, horaInicio, url, fechaReg, profesor.getNickname(), foto);
+    }
 
 	//METODOS
 	public void agregarRegistro(Registro registro) {

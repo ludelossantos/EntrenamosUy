@@ -39,6 +39,18 @@ public class DtClase {
 		this.fechaReg = fechaReg;
 		this.nickProfesor = profesor;
 	}
+	
+	   public DtClase(String nombre, Date fecha, Date horaInicio2, String url, Date fechaReg, String profesor, String foto) {
+	        super();
+	        this.nombre = nombre;
+	        this.fecha = fecha;
+	        this.horaInicio = horaInicio2;
+	        this.url = url;
+	        this.fechaReg = fechaReg;
+	        this.nickProfesor = profesor;
+	        this.foto = foto;
+	    }
+	
 	public DtClase(String nombre, Date fecha, Date horaInicio, String url, Date fechaReg, String actividad, String nickProfesor, String nomInstitucion, String foto) {
 		super();
 		this.nombre = nombre;

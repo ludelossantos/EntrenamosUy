@@ -148,7 +148,7 @@ public class ActividadDeportiva {
 		//List<Clase> clases = (List<Clase>) query.getResultList();
 		ArrayList<DtClase> listado = new ArrayList<>();
 		for(Clase c: this.clases) {
-			listado.add(c.getDtClase());
+			listado.add(c.getDtClaseFoto());
 		}
 		return listado;
 	}
