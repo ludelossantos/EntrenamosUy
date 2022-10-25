@@ -1,12 +1,6 @@
 package interfaces;
 
-import logica.ControllerAltaActividadDep;
-import logica.ControllerAltaDictadoClase;
-import logica.ControllerAltaUsuario;
-import logica.ControllerRegistroClase;
-import logica.ControllerInstitucionDeportiva;
-import logica.ControllerConsultaActividad;
-import logica.ControllerConsultaUsuario;
+import logica.*;
 
 public class Factory {
 	private static Factory instancia = null;
@@ -46,5 +40,9 @@ public class Factory {
 	public IControllerAltaDictadoClase getIControllerAltaDictadoClase() {
 		return new ControllerAltaDictadoClase();
 	}
+
+	public IControllerConsultaClase getIControllerConsultaClase(){ return new ControllerConsultaClase();}
+
+	public IControllerSesion getIControllerSesion(){return new ControllerSesion();}
 	
 }
