@@ -6,6 +6,7 @@ import interfaces.IControllerConsultaClase;
 
 public class ControllerConsultaClase implements IControllerConsultaClase{
 	
+        @Override
 	public String[] listarActividades(String nickname) {
 		UsuarioHandler uH = UsuarioHandler.getInstancia();
 		String [] actividades = null;
@@ -24,6 +25,7 @@ public class ControllerConsultaClase implements IControllerConsultaClase{
 		return actividades;
 	}
 
+        @Override
 	public String[] listarClases(String nickname, String nomActividad) {
 		UsuarioHandler uH = UsuarioHandler.getInstancia();
 		Usuario user = uH.buscarUsuarioNick(nickname);
@@ -42,6 +44,7 @@ public class ControllerConsultaClase implements IControllerConsultaClase{
 		return clases;
 	}
 	
+        @Override
 	public DtClase obtenerDatosClase(String nickname, String nomActividad, String nomClase) {
 		UsuarioHandler uH = UsuarioHandler.getInstancia();
 		Usuario user = uH.buscarUsuarioNick(nickname); //busco el usuario logeado

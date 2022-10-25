@@ -63,6 +63,7 @@ public class ControllerRegistroClase implements IControllerRegistroClase {
 		return repo;
 	}
 	
+        @Override
 	public DtClase[] listarDtClasesActividad(String institucion, String actividad) {
 	    InstitucionDeportivaHandler instiHand = InstitucionDeportivaHandler.getInstancia();
         InstitucionDeportiva insti = instiHand.buscarInstitucionDeportiva(institucion);

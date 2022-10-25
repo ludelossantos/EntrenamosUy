@@ -13,6 +13,7 @@ import persistencia.Conexion;
 
 public class ControllerAltaActividadDep implements IControllerAltaActividadDep {
 	
+        @Override
 	public void altaActividadDep(String nombre, String nomInstitucion, String descripcion, Float duracion, BigDecimal costo, Date fechaAlta) 
 			throws ExisteActividadDepException, NoExistenInstitucionesException{
 		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();

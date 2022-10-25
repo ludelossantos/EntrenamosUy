@@ -41,6 +41,7 @@ public class ControllerAltaDictadoClase implements IControllerAltaDictadoClase {
 		return retorno;
 	}
 
+        @Override
 	public void altaClase(DtClase clase) throws ClaseRepetidaException, NoExisteUsuarioException, EsSocioException, ProfNoTrabajaInstitucion {
 		InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();
 		InstitucionDeportiva institucion = idh.buscarInstitucionDeportiva(clase.getNomInstitucion()); //instancio institucion deportiva

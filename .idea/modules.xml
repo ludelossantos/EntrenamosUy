@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../EntrenamosUyWEB/EntreWeb.iml" filepath="$PROJECT_DIR$/../EntrenamosUyWEB/EntreWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EntrenamosUy.iml" filepath="$PROJECT_DIR$/EntrenamosUy.iml" />
+    </modules>
+  </component>
+</project>
