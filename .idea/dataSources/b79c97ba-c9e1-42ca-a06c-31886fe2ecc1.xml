@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.43">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>1148</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1236</IntrospectionStateNumber>
       <ServerVersion>14.2</ServerVersion>
       <StartupTime>1666652352</StartupTime>
       <TimeZones>true ACDT
@@ -800,7 +800,7 @@ false Zulu
 13654||10|C|G
 13654||-9223372036854775808|U|G
 13654||10|U|G</Grants>
-      <IntrospectionStateNumber>1148</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1236</IntrospectionStateNumber>
       <ObjectId>24844</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4226,10 +4226,563 @@ false Zulu
     <schema id="262" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>1148</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1236</IntrospectionStateNumber>
       <ObjectId>2200</ObjectId>
       <StateNumber>527</StateNumber>
       <OwnerName>postgres</OwnerName>
     </schema>
+    <table id="263" parent="262" name="actividaddeportiva">
+      <ObjectId>33152</ObjectId>
+      <StateNumber>1211</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="264" parent="262" name="clase">
+      <ObjectId>33159</ObjectId>
+      <StateNumber>1212</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="265" parent="262" name="instituciondeportiva">
+      <ObjectId>33166</ObjectId>
+      <StateNumber>1211</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="266" parent="262" name="instituciondeportiva_actividaddeportiva">
+      <ObjectId>33173</ObjectId>
+      <StateNumber>1214</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="267" parent="262" name="instituciondeportiva_usuario">
+      <ObjectId>33178</ObjectId>
+      <StateNumber>1216</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="268" parent="262" name="registro">
+      <ObjectId>33183</ObjectId>
+      <StateNumber>1218</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="269" parent="262" name="usuario">
+      <ObjectId>33190</ObjectId>
+      <StateNumber>1213</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="270" parent="262" name="usuario_clase">
+      <ObjectId>33197</ObjectId>
+      <StateNumber>1221</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <column id="271" parent="263" name="nombre">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1200</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="272" parent="263" name="costo">
+      <DataType>numeric(19,2 digit)|0s</DataType>
+      <Position>2</Position>
+      <StateNumber>1200</StateNumber>
+      <TypeId>1700</TypeId>
+    </column>
+    <column id="273" parent="263" name="descripcion">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>3</Position>
+      <StateNumber>1200</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="274" parent="263" name="duracion">
+      <DataType>real|0s</DataType>
+      <Position>4</Position>
+      <StateNumber>1200</StateNumber>
+      <TypeId>700</TypeId>
+    </column>
+    <column id="275" parent="263" name="fechareg">
+      <DataType>timestamp|0s</DataType>
+      <Position>5</Position>
+      <StateNumber>1200</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="276" parent="263" name="institucion_nombre">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>6</Position>
+      <StateNumber>1200</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="277" parent="263" name="fktcpjrm6bpjewblmoxqvd7b4pm">
+      <ColNames>institucion_nombre</ColNames>
+      <ObjectId>33208</ObjectId>
+      <RefColNames>nombre</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>1211</StateNumber>
+      <RefTableId>33166</RefTableId>
+      <RefTableName>instituciondeportiva</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="278" parent="263" name="actividaddeportiva_pkey">
+      <ColNames>nombre</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>33157</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1200</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="279" parent="263" name="actividaddeportiva_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>33158</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1200</StateNumber>
+      <UnderlyingIndexId>33157</UnderlyingIndexId>
+    </key>
+    <column id="280" parent="264" name="nombre">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1201</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="281" parent="264" name="fecha">
+      <DataType>timestamp|0s</DataType>
+      <Position>2</Position>
+      <StateNumber>1201</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="282" parent="264" name="fechareg">
+      <DataType>timestamp|0s</DataType>
+      <Position>3</Position>
+      <StateNumber>1201</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="283" parent="264" name="horainicio">
+      <DataType>timestamp|0s</DataType>
+      <Position>4</Position>
+      <StateNumber>1201</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="284" parent="264" name="url">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>5</Position>
+      <StateNumber>1201</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="285" parent="264" name="actividad_nombre">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>6</Position>
+      <StateNumber>1201</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="286" parent="264" name="profesor_nickname">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>7</Position>
+      <StateNumber>1201</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="287" parent="264" name="fklbct8yif4qay7paj4gor5q9o2">
+      <ColNames>actividad_nombre</ColNames>
+      <ObjectId>33213</ObjectId>
+      <RefColNames>nombre</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>1212</StateNumber>
+      <RefTableId>33152</RefTableId>
+      <RefTableName>actividaddeportiva</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="288" parent="264" name="fkr7iqclh1hw30n7l15cvytmf3k">
+      <ColNames>profesor_nickname</ColNames>
+      <ObjectId>33218</ObjectId>
+      <RefColNames>nickname</RefColNames>
+      <RefColPositions>2</RefColPositions>
+      <StateNumber>1213</StateNumber>
+      <RefTableId>33190</RefTableId>
+      <RefTableName>usuario</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="289" parent="264" name="clase_pkey">
+      <ColNames>nombre</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>33164</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1201</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="290" parent="264" name="clase_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>33165</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1201</StateNumber>
+      <UnderlyingIndexId>33164</UnderlyingIndexId>
+    </key>
+    <column id="291" parent="265" name="nombre">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1202</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="292" parent="265" name="descripcion">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>2</Position>
+      <StateNumber>1202</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="293" parent="265" name="url">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>3</Position>
+      <StateNumber>1202</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="294" parent="265" name="instituciondeportiva_pkey">
+      <ColNames>nombre</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>33171</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1202</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="295" parent="265" name="instituciondeportiva_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>33172</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1202</StateNumber>
+      <UnderlyingIndexId>33171</UnderlyingIndexId>
+    </key>
+    <column id="296" parent="266" name="instituciondeportiva_nombre">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1203</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="297" parent="266" name="actividades_nombre">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>1203</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="298" parent="266" name="fkeakx3erex0edd5226gfbr06qa">
+      <ColNames>instituciondeportiva_nombre</ColNames>
+      <ObjectId>33228</ObjectId>
+      <RefColNames>nombre</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>1215</StateNumber>
+      <RefTableId>33166</RefTableId>
+      <RefTableName>instituciondeportiva</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="299" parent="266" name="fkokpigfq4tno5m1f61q7ujrjt9">
+      <ColNames>actividades_nombre</ColNames>
+      <ObjectId>33223</ObjectId>
+      <RefColNames>nombre</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>1214</StateNumber>
+      <RefTableId>33152</RefTableId>
+      <RefTableName>actividaddeportiva</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="300" parent="266" name="uk_ndrvss1b33jbbcxpv808baokc">
+      <ColNames>actividades_nombre</ColNames>
+      <ObjectId>33202</ObjectId>
+      <StateNumber>1208</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="301" parent="266" name="uk_ndrvss1b33jbbcxpv808baokc">
+      <ObjectId>33203</ObjectId>
+      <StateNumber>1208</StateNumber>
+      <UnderlyingIndexId>33202</UnderlyingIndexId>
+    </key>
+    <column id="302" parent="267" name="instituciondeportiva_nombre">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1204</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="303" parent="267" name="profesores_nickname">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>1204</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="304" parent="267" name="fkg8nfk10syhpk36lknnafkosbf">
+      <ColNames>instituciondeportiva_nombre</ColNames>
+      <ObjectId>33238</ObjectId>
+      <RefColNames>nombre</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>1217</StateNumber>
+      <RefTableId>33166</RefTableId>
+      <RefTableName>instituciondeportiva</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="305" parent="267" name="fklm5b1owwbq0xe2owkvea06n61">
+      <ColNames>profesores_nickname</ColNames>
+      <ObjectId>33233</ObjectId>
+      <RefColNames>nickname</RefColNames>
+      <RefColPositions>2</RefColPositions>
+      <StateNumber>1216</StateNumber>
+      <RefTableId>33190</RefTableId>
+      <RefTableName>usuario</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="306" parent="267" name="uk_1yptl0omfsqsxx4rd8bs0okqy">
+      <ColNames>profesores_nickname</ColNames>
+      <ObjectId>33204</ObjectId>
+      <StateNumber>1209</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="307" parent="267" name="uk_1yptl0omfsqsxx4rd8bs0okqy">
+      <ObjectId>33205</ObjectId>
+      <StateNumber>1209</StateNumber>
+      <UnderlyingIndexId>33204</UnderlyingIndexId>
+    </key>
+    <column id="308" parent="268" name="costo">
+      <DataType>numeric(19,2 digit)|0s</DataType>
+      <Position>1</Position>
+      <StateNumber>1205</StateNumber>
+      <TypeId>1700</TypeId>
+    </column>
+    <column id="309" parent="268" name="fechareg">
+      <DataType>date|0s</DataType>
+      <Position>2</Position>
+      <StateNumber>1205</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="310" parent="268" name="clase_nombre">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>1205</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="311" parent="268" name="socio_nickname">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>1205</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="312" parent="268" name="fkn9b8923qkevyxe6mnnfp36661">
+      <ColNames>clase_nombre</ColNames>
+      <ObjectId>33243</ObjectId>
+      <RefColNames>nombre</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>1218</StateNumber>
+      <RefTableId>33159</RefTableId>
+      <RefTableName>clase</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="313" parent="268" name="fk45qfp2qcvmx0b7dg0fyeqap22">
+      <ColNames>socio_nickname</ColNames>
+      <ObjectId>33248</ObjectId>
+      <RefColNames>nickname</RefColNames>
+      <RefColPositions>2</RefColPositions>
+      <StateNumber>1219</StateNumber>
+      <RefTableId>33190</RefTableId>
+      <RefTableName>usuario</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="314" parent="268" name="registro_pkey">
+      <ColNames>clase_nombre
+socio_nickname</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>33188</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1205</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>100
+100</CollationIds>
+      <CollationNames>default
+default</CollationNames>
+      <CollationParentNames>pg_catalog
+pg_catalog</CollationParentNames>
+    </index>
+    <key id="315" parent="268" name="registro_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>33189</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1205</StateNumber>
+      <UnderlyingIndexId>33188</UnderlyingIndexId>
+    </key>
+    <column id="316" parent="269" name="dtype">
+      <DataType>varchar(31)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1206</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="317" parent="269" name="nickname">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>1206</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="318" parent="269" name="apellido">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>3</Position>
+      <StateNumber>1206</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="319" parent="269" name="email">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>4</Position>
+      <StateNumber>1206</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="320" parent="269" name="fechanac">
+      <DataType>timestamp|0s</DataType>
+      <Position>5</Position>
+      <StateNumber>1206</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="321" parent="269" name="foto">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>6</Position>
+      <StateNumber>1206</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="322" parent="269" name="nombre">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>7</Position>
+      <StateNumber>1206</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="323" parent="269" name="pass">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>8</Position>
+      <StateNumber>1206</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="324" parent="269" name="biografia">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>9</Position>
+      <StateNumber>1206</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="325" parent="269" name="descripcion">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>10</Position>
+      <StateNumber>1206</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="326" parent="269" name="sitioweb">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>11</Position>
+      <StateNumber>1206</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="327" parent="269" name="institucion_nombre">
+      <DataType>varchar(255)|0s</DataType>
+      <Position>12</Position>
+      <StateNumber>1206</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="328" parent="269" name="fk44kosut37s5sb448t1p9sf41o">
+      <ColNames>institucion_nombre</ColNames>
+      <ObjectId>33253</ObjectId>
+      <RefColNames>nombre</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>1220</StateNumber>
+      <RefTableId>33166</RefTableId>
+      <RefTableName>instituciondeportiva</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="329" parent="269" name="usuario_pkey">
+      <ColNames>nickname</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>33195</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1206</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="330" parent="269" name="usuario_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>33196</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1206</StateNumber>
+      <UnderlyingIndexId>33195</UnderlyingIndexId>
+    </key>
+    <column id="331" parent="270" name="profesor_nickname">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1207</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="332" parent="270" name="clasesquedicta_nombre">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>1207</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="333" parent="270" name="fkg0fmeeagq8us9vprh1s5ukh02">
+      <ColNames>profesor_nickname</ColNames>
+      <ObjectId>33263</ObjectId>
+      <RefColNames>nickname</RefColNames>
+      <RefColPositions>2</RefColPositions>
+      <StateNumber>1222</StateNumber>
+      <RefTableId>33190</RefTableId>
+      <RefTableName>usuario</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="334" parent="270" name="fk3ra86xfmhksi4hw602yq15he">
+      <ColNames>clasesquedicta_nombre</ColNames>
+      <ObjectId>33258</ObjectId>
+      <RefColNames>nombre</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>1221</StateNumber>
+      <RefTableId>33159</RefTableId>
+      <RefTableName>clase</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="335" parent="270" name="uk_fe2kcf1nt4mcfjq4o2tpbbf5l">
+      <ColNames>clasesquedicta_nombre</ColNames>
+      <ObjectId>33206</ObjectId>
+      <StateNumber>1210</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="336" parent="270" name="uk_fe2kcf1nt4mcfjq4o2tpbbf5l">
+      <ObjectId>33207</ObjectId>
+      <StateNumber>1210</StateNumber>
+      <UnderlyingIndexId>33206</UnderlyingIndexId>
+    </key>
   </database-model>
 </dataSource>
