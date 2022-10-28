@@ -1,6 +1,7 @@
 package logica;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -62,7 +63,8 @@ public class ControllerAltaDictadoClase implements IControllerAltaDictadoClase {
 		if(!prof.getInstitucion().equals(institucion)) //verifico que el profesor trabaja en la institucion seleccionada
 			throw new ProfNoTrabajaInstitucion("El profesor '" + clase.getNickProfesor() + "' no trabaja en la instituci\u00F3n '" + institucion.getNombre() + "'");
 		
-		Clase nuevaClase = new Clase(clase.getNombre(), clase.getFecha(), clase.getHoraInicio(), clase.getUrl(), clase.getFechaReg(), actividad, prof); //creo la nueva clase
+		//Clase nuevaClase = new Clase(clase.getNombre(), clase.getFecha(), clase.getHoraInicio(), clase.getUrl(), clase.getFechaReg(), actividad, prof); //creo la nueva clase
+		Clase nuevaClase = new Clase(clase.getNombre(), clase.getFecha(), clase.getHoraInicio(), clase.getUrl(), clase.getFechaReg(), actividad, prof, clase.getFoto());
 		
 		actividad.agregarClase(nuevaClase); //agrego la nueva clase de la actividad deportiva a la lista
 		
@@ -74,6 +76,40 @@ public class ControllerAltaDictadoClase implements IControllerAltaDictadoClase {
 		em.persist(actividad);
 		em.getTransaction().commit();
 	}
+	
+	public void altaClaseWeb(DtClase clase) throws ClaseRepetidaException, NoExisteUsuarioException, EsSocioException, ProfNoTrabajaInstitucion {
+        InstitucionDeportivaHandler idh = InstitucionDeportivaHandler.getInstancia();
+        InstitucionDeportiva institucion = idh.buscarInstitucionDeportiva(clase.getNomInstitucion()); //instancio institucion deportiva
+        
+        ActividadDeportiva actividad = buscarActividadSeleccionada(institucion, clase.getActividad()); //instancio actividad deportiva
+        
+        if(idh.existeClase(clase.getNombre()))
+            throw new ClaseRepetidaException("Ya existe una clase con nombre '" + clase.getNombre() + "'");
+        
+        UsuarioHandler usuarios = UsuarioHandler.getInstancia();
+        Usuario usuario = usuarios.buscarUsuarioNick(clase.getNickProfesor()); //busco instancia del usuario - profesor
+        
+        if(usuario == null)
+            throw new NoExisteUsuarioException("El usuario seleccionado no existe."); 
+        if(usuario instanceof Socio)
+            throw new EsSocioException("El usuario '" + usuario.getNickname() +"' es un Socio.");
+        Profesor prof = (Profesor) usuario; //instancia Profesor
+        
+        if(!prof.getInstitucion().equals(institucion)) //verifico que el profesor trabaja en la institucion seleccionada
+            throw new ProfNoTrabajaInstitucion("El profesor '" + clase.getNickProfesor() + "' no trabaja en la instituci\u00F3n '" + institucion.getNombre() + "'");
+        
+        Clase nuevaClase = new Clase(clase.getNombre(), clase.getFecha(), clase.getHoraInicio(), clase.getUrl(), clase.getFechaReg(), actividad, prof); //creo la nueva clase
+        
+        actividad.agregarClase(nuevaClase); //agrego la nueva clase de la actividad deportiva a la lista
+        
+        prof.agregarClase(nuevaClase); //agrego la nueva clase a la lista de clases dictadas del profesor
+        
+        Conexion conexion = Conexion.getInstancia();
+        EntityManager em = conexion.getEntityManager();
+        em.getTransaction().begin();
+        em.persist(actividad);
+        em.getTransaction().commit();
+    }
 	
 	public ActividadDeportiva buscarActividadSeleccionada(InstitucionDeportiva institucion, String actividad) {
 		String[] split = actividad.split(" - ");

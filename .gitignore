@@ -12,5 +12,5 @@ src/main/java/META-INF/persistence.xml
 jgoodies-forms-1.8.0
 jgoodies-forms-1.8.0-sources
 .bin
-.DS_Store
 nbactions.xml
+.idea

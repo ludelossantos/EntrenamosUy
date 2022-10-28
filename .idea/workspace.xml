@@ -7,25 +7,28 @@
     <list default="true" id="68288e4a-4ee6-4d9b-97de-e62eb1b80a84" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.log" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.root/2.tree" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.launching/.install.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.launching/.install.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.launching/libraryInfos.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.launching/libraryInfos.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.ui.ide/dialog_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.ui.ide/dialog_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata/version.ini" beforeDir="false" afterPath="$PROJECT_DIR$/.metadata/version.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControllerRegistroClase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControllerRegistroClase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtActividadDeportiva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtActividadDeportiva.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtClase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtClase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/IControllerAltaActividadDep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControllerAltaActividadDep.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/IControllerAltaDictadoClase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControllerAltaDictadoClase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ActividadDeportiva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ActividadDeportiva.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Clase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Clase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControllerAltaActividadDep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControllerAltaActividadDep.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControllerAltaDictadoClase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControllerAltaDictadoClase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/persistencia/Conexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persistencia/Conexion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaActividadDeportiva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaActividadDeportiva.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaDictadoClase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaDictadoClase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EntrenamosUyWEB/EntreWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../EntrenamosUyWEB/EntreWeb.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EntrenamosUyWEB/src/main/java/servlets/ConsultaActDep.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EntrenamosUyWEB/src/main/java/servlets/ConsultaActDep.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EntrenamosUyWEB/src/main/webapp/info_consulta_act_dep.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../EntrenamosUyWEB/src/main/webapp/info_consulta_act_dep.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +37,25 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -59,18 +81,36 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "last_opened_file_path": "/Users/sofiaguerrascheidegger/git/EntrenamosUy"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
   <component name="RunManager">
     <configuration name="Principal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="presentacion.Principal" />
-      <module name="entrenamosuyconsola" />
+      <module name="EntrenamosUy" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="presentacion.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="EntreWeb" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="EntreWeb" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

@@ -14,7 +14,7 @@ public class Conexion {
 	public static Conexion getInstancia() {
 		if (instancia == null) {
 			instancia = new Conexion();
-			emf = Persistence.createEntityManagerFactory("entrenamosuyconsola");
+			emf = Persistence.createEntityManagerFactory("EntrenamosUy");
 			em=emf.createEntityManager();
 		}
 		return instancia;
