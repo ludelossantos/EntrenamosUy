@@ -46,6 +46,7 @@ public class AltaDictadoClase extends JInternalFrame {
 	private JTextField textFieldProfesor;
 	private JTextField textFieldURL;
 	private JTextField textFieldFechaAlta;
+	private JTextField textFieldFoto;
 	
 	public AltaDictadoClase(IControllerInstitucionDeportiva instDepController, IControllerAltaDictadoClase altaDictadoClaseController) {
 		this.altaDictadoClaseController = altaDictadoClaseController;		
@@ -55,7 +56,7 @@ public class AltaDictadoClase extends JInternalFrame {
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setClosable(true);
 		setTitle("Alta de Dictado de Clase");
-		setBounds(100, 100, 700, 389);
+		setBounds(100, 100, 705, 408);
 		getContentPane().setLayout(null);
 		
 		JLabel lblInstitucion = new JLabel("Instituci\u00F3n");
@@ -65,7 +66,7 @@ public class AltaDictadoClase extends JInternalFrame {
 		
 		comboBoxInstitucion = new JComboBox<String>();
 		comboBoxInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		comboBoxInstitucion.setBounds(49, 55, 146, 22);
+		comboBoxInstitucion.setBounds(49, 55, 146, 25);
 		DefaultComboBoxModel<String> inicializar = new DefaultComboBoxModel<String>(instDepController.obtenerInstituciones());
 		comboBoxInstitucion.setModel(inicializar);
 		comboBoxInstitucion.addActionListener(new ActionListener() {
@@ -84,7 +85,7 @@ public class AltaDictadoClase extends JInternalFrame {
 		listActividades = new JList<String>();
 		listActividades.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listActividades.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		listActividades.setBounds(0, -18, 408, 79);
+		listActividades.setBounds(0, 55, 408, 79);
 		listActividades.setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		getContentPane().add(listActividades);
 		
@@ -94,66 +95,67 @@ public class AltaDictadoClase extends JInternalFrame {
 
 		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblNombre.setBounds(49, 162, 90, 21);
+		lblNombre.setBounds(49, 156, 90, 21);
 		getContentPane().add(lblNombre);
 		
 		textFieldNombre = new JTextField();
 		textFieldNombre.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		textFieldNombre.setBounds(139, 162, 183, 21);
+		textFieldNombre.setBounds(139, 154, 183, 25);
 		getContentPane().add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
 		JLabel lblFecha = new JLabel("Fecha");
 		lblFecha.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblFecha.setBounds(380, 162, 90, 21);
+		lblFecha.setBounds(380, 156, 90, 21);
 		getContentPane().add(lblFecha);
 		
 		dateChooserFecha = new JDateChooser();
 		dateChooserFecha.getCalendarButton().setLocation(783, 0);
-		dateChooserFecha.setBounds(470, 162, 183, 25);
+		dateChooserFecha.setBounds(470, 154, 183, 25);
 		getContentPane().add(dateChooserFecha);
 		
 		JLabel lblHorario = new JLabel("Horario");
 		lblHorario.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblHorario.setBounds(49, 200, 90, 21);
+		lblHorario.setBounds(49, 189, 90, 21);
 		getContentPane().add(lblHorario);
 		
 		spinnerHorario = new JSpinner(new SpinnerDateModel());
-		spinnerHorario.setBounds(139, 200, 183, 21);
+		spinnerHorario.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		spinnerHorario.setBounds(139, 187, 183, 25);
 		JSpinner.DateEditor editorHora = new JSpinner.DateEditor(spinnerHorario, "HH:mm");
 		spinnerHorario.setEditor(editorHora);
 		getContentPane().add(spinnerHorario);
 		
 		JLabel lblProfesor = new JLabel("Profesor");
 		lblProfesor.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblProfesor.setBounds(380, 200, 90, 21);
+		lblProfesor.setBounds(380, 189, 90, 21);
 		getContentPane().add(lblProfesor);
 		
 		textFieldProfesor = new JTextField();
 		textFieldProfesor.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		textFieldProfesor.setBounds(470, 200, 183, 21);
+		textFieldProfesor.setBounds(470, 187, 183, 25);
 		getContentPane().add(textFieldProfesor);
 		textFieldProfesor.setColumns(10);
 		
 		JLabel lblURL = new JLabel("URL");
 		lblURL.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblURL.setBounds(49, 239, 90, 21);
+		lblURL.setBounds(49, 224, 90, 21);
 		getContentPane().add(lblURL);
 		
 		textFieldURL = new JTextField();
 		textFieldURL.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		textFieldURL.setBounds(139, 239, 183, 21);
+		textFieldURL.setBounds(139, 222, 183, 25);
 		getContentPane().add(textFieldURL);
 		textFieldURL.setColumns(10);
 		
 		JLabel lblFechaAlta = new JLabel("Fecha Alta");
 		lblFechaAlta.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblFechaAlta.setBounds(380, 239, 90, 21);
+		lblFechaAlta.setBounds(380, 224, 90, 21);
 		getContentPane().add(lblFechaAlta);
 		
 		textFieldFechaAlta = new JTextField();
 		textFieldFechaAlta.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		textFieldFechaAlta.setBounds(470, 239, 183, 21);
+		textFieldFechaAlta.setBounds(470, 222, 183, 25);
 		Date fecha = new Date(); //fecha y hora actual
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); //se formatea la fecha en una cadena
 		textFieldFechaAlta.setText(sdf.format(fecha));
@@ -163,7 +165,7 @@ public class AltaDictadoClase extends JInternalFrame {
 		
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		btnAceptar.setBounds(161, 307, 97, 25);
+		btnAceptar.setBounds(380, 305, 130, 35);
 		btnAceptar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -174,7 +176,7 @@ public class AltaDictadoClase extends JInternalFrame {
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		btnCancelar.setBounds(421, 307, 97, 25);
+		btnCancelar.setBounds(523, 305, 130, 35);
 		btnCancelar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -182,6 +184,17 @@ public class AltaDictadoClase extends JInternalFrame {
 			}
 		});
 		getContentPane().add(btnCancelar);
+		
+		JLabel lblUrlFoto = new JLabel("URL foto");
+		lblUrlFoto.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblUrlFoto.setBounds(49, 263, 90, 21);
+		getContentPane().add(lblUrlFoto);
+		
+		textFieldFoto = new JTextField();
+		textFieldFoto.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		textFieldFoto.setColumns(10);
+		textFieldFoto.setBounds(139, 261, 514, 25);
+		getContentPane().add(textFieldFoto);
 	}
 	
 
@@ -193,6 +206,7 @@ public class AltaDictadoClase extends JInternalFrame {
 			String profesor = this.textFieldProfesor.getText();
 			String url = this.textFieldURL.getText();
 			Date fecha = this.dateChooserFecha.getDate();
+	        String foto = this.textFieldFoto.getText();
 			
 			Calendar c  = Calendar.getInstance();
 			Date hora = (Date) spinnerHorario.getValue();
@@ -206,7 +220,9 @@ public class AltaDictadoClase extends JInternalFrame {
 				e.printStackTrace();
 			}
 			
-			DtClase clase = new DtClase(nombre, fecha, c.getTime(), url, fechaAlta, actividad, profesor, nomInstitucion);
+			//DtClase clase = new DtClase(nombre, fecha, c.getTime(), url, fechaAlta, actividad, profesor, nomInstitucion);
+			DtClase clase = new DtClase(nombre, fecha, c.getTime(), url, fechaAlta, actividad, profesor, nomInstitucion, foto);
+			
 			
 			try {
 				this.altaDictadoClaseController.altaClase(clase);

@@ -14,9 +14,8 @@
           <element id="module-output" name="EntreWeb" />
         </element>
         <element id="directory" name="lib">
-          <element id="archive" name="EntrenamosUy-0.0.1-SNAPSHOT.jar">
-            <element id="module-output" name="EntrenamosUy" />
-          </element>
+          <element id="library" level="project" name="Maven: EntrenamosUy:EntrenamosUy:0.0.1-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: org.eclipse.persistence:javax.persistence:2.1.0" />
           <element id="library" level="project" name="Maven: com.toedter:jcalendar:1.4" />
           <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.5.0" />
           <element id="library" level="project" name="Maven: org.checkerframework:checker-qual:3.5.0" />

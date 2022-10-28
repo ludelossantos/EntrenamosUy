@@ -7,11 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="EntreWeb" />
-        <module name="EntrenamosUy" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="EntrenamosUy" target="1.8" />
       <module name="EntreWeb" target="1.8" />
     </bytecodeTargetLevel>
   </component>
