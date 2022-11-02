@@ -5,30 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68288e4a-4ee6-4d9b-97de-e62eb1b80a84" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtActividadDeportiva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtActividadDeportiva.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtClase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtClase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/IControllerAltaActividadDep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControllerAltaActividadDep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/IControllerAltaDictadoClase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControllerAltaDictadoClase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ActividadDeportiva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ActividadDeportiva.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Clase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Clase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControllerAltaActividadDep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControllerAltaActividadDep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logica/ControllerAltaDictadoClase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/ControllerAltaDictadoClase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/persistencia/Conexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persistencia/Conexion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaActividadDeportiva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaActividadDeportiva.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaDictadoClase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaDictadoClase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EntrenamosUyWEB/EntreWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../EntrenamosUyWEB/EntreWeb.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EntrenamosUyWEB/src/main/java/servlets/ConsultaActDep.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EntrenamosUyWEB/src/main/java/servlets/ConsultaActDep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EntrenamosUyWEB/src/main/webapp/info_consulta_act_dep.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../EntrenamosUyWEB/src/main/webapp/info_consulta_act_dep.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +61,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/Users/sofiaguerrascheidegger/git/EntrenamosUy"
   },
   "keyToStringList": {
@@ -129,8 +111,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663297624020</updated>
+      <workItem from="1667352196670" duration="395000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:javax.persistence:javax.persistence-api" />
+    <option featureType="dependencySupport" implementationName="maven-packaging:war" />
+    <option featureType="dependencySupport" implementationName="java:org.hibernate:hibernate-core" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
