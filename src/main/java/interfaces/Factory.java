@@ -6,6 +6,7 @@ import logica.ControllerAltaUsuario;
 import logica.ControllerRegistroClase;
 import logica.ControllerSesion;
 import logica.ControllerInstitucionDeportiva;
+import logica.ControllerModificarUsuario;
 import logica.ControllerConsultaActividad;
 import logica.ControllerConsultaUsuario;
 import logica.ControllerConsultaClase;
@@ -56,4 +57,8 @@ public class Factory {
 	public IControllerConsultaClase getIControllerConsultaClase() {
 		return new ControllerConsultaClase();
 	}
+
+    public IControllerModificarUsuario getIControllerModificarUsuario() {
+        return new ControllerModificarUsuario();
+    }
 }

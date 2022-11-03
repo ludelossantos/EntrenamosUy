@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68288e4a-4ee6-4d9b-97de-e62eb1b80a84" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/interfaces/IControllerModificarUsuario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/logica/ControllerModificarUsuario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/presentacion/ModificarUsuario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/persistencia/Conexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/persistencia/Conexion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/datatypes/DtProfesor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/datatypes/DtProfesor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interfaces/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interfaces/Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/Profesor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/Profesor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logica/UsuarioHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logica/UsuarioHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/AltaUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/AltaUsuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/Principal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/presentacion/RegistroClase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentacion/RegistroClase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +68,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/sofiaguerrascheidegger/git/EntrenamosUy"
+    "last_opened_file_path": "D:/_estudio/TECNOLOGA/4/PAp/_LAB/EntrenamosUy/src/test/resources/META-INF"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -70,6 +76,11 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\_estudio\TECNOLOGA\4\PAp\_LAB\EntrenamosUy\src\test\resources\META-INF" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Principal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="presentacion.Principal" />
@@ -111,7 +122,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663297624020</updated>
-      <workItem from="1667352196670" duration="395000" />
+      <workItem from="1667352196670" duration="1541000" />
+      <workItem from="1667393071260" duration="11333000" />
+      <workItem from="1667413204031" duration="908000" />
+      <workItem from="1667434921124" duration="966000" />
+      <workItem from="1667435895656" duration="1848000" />
     </task>
     <servers />
   </component>

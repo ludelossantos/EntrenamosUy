@@ -2,6 +2,7 @@ package presentacion;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
@@ -17,6 +18,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.border.LineBorder;
+
+import com.toedter.calendar.JDateChooser;
 
 import datatypes.DtProfesor;
 import datatypes.DtSocio;
@@ -25,11 +30,6 @@ import excepciones.EmailRepetidoException;
 import excepciones.NicknameRepetidoException;
 import interfaces.IControllerAltaUsuario;
 import interfaces.IControllerInstitucionDeportiva;
-import javax.swing.ScrollPaneConstants;
-
-import com.toedter.calendar.JDateChooser;
-import javax.swing.border.LineBorder;
-import java.awt.SystemColor;
 
 public class AltaUsuario extends JInternalFrame {
 

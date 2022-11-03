@@ -3,11 +3,11 @@ package logica;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.management.Query;
 import javax.persistence.EntityManager;
 
+import datatypes.DtProfesor;
 import datatypes.DtSocio;
+import datatypes.DtUsuario;
 import persistencia.Conexion;  
 
 public class UsuarioHandler {
@@ -118,4 +118,39 @@ public class UsuarioHandler {
         }
 		return "P";
 	}
+
+    public boolean actualizarUsuario(DtUsuario nuevo) {
+        Conexion conexion = Conexion.getInstancia();
+        EntityManager em = conexion.getEntityManager();
+        em.getTransaction().begin();       
+        String sql = "";
+        if(nuevo instanceof DtProfesor) {
+            sql = "UPDATE Usuario SET nombre = :nNom, apellido = :nApe, fechanac = :nFecha, foto = :nFoto, pass = :nPass, biografia = :nBio, descripcion = :nDesc, sitioweb = :nWeb, institucion_nombre = :nInst  WHERE nickname = :usuario"; 
+        }else {
+            sql = "UPDATE Usuario SET nombre = :nNom, apellido = :nApe, fechanac = :nFecha, foto = :nFoto, pass = :nPass  WHERE nickname = :usuario";
+        }
+       
+        javax.persistence.Query query = em.createQuery(sql);
+        if(nuevo instanceof DtProfesor) {  
+            DtProfesor dtp = (DtProfesor) nuevo;
+            query.setParameter("nBio", dtp.getBiografia());
+            query.setParameter("nDesc", dtp.getDescripcion());
+            query.setParameter("nWeb", dtp.getSitioWeb());
+            query.setParameter("nInst", dtp.getInstitucion());
+        }
+        query.setParameter("nNom", nuevo.getNombre());
+        query.setParameter("nApe", nuevo.getApellido());
+        query.setParameter("nFecha", nuevo.getFechaNac());
+        query.setParameter("nFoto", nuevo.getFoto());
+        query.setParameter("nPass", nuevo.getPass());
+        query.setParameter("usuario", nuevo.getNickname());
+        
+        int res = query.executeUpdate();
+        em.getTransaction().commit();
+        if(res > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

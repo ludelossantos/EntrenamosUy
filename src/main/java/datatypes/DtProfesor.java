@@ -38,7 +38,7 @@ public class DtProfesor extends DtUsuario {
         this.biografia = biografia;
         this.sitioWeb = sitioWeb;
         this.institucion = institucion;
-    }
+    }  
     
     public DtProfesor(String nickname, String nombre, String apellido, String email, Date fechaNac, String pass, String foto, String descripcion, String biografia, String sitioWeb, String institucion) {
         super(nickname, nombre, apellido, email, fechaNac, pass, foto);

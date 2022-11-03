@@ -19,8 +19,10 @@ import interfaces.IControllerAltaDictadoClase;
 import interfaces.IControllerAltaUsuario;
 import interfaces.IControllerRegistroClase;
 import interfaces.IControllerInstitucionDeportiva;
+import interfaces.IControllerModificarUsuario;
 import interfaces.IControllerConsultaActividad;
 import interfaces.IControllerConsultaUsuario;
+import javax.swing.JInternalFrame;
 
 public class Principal {
 	
@@ -32,6 +34,7 @@ public class Principal {
 	private ConsultaActividad consultaActividadInternalFrame;
 	private AltaActividadDeportiva altaActividadDeportivaInternalFrame;
 	private AltaDictadoClase altaDictadoClaseInternalFrame;
+	private ModificarUsuario modificarUsuarioInternalFrame;
 
 	/**
      * Launch the application.
@@ -63,6 +66,7 @@ public class Principal {
 		IControllerAltaActividadDep aADController = fabrica.getIControllerAltaActividadDep();
 		IControllerAltaDictadoClase aDCController = fabrica.getIControllerAltaDictadoClase();
 		IControllerInstitucionDeportiva aIDController = fabrica.getIControllerInstitucionDeportiva();
+		IControllerModificarUsuario mUController = fabrica.getIControllerModificarUsuario();
 
 		Dimension desktopSize = frame.getSize();
 		Dimension jInternalFrameSize;
@@ -73,6 +77,13 @@ public class Principal {
 		    (desktopSize.height- jInternalFrameSize.height)/2);
 		altaUsuarioInternalFrame.setVisible(false);
 		
+		modificarUsuarioInternalFrame = new ModificarUsuario(mUController, cUController, aIDController);
+        jInternalFrameSize = modificarUsuarioInternalFrame.getSize();
+        modificarUsuarioInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+            (desktopSize.height- jInternalFrameSize.height)/2);
+        modificarUsuarioInternalFrame.setVisible(false);
+        frame.getContentPane().add(modificarUsuarioInternalFrame);
+        
 		consultaActividadInternalFrame = new ConsultaActividad(cAController);
 		jInternalFrameSize = consultaActividadInternalFrame.getSize();
 		consultaActividadInternalFrame.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
@@ -121,6 +132,7 @@ public class Principal {
      * Initialize the contents of the frame.
      */
 	private void initialize() {
+	    Factory fabrica = Factory.getInstance();
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1200, 900);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -136,8 +148,7 @@ public class Principal {
 		JMenuItem mntmUsuarioAlta = new JMenuItem("Alta");
 		mntmUsuarioAlta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mntmUsuarioAlta.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			    Factory fabrica = Factory.getInstance();
+			public void actionPerformed(ActionEvent e) {  
 	            IControllerInstitucionDeportiva aIDController = fabrica.getIControllerInstitucionDeportiva();
 				altaUsuarioInternalFrame.inicializarInstituciones(aIDController);
 				altaUsuarioInternalFrame.setVisible(true);
@@ -157,10 +168,18 @@ public class Principal {
 
 		JMenuItem mntmUsuarioModificar = new JMenuItem("Modificar");
 		mntmUsuarioModificar.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		mntmUsuarioModificar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                IControllerConsultaUsuario cUController = fabrica.getIControllerConsultaUsuario();
+                modificarUsuarioInternalFrame.inicializarUsuarios(cUController);              
+                modificarUsuarioInternalFrame.setVisible(true);
+            }
+        });
 		mnUsuario.add(mntmUsuarioModificar);
 
 		JMenu mnInstitucion = new JMenu("Instituci\u00F3n");
 		mnInstitucion.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		
 		menuBar.add(mnInstitucion);
 
 		JMenuItem mnInstitucionAlta = new JMenuItem("Alta");
@@ -184,7 +203,6 @@ public class Principal {
 		mntmActDepoAlta.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mntmActDepoAlta.addActionListener(new ActionListener ( ) {
 			public void actionPerformed(ActionEvent e) {
-				Factory fabrica = Factory.getInstance();
 				IControllerInstitucionDeportiva aIDController = fabrica.getIControllerInstitucionDeportiva();
 				altaActividadDeportivaInternalFrame.inicializarComboBoxes(aIDController);
 				altaActividadDeportivaInternalFrame.setVisible(true);

@@ -72,8 +72,9 @@ public class Profesor extends Usuario {
 		
 	}
 
-	public void setInstitucion(InstitucionDeportiva institucion) {
-		this.institucion = institucion;
+	public void setInstitucion(String institucion) {
+		InstitucionDeportivaHandler iHand = InstitucionDeportivaHandler.getInstancia();
+		this.institucion = iHand.buscarInstitucionDeportiva(institucion);
 	}
 
 	public List<Clase> getClasesQueDicta() {
@@ -86,7 +87,11 @@ public class Profesor extends Usuario {
 	
 	public DtUsuario getDtUsuario() {
 		return new DtProfesor(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac(), this.descripcion, this.biografia, this.sitioWeb, this.institucion.getNombre());
-	}	
+	}
+
+	public DtUsuario getDtUsuarioCompl() {
+	        return new DtProfesor(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.getFechaNac(), this.getPass(), this.getFoto(), this.descripcion, this.biografia, this.sitioWeb, this.institucion.getNombre());
+	}
 	
 	//METODOS
 	public ArrayList<DtClase> obtenerClasesQueDicta(){

@@ -1,29 +1,28 @@
 package presentacion;
 
-import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
-
 import java.awt.Color;
 import java.awt.Font;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-
-import excepciones.RegistroClaseRepetidoException;
-import interfaces.IControllerInstitucionDeportiva;
-import interfaces.IControllerRegistroClase;
 
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import excepciones.RegistroClaseRepetidoException;
+import interfaces.IControllerInstitucionDeportiva;
+import interfaces.IControllerRegistroClase;
 
 public class RegistroClase extends JInternalFrame {
 
