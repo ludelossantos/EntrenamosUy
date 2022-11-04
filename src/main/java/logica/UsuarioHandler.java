@@ -147,6 +147,8 @@ public class UsuarioHandler {
         
         int res = query.executeUpdate();
         em.getTransaction().commit();
+        Usuario usu = em.find(Usuario.class, nuevo.getNickname());
+        em.refresh(usu);
         if(res > 0) {
             return true;
         } else {
